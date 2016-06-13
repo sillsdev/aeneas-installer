@@ -11,6 +11,11 @@ brew update
 #brew install wget
 brew install ffmpeg
 brew install espeak
+brew install pkg-config
+brew install xz
+brew install gettext
+brew install texi2html
+brew install yasm
 
 #/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python
 if [ ! -f "/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python" ]; then
