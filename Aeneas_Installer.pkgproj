@@ -1193,7 +1193,7 @@
 						<key>VALUE</key>
 						<dict>
 							<key>PATH</key>
-							<string>./LICENSE.txt</string>
+							<string>./Aeneas_License.txt</string>
 							<key>PATH_TYPE</key>
 							<integer>1</integer>
 						</dict>
@@ -1212,7 +1212,7 @@
 						<key>VALUE</key>
 						<dict>
 							<key>PATH</key>
-							<string>Aeneas_Readme.html</string>
+							<string>./Aeneas_Readme.html</string>
 							<key>PATH_TYPE</key>
 							<integer>1</integer>
 						</dict>
