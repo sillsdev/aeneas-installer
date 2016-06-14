@@ -1733,7 +1733,7 @@
 						<key>VALUE</key>
 						<dict>
 							<key>PATH</key>
-							<string>./License.rtf</string>
+							<string>./SAB_License.rtf</string>
 							<key>PATH_TYPE</key>
 							<integer>1</integer>
 						</dict>
@@ -1752,7 +1752,7 @@
 						<key>VALUE</key>
 						<dict>
 							<key>PATH</key>
-							<string>SAB_ReadMe.rtf</string>
+							<string>./SAB_ReadMe.rtf</string>
 							<key>PATH_TYPE</key>
 							<integer>1</integer>
 						</dict>
