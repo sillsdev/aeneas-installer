@@ -1,0 +1,348 @@
+<h1>aeneas</h1>
+
+<p><strong>aeneas</strong> is a Python/C library and a set of tools to automagically synchronize audio and text (aka forced alignment).</p>
+
+<ul>
+<li>Version: 1.5.0.3</li>
+<li>Date: 2016-04-23</li>
+<li>Developed by: <a href="http://www.readbeyond.it/">ReadBeyond</a></li>
+<li>Lead Developer: <a href="http://www.albertopettarin.it/">Alberto Pettarin</a></li>
+<li>License: the GNU Affero General Public License Version 3 (AGPL v3)</li>
+<li>Contact: <a href="mailto:aeneas@readbeyond.it">aeneas@readbeyond.it</a></li>
+<li>Quick Links: <a href="http://www.readbeyond.it/aeneas/">Home</a> - <a href="https://github.com/readbeyond/aeneas/">GitHub</a> - <a href="https://pypi.python.org/pypi/aeneas/">PyPI</a> - <a href="http://www.readbeyond.it/aeneas/docs/">Docs</a> - <a href="http://www.readbeyond.it/aeneas/docs/clitutorial.html">Tutorial</a> - <a href="https://readbeyond.github.io/aeneas-benchmark/">Benchmark</a> - <a href="https://groups.google.com/d/forum/aeneas-forced-alignment">Mailing List</a> - <a href="http://aeneasweb.org">Web App</a></li>
+</ul>
+
+<h2>Goal</h2>
+
+<p><strong>aeneas</strong> automatically generates a <strong>synchronization map</strong>
+between a list of text fragments
+and an audio file containing the narration of the text.
+In computer science this task is known as
+(automatically computing a) <strong>forced alignment</strong>.</p>
+
+<p>For example, given
+<a href="https://raw.githubusercontent.com/readbeyond/aeneas/master/aeneas/tests/res/container/job/assets/p001.xhtml">this text file</a>
+and
+<a href="https://raw.githubusercontent.com/readbeyond/aeneas/master/aeneas/tests/res/container/job/assets/p001.mp3">this audio file</a>,
+<strong>aeneas</strong> determines, for each fragment, the corresponding time interval in the audio file:</p>
+
+<p><code>
+1                                                     =&gt; [00:00:00.000, 00:00:02.640]
+From fairest creatures we desire increase,            =&gt; [00:00:02.640, 00:00:05.880]
+That thereby beauty's rose might never die,           =&gt; [00:00:05.880, 00:00:09.240]
+But as the riper should by time decease,              =&gt; [00:00:09.240, 00:00:11.920]
+His tender heir might bear his memory:                =&gt; [00:00:11.920, 00:00:15.280]
+But thou contracted to thine own bright eyes,         =&gt; [00:00:15.280, 00:00:18.800]
+Feed'st thy light's flame with self-substantial fuel, =&gt; [00:00:18.800, 00:00:22.760]
+Making a famine where abundance lies,                 =&gt; [00:00:22.760, 00:00:25.680]
+Thy self thy foe, to thy sweet self too cruel:        =&gt; [00:00:25.680, 00:00:31.240]
+Thou that art now the world's fresh ornament,         =&gt; [00:00:31.240, 00:00:34.400]
+And only herald to the gaudy spring,                  =&gt; [00:00:34.400, 00:00:36.920]
+Within thine own bud buriest thy content,             =&gt; [00:00:36.920, 00:00:40.640]
+And tender churl mak'st waste in niggarding:          =&gt; [00:00:40.640, 00:00:43.640]
+Pity the world, or else this glutton be,              =&gt; [00:00:43.640, 00:00:48.080]
+To eat the world's due, by the grave and thee.        =&gt; [00:00:48.080, 00:00:53.240]
+</code></p>
+
+<p><img src="wiki/align.png" alt="Waveform with aligned labels, detail" title="" /></p>
+
+<p>This synchronization map can be output to file in several formats:
+EAF for research purposes,
+SMIL for EPUB 3,
+SBV/SRT/SUB/TTML/VTT for closed captioning,
+JSON for Web usage,
+or raw AUD/CSV/SSV/TSV/TXT/XML for further processing.</p>
+
+<h2>System Requirements, Supported Platforms and Installation</h2>
+
+<h3>System Requirements</h3>
+
+<ol>
+<li>a reasonably recent machine (recommended 4 GB RAM, 2 GHz 64bit CPU)</li>
+<li><a href="https://python.org/">Python</a> 2.7 (Linux, OS X, Windows) or 3.4 or later (Linux, OS X)</li>
+<li><a href="https://www.ffmpeg.org/">FFmpeg</a></li>
+<li><a href="http://espeak.sourceforge.net/">eSpeak</a></li>
+<li>Python modules <code>BeautifulSoup4</code>, <code>lxml</code>, and <code>numpy</code></li>
+<li>Python C headers to compile the Python C extensions (optional but strongly recommended)</li>
+<li>A shell supporting UTF-8 (optional but strongly recommended)</li>
+</ol>
+
+<h3>Supported Platforms</h3>
+
+<p><strong>aeneas</strong> has been developed and tested on <strong>Debian 64bit</strong>,
+which is the <strong>only supported OS</strong> at the moment.
+Nevertheless, <strong>aeneas</strong> has been confirmed to work on
+other Linux distributions, OS X, and Windows.
+See the
+<a href="https://github.com/readbeyond/aeneas/blob/master/wiki/PLATFORMS.md">PLATFORMS file</a>
+for the details.</p>
+
+<p>If installing <strong>aeneas</strong> natively on your OS proves difficult,
+you are strongly encouraged to use
+<a href="https://github.com/readbeyond/aeneas-vagrant">aeneas-vagrant</a>,
+which provides <strong>aeneas</strong> inside a virtualized Debian image
+running under
+<a href="https://www.virtualbox.org/">VirtualBox</a>
+and
+<a href="http://www.vagrantup.com/">Vagrant</a>,
+which can be installed on any modern OS (Linux, Mac OS X, Windows).</p>
+
+<h3>Installation</h3>
+
+<ol>
+<li><p>Install
+<a href="https://python.org/">Python</a> (2.7.x preferred),
+<a href="https://www.ffmpeg.org/">FFmpeg</a>, and
+<a href="http://espeak.sourceforge.net/">eSpeak</a></p></li>
+<li><p>Make sure the following executables can be called from your shell:
+<code>espeak</code>, <code>ffmpeg</code>, <code>ffprobe</code>, <code>pip</code>, and <code>python</code></p></li>
+<li><p>First install <code>numpy</code> with <code>pip</code> and then <code>aeneas</code>:</p>
+
+<p><code>bash
+pip install numpy
+pip install aeneas
+</code></p></li>
+</ol>
+
+<p>See the
+<a href="https://github.com/readbeyond/aeneas/blob/master/wiki/INSTALL.md">INSTALL file</a>
+for detailed, step-by-step procedures for Linux, OS X, and Windows.</p>
+
+<h2>Usage</h2>
+
+<ol>
+<li><p>To <strong>check</strong> whether you installed <strong>aeneas</strong> correctly, run:</p>
+
+<p><code>bash
+python -m aeneas.diagnostics
+</code></p></li>
+<li><p>Run without arguments to get the <strong>usage message</strong>:</p>
+
+<p><code>bash
+python -m aeneas.tools.execute_task
+python -m aeneas.tools.execute_job
+</code></p>
+
+<p>You can also get a list of <strong>live examples</strong>
+that you can immediately run on your machine
+thanks to the included files:</p>
+
+<p><code>bash
+python -m aeneas.tools.execute_task --examples
+python -m aeneas.tools.execute_task --examples-all
+</code></p></li>
+<li><p>To <strong>compute a synchronization map</strong> <code>map.json</code> for a pair
+(<code>audio.mp3</code>, <code>text.txt</code> in
+<a href="http://www.readbeyond.it/aeneas/docs/textfile.html#aeneas.textfile.TextFileFormat.PLAIN">plain</a>
+text format), you can run:</p>
+
+<p><code>bash
+python -m aeneas.tools.execute_task \
+    audio.mp3 \
+    text.txt \
+    "task_language=eng|os_task_file_format=json|is_text_type=plain" \
+    map.json
+</code></p>
+
+<p>(The command has been split into lines with <code>\</code> for visual clarity;
+in production you can have the entire command on a single line
+and/or you can use shell variables.)</p>
+
+<p>To <strong>compute a synchronization map</strong> <code>map.smil</code> for a pair
+(<code>audio.mp3</code>,
+<a href="http://www.readbeyond.it/aeneas/docs/textfile.html#aeneas.textfile.TextFileFormat.UNPARSED">page.xhtml</a>
+containing fragments marked by <code>id</code> attributes like <code>f001</code>),
+you can run:</p>
+
+<p><code>bash
+python -m aeneas.tools.execute_task \
+    audio.mp3 \
+    page.xhtml \
+    "task_language=eng|os_task_file_format=smil|os_task_file_smil_audio_ref=audio.mp3|os_task_file_smil_page_ref=page.xhtml|is_text_type=unparsed|is_text_unparsed_id_regex=f[0-9]+|is_text_unparsed_id_sort=numeric" \
+    map.smil
+</code></p>
+
+<p>As you can see, the third argument (the <em>configuration string</em>)
+specifies the parameters controlling the I/O formats
+and the processing options for the task.
+Consult the
+<a href="http://www.readbeyond.it/aeneas/docs/">documentation</a>
+for details.</p></li>
+<li><p>If you have several tasks to process,
+you can create a <strong>job container</strong>
+to batch process them:</p>
+
+<p><code>bash
+python -m aeneas.tools.execute_job job.zip output_directory
+</code></p>
+
+<p>File <code>job.zip</code> should contain a <code>config.txt</code> or <code>config.xml</code>
+configuration file, providing <strong>aeneas</strong>
+with all the information needed to parse the input assets
+and format the output sync map files.
+Consult the
+<a href="http://www.readbeyond.it/aeneas/docs/">documentation</a>
+for details.</p></li>
+</ol>
+
+<p>The
+<a href="http://www.readbeyond.it/aeneas/docs/">documentation</a>
+contains a highly suggested
+<a href="http://www.readbeyond.it/aeneas/docs/clitutorial.html">tutorial</a>
+which explains how to use the built-in command line tools.</p>
+
+<h2>Documentation and Support</h2>
+
+<ul>
+<li>Documentation:
+<a href="http://www.readbeyond.it/aeneas/docs/">http://www.readbeyond.it/aeneas/docs/</a></li>
+<li>Command line tools tutorial:
+<a href="http://www.readbeyond.it/aeneas/docs/clitutorial.html">http://www.readbeyond.it/aeneas/docs/clitutorial.html</a></li>
+<li>Library tutorial:
+<a href="http://www.readbeyond.it/aeneas/docs/libtutorial.html">http://www.readbeyond.it/aeneas/docs/libtutorial.html</a></li>
+<li>Old, verbose tutorial:
+<a href="http://www.albertopettarin.it/blog/2015/05/21/a-practical-introduction-to-the-aeneas-package.html">A Practical Introduction To The aeneas Package</a></li>
+<li>Mailing list:
+<a href="https://groups.google.com/d/forum/aeneas-forced-alignment">https://groups.google.com/d/forum/aeneas-forced-alignment</a></li>
+<li>Changelog:
+<a href="http://www.readbeyond.it/aeneas/docs/changelog.html">http://www.readbeyond.it/aeneas/docs/changelog.html</a></li>
+<li>High level description of how aeneas works:
+<a href="https://github.com/readbeyond/aeneas/blob/master/wiki/HOWITWORKS.md">HOWITWORKS</a></li>
+<li>Development history:
+<a href="https://github.com/readbeyond/aeneas/blob/master/wiki/HISTORY.md">HISTORY</a></li>
+<li>Benchmark suite:
+<a href="https://readbeyond.github.io/aeneas-benchmark/">https://readbeyond.github.io/aeneas-benchmark/</a></li>
+</ul>
+
+<h2>Supported Features</h2>
+
+<ul>
+<li>Input text files in <code>parsed</code>, <code>plain</code>, <code>subtitles</code>, or <code>unparsed</code> (XML) format</li>
+<li>Multilevel input text files in <code>mplain</code> and <code>munparsed</code> (XML) format</li>
+<li>Text extraction from XML (e.g., XHTML) files using <code>id</code> and <code>class</code> attributes</li>
+<li>Arbitrary text fragment granularity (single word, subphrase, phrase, paragraph, etc.)</li>
+<li>Input audio file formats: all those readable by <code>ffmpeg</code></li>
+<li>Output sync map formats: AUD, CSV, EAF, JSON, SMIL, SRT, SSV, SUB, TSV, TTML, TXT, VTT, XML</li>
+<li>Tested languages: ARA, BUL, CAT, CYM, CES, DAN, DEU, ELL, ENG, EPO, EST, FAS, FIN, FRA, GLE, GRC, HRV, HUN, ISL, ITA, LAT, LAV, LIT, NLD, NOR, RON, RUS, POL, POR, SLK, SPA, SRP, SWA, SWE, TUR, UKR</li>
+<li>MFCC and DTW computed via Python C extensions to reduce the processing time</li>
+<li>On Linux, eSpeak called via a Python C extension for faster audio synthesis</li>
+<li>Batch processing of multiple audio/text pairs</li>
+<li>Several built-in TTS engine wrappers: eSpeak (default, FLOSS), Festival (FLOSS), Nuance TTS API (commercial)</li>
+<li>Use custom TTS engine wrappers besides the built-in ones</li>
+<li>Download audio from a YouTube video</li>
+<li>In multilevel mode, recursive alignment from paragraph to sentence to word level</li>
+<li>Robust against misspelled/mispronounced words, local rearrangements of words, background noise/sporadic spikes</li>
+<li>Adjustable splitting times, including a max character/second constraint for CC applications</li>
+<li>Automated detection of audio head/tail</li>
+<li>Output an HTML file for fine tuning the sync map manually (<code>finetuneas</code> project)</li>
+<li>Execution parameters tunable at runtime</li>
+<li>Code suitable for Web app deployment (e.g., on-demand cloud computing)</li>
+</ul>
+
+<h2>Limitations and Missing Features</h2>
+
+<ul>
+<li>Audio should match the text: large portions of spurious text or audio might produce a wrong sync map</li>
+<li>Audio is assumed to be spoken: not suitable/YMMV for song captioning</li>
+<li>No protection against memory trashing if you feed extremely long audio files</li>
+<li><a href="https://github.com/readbeyond/aeneas/issues">Open issues</a></li>
+</ul>
+
+<h2>License</h2>
+
+<p><strong>aeneas</strong> is released under the terms of the
+GNU Affero General Public License Version 3.
+See the
+<a href="https://github.com/readbeyond/aeneas/blob/master/LICENSE">LICENSE file</a> for details.</p>
+
+<p>Licenses for third party code and files included in <strong>aeneas</strong>
+can be found in the
+<a href="https://github.com/readbeyond/aeneas/blob/master/licenses/README.md">licenses</a> directory.</p>
+
+<p>No copy rights were harmed in the making of this project.</p>
+
+<h2>Supporting and Contributing</h2>
+
+<h3>Sponsors</h3>
+
+<ul>
+<li><p><strong>July 2015</strong>: <a href="https://plus.google.com/+michelegianella/about">Michele Gianella</a> generously supported the development of the boundary adjustment code (v1.0.4)</p></li>
+<li><p><strong>August 2015</strong>: <a href="https://plus.google.com/+michelegianella/about">Michele Gianella</a> partially sponsored the port of the MFCC/DTW code to C (v1.1.0)</p></li>
+<li><p><strong>September 2015</strong>: friends in West Africa partially sponsored the development of the head/tail detection code (v1.2.0)</p></li>
+<li><p><strong>October 2015</strong>: an anonymous donation sponsored the development of the "YouTube downloader" option (v1.3.0)</p></li>
+<li><p><strong>April 2016</strong>: the Fruch Foundation kindly sponsored the development and documentation of v1.5.0</p></li>
+</ul>
+
+<h3>Supporting</h3>
+
+<p>Would you like supporting the development of <strong>aeneas</strong>?</p>
+
+<p>I accept sponsorships to</p>
+
+<ul>
+<li>fix bugs,</li>
+<li>add new features,</li>
+<li>improve the quality and the performance of the code,</li>
+<li>port the code to other languages/platforms,</li>
+<li>support of third party installations, and</li>
+<li>improve the documentation.</li>
+</ul>
+
+<p>Feel free to
+<a href="mailto:aeneas@readbeyond.it">get in touch</a>.</p>
+
+<h3>Contributing</h3>
+
+<p>If you think you found a bug,
+please use the
+<a href="https://github.com/readbeyond/aeneas/issues">GitHub issue tracker</a>
+to file a bug report.</p>
+
+<p>If you are able to contribute code directly, that is awesome!
+I will be glad to merge it!
+Just a few rules, to make life easier for both you and me:</p>
+
+<ol>
+<li><p>Please do not work on the <code>master</code> branch.
+Instead, create a new branch on your GitHub repo
+by cheking out the <code>devel</code> branch.
+Open a pull request from your branch on your repo
+to the <code>devel</code> branch on this GitHub repo.</p></li>
+<li><p>Please make your code consistent with
+the existing code base style
+(see the
+<a href="https://google-styleguide.googlecode.com/svn/trunk/pyguide.html">Google Python Style Guide</a>
+), and test your contributed code
+against the unit tests
+before opening the pull request.</p></li>
+<li><p>Ideally, add some unit tests for the code you are submitting,
+either adding them to the existing unit tests or creating a new file
+in <code>aeneas/tests/</code>.</p></li>
+<li><p><strong>Please note that, by opening a pull request,
+you automatically agree to apply
+the AGPL v3 license
+to the code you contribute.</strong></p></li>
+</ol>
+
+<h2>Acknowledgments</h2>
+
+<p>Many thanks to <strong>Nicola Montecchio</strong>,
+who suggested using MFCCs and DTW,
+and co-developed the first experimental code
+for aligning audio and text.</p>
+
+<p><strong>Paolo Bertasi</strong>, who developed the
+APIs and Web application for ReadBeyond Sync,
+helped shaping the structure of this package
+for its asynchronous usage.</p>
+
+<p><strong>Chris Hubbard</strong> prepared the files for
+packaging aeneas as a Debian/Ubuntu <code>.deb</code>.</p>
+
+<p><strong>Firat Ozdemir</strong> contributed the <code>finetuneas</code>
+HTML/JS code for fine tuning sync maps in the browser.</p>
+
+<p>All the mighty
+<a href="https://github.com/readbeyond/aeneas/graphs/contributors">GitHub contributors</a>,
+and the members of the
+<a href="https://groups.google.com/d/forum/aeneas-forced-alignment">Google Group</a>.</p>
