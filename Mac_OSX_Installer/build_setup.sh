@@ -8,6 +8,10 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 brew update
 brew install wget
 brew install curl
+<<<<<<< Updated upstream
+=======
+#brew link curl
+>>>>>>> Stashed changes
 brew install ffmpeg
 brew install espeak
 brew install pkg-config

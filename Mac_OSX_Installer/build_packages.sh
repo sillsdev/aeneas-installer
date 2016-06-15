@@ -20,6 +20,5 @@ fi
 zip -v python-2.7.11-macosx10.6.pkg.zip python-2.7.11-macosx10.6.pkg
 curl -fsSL https://raw.githubusercontent.com/readbeyond/aeneas/master/README.md | markdown > Aeneas_Readme.html
 
-mkdir -p ../../build
 packagesbuild -v Aeneas_Installer.pkgproj
-open -R ../../build/Aeneas_Installer.mpkg
+open -R ./Aeneas_Installer.mpkg
