@@ -6,9 +6,9 @@ sudo xcodebuild -license
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 brew update
-
-#brew install curl
-#brew install wget
+brew install wget
+brew install curl
+brew link curl
 brew install ffmpeg
 brew install espeak
 brew install pkg-config
@@ -16,6 +16,13 @@ brew install xz
 brew install gettext
 brew install texi2html
 brew install yasm
+brew install markdown
+brew tap timsutton/formulae
+brew install brew-pkg
+brew install ruby
+brew link ruby
+
+gem install fpm
 
 #/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python
 if [ ! -f "/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python" ]; then
@@ -31,7 +38,6 @@ if [ ! -n "$(grep 'export PATH=/usr/local/bin:/usr/local/sbin:$PATH' ~/.bash_pro
 fi
 
 pip install --upgrade pip
-
 pip install BeautifulSoup4
 pip install lxml
 pip install numpy
@@ -39,4 +45,3 @@ pip install aeneas
 
 sudo ln -fs /Library/Frameworks/Python.framework/Versions/2.7/bin/aeneas* /usr/local/bin/
 aeneas_check_setup
-
