@@ -1,6 +1,6 @@
-This provides a simple installer for [Aeneas](https://github.com/readbeyond/aeneas) for Windows 7 and up.
+This provides a simple installer for [Aeneas](https://github.com/readbeyond/aeneas) for MS Windows 7 and up.
 
-To build this installer for Windows first download (and extract) or clone this repository.
+To build this installer for MS Windows first download (and extract) or clone this repository.
 
 Next you will need to download the files below (Save all downloaded files into this folder):  
 [7-Zip](http://www.7-zip.org/a/7z1602.exe)  
