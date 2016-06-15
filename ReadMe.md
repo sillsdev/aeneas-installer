@@ -1,7 +1,7 @@
-This provides a simple installer for [Aeneas](https://github.com/readbeyond/aeneas) for Mac OS X 10.7 and up.  
-_Work is being done to provide similar for MS Windows 7 and up._
+This provides a simple installer for [Aeneas](https://github.com/readbeyond/aeneas) for Mac OS X 10.7 and up, and for Windows 7 and up.
 
-1. To build this installer for Mac OS X first download or clone this repository.  
-2. Then run build_setup.sh which will install Aeneas and its necessary dependencies  
-and install the necessary applications needed for building.  
-3. Finally run build_packages.sh which will then build the packages.
+To build this installer for Mac OS X first download (and extract) or clone this repository.
+Then open Terminal and _cd Mac\_OSX\_Installer_ and follow the Readme.md instructions there.
+
+Or to build this installer for Windows first download (and extract) or clone this repository.
+Then open Command Prompt and _cd MS\_Windows\_Installer_ and follow the Readme.md instructions there.
