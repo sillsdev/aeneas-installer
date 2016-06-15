@@ -8,7 +8,6 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 brew update
 brew install wget
 brew install curl
-brew link curl
 brew install ffmpeg
 brew install espeak
 brew install pkg-config
@@ -22,7 +21,7 @@ brew install brew-pkg
 brew install ruby
 brew link ruby
 
-gem install fpm
+sudo /usr/local/bin/gem install fpm
 
 #/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python
 if [ ! -f "/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python" ]; then
