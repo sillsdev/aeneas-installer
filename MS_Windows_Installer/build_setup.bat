@@ -38,7 +38,7 @@ C:\Python27\python -m pip install --upgrade pip
 C:\Python27\python -m pip install --upgrade wheel
 
 echo Downloading eSpeak...
-cscript.exe /B wget.vbs "http://downloads.sourceforge.net/project/espeak/espeak/espeak-1.48/setup_espeak-1.48.04.exe?r=&ts=1466034490&use_mirror=jaist" "%cd%\setup_espeak-1.48.04.exe"
+cscript.exe /B wget.vbs "http://pilotfiber.dl.sourceforge.net/project/espeak/espeak/espeak-1.48/setup_espeak-1.48.04.exe" "%cd%\setup_espeak-1.48.04.exe"
 
 echo Downloading FFmpeg...
 cscript.exe /B wget.vbs "https://ffmpeg.zeranoe.com/builds/win32/static/ffmpeg-latest-win32-static.7z" "%cd%\ffmpeg-latest-win32-static.7z"
