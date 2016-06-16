@@ -34,10 +34,17 @@ brew link ruby
 
 echo $password | sudo -S gem install fpm
 
-#/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python
 if [ ! -f "/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python" ]; then
 	curl -fsSL -O https://www.python.org/ftp/python/2.7.11/python-2.7.11-macosx10.6.pkg
 	echo $password | sudo -S installer -target / -pkg python-2.7.11-macosx10.6.pkg
+fi
+
+if [ ! -f "/usr/local/bin/packagesbuild" ]; then
+	curl -fsSL -O http://s.sudre.free.fr/Software/files/Packages.dmg
+	#open Packages.dmg
+	hdiutil attach Packages.dmg
+	iecho $password | sudo -S installer -target / -pkg /Volumes/Packages\ */packages/Packages.pkg
+	hdiutil eject /Volumes/Packages\ */
 fi
 
 pip install --upgrade pip
@@ -47,4 +54,5 @@ pip install numpy
 pip install aeneas
 
 echo $password | sudo -S ln -fs /Library/Frameworks/Python.framework/Versions/2.7/bin/aeneas* /usr/local/bin/
+
 aeneas_check_setup
