@@ -1,5 +1,8 @@
 #!/bin/bash
 
+read -s -p "Password:" password
+echo
+
 xcode-select --install
 sudo xcodebuild -license
 
@@ -29,12 +32,12 @@ brew install brew-pkg
 brew install ruby
 brew link ruby
 
-sudo gem install fpm
+echo $password | sudo -S gem install fpm
 
 #/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python
 if [ ! -f "/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python" ]; then
 	curl -fsSL -O https://www.python.org/ftp/python/2.7.11/python-2.7.11-macosx10.6.pkg
-	sudo installer -target / -pkg python-2.7.11-macosx10.6.pkg
+	echo $password | sudo -S installer -target / -pkg python-2.7.11-macosx10.6.pkg
 fi
 
 pip install --upgrade pip
@@ -43,5 +46,5 @@ pip install lxml
 pip install numpy
 pip install aeneas
 
-sudo ln -fs /Library/Frameworks/Python.framework/Versions/2.7/bin/aeneas* /usr/local/bin/
+echo $password | sudo -S ln -fs /Library/Frameworks/Python.framework/Versions/2.7/bin/aeneas* /usr/local/bin/
 aeneas_check_setup
