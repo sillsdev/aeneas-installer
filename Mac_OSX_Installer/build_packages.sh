@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+
 #brew pkg --with-deps --scripts python #fails to build a working package
 brew pkg --with-deps ffmpeg
 brew pkg --with-deps --scripts espeak_install_scripts espeak
