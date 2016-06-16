@@ -11,7 +11,11 @@ fi
 
 osascript <<END 
 tell application "Terminal"
-	do script "aeneas_check_setup; exit"
 	activate
+	do script "aeneas_check_setup; sleep 10"
+	delay 10
+	quit
 end tell
 END
+
+
