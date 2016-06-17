@@ -13,8 +13,8 @@ osascript <<END
 tell application "Terminal"
 	activate
 	do script "aeneas_check_setup; exit"
-	delay 5
-	quit
+	delay 10
+	close window 1
 end tell
 END
 
