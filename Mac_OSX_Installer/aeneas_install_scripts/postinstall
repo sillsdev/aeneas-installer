@@ -12,9 +12,14 @@ fi
 osascript <<END 
 tell application "Terminal"
 	activate
-	do script "aeneas_check_setup; exit"
-	delay 10
-	close window 1
+	set newTab to do script "aeneas_check_setup; exit"
+	set current settings of newTab to settings set "Pro"
+	set theWindow to first window of (every window whose tabs contains newTab)
+	set windowId to theWindow's id
+	delay 5 
+	try
+		close (every window whose tabs contains newTab)
+	end try
 end tell
 END
 
