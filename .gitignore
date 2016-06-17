@@ -17,6 +17,7 @@
 *.7z
 *.dmg
 *.pkg
+*.mpkg
 *.whl
 *.gz
 *.iso
@@ -54,7 +55,8 @@ Thumbs.db
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
