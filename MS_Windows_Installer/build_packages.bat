@@ -22,7 +22,7 @@ python setup.py bdist_wheel
 copy dist\aeneas-1.5.0.3-cp27-cp27m-win32.whl ..\
 cd ..
 
-7z.exe x ffmpeg-latest-win32-static.7z -aoa
+7z.exe x ffmpeg-*-win32-static.7z -aoa
 move /y ffmpeg-*-win32-static ffmpeg-3.0.2
 
 ISCC.exe FFmpeg_Installer.iss

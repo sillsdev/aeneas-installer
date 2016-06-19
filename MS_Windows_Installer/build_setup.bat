@@ -1,24 +1,52 @@
 @echo off
 
-echo Downloading 7-zip... 
-cscript.exe /NoLogo wget.vbs "http://www.7-zip.org/a/7z1602.exe" "%cd%\7z1602.exe"
-echo Installing 7-zip...
-7z1602.exe
+IF NOT EXIST "%cd%\7z1602.exe" (
+  echo Downloading 7-zip... 
+  cscript.exe /NoLogo wget.vbs "http://www.7-zip.org/a/7z1602.exe" "%cd%\7z1602.exe"
+)
+IF EXIST "%cd%\7z1602.exe" (
+  echo Installing 7-zip...
+  7z1602.exe
+) ELSE (
+  echo Could not find 7-zip...
+  START http://www.7-zip.org/
+)
 
-echo Downloading Inno Setup...
-cscript.exe /NoLogo wget.vbs "http://www.jrsoftware.org/download.php/is-unicode.exe" "%cd%\innosetup-5.5.9-unicode.exe"
-echo Installing InnoSetup...
-innosetup-5.5.9-unicode.exe /SILENT
+IF NOT EXIST "%cd%\innosetup-5.5.9-unicode.exe" (
+  echo Downloading Inno Setup...
+  cscript.exe /NoLogo wget.vbs "http://www.jrsoftware.org/download.php/is-unicode.exe" "%cd%\innosetup-5.5.9-unicode.exe"
+)
+IF EXIST "%cd%\innosetup-5.5.9-unicode.exe" (
+  echo Installing InnoSetup...
+  innosetup-5.5.9-unicode.exe /SILENT
+) ELSE (
+  echo Could not find InnoSetup...
+  START http://www.jrsoftware.org/isdl.php
+)
 
-echo Downloading Python 2.7.11...
-cscript.exe /NoLogo wget.vbs "https://www.python.org/ftp/python/2.7.11/python-2.7.11.msi" "%cd%\python-2.7.11.msi"
-echo Installing Python 2.7.11...
-python-2.7.11.msi /PASSIVE
+IF NOT EXIST "%cd%\python-2.7.11.msi" (
+  echo Downloading Python 2.7.11...
+  cscript.exe /NoLogo wget.vbs "https://www.python.org/ftp/python/2.7.11/python-2.7.11.msi" "%cd%\python-2.7.11.msi"
+)
+IF EXIST "%cd%\python-2.7.11.msi" (
+  echo Installing Python 2.7.11...
+  python-2.7.11.msi /PASSIVE
+) ELSE (
+  echo Could not find Python 2.7.11...
+  START https://www.python.org/downloads/release/python-2711/
+)
 
+IF NOT EXIST "%cd%\VCForPython27.msi" (
 echo Downloading Visual C++ For Python27...
-cscript.exe /NoLogo wget.vbs "https://download.microsoft.com/download/7/9/6/796EF2E4-801B-4FC4-AB28-B59FBF6D907B/VCForPython27.msi" "%cd%\VCForPython27.msi"
-echo Installing Visual C++ For Python27...
-VCForPython27.msi /PASSIVE
+  cscript.exe /NoLogo wget.vbs "https://download.microsoft.com/download/7/9/6/796EF2E4-801B-4FC4-AB28-B59FBF6D907B/VCForPython27.msi" "%cd%\VCForPython27.msi"
+)
+IF EXIST "%cd%\VCForPython27.msi" (
+  echo Installing Visual C++ For Python27...
+  VCForPython27.msi /PASSIVE
+) ELSE (
+  echo Could not find Visual C++ For Python27...
+  START http://www.microsoft.com/en-us/download/details.aspx?id=44266
+)
 
 echo Setting PATH variable...
 echo %PATH% >> C:\Windows\Temp\PATH.bak
@@ -34,11 +62,20 @@ IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
 C:\Windows\System32\setx PATH "%PATH%"
 
 C:\Python27\python -m pip install --upgrade pip
-
 C:\Python27\python -m pip install --upgrade wheel
+C:\Python27\python -m pip install beautifulsoup4
+C:\Python27\python -m pip install lxml
+C:\Python27\python -m pip install numpy==1.10.1
+C:\Python27\python -m pip install aeneas
 
-echo Downloading eSpeak...
-cscript.exe /NoLogo wget.vbs "http://internode.dl.sourceforge.net/project/espeak/espeak/espeak-1.48/setup_espeak-1.48.04.exe" "%cd%\setup_espeak-1.48.04.exe"
+IF NOT EXIST "%cd%\setup_espeak-1.48.04.exe" (
+  echo Downloading eSpeak...
+  cscript.exe /NoLogo wget.vbs "http://internode.dl.sourceforge.net/project/espeak/espeak/espeak-1.48/setup_espeak-1.48.04.exe" "%cd%\setup_espeak-1.48.04.exe"
+)
+IF NOT EXIST "%cd%\setup_espeak-1.48.04.exe" START https://sourceforge.net/projects/espeak/files/espeak/
 
-echo Downloading FFmpeg...
-cscript.exe /NoLogo wget.vbs "https://ffmpeg.zeranoe.com/builds/win32/static/ffmpeg-latest-win32-static.7z" "%cd%\ffmpeg-latest-win32-static.7z"
+IF NOT EXIST "%cd%\ffmpeg-latest-win32-static.7z" (
+  echo Downloading FFmpeg...
+  cscript.exe /NoLogo wget.vbs "https://ffmpeg.zeranoe.com/builds/win32/static/ffmpeg-latest-win32-static.7z" "%cd%\ffmpeg-latest-win32-static.7z"
+)
+IF NOT EXIST "%cd%\ffmpeg-latest-win32-static.7z" START https://ffmpeg.zeranoe.com/builds/win32/static/
