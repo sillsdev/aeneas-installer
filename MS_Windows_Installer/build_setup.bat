@@ -48,6 +48,18 @@ IF EXIST "%cd%\VCForPython27.msi" (
   START http://www.microsoft.com/en-us/download/details.aspx?id=44266
 )
 
+IF NOT EXIST "%cd%\dotNetFx35setup.exe" (
+echo Downloading Microsoft .NET Framework 3.5...
+  cscript.exe /NoLogo wget.vbs "https://download.microsoft.com/download/7/0/3/703455ee-a747-4cc8-bd3e-98a615c3aedb/dotNetFx35setup.exe" "%cd%\dotNetFx35setup.exe"
+)
+IF EXIST "%cd%\dotNetFx35setup.exe" (
+  echo Installing Microsoft .NET Framework 3.5...
+  dotNetFx35setup.exe /SILENT
+) ELSE (
+  echo Could not find Microsoft .NET Framework 3.5...
+  START http://www.microsoft.com/en-us/download/details.aspx?id=21
+)
+
 echo Setting PATH variable...
 echo %PATH% >> C:\Windows\Temp\PATH.bak
 IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
@@ -65,7 +77,7 @@ C:\Python27\python -m pip install --upgrade pip
 C:\Python27\python -m pip install --upgrade wheel
 C:\Python27\python -m pip install beautifulsoup4
 C:\Python27\python -m pip install lxml
-C:\Python27\python -m pip install numpy==1.10.1
+C:\Python27\python -m pip install numpy
 C:\Python27\python -m pip install aeneas
 
 IF NOT EXIST "%cd%\setup_espeak-1.48.04.exe" (
