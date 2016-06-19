@@ -13,14 +13,23 @@ xHttp.Option(6) = true 'The value of false means do not follow redirects automat
 xHttp.Send()
 
 If xHttp.Status = 200 Then
-  stdout.WriteLine "Saving: " & WScript.Arguments(1)
-  Set bStrm = CreateObject("Adodb.Stream")
-  bStrm.Type = 1 '//binary
-  bStrm.Open
-  bStrm.Write xHttp.responseBody
-  bStrm.SaveToFile WScript.Arguments(1), 2 '//overwrite
-  bStrm.Close
-  Set bStrm = Nothing
+  Dim testStr
+  varByteArray = xHttp.ResponseBody
+  For lngCounter = 0 to 256 'UBound(varByteArray) 
+    testStr = testStr & Midb(varByteArray,lngCounter + 1,1) & chrb(0)
+  Next 
+  If InStr(testStr, "doctype html") Then
+    stderr.WriteLine "Error: " & WScript.Arguments(0) & " not found."
+  Else
+    stdout.WriteLine "Saving: " & WScript.Arguments(1)
+    Set bStrm = CreateObject("Adodb.Stream")
+    bStrm.Type = 1 '//binary
+    bStrm.Open
+    bStrm.Write varByteArray
+    bStrm.SaveToFile WScript.Arguments(1), 2 '//overwrite
+    bStrm.Close
+    Set bStrm = Nothing
+  End If
 Else
   stderr.WriteLine "Error Occurred : " & xHttp.Status & " - " & xHttp.statusText
 End If
