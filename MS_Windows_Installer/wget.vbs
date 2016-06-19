@@ -18,7 +18,7 @@ If xHttp.Status = 200 Then
   For lngCounter = 0 to 256 'UBound(varByteArray) 
     testStr = testStr & Midb(varByteArray,lngCounter + 1,1) & chrb(0)
   Next 
-  If InStr(testStr, "doctype html") Then
+  If InStr(lcase(testStr), "doctype html") Then
     stderr.WriteLine "Error: " & WScript.Arguments(0) & " not found."
   Else
     stdout.WriteLine "Saving: " & WScript.Arguments(1)
