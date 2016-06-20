@@ -5,3 +5,6 @@ This provides a simple installer for [Aeneas](https://github.com/readbeyond/aene
 3. Then run *build\_setup.sh* which will install Aeneas and its necessary dependencies and  
 install the necessary applications needed for building.
 4. Finally run *build\_packages.sh* which will then build the packages and the main installer.  
+
+NOTE: For OS X 10.9 and up the *build\_setup.sh* script will install the Xcode Command Line Tools itself, but  
+for OS X 10.7 or 10.8 you will need to download and install Xcode and the Xcode Command Line Tools first.
