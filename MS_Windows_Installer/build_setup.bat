@@ -61,7 +61,7 @@ IF EXIST "%cd%\dotNetFx35setup.exe" (
 )
 
 echo %PATH% | find /I "Python27" > nul
-IF ERRORLEVEL 0 GOTO ENDIF
+IF %ERRORLEVEL%==0 GOTO ENDIF
 echo Setting PATH variable...
 echo %PATH% >> C:\Windows\Temp\PATH.bak
 IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
