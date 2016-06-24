@@ -22,7 +22,7 @@ C:\Python27\python -m pip download pip
 C:\Python27\python -m pip download beautifulsoup4
 C:\Python27\python -m pip download lxml
 C:\Python27\python -m pip download numpy==1.10.1
-C:\Python27\python -m pip download aeneas
+C:\Python27\python -m pip download aeneas==1.5.0.3
 
 
 "%PF32%\7-Zip\7z.exe" x numpy-1.10.1.zip -aoa
