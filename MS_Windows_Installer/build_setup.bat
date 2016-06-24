@@ -2,7 +2,7 @@
 
 IF NOT EXIST "%cd%\7z1602.exe" (
   echo Downloading 7-zip... 
-  cscript.exe /NoLogo wget.vbs "http://www.7-zip.org/a/7z1602.exe" "%cd%\7z1602.exe"
+  powershell "(new-object System.Net.WebClient).DownloadFile('http://www.7-zip.org/a/7z1602.exe', '%cd%\7z1602.exe')"
 )
 IF EXIST "%cd%\7z1602.exe" (
   echo Installing 7-zip...
@@ -14,7 +14,7 @@ IF EXIST "%cd%\7z1602.exe" (
 
 IF NOT EXIST "%cd%\innosetup-5.5.9-unicode.exe" (
   echo Downloading Inno Setup...
-  cscript.exe /NoLogo wget.vbs "http://www.jrsoftware.org/download.php/is-unicode.exe" "%cd%\innosetup-5.5.9-unicode.exe"
+  powershell "(new-object System.Net.WebClient).DownloadFile('http://www.jrsoftware.org/download.php/is-unicode.exe','%cd%\innosetup-5.5.9-unicode.exe')"
 )
 IF EXIST "%cd%\innosetup-5.5.9-unicode.exe" (
   echo Installing InnoSetup...
@@ -26,7 +26,7 @@ IF EXIST "%cd%\innosetup-5.5.9-unicode.exe" (
 
 IF NOT EXIST "%cd%\python-2.7.11.msi" (
   echo Downloading Python 2.7.11...
-  cscript.exe /NoLogo wget.vbs "https://www.python.org/ftp/python/2.7.11/python-2.7.11.msi" "%cd%\python-2.7.11.msi"
+  powershell "(new-object System.Net.WebClient).DownloadFile('https://www.python.org/ftp/python/2.7.11/python-2.7.11.msi', '%cd%\python-2.7.11.msi')"
 )
 IF EXIST "%cd%\python-2.7.11.msi" (
   echo Installing Python 2.7.11...
@@ -38,7 +38,7 @@ IF EXIST "%cd%\python-2.7.11.msi" (
 
 IF NOT EXIST "%cd%\VCForPython27.msi" (
 echo Downloading Visual C++ For Python27...
-  cscript.exe /NoLogo wget.vbs "https://download.microsoft.com/download/7/9/6/796EF2E4-801B-4FC4-AB28-B59FBF6D907B/VCForPython27.msi" "%cd%\VCForPython27.msi"
+  powershell "(new-object System.Net.WebClient).DownloadFile('https://download.microsoft.com/download/7/9/6/796EF2E4-801B-4FC4-AB28-B59FBF6D907B/VCForPython27.msi', '%cd%\VCForPython27.msi')"
 )
 IF EXIST "%cd%\VCForPython27.msi" (
   echo Installing Visual C++ For Python27...
@@ -50,7 +50,7 @@ IF EXIST "%cd%\VCForPython27.msi" (
 
 IF NOT EXIST "%cd%\dotNetFx35setup.exe" (
 echo Downloading Microsoft .NET Framework 3.5...
-  cscript.exe /NoLogo wget.vbs "https://download.microsoft.com/download/7/0/3/703455ee-a747-4cc8-bd3e-98a615c3aedb/dotNetFx35setup.exe" "%cd%\dotNetFx35setup.exe"
+  powershell "(new-object System.Net.WebClient).DownloadFile('https://download.microsoft.com/download/7/0/3/703455ee-a747-4cc8-bd3e-98a615c3aedb/dotNetFx35setup.exe', '%cd%\dotNetFx35setup.exe')"
 )
 IF EXIST "%cd%\dotNetFx35setup.exe" (
   echo Installing Microsoft .NET Framework 3.5...
