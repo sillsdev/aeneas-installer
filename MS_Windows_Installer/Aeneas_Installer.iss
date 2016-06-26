@@ -77,6 +77,16 @@ Filename: "{app}\python-2.7.11.msi"; Parameters: "/PASSIVE"; Description: "Insta
 Filename: "{app}\install_packages.bat"; Description: "Install Aeneas 1.5.0.3 and dependencies"; Components: aeneas; Flags: shellexec waituntilterminated
 Filename: "{app}\aeneas_check_setup.bat"; Description: "Check Aeneas Setup"; Components: aeneas; Flags: shellexec waituntilterminated
 
+[UninstallRun]
+Filename: "{pf32}\FFmpeg\unins000.exe"; Parameters: "/SILENT"; Components: ffmpeg; Flags: shellexec waituntilterminated
+Filename: "{pf32}\eSpeak\unins000.exe"; Parameters: "/SILENT"; Components: espeak; Flags: shellexec waituntilterminated
+Filename: "{sys}\MSIEXEC.EXE"; Parameters: "/PASSIVE /X {app}\python-2.7.11.msi"; Components: python; Flags: shellexec waituntilterminated
+;Filename: "RMDIR"; Parameters: "/S /Q C:\Python27"; Components: aeneas; Flags: shellexec waituntilterminated
+
+[UninstallDelete]
+Type: filesandordirs; Name: "C:\Python27"; Components: python
+Type: filesandordirs; Name: "{app}";
+
 [Code]
 function NeedsAddPath(Param: string): boolean;
 var
