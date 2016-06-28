@@ -58,7 +58,7 @@ Source: "aeneas_check_setup.bat"; DestDir: "{app}"; Components: aeneas; Flags: i
 Source: "beautifulsoup4-4.4.1-py2-none-any.whl"; DestDir: "{app}"; Components: bs4; Flags: ignoreversion
 Source: "install_packages.bat"; DestDir: "{app}"; Components: aeneas; Flags: ignoreversion
 Source: "lxml-3.6.0-cp27-none-win32.whl"; DestDir: "{app}"; Components: lxml; Flags: ignoreversion
-Source: "numpy-1.10.1-cp27-cp27m-win32.whl"; DestDir: "{app}"; Components: numpy; Flags: ignoreversion
+Source: "numpy-1.11.1-cp27-none-win32.whl"; DestDir: "{app}"; Components: numpy; Flags: ignoreversion
 Source: "pip-8.1.2-py2.py3-none-any.whl"; DestDir: "{app}"; Components: python; Flags: ignoreversion
 Source: "python-2.7.11.msi"; DestDir: "{app}"; Components: python; Flags: ignoreversion
 Source: "setup_espeak-1.48.04.exe"; DestDir: "{app}"; Components: espeak; Flags: ignoreversion
