@@ -1,28 +1,29 @@
-Welcome to the install wizard for aeneas.
-aeneas is a Python library and a set of tools for automated audio/text synchronization.
+This setup wizard was developed by Daniel Bair and is distributed by SIL International, and the source code is available for download at: https://github.com/sillsdev/aeneas-installer
 
-Developed by ReadBeyond, the source code of aeneas is released under the Affero GNU Public License v3, and it can be downloaded for free from http://www.readbeyond.it/aeneas/
+--------------------------------------------------------------------
 
-In addition to aeneas, the following independent programs are contained in this installer:
+aeneas is developed by Alberto Pettarin, ReadBeyond, and the source code is available for download at http://www.readbeyond.it/aeneas/
 
-1. eSpeak
+--------------------------------------------------------------------
 
-eSpeak is a text-to-speech engine, developed by Jonathan Duddington and available for download at http://espeak.sourceforge.net/
+FFmpeg is a video and audio converter, developed by Fabrice Bellard, and is available for download at http://www.ffmpeg.org/
 
-2. FFmpeg
+--------------------------------------------------------------------
 
-FFmpeg is a video and audio converter, developed by Fabrice Bellard and available for download at http://www.ffmpeg.org/
+eSpeak is a text-to-speech engine, developed by Jonathan Duddington, and is available for download at http://espeak.sourceforge.net/
 
-3. Python
+--------------------------------------------------------------------
 
-Python is a programming language, developed by the Python Software Foundation and available for download at http://www.python.org/
+Python is a programming language, developed by the Python Software Foundation, and is available for download at http://www.python.org/
 
-4. Python BeautifulSoup sits atop an HTML or XML parser, providing Pythonic idioms for iterating, searching, and modifying the parse tree.
+--------------------------------------------------------------------
 
-5. Python lxml is a Pythonic, mature binding for the libxml2 and libxslt libraries. It provides safe and convenient access to these libraries using the Elemen
-tTree API.
+Python BeautifulSoup sits atop an HTML or XML parser, providing Pythonic idioms for iterating, searching, and modifying the parse tree, and is available for download at https://www.crummy.com/software/BeautifulSoup/
 
-6. Python NumPy is a general-purpose array-processing package designed to efficiently manipulate large multi-dimensional arrays of arbitrary records without sacrificing too much speed for small multi-dimensional arrays.
+--------------------------------------------------------------------
 
+Python lxml is a Pythonic, mature binding for the libxml2 and libxslt libraries, which provides safe and convenient access to these libraries using the ElementTree API, and is available for download at http://lxml.de/
 
-This setup wizard was developed by Daniel Bair and is distributed by SIL International.
+--------------------------------------------------------------------
+
+Python NumPy is a general-purpose array-processing package designed to efficiently manipulate large multi-dimensional arrays of arbitrary records without sacrificing too much speed for small multi-dimensional arrays, and is available for download at http://www.numpy.org/

@@ -20,9 +20,9 @@ AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
-UsePreviousAppDir=no
+UsePreviousAppDir=yes
 DefaultDirName={#MyAppInstallDir}
-DisableDirPage=no
+DisableDirPage=yes
 DisableWelcomePage=no
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
@@ -36,6 +36,9 @@ SolidCompression=yes
 ChangesEnvironment=yes
 ;SignTool=mysigntool
 
+[Messages]
+WelcomeLabel2=This will install aeneas 1.5.0.3 on your computer.%n%naeneas is a Python library and a set of tools for automated audio and text synchronization.%n%nIn addition to aeneas, the following independent programs necessary for running aeneas are contained in this installer:%n1. FFmpeg%n2. eSpeak%n3. Python%n%nIt is recommended that you close all other applications before continuing.
+
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
@@ -46,14 +49,13 @@ Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environmen
 Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{olddata};{pf32}\eSpeak\command_line"; Components: espeak; Check: NeedsAddPath(ExpandConstant('{pf32}\eSpeak\command_line'))
 
 [Components]
-Name: "ffmpeg"; Description: "Install FFmpeg 3.0.2"; ExtraDiskSpaceRequired: 111181824; Types: full custom;
-Name: "espeak"; Description: "Install eSpeak 1.48.04"; ExtraDiskSpaceRequired: 11223040; Types: full custom;
-Name: "python"; Description: "Install Python 2.7.11"; ExtraDiskSpaceRequired: 106450944; Types: full custom;
-;Name: "vcfp"; Description: "Install Visual C++ for Python"; ExtraDiskSpaceRequired: 400912384; Types: full compact custom;
-Name: "bs4"; Description: "Install Python Module BeautifulSoup4 4.4.1"; ExtraDiskSpaceRequired: 3400000; Types: full compact custom;
-Name: "lxml"; Description: "Install Python Module Lxml 3.6.0"; ExtraDiskSpaceRequired: 0; Types: full compact custom;
-Name: "numpy"; Description: "Install Python Module NumPy 1.11.1"; ExtraDiskSpaceRequired: 0; Types: full compact custom;
-Name: "aeneas"; Description: "Install Python Module Aeneas 1.5.0.3"; ExtraDiskSpaceRequired: 0; Types: full compact custom;
+Name: "ffmpeg"; Description: "Install FFmpeg 3.0.2"; ExtraDiskSpaceRequired: 111181824; Types: full compact custom; Flags: fixed
+Name: "espeak"; Description: "Install eSpeak 1.48.04"; ExtraDiskSpaceRequired: 11223040; Types: full compact custom; Flags: fixed
+Name: "python"; Description: "Install Python 2.7.11"; ExtraDiskSpaceRequired: 106450944; Types: full compact custom; Flags: fixed
+Name: "bs4"; Description: "Install Python Module BeautifulSoup4 4.4.1"; ExtraDiskSpaceRequired: 3400000; Types: full compact custom; Flags: fixed
+Name: "lxml"; Description: "Install Python Module lxml 3.6.0"; ExtraDiskSpaceRequired: 0; Types: full compact custom; Flags: fixed
+Name: "numpy"; Description: "Install Python Module NumPy 1.10.1"; ExtraDiskSpaceRequired: 0; Types: full compact custom; Flags: fixed
+Name: "aeneas"; Description: "Install Python Module aeneas 1.5.0.3"; ExtraDiskSpaceRequired: 0; Types: full compact custom; Flags: fixed
 
 [Files]
 Source: "aeneas-1.5.0.3-cp27-cp27m-win32.whl"; DestDir: "{app}"; Components: aeneas; Flags: ignoreversion
@@ -61,12 +63,12 @@ Source: "aeneas_check_setup.bat"; DestDir: "{app}"; Components: aeneas; Flags: i
 Source: "beautifulsoup4-4.4.1-py2-none-any.whl"; DestDir: "{app}"; Components: bs4; Flags: ignoreversion
 Source: "install_packages.bat"; DestDir: "{app}"; Components: aeneas; Flags: ignoreversion
 Source: "lxml-3.6.0-cp27-none-win32.whl"; DestDir: "{app}"; Components: lxml; Flags: ignoreversion
-Source: "numpy-1.11.1-cp27-none-win32.whl"; DestDir: "{app}"; Components: numpy; Flags: ignoreversion
+Source: "numpy-1.10.1-cp27-cp27m-win32.whl"; DestDir: "{app}"; Components: numpy; Flags: ignoreversion
 Source: "pip-8.1.2-py2.py3-none-any.whl"; DestDir: "{app}"; Components: python; Flags: ignoreversion
 Source: "python-2.7.11.msi"; DestDir: "{app}"; Components: python; Flags: ignoreversion
 Source: "setup_espeak-1.48.04.exe"; DestDir: "{app}"; Components: espeak; Flags: ignoreversion
 Source: "setup_ffmpeg-3.0.2.exe"; DestDir: "{app}"; Components: ffmpeg; Flags: ignoreversion
-;Source: "vcforpython27.msi"; DestDir: "{app}"; Components: aeneas; Flags: ignoreversion
+Source: "espeak.lib"; DestDir: "{app}"; Components: espeak; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
@@ -76,7 +78,6 @@ Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
 Filename: "{app}\setup_ffmpeg-3.0.2.exe"; Parameters: "/SILENT"; Description: "Install FFmpeg 3.0.2"; Components: ffmpeg; Flags: shellexec waituntilterminated
 Filename: "{app}\setup_espeak-1.48.04.exe"; Parameters: "/SILENT"; Description: "Install eSpeak 1.48.04"; Components: espeak; Flags: shellexec waituntilterminated
 Filename: "{app}\python-2.7.11.msi"; Parameters: "/PASSIVE"; Description: "Install Python 2.7.11"; Components: python; Flags: shellexec waituntilterminated
-;Filename: "{app}\vcforpython27.msi"; Parameters: "/PASSIVE"; Description: "Install Visual C++ for Python 2.7.11"; Components: python; Flags: shellexec waituntilterminated
 Filename: "{app}\install_packages.bat"; Description: "Install Aeneas 1.5.0.3 and dependencies"; Components: aeneas; Flags: shellexec waituntilterminated
 Filename: "{app}\aeneas_check_setup.bat"; Description: "Check Aeneas Setup"; Components: aeneas; Flags: shellexec waituntilterminated
 
@@ -84,10 +85,10 @@ Filename: "{app}\aeneas_check_setup.bat"; Description: "Check Aeneas Setup"; Com
 Filename: "{pf32}\FFmpeg\unins000.exe"; Parameters: "/SILENT"; Components: ffmpeg; Flags: shellexec waituntilterminated
 Filename: "{pf32}\eSpeak\unins000.exe"; Parameters: "/SILENT"; Components: espeak; Flags: shellexec waituntilterminated
 Filename: "{sys}\MSIEXEC.EXE"; Parameters: "/PASSIVE /X {app}\python-2.7.11.msi"; Components: python; Flags: shellexec waituntilterminated
-;Filename: "RMDIR"; Parameters: "/S /Q C:\Python27"; Components: aeneas; Flags: shellexec waituntilterminated
 
 [UninstallDelete]
 Type: filesandordirs; Name: "C:\Python27"; Components: python
+Type: filesandordirs; Name: "{sys}\espeak.dll"; Components: espeak
 Type: filesandordirs; Name: "{app}";
 
 [Code]

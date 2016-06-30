@@ -1,0 +1,14 @@
+diff C3 setup.py setup.py
+*** setup.py	Sat Apr 23 16:27:49 2016
+--- setup.py	Wed Jun 29 07:53:23 2016
+***************
+*** 66,71 ****
+--- 66,73 ----
+      # cew is available only for Linux at the moment
+      EXTENSIONS.append(EXTENSION_CEW)
+  
++ EXTENSIONS.append(EXTENSION_CEW)
++ 
+  setup(
+      name="aeneas",
+      packages=[
