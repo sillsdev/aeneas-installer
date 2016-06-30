@@ -10,7 +10,9 @@ IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
   (call )
 :ENDIF
 
+echo Copying espeak.dll to C:\Windows\System32\
 copy /b/v/y "%PF32%\eSpeak\espeak_sapi.dll" C:\Windows\System32\espeak.dll
+echo Copying espeak.dll to C:\Python\libs\
 copy /b/v/y espeak.lib C:\Python27\libs\
 
 C:\Python27\python -m ensurepip
