@@ -15,27 +15,29 @@ C:\Python27\python -m pip install --upgrade pip
 C:\Python27\python -m pip install wheel
 C:\Python27\python -m pip install beautifulsoup4
 C:\Python27\python -m pip install lxml
-C:\Python27\python -m pip install numpy
-C:\Python27\python -m pip install aeneas
+C:\Python27\python -m pip install numpy==1.10.1
+C:\Python27\python -m pip install aeneas==1.5.0.3
 
 C:\Python27\python -m pip download pip
 C:\Python27\python -m pip download beautifulsoup4
 C:\Python27\python -m pip download lxml
-C:\Python27\python -m pip download numpy
-C:\Python27\python -m pip download aeneas
+C:\Python27\python -m pip download numpy==1.10.1
+C:\Python27\python -m pip download aeneas==1.5.0.3
 
 
-REM "%PF32%\7-Zip\7z.exe" x numpy-1.10.1.zip -aoa
-REM cd numpy-1.10.1
-REM C:\Python27\python setup.py bdist_wheel
-REM copy dist\numpy-1.10.1-cp27-cp27m-win32.whl ..\
-REM cd ..
-REM 
-REM C:\Python27\python -m pip install numpy-1.10.1-cp27-cp27m-win32.whl
+"%PF32%\7-Zip\7z.exe" x numpy-1.10.1.zip -aoa
+cd numpy-1.10.1
+C:\Python27\python setup.py bdist_wheel
+copy dist\numpy-1.10.1-cp27-cp27m-win32.whl ..\
+cd ..
+
+C:\Python27\python -m pip install numpy-1.10.1-cp27-cp27m-win32.whl
 
 "%PF32%\7-Zip\7z.exe" e aeneas-1.5.0.3.tar.gz -aoa
 "%PF32%\7-Zip\7z.exe" x aeneas-1.5.0.3.tar -aoa
-cd aeneas-*
+cd aeneas-1.5.0.3
+copy ..\aeneas-patches\setup.py .\
+copy ..\aeneas-patches\diagnostics.py .\aeneas\
 C:\Python27\python setup.py bdist_wheel
 copy dist\aeneas-*-win32.whl ..\
 cd ..
