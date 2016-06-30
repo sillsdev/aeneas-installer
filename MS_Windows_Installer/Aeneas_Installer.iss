@@ -82,9 +82,9 @@ Filename: "{app}\install_packages.bat"; Description: "Install Aeneas 1.5.0.3 and
 Filename: "{app}\aeneas_check_setup.bat"; Description: "Check Aeneas Setup"; Components: aeneas; Flags: shellexec waituntilterminated
 
 [UninstallRun]
-Filename: "{pf32}\FFmpeg\unins000.exe"; Parameters: "/NOTSILENT"; Components: ffmpeg; Flags: shellexec waituntilterminated
-Filename: "{pf32}\eSpeak\unins000.exe"; Parameters: "/NOTSILENT"; Components: espeak; Flags: shellexec waituntilterminated
-Filename: "{sys}\MSIEXEC.EXE"; Parameters: "/NOTPASSIVE /X {app}\python-2.7.11.msi"; Components: python; Flags: shellexec waituntilterminated
+Filename: "{pf32}\FFmpeg\unins000.exe"; Parameters: "/SILENT"; Components: ffmpeg; Flags: shellexec waituntilterminated
+Filename: "{pf32}\eSpeak\unins000.exe"; Parameters: "/SILENT"; Components: espeak; Flags: shellexec waituntilterminated
+Filename: "{sys}\MSIEXEC.EXE"; Parameters: "/PASSIVE /X {{16E52445-1392-469F-9ADB-FC03AF00CD61}}"; Components: python; Flags: shellexec waituntilterminated
 
 [UninstallDelete]
 Type: filesandordirs; Name: "C:\Python27"; Components: python

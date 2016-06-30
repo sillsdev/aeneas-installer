@@ -60,21 +60,6 @@ IF EXIST "%cd%\dotNetFx35setup.exe" (
   START http://www.microsoft.com/en-us/download/details.aspx?id=21
 )
 
-echo %PATH% | find /I "Python27" > nul
-IF %ERRORLEVEL%==0 GOTO ENDIF
-echo Setting PATH variable...
-echo %PATH% >> C:\Windows\Temp\PATH.bak
-IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
-:WIN32PATH
-  set PATH=C:\Python27\;C:\Python27\Scripts\;%PATH%;C:\Program Files\7-Zip\;C:\Program Files\Inno Setup 5\
-  (call )
-  GOTO SETPATH
-:WIN64PATH
-  set PATH=C:\Python27\;C:\Python27\Scripts\;%PATH%;C:\Program Files (x86)\7-Zip\;C:\Program Files (x86)\Inno Setup 5\
-  (call )
-:SETPATH
-C:\Windows\System32\setx PATH "%PATH%"
-:ENDIF
 
 goto:eof
 
