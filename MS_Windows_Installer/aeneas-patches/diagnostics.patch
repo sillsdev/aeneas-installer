@@ -1,0 +1,19 @@
+diff C3 aeneas/diagnostics.py aeneas/diagnostics.py
+*** aeneas/diagnostics.py	Fri Apr 01 19:07:33 2016
+--- aeneas/diagnostics.py	Wed Jun 29 07:54:03 2016
+***************
+*** 232,242 ****
+--- 232,244 ----
+  
+          :rtype: bool
+          """
++         """
+          if not gf.is_linux():
+              gf.print_warning(u"aeneas.cew     NOT AVAILABLE")
+              gf.print_info(u"  The Python C Extension cew is not available for your OS")
+              gf.print_info(u"  You can still run aeneas but it will be a bit slower (than Linux)")
+              return False
++         """
+          if gf.can_run_c_extension("cew"):
+              gf.print_success(u"aeneas.cew     COMPILED")
+              return False
