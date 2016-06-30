@@ -14,6 +14,7 @@ IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
 C:\Python27\python -m ensurepip
 
 C:\Python27\python -m pip install --upgrade pip
+C:\Python27\python -m pip install --upgrade wget
 C:\Python27\python -m pip install --upgrade wheel
 C:\Python27\python -m pip install --upgrade numpy
 
@@ -58,37 +59,24 @@ cd ..
 
 IF NOT EXIST "%cd%\python-2.7.11.msi" (
   echo Downloading Python 2.7.11...
-  call:myCurl 'https://www.python.org/ftp/python/2.7.11/python-2.7.11.msi' '%cd%\python-2.7.11.msi'
+  C:\Python27\python -m wget https://www.python.org/ftp/python/2.7.11/python-2.7.11.msi -o %cd%\python-2.7.11.msi
 )
 
 IF NOT EXIST "%cd%\setup_espeak-1.48.04.exe" (
   echo Downloading eSpeak...
-  call:myCurl 'http://internode.dl.sourceforge.net/project/espeak/espeak/espeak-1.48/setup_espeak-1.48.04.exe' '%cd%\setup_espeak-1.48.04.exe'
+  C:\Python27\python -m wget http://internode.dl.sourceforge.net/project/espeak/espeak/espeak-1.48/setup_espeak-1.48.04.exe -o %cd%\setup_espeak-1.48.04.exe
 )
 
 IF NOT EXIST "%cd%\ffmpeg-latest-win32-static.7z" (
   echo Downloading FFmpeg...
-  call:myCurl 'https://ffmpeg.zeranoe.com/builds/win32/static/ffmpeg-latest-win32-static.7z' '%cd%\ffmpeg-latest-win32-static.7z'
+  C:\Python27\python -m wget https://ffmpeg.zeranoe.com/builds/win32/static/ffmpeg-latest-win32-static.7z -o %cd%\ffmpeg-latest-win32-static.7z
 )
 
 IF NOT EXIST "%cd%\setup_ffmpeg-3.0.2.exe" (
   "%PF32%\7-Zip\7z.exe" x ffmpeg-*-win32-static.7z -aoa
+  rmdir /s ffmpeg-3.0.2
   move /y ffmpeg-*-win32-static ffmpeg-3.0.2
   "%PF32%\Inno Setup 5\ISCC.exe" FFmpeg_Installer.iss
 )
 
 "%PF32%\Inno Setup 5\ISCC.exe" Aeneas_Installer.iss
-
-goto:eof
-
-
-:myCurl
-2>nul curl --version
-if %ERRORLEVEL%==0 goto runCurl
-  powershell "(new-object System.Net.WebClient).DownloadFile(%~1, %~2)"
-  echo Saved %~2
-  goto endIf
-:runCurl
-  curl '%~1' -o '%~2'
-:endIf
-goto:eof
