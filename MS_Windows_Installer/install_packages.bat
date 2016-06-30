@@ -10,8 +10,8 @@ IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
   (call )
 :ENDIF
 
-copy /y "%PF32%\eSpeak\espeak_sapi.dll" C:\Windows\System32\espeak.dll
-copy /y espeak.lib C:\Python27\libs\
+copy /b/v/y "%PF32%\eSpeak\espeak_sapi.dll" C:\Windows\System32\espeak.dll
+copy /b/v/y espeak.lib C:\Python27\libs\
 
 C:\Python27\python -m ensurepip
 C:\Python27\python -m pip install pip-8.1.2-py2.py3-none-any.whl

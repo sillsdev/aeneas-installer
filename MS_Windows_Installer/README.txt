@@ -1,20 +1,20 @@
-This setup wizard was developed by Daniel Bair and is distributed by SIL International. The source code is available at: https://github.com/sillsdev/aeneas-installer
+This setup wizard was developed by Daniel Bair and is distributed by SIL International, and the source code is available for download at: https://github.com/sillsdev/aeneas-installer
 
 --------------------------------------------------------------------
 
-aeneas is developed by Alberto Pettarin, ReadBeyond. The source code of aeneas can be downloaded for free from http://www.readbeyond.it/aeneas/
+aeneas is developed by Alberto Pettarin, ReadBeyond, and the source code is available for download at http://www.readbeyond.it/aeneas/
 
 --------------------------------------------------------------------
 
-FFmpeg is a video and audio converter, developed by Fabrice Bellard and available for download at http://www.ffmpeg.org/
+FFmpeg is a video and audio converter, developed by Fabrice Bellard, and is available for download at http://www.ffmpeg.org/
 
 --------------------------------------------------------------------
 
-eSpeak is a text-to-speech engine, developed by Jonathan Duddington and available for download at http://espeak.sourceforge.net/
+eSpeak is a text-to-speech engine, developed by Jonathan Duddington, and is available for download at http://espeak.sourceforge.net/
 
 --------------------------------------------------------------------
 
-Python is a programming language, developed by the Python Software Foundation and available for download at http://www.python.org/
+Python is a programming language, developed by the Python Software Foundation, and is available for download at http://www.python.org/
 
 --------------------------------------------------------------------
 

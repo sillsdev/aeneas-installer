@@ -66,6 +66,8 @@ if IS_LINUX:
     # cew is available only for Linux at the moment
     EXTENSIONS.append(EXTENSION_CEW)
 
+EXTENSIONS.append(EXTENSION_CEW)
+
 setup(
     name="aeneas",
     packages=[
