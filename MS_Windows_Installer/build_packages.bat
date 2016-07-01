@@ -1,6 +1,11 @@
 @echo off
 IF /i {%1}=={ECHO} ECHO ON&SHIFT
 
+VERIFY OTHER 2>nul
+SETLOCAL ENABLEEXTENSIONS
+IF ERRORLEVEL 1 ECHO Unable to enable extensions
+IF NOT DEFINED VS90COMNTOOLS set VS90COMNTOOLS=%USERPROFILE%\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0
+
 set CURDIR=%CD%
 
 IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
@@ -41,7 +46,7 @@ C:\Python27\python -m pip download aeneas==1.5.0.3
 copy /b/v/y aeneas-patches\setup.py aeneas-1.5.0.3\
 copy /b/v/y aeneas-patches\diagnostics.py aeneas-1.5.0.3\aeneas\
 copy /b/v/y espeak.lib C:\Python27\libs\
-call "%USERPROFILE%\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\vcvarsall.bat" x86
+call "%VS90COMNTOOLS%\vcvarsall.bat" x86
 SET DISTUTILS_USE_SDK=1
 SET MSSDK=1
 cd aeneas-1.5.0.3\aeneas\cew
@@ -75,3 +80,5 @@ IF NOT EXIST "%cd%\setup_ffmpeg-3.0.2.exe" (
 )
 
 "%PF32%\Inno Setup 5\ISCC.exe" Aeneas_Installer.iss
+
+ENDLOCAL
