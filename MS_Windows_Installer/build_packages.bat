@@ -20,6 +20,7 @@ IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
 
 C:\Python27\python -m ensurepip
 
+C:\Python27\python -m pip install --upgrade setuptools
 C:\Python27\python -m pip install --upgrade pip
 C:\Python27\python -m pip install --upgrade wget
 C:\Python27\python -m pip install --upgrade wheel
@@ -43,15 +44,19 @@ C:\Python27\python -m pip download aeneas==1.5.0.3
 
 "%PF32%\7-Zip\7z.exe" e aeneas-1.5.0.3.tar.gz -aoa
 "%PF32%\7-Zip\7z.exe" x aeneas-1.5.0.3.tar -aoa
-copy /b/v/y aeneas-patches\setup.py aeneas-1.5.0.3\
-copy /b/v/y aeneas-patches\diagnostics.py aeneas-1.5.0.3\aeneas\
+echo copying espeak.lib to C:\Python27\libs\
 copy /b/v/y espeak.lib C:\Python27\libs\
-call "%VS90COMNTOOLS%\vcvarsall.bat" x86
-SET DISTUTILS_USE_SDK=1
-SET MSSDK=1
-cd aeneas-1.5.0.3\aeneas\cew
-C:\Python27\python cew_setup.py build_ext --inplace
-cd ..\..
+REM copy /b/v/y aeneas-patches\setup.py aeneas-1.5.0.3\
+REM copy /b/v/y aeneas-patches\diagnostics.py aeneas-1.5.0.3\aeneas\
+REM call "%VS90COMNTOOLS%\vcvarsall.bat" x86
+REM SET DISTUTILS_USE_SDK=1
+REM SET MSSDK=1
+cd aeneas-1.5.0.3
+C:\Python27\python.exe -m patch -v -p 1 --debug ..\aeneas-patches\setup.patch
+C:\Python27\python.exe -m patch -v -p 1 --debug ..\aeneas-patches\diagnostics.patch
+REM cd aeneas\cew
+REM C:\Python27\python cew_setup.py build_ext --inplace
+REM cd ..\..
 C:\Python27\python setup.py build_ext --inplace
 C:\Python27\python setup.py bdist_wheel
 copy /b/v/y dist\aeneas-*-win32.whl ..\

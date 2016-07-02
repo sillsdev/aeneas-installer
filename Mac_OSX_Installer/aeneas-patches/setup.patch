@@ -1,14 +1,14 @@
-diff C3 setup.py setup.py
-*** setup.py	Sat Apr 23 16:27:49 2016
---- setup.py	Wed Jun 29 07:53:23 2016
-***************
-*** 66,71 ****
---- 66,73 ----
-      # cew is available only for Linux at the moment
-      EXTENSIONS.append(EXTENSION_CEW)
-  
-+ EXTENSIONS.append(EXTENSION_CEW)
-+ 
-  setup(
-      name="aeneas",
-      packages=[
+--- aeneas-1.5.0.3/setup.py	2016-04-23 16:27:49.000000000 +0700
++++ aeneas-1.5.0.3-patched/setup.py	2016-07-02 20:23:04.000000000 +0700
+@@ -62,9 +62,8 @@
+ #EXTENSIONS = [EXTENSION_CDTW, EXTENSION_CMFCC, EXTENSION_CWAVE]
+ 
+ EXTENSIONS = [EXTENSION_CDTW, EXTENSION_CMFCC]
+-if IS_LINUX:
+-    # cew is available only for Linux at the moment
+-    EXTENSIONS.append(EXTENSION_CEW)
++
++EXTENSIONS.append(EXTENSION_CEW)
+ 
+ setup(
+     name="aeneas",
