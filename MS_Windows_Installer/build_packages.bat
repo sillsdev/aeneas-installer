@@ -24,6 +24,7 @@ C:\Python27\python -m pip install --upgrade setuptools
 C:\Python27\python -m pip install --upgrade pip
 C:\Python27\python -m pip install --upgrade wget
 C:\Python27\python -m pip install --upgrade wheel
+C:\Python27\python -m pip install --upgrade patch
 
 C:\Python27\python -m pip download pip==8.1.2
 C:\Python27\python -m pip download beautifulsoup4==4.4.1
