@@ -18,7 +18,6 @@ fi
 brew update
 brew install wget
 brew install curl
-#brew link curl
 brew install ffmpeg
 brew install espeak
 brew install pkg-config
@@ -27,6 +26,8 @@ brew install gettext
 brew install texi2html
 brew install yasm
 brew install markdown
+brew tap danielbair/tap
+brew install libespeak
 brew tap timsutton/formulae
 brew install brew-pkg
 brew install ruby
@@ -43,16 +44,7 @@ if [ ! -f "/usr/local/bin/packagesbuild" ]; then
 	curl -fsSL -O http://s.sudre.free.fr/Software/files/Packages.dmg
 	#open Packages.dmg
 	hdiutil attach Packages.dmg
-	iecho $password | sudo -S installer -target / -pkg /Volumes/Packages\ */packages/Packages.pkg
+	echo $password | sudo -S installer -target / -pkg /Volumes/Packages\ */packages/Packages.pkg
 	hdiutil eject /Volumes/Packages\ */
 fi
 
-pip install --upgrade pip
-pip install BeautifulSoup4
-pip install lxml
-pip install numpy
-pip install aeneas
-
-echo $password | sudo -S ln -fs /Library/Frameworks/Python.framework/Versions/2.7/bin/aeneas* /usr/local/bin/
-
-aeneas_check_setup
