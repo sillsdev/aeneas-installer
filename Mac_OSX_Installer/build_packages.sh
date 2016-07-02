@@ -25,8 +25,11 @@ pip install --upgrade numpy-1.10.1-cp27-none-macosx_10_6_intel.whl
 pip download aeneas==1.5.0.3
 tar xvf aeneas-1.5.0.3.tar.gz 
 cd aeneas-1.5.0.3
-patch -c -p1 -i ../aeneas-patches/setup.patch
-patch -c -p1 -i ../aeneas-patches/diagnostics.patch
+patch -p1 -i ../aeneas-patches/setup.patch
+patch -p1 -i ../aeneas-patches/diagnostics.patch
+cd aeneas/cew
+python cew_setup.py build_ext --inplace
+cd ../..
 python setup.py build_ext --inplace
 python setup.py bdist_wheel
 cp -v dist/aeneas-1.5.0.3-cp27-cp27m-macosx_10_6_intel.whl ../
