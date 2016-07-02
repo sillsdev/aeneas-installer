@@ -57,6 +57,9 @@ C:\Python27\python setup.py bdist_wheel
 copy /b/v/y dist\aeneas-*-win32.whl ..\
 cd %CURDIR%
 
+echo ********************************************************************************
+echo %cd%
+
 IF NOT EXIST "%cd%\python-2.7.11.msi" (
   echo Downloading Python 2.7.11...
   C:\Python27\python -m wget https://www.python.org/ftp/python/2.7.11/python-2.7.11.msi -o %cd%\python-2.7.11.msi
