@@ -1,9 +1,9 @@
 #!/bin/bash
 
-TMPDIR="/Users/Shared/"
-unzip -d "$TMPDIR" /Users/Shared/python-2.7.11-macosx10.6.pkg.zip
+CURDIR="/Users/Shared/"
+unzip -d "$CURDIR" /Users/Shared/python-2.7.11-macosx10.6.pkg.zip
 rm -f /Users/Shared/python-2.7.11-macosx10.6.pkg.zip
-sudo installer -target / -pkg "$TMPDIR"/python-2.7.11-macosx10.6.pkg
+sudo installer -target / -pkg "$CURDIR"/python-2.7.11-macosx10.6.pkg
 export PATH=/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
 
 pip install -U pip
