@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo
+export PATH=/usr/libexec/git-core/:$PATH
 
 xcode-select --install
 xcodebuild -license

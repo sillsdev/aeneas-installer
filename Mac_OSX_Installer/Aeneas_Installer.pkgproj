@@ -428,6 +428,22 @@
 											<key>UID</key>
 											<integer>0</integer>
 										</dict>
+										<dict>
+											<key>CHILDREN</key>
+											<array/>
+											<key>GID</key>
+											<integer>0</integer>
+											<key>PATH</key>
+											<string>uninstall-python.sh</string>
+											<key>PATH_TYPE</key>
+											<integer>1</integer>
+											<key>PERMISSIONS</key>
+											<integer>420</integer>
+											<key>TYPE</key>
+											<integer>3</integer>
+											<key>UID</key>
+											<integer>0</integer>
+										</dict>
 									</array>
 									<key>GID</key>
 									<integer>0</integer>
@@ -911,6 +927,22 @@
 											<key>UID</key>
 											<integer>0</integer>
 										</dict>
+										<dict>
+											<key>CHILDREN</key>
+											<array/>
+											<key>GID</key>
+											<integer>0</integer>
+											<key>PATH</key>
+											<string>uninstall-beautifulsoup4.sh</string>
+											<key>PATH_TYPE</key>
+											<integer>1</integer>
+											<key>PERMISSIONS</key>
+											<integer>420</integer>
+											<key>TYPE</key>
+											<integer>3</integer>
+											<key>UID</key>
+											<integer>0</integer>
+										</dict>
 									</array>
 									<key>GID</key>
 									<integer>0</integer>
@@ -1369,6 +1401,22 @@
 											<integer>0</integer>
 											<key>PATH</key>
 											<string>lxml-3.6.0-cp27-cp27m-macosx_10_6_intel.whl</string>
+											<key>PATH_TYPE</key>
+											<integer>1</integer>
+											<key>PERMISSIONS</key>
+											<integer>420</integer>
+											<key>TYPE</key>
+											<integer>3</integer>
+											<key>UID</key>
+											<integer>0</integer>
+										</dict>
+										<dict>
+											<key>CHILDREN</key>
+											<array/>
+											<key>GID</key>
+											<integer>0</integer>
+											<key>PATH</key>
+											<string>uninstall-lxml.sh</string>
 											<key>PATH_TYPE</key>
 											<integer>1</integer>
 											<key>PERMISSIONS</key>
@@ -1845,6 +1893,22 @@
 											<key>UID</key>
 											<integer>0</integer>
 										</dict>
+										<dict>
+											<key>CHILDREN</key>
+											<array/>
+											<key>GID</key>
+											<integer>0</integer>
+											<key>PATH</key>
+											<string>uninstall-numpy.sh</string>
+											<key>PATH_TYPE</key>
+											<integer>1</integer>
+											<key>PERMISSIONS</key>
+											<integer>420</integer>
+											<key>TYPE</key>
+											<integer>3</integer>
+											<key>UID</key>
+											<integer>0</integer>
+										</dict>
 									</array>
 									<key>GID</key>
 									<integer>0</integer>
@@ -1917,6 +1981,8 @@
 				<key>NAME</key>
 				<string>python-numpy-1.10.1</string>
 				<key>OVERWRITE_PERMISSIONS</key>
+				<false/>
+				<key>RELOCATABLE</key>
 				<false/>
 				<key>USE_HFS+_COMPRESSION</key>
 				<false/>
@@ -2303,6 +2369,70 @@
 											<integer>0</integer>
 											<key>PATH</key>
 											<string>aeneas-1.5.0.3-cp27-cp27m-macosx_10_6_intel.whl</string>
+											<key>PATH_TYPE</key>
+											<integer>1</integer>
+											<key>PERMISSIONS</key>
+											<integer>420</integer>
+											<key>TYPE</key>
+											<integer>3</integer>
+											<key>UID</key>
+											<integer>0</integer>
+										</dict>
+										<dict>
+											<key>CHILDREN</key>
+											<array/>
+											<key>GID</key>
+											<integer>0</integer>
+											<key>PATH</key>
+											<string>aeneas-mac-complete-uninstall.sh</string>
+											<key>PATH_TYPE</key>
+											<integer>1</integer>
+											<key>PERMISSIONS</key>
+											<integer>420</integer>
+											<key>TYPE</key>
+											<integer>3</integer>
+											<key>UID</key>
+											<integer>0</integer>
+										</dict>
+										<dict>
+											<key>CHILDREN</key>
+											<array/>
+											<key>GID</key>
+											<integer>0</integer>
+											<key>PATH</key>
+											<string>uninstall-aeneas.sh</string>
+											<key>PATH_TYPE</key>
+											<integer>1</integer>
+											<key>PERMISSIONS</key>
+											<integer>420</integer>
+											<key>TYPE</key>
+											<integer>3</integer>
+											<key>UID</key>
+											<integer>0</integer>
+										</dict>
+										<dict>
+											<key>CHILDREN</key>
+											<array/>
+											<key>GID</key>
+											<integer>0</integer>
+											<key>PATH</key>
+											<string>uninstall-espeak.sh</string>
+											<key>PATH_TYPE</key>
+											<integer>1</integer>
+											<key>PERMISSIONS</key>
+											<integer>420</integer>
+											<key>TYPE</key>
+											<integer>3</integer>
+											<key>UID</key>
+											<integer>0</integer>
+										</dict>
+										<dict>
+											<key>CHILDREN</key>
+											<array/>
+											<key>GID</key>
+											<integer>0</integer>
+											<key>PATH</key>
+											<string>uninstall-ffmpeg.sh</string>
 											<key>PATH_TYPE</key>
 											<integer>1</integer>
 											<key>PERMISSIONS</key>
@@ -2961,6 +3091,34 @@
 					<key>STATE</key>
 					<false/>
 				</dict>
+				<dict>
+					<key>BEHAVIOR</key>
+					<integer>3</integer>
+					<key>DICTIONARY</key>
+					<dict>
+						<key>IC_REQUIREMENT_DISKSPACE_MINIMUM_SIZE_UNIT</key>
+						<integer>0</integer>
+						<key>IC_REQUIREMENT_DISKSPACE_MINIMUM_SIZE_VALUE</key>
+						<integer>300</integer>
+					</dict>
+					<key>IC_REQUIREMENT_CHECK_TYPE</key>
+					<integer>1</integer>
+					<key>IDENTIFIER</key>
+					<string>fr.whitebox.Packages.requirement.diskspace</string>
+					<key>MESSAGE</key>
+					<array>
+						<dict>
+							<key>LANGUAGE</key>
+							<string>English</string>
+							<key>VALUE</key>
+							<string>This installer needs a minimum of 300MB of disk space available.</string>
+						</dict>
+					</array>
+					<key>NAME</key>
+					<string>Available Disk Space</string>
+					<key>STATE</key>
+					<true/>
+				</dict>
 			</array>
 			<key>POSTINSTALL_PATH</key>
 			<dict/>
@@ -2976,7 +3134,7 @@
 			<key>ADVANCED_OPTIONS</key>
 			<dict/>
 			<key>BUILD_FORMAT</key>
-			<integer>1</integer>
+			<integer>0</integer>
 			<key>BUILD_PATH</key>
 			<dict>
 				<key>PATH</key>

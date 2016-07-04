@@ -3,6 +3,20 @@
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 CURDIR=`pwd`
 
+if [ ! -f "ffmpeg-3.1.1.pkg" ]; then
+	brew install --build-bottle ffmpeg
+	brew pkg --with-deps ffmpeg
+fi
+
+if [ ! -f "espeak-1.48.04.pkg" ]; then
+	brew tap danielbair/tap
+	brew update
+	#brew install --build-bottle espeak
+	#brew install libespeak
+	brew install danielbair/tap/espeak
+	brew pkg --with-deps --scripts espeak_install_scripts danielbair/tap/espeak
+fi
+
 python -m ensurepip 2> /dev/null
 pip install --upgrade pip
 pip install --upgrade wheel
@@ -29,9 +43,9 @@ tar xvf aeneas-1.5.0.3.tar.gz
 cd aeneas-1.5.0.3
 patch -p1 -i ../aeneas-patches/setup.patch
 patch -p1 -i ../aeneas-patches/diagnostics.patch
-cd aeneas/cew
-python cew_setup.py build_ext --inplace
-cd ../..
+#cd aeneas/cew
+#python cew_setup.py build_ext --inplace
+#cd ../..
 python setup.py build_ext --inplace
 python setup.py bdist_wheel
 cp -v dist/aeneas-1.5.0.3-cp27-cp27m-macosx_10_6_intel.whl ../
@@ -42,20 +56,6 @@ if [ ! -f "python-2.7.11-macosx10.6.pkg" ]; then
 	curl -fSL -O https://www.python.org/ftp/python/2.7.11/python-2.7.11-macosx10.6.pkg
 fi
 zip -v python-2.7.11-macosx10.6.pkg.zip python-2.7.11-macosx10.6.pkg
-
-if [ ! -f "ffmpeg-3.1.1.pkg" ]; then
-	brew install --build-bottle ffmpeg
-	brew pkg --with-deps ffmpeg
-fi
-
-if [ ! -f "espeak-1.48.04.pkg" ]; then
-	brew tap danielbair/tap
-	brew update
-	#brew install --build-bottle espeak
-	#brew install libespeak
-	brew install danielbair/tap/espeak
-	brew pkg --with-deps --scripts espeak_install_scripts danielbair/tap/espeak
-fi
 
 #fpm -f --verbose --osxpkg-identifier-prefix org.python --python-pip=/usr/local/bin/pip -s python -t osxpkg beautifulsoup4
 #fpm -f --verbose --osxpkg-identifier-prefix org.python --python-pip=/usr/local/bin/pip -s python -t osxpkg lxml
