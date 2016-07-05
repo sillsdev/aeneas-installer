@@ -21,5 +21,6 @@ function pkgutil-rm {
 pkg=`pkgutil --pkgs | grep "org.python.python-aeneas"`
 if [[ ! -z $pkg ]]; then
 	pkgutil-rm $pkg
+	sudo rm -f /usr/local/bin/aeneas*
 fi
 

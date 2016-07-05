@@ -3,7 +3,7 @@
 export PATH=/usr/local/bin:/usr/local/sbin:~/bin:$PATH
 
 python -m ensurepip 2> /dev/null
-echo -e "y\r" | pip -q uninstall aeneas
+pip -y uninstall aeneas
 pip install /Users/Shared/aeneas-1.5.0.3-cp27-cp27m-macosx_10_6_intel.whl
 
 sudo ln -fs /Library/Frameworks/Python.framework/Versions/2.7/bin/aeneas* /usr/local/bin/
