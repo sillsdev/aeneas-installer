@@ -15,11 +15,6 @@ if [ ! -n "$(grep 'export PATH=/usr/local/bin:/usr/local/sbin:$PATH' ~/.bash_pro
 fi
 
 brew update
-brew install xz
-brew install gettext
-brew install pkg-config
-brew install texi2html
-brew install yasm
 brew tap timsutton/formulae
 brew tap danielbair/tap
 brew update
@@ -29,13 +24,17 @@ brew install brew-pkg
 #sudo gem install fpm
 
 if [ ! -f "/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python" ]; then
-	curl -fSL -O https://www.python.org/ftp/python/2.7.11/python-2.7.11-macosx10.6.pkg
+	echo Downloading https://www.python.org/ftp/python/2.7.11/python-2.7.11-macosx10.6.pkg
+	curl -# -fSL -O https://www.python.org/ftp/python/2.7.11/python-2.7.11-macosx10.6.pkg
+	echo Installing python-2.7.11-macosx10.6.pkg
 	sudo installer -target / -pkg python-2.7.11-macosx10.6.pkg
 fi
 
 if [ ! -f "/usr/local/bin/packagesbuild" ]; then
-	curl -fSL -O http://s.sudre.free.fr/Software/files/Packages.dmg
+	echo Downloading http://s.sudre.free.fr/Software/files/Packages.dmg
+	curl -# -fSL -O http://s.sudre.free.fr/Software/files/Packages.dmg
 	hdiutil attach Packages.dmg
+	Installing Packages.pkg
 	sudo installer -target / -pkg /Volumes/Packages\ */packages/Packages.pkg
 	hdiutil eject /Volumes/Packages\ */
 fi
