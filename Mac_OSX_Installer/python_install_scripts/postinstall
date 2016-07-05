@@ -1,8 +1,0 @@
-#!/bin/bash
-#TMPDIR="$(mktemp -d)"
-TMPDIR="."
-unzip -d "$TMPDIR" /Users/Shared/python-2.7.11-macosx10.6.pkg.zip
-rm -f /Users/Shared/python-2.7.11-macosx10.6.pkg.zip
-#open -W "$TMPDIR"/python-2.7.11-macosx10.6.pkg
-sudo installer -target / -pkg "$TMPDIR"/python-2.7.11-macosx10.6.pkg
-#rm -rf "$TMPDIR"
