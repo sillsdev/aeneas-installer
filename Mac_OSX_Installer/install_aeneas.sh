@@ -16,8 +16,8 @@ fi
 
 osascript <<END
 tell application "Terminal"
-        activate
         set newTab to do script "aeneas_check_setup; exit"
+        activate
         set current settings of newTab to settings set "Pro"
         set theWindow to first window of (every window whose tabs contains newTab)
         set windowId to theWindow's id
