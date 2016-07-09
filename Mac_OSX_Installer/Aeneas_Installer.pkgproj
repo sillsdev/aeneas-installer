@@ -10,12 +10,12 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>ffmpeg-3.1.1</string>
+				<string>ffmpeg-3.0.2</string>
 			</dict>
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>./ffmpeg-3.1.1.pkg</string>
+				<string>./ffmpeg-3.0.2.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
