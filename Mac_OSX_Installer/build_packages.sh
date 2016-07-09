@@ -13,14 +13,16 @@ brew install pkg-config
 brew install texi2html
 brew install yasm
 
-if [ ! -f "ffmpeg-3.1.1.pkg" ]; then
-	brew install ffmpeg
-	brew pkg --with-deps ffmpeg
+if [ ! -f "ffmpeg-3.0.2.pkg" ]; then
+	brew install ffmpeg30
+	brew pkg --with-deps ffmpeg30
+	mv ffmpeg30-3.0.2.pkg ffmpeg-3.0.2.pkg
 fi
 
 if [ ! -f "espeak-1.48.04.pkg" ]; then
-	brew install danielbair/tap/espeak
-	brew pkg --with-deps --scripts espeak_installer danielbair/tap/espeak
+	brew install danielbair/tap/espeak148
+	brew pkg --with-deps --scripts espeak_installer danielbair/tap/espeak148
+	mv espeak148-1.48.04_1.pkg espeak-1.48.04.pkg
 fi
 
 # brew pkg --with-deps --scripts python # fails to build a working package for now...
