@@ -3,7 +3,11 @@
 export PATH=/usr/libexec/git-core/:$PATH
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH=/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
+CURDIR=`dirname $0`
+cd $CURDIR
 CURDIR=`pwd`
+echo cd $CURDIR
+cd $CURDIR
 
 echo brew update
 brew update
@@ -47,6 +51,7 @@ if [ ! -f "lxml-3.6.0-cp27-cp27m-macosx_10_6_intel.whl" ]; then
 	cd lxml-3.6.0
 	python setup.py bdist_wheel
 	cp dist/lxml-3.6.0-cp27-cp27m-macosx_10_6_intel.whl ../
+	echo cd $CURDIR
 	cd $CURDIR
 fi
 pip install lxml-3.6.0-cp27-cp27m-macosx_10_6_intel.whl
@@ -59,17 +64,18 @@ pip download aeneas==1.5.0.3
 rm -rf aeneas-1.5.0.3
 tar xvf aeneas-1.5.0.3.tar.gz
 cd aeneas-1.5.0.3
-patch -p1 -i ../aeneas_patches/setup.patch
-patch -p1 -i ../aeneas_patches/diagnostics.patch
+patch -p1 -i $CURDIR/aeneas_patches/setup.patch
+patch -p1 -i $CURDIR/aeneas_patches/diagnostics.patch
 #cd aeneas/cew
 #python cew_setup.py build_ext --inplace
-#cd ../..
+#cd ../../
 python setup.py build_ext --inplace
 python setup.py bdist_wheel
 cp -v dist/aeneas-1.5.0.3-cp27-cp27m-macosx_10_6_intel.whl ../
+echo cd $CURDIR
 cd $CURDIR
 pip install aeneas-1.5.0.3-cp27-cp27m-macosx_10_6_intel.whl
-aeneas_check_setup
+python -m aeneas.diagnostics
 python -m aeneas.tools.synthesize_text list "This is a test|with two lines" eng -v /tmp/test.wav
 
 #fpm -f --verbose --osxpkg-identifier-prefix org.python --python-pip=/usr/local/bin/pip -s python -t osxpkg beautifulsoup4
@@ -77,7 +83,10 @@ python -m aeneas.tools.synthesize_text list "This is a test|with two lines" eng 
 #fpm -f --verbose --osxpkg-identifier-prefix org.python --python-pip=/usr/local/bin/pip -s python -t osxpkg numpy
 #fpm -f --verbose --osxpkg-identifier-prefix org.python --python-pip=/usr/local/bin/pip -s python -t osxpkg --post-install aeneas_install_scripts/postinstall aeneas
 
+echo cd $CURDIR
+cd $CURDIR
+
 packagesbuild -v Aeneas_Installer.pkgproj
-if [ ! -f "aeneas-mac-setup-1.5.0.3.mpkg" ]; then
-	echo -e "Resulting Installer program filename is:\n$(pwd)/aeneas-mac-setup-1.5.0.3.mpkg"
+if [ -f "aeneas-mac-setup-1.5.0.3.pkg" ]; then
+	echo -e "Resulting Installer program filename is:\n$(pwd)/aeneas-mac-setup-1.5.0.3.pkg"
 fi

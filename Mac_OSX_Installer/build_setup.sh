@@ -12,6 +12,12 @@ if [ ! -n "$(grep 'export PATH=/usr/local/bin:/usr/local/sbin:$PATH' ~/.bash_pro
 	chown $USER $HOME/.bash_profile
 fi
 
+CURDIR=`dirname $0`
+cd $CURDIR
+CURDIR=`pwd`
+echo cd $CURDIR
+cd $CURDIR
+
 if [ ! -f "/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python" ]; then
 	echo Downloading https://www.python.org/ftp/python/2.7.11/python-2.7.11-macosx10.6.pkg
 	curl -# -fSL -O https://www.python.org/ftp/python/2.7.11/python-2.7.11-macosx10.6.pkg
