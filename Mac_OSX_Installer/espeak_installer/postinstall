@@ -1,12 +1,12 @@
 #!/bin/bash
 
-if [ ! -d "/usr/local/Cellar/espeak/1.48.04/share/espeak-data" ]; then
+if [ ! -d "/usr/local/Cellar/espeak148/1.48.04_1/share/espeak-data" ]; then
 	sudo mkdir -p /usr/local/Cellar/espeak148/1.48.04_1/share/
 	sudo ln -fs /usr/local/share/espeak-data /usr/local/Cellar/espeak148/1.48.04_1/share/
 fi
 
-if [ ! -n "$(grep 'export PATH=/usr/local/bin:/usr/local/sbin:~/bin:$PATH' ~/.bash_profile)" ]; then
+if [ ! -n "$(grep 'export PATH=/usr/local/bin:/usr/local/sbin:$PATH' ~/.bash_profile)" ]; then
 	touch $HOME/.bash_profile
-	echo 'export PATH=/usr/local/bin:/usr/local/sbin:~/bin:$PATH' >> $HOME/.bash_profile
+	echo 'export PATH=/usr/local/bin:/usr/local/sbin:$PATH' >> $HOME/.bash_profile
 	chown $USER $HOME/.bash_profile
 fi
