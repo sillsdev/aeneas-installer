@@ -1,7 +1,7 @@
 #!/bin/bash
 IFS=$'\n'
 
-export PATH=/usr/local/bin:/usr/local/sbin:~/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 echo "Uninstalling espeak..."
 
@@ -11,10 +11,14 @@ function pkgutil-rm {
 	for file in `pkgutil --only-files --files $1`; do
 		sudo rm -v "$volume/$location/$file";
 	done
+	for dir in {Cellar,bin,include,lib,libexec,share}; do 
+		echo Cleaning up files and folders in /usr/local/$dir; 
+		sudo rm -v /$(pkgutil --only-dirs --files $1 | grep "usr/local/$dir/";);
+	done
 	sudo pkgutil --forget $1
 }
 
-pkg=`pkgutil --pkgs | grep "org.homebrew.espeak"`
+pkg=`pkgutil --pkgs | grep "espeak"`
 if [[ ! -z $pkg ]]; then
 	pkgutil-rm $pkg
 	# sudo rm -rf /usr/local/Cellar/espeak*

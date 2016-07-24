@@ -2,7 +2,6 @@
 
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
-mkdir -p $HOME/Library/Python/2.7/lib/python/site-packages
 touch $HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth
 if [ ! -n "$(grep '/usr/local/lib/python2.7/site-packages' $HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth)" ]; then
 	echo 'import sys; sys.path.insert(1, "/usr/local/lib/python2.7/site-packages")' >> $HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth
