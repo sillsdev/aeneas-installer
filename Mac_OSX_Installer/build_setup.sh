@@ -1,57 +1,45 @@
 #!/bin/bash
 
 export PATH=/usr/libexec/git-core/:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
-xcode-select --install 2> /dev/null
+CURDIR=`dirname $0`
+echo cd $CURDIR
+cd $CURDIR
+
+echo Attempting to install Xcode Command Line Tools
+xcode-select --install > /dev/null 2>&1
+read -p "Press [Enter] key to continue after Xcode Command Line Tools has been installed."
+echo You will need to accept the license agreement if prompted
 xcodebuild -license 2> /dev/null
 
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-if [ ! -n "$(grep 'export PATH=/usr/local/bin:/usr/local/sbin:$PATH' ~/.bash_profile)" ]; then
+touch $HOME/.bash_profile
+if [ ! -n "$(grep 'PATH=/usr/local/bin:/usr/local/sbin:$PATH' $HOME/.bash_profile)" ]; then
 	touch $HOME/.bash_profile
 	echo 'export PATH=/usr/local/bin:/usr/local/sbin:$PATH' >> $HOME/.bash_profile
 	chown $USER $HOME/.bash_profile
 fi
 
-CURDIR=`dirname $0`
-cd $CURDIR
-CURDIR=`pwd`
-echo cd $CURDIR
-cd $CURDIR
-
 echo Installing homebrew
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-echo brew update
-brew update
-brew tap timsutton/formulae
+#brew tap timsutton/formulae
 brew tap danielbair/tap
+echo Running brew update
 brew update
-
 brew install brew-pkg
-#brew install ruby
-#brew link ruby
+brew install brew-cask
+brew install ruby
+brew link ruby
 #sudo gem install fpm
 
-if [ ! -f "/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python" ]; then
-	brew cask install python
-#	echo Downloading https://www.python.org/ftp/python/2.7.11/python-2.7.11-macosx10.6.pkg
-#	curl -# -fSL -O https://www.python.org/ftp/python/2.7.11/python-2.7.11-macosx10.6.pkg
-#	echo Installing python-2.7.11-macosx10.6.pkg
-#	sudo installer -target / -pkg python-2.7.11-macosx10.6.pkg
-#	if [ ! -n "$(grep 'export PATH=/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH' ~/.bash_profile)" ]; then
-#		touch $HOME/.bash_profile
-#		echo 'export PATH=/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH' >> $HOME/.bash_profile
-#		chown $USER $HOME/.bash_profile
-#	fi
+mkdir -p $HOME/Library/Python/2.7/lib/python/site-packages
+touch $HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth
+if [ ! -n "$(grep '/usr/local/lib/python2.7/site-packages' $HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth)" ]; then
+	echo 'import sys; sys.path.insert(1, "/usr/local/lib/python2.7/site-packages")' >> $HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth
 fi
 
 if [ ! -f "/usr/local/bin/packagesbuild" ]; then
 	brew cask install packages
-#	echo Downloading http://s.sudre.free.fr/Software/files/Packages.dmg
-#	curl -# -fSL -O http://s.sudre.free.fr/Software/files/Packages.dmg
-#	hdiutil attach Packages.dmg
-#	Installing Packages.pkg
-#	sudo installer -target / -pkg /Volumes/Packages\ */packages/Packages.pkg
-#	hdiutil eject /Volumes/Packages\ */
 fi
 
 echo -e "\n\nNow run build_packages.sh\n\n"
