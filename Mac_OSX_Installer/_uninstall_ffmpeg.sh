@@ -8,13 +8,11 @@ echo "Uninstalling ffmpeg..."
 function pkgutil-rm {
 	location=$(pkgutil --pkg-info $1 | grep "location:" | cut -d':' -f2 | sed -e "s/^[[:space:]]*//")
 	volume=$(pkgutil --pkg-info $1 | grep "volume:" | cut -d':' -f2 | sed -e "s/^[[:space:]]*//")
+	path=$(echo "$volume/$location/"| sed -e 's#//#/#g' -e 's#//#/#g' -e 's#//#/#g'); 
 	for file in `pkgutil --only-files --files $1`; do 
-		sudo rm -v "$volume/$location/$file"; 
+		sudo rm -v "$path/$file"; 
 	done
-	for dir in {Cellar,bin,include,lib,libexec,share}; do 
-		echo Cleaning up files and folders in /usr/local/$dir; 
-		sudo rm -v /$(pkgutil --only-dirs --files $1 | grep "usr/local/$dir/";);
-	done
+	find /usr/local/ -empty -type d -delete
 	sudo pkgutil --forget $1
 }
 
@@ -23,3 +21,4 @@ if [[ ! -z $pkg ]]; then
 	pkgutil-rm $pkg
 fi
 
+sudo chown -R $USER:admin /usr/local

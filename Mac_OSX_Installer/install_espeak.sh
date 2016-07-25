@@ -8,3 +8,5 @@ if [ ! -n "$(grep 'PATH=/usr/local/bin:/usr/local/sbin:$PATH' $HOME/.bash_profil
 	echo 'export PATH=/usr/local/bin:/usr/local/sbin:$PATH' >> $HOME/.bash_profile
 	chown $USER $HOME/.bash_profile
 fi
+
+chown -R $USER:admin /usr/local
