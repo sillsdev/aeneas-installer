@@ -130,12 +130,12 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>aeneas-1.5.1.0</string>
+				<string>aeneas-1.5.0.3</string>
 			</dict>
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>aeneas-1.5.1.0.pkg</string>
+				<string>aeneas-1.5.0.3.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -850,7 +850,7 @@
 				</dict>
 			</array>
 			<key>NAME</key>
-			<string>aeneas-mac-setup-1.5.1.0</string>
+			<string>aeneas-mac-setup-1.5.0.3</string>
 		</dict>
 	</dict>
 	<key>TYPE</key>
