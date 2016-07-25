@@ -12,7 +12,7 @@ function pkgutil-rm {
 	for file in `pkgutil --only-files --files $1`; do 
 		sudo rm -v "$path/$file"; 
 	done
-	find /usr/local/ -empty -type d -delete
+	find /usr/local -empty -type d -print -delete
 	sudo pkgutil --forget $1
 }
 
