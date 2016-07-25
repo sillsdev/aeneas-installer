@@ -27,9 +27,11 @@ brew tap danielbair/tap
 echo Running brew update
 brew update
 brew install brew-pkg
-brew install brew-cask
+brew link --overwrite brew-pkg
+brew install gettext
+brew link --overwrite gettext
 brew install ruby
-brew link ruby
+brew link --overwrite ruby
 #sudo gem install fpm
 
 mkdir -p $HOME/Library/Python/2.7/lib/python/site-packages
