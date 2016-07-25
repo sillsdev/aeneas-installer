@@ -15,6 +15,8 @@ if [ ! -n "$(grep 'PATH=/usr/local/bin:/usr/local/sbin:$PATH' $HOME/.bash_profil
 	chown $USER $HOME/.bash_profile
 fi
 
+chown -R $USER:admin /usr/local
+
 osascript <<END
 tell application "Terminal"
         set newTab to do script "aeneas_check_setup; exit"
