@@ -12,7 +12,7 @@ mkdir -p aeneas-mac-uninstall-scripts
 cp ../_*.sh aeneas-mac-uninstall-scripts
 # VERSION="1.5.0.3"
 VERSION="1.5.1.0"
-DMGFILE="Scripture_App_Builder-1.11.1.dmg"
+DMGFILE="Scripture_App_Builder-full-1.11.1.dmg"
 BUILDTMP="$(mktemp -d -t createdmg.tmp.XXXXXXXX)"
 cp -r /Applications/Scripture\ App\ Builder.app $BUILDTMP
 rm -f "$DMGFILE"

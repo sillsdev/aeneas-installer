@@ -18,8 +18,8 @@ function pkgutil-rm {
 
 pkg=`pkgutil --pkgs | grep "espeak"`
 if [[ ! -z $pkg ]]; then
-	pkgutil-rm $pkg
 	# sudo rm -rf /usr/local/Cellar/espeak*
+	pkgutil-rm $pkg
 fi
 
 sudo chown -R $USER:admin /usr/local
