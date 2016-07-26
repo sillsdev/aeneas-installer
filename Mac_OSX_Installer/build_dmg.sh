@@ -3,7 +3,6 @@
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 CURDIR=`dirname $0`
-echo cd $CURDIR
 cd $CURDIR
 
 brew install danielbair/tap/create-dmg
@@ -25,4 +24,3 @@ rm -rf aeneas-mac-uninstall-scripts
 rm -rf "$BUILDTMP"
 open -R "$DMGFILE"
 open "$DMGFILE"
-

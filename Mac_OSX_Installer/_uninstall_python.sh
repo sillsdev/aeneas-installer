@@ -21,11 +21,10 @@ function pkgutil-rm {
 
 pkgs=`pkgutil --pkgs | grep "org.python"`
 if [[ ! -z $pkgs ]]; then
+	sudo rm -rf /usr/local/Cellar/python
 	for pkg in $pkgs; do
 		pkgutil-rm $pkg
 	done
-	sudo rm -rf /usr/local/Frameworks/Python.framework
-	sudo rm -rf /usr/local/Cellar/python
 fi
 
 sudo chown -R $USER:admin /usr/local
