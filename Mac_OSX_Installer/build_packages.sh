@@ -2,91 +2,89 @@
 
 export PATH=/usr/libexec/git-core/:$PATH
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-export PATH=/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
+
 CURDIR=`dirname $0`
 cd $CURDIR
-CURDIR=`pwd`
-echo cd $CURDIR
-cd $CURDIR
 
-echo brew update
+#HOMEBREW_BUILD_FROM_SOURCE=true
+
+echo Running brew update
 brew update
-brew install xz
-brew install gettext
-brew install pkg-config
-brew install texi2html
-brew install yasm
 
-if [ ! -f "ffmpeg-3.0.2.pkg" ]; then
-	brew install ffmpeg30
-	brew pkg --with-deps ffmpeg30
-	mv ffmpeg30-3.0.2.pkg ffmpeg-3.0.2.pkg
+if [ -d "/usr/local/Cellar/python" ]; then
+brew uninstall python
 fi
 
-if [ ! -f "espeak-1.48.04.pkg" ]; then
-	brew install danielbair/tap/espeak148
-	brew pkg --with-deps --scripts espeak_installer danielbair/tap/espeak148
-	mv espeak148-1.48.04_1.pkg espeak-1.48.04.pkg
-fi
+brew reinstall danielbair/tap/aeneas
 
-# brew pkg --with-deps --scripts python # fails to build a working package for now...
-if [ ! -f "python-2.7.11-macosx10.6.pkg" ]; then
-	echo Downloading https://www.python.org/ftp/python/2.7.11/python-2.7.11-macosx10.6.pkg
-	curl -fSL -O https://www.python.org/ftp/python/2.7.11/python-2.7.11-macosx10.6.pkg
-fi
-zip -v python-2.7.11-macosx10.6.pkg.zip python-2.7.11-macosx10.6.pkg
-
-python -m ensurepip 2> /dev/null
-pip install --upgrade pip
-pip install --upgrade wheel
-pip install --upgrade setuptools
-
-pip download pip==8.1.2
-pip download beautifulsoup4==4.4.1
-pip install beautifulsoup4-4.4.1-py2-none-any.whl
-
-pip download lxml==3.6.0
-if [ ! -f "lxml-3.6.0-cp27-cp27m-macosx_10_6_intel.whl" ]; then
-	tar xvf lxml-3.6.0.tar.gz
-	cd lxml-3.6.0
-	python setup.py bdist_wheel
-	cp dist/lxml-3.6.0-cp27-cp27m-macosx_10_6_intel.whl ../
-	echo cd $CURDIR
-	cd $CURDIR
-fi
-pip install lxml-3.6.0-cp27-cp27m-macosx_10_6_intel.whl
-
-pip download numpy==1.10.1
-mv -v numpy-1.10.1-cp27-none-macosx_10_6_intel.*.whl numpy-1.10.1-cp27-none-macosx_10_6_intel.whl
-pip install --upgrade numpy-1.10.1-cp27-none-macosx_10_6_intel.whl
-
-pip download aeneas==1.5.0.3
-rm -rf aeneas-1.5.0.3
-tar xvf aeneas-1.5.0.3.tar.gz
-cd aeneas-1.5.0.3
-patch -p1 -i $CURDIR/aeneas_patches/setup.patch
-patch -p1 -i $CURDIR/aeneas_patches/diagnostics.patch
-#cd aeneas/cew
-#python cew_setup.py build_ext --inplace
-#cd ../../
-python setup.py build_ext --inplace
-python setup.py bdist_wheel
-cp -v dist/aeneas-1.5.0.3-cp27-cp27m-macosx_10_6_intel.whl ../
-echo cd $CURDIR
-cd $CURDIR
-pip install aeneas-1.5.0.3-cp27-cp27m-macosx_10_6_intel.whl
 python -m aeneas.diagnostics
 python -m aeneas.tools.synthesize_text list "This is a test|with two lines" eng -v /tmp/test.wav
 
-#fpm -f --verbose --osxpkg-identifier-prefix org.python --python-pip=/usr/local/bin/pip -s python -t osxpkg beautifulsoup4
-#fpm -f --verbose --osxpkg-identifier-prefix org.python --python-pip=/usr/local/bin/pip -s python -t osxpkg lxml
-#fpm -f --verbose --osxpkg-identifier-prefix org.python --python-pip=/usr/local/bin/pip -s python -t osxpkg numpy
-#fpm -f --verbose --osxpkg-identifier-prefix org.python --python-pip=/usr/local/bin/pip -s python -t osxpkg --post-install aeneas_install_scripts/postinstall aeneas
+if [ ! -f "ffmpeg-3.1.1.pkg" ]; then
+	echo ""
+	brew pkg --with-deps --without-kegs --postinstall-script ./install_package.sh ffmpeg
+	[ $? = 0 ] || exit 1
+else
+	echo "Found ffmpeg-3.1.1.pkg"
+fi
+if [ ! -f "espeak-1.48.04_1.pkg" ]; then
+	echo ""
+	brew pkg --with-deps --without-kegs --postinstall-script ./install_package.sh espeak
+	[ $? = 0 ] || exit 1
+else
+	echo "Found espeak-1.48.04_1.pkg"
+fi
+#if [ ! -f "aeneas-1.5.0.3.pkg" ]; then
+#	echo ""
+#	brew pkg --with-deps --identifier-prefix org.python.python --without-kegs --postinstall-script ./install_aeneas.sh aeneas
+#	mv -v aeneas-1.5.0.3.pkg aeneas-full-1.5.0.3.pkg
+#	brew pkg --identifier-prefix org.python.python --without-kegs --postinstall-script ./install_aeneas.sh aeneas
+#	[ $? = 0 ] || exit 1
+#fi
+if [ ! -f "aeneas-1.5.1.0.pkg" ]; then
+	echo ""
+	brew pkg --identifier-prefix org.python.python --with-deps --without-kegs --postinstall-script ./install_aeneas.sh aeneas
+	mv -v aeneas-1.5.1.0.pkg aeneas-full-1.5.1.0.pkg
+	brew pkg --identifier-prefix org.python.python --without-kegs --postinstall-script ./install_aeneas.sh aeneas
+	[ $? = 0 ] || exit 1
+else
+	echo "Found aeneas-1.5.1.0.pkg"
+fi
+if [ ! -f "numpy-1.11.1.pkg" ]; then
+	echo ""
+	brew pkg --identifier-prefix org.python.python --without-kegs --postinstall-script ./install_numpy.sh numpy
+	[ $? = 0 ] || exit 1
+else
+	echo "Found numpy-1.11.1.pkg"
+fi
+if [ ! -f "lxml-3.6.0.pkg" ]; then
+	echo ""
+	brew pkg --identifier-prefix org.python.python --without-kegs --postinstall-script ./install_lxml.sh lxml
+	[ $? = 0 ] || exit 1
+else
+	echo "Found lxml-3.6.0.pkg"
+fi
+if [ ! -f "bs4-4.4.1.pkg" ]; then
+	echo ""
+	brew pkg --identifier-prefix org.python.python --without-kegs --postinstall-script ./install_bs4.sh bs4
+	[ $? = 0 ] || exit 1
+else
+	echo "Found bs4-4.4.1.pkg"
+fi
+
+brew install python
+
+if [ ! -f "python-2.7.12.pkg" ]; then
+	echo ""
+	brew pkg --identifier-prefix org.python --with-deps --without-kegs --postinstall-script ./install_python.sh python
+	[ $? = 0 ] || exit 1
+fi
 
 echo cd $CURDIR
 cd $CURDIR
 
-packagesbuild -v Aeneas_Installer.pkgproj
-if [ -f "aeneas-mac-setup-1.5.0.3.pkg" ]; then
-	echo -e "Resulting Installer program filename is:\n$(pwd)/aeneas-mac-setup-1.5.0.3.pkg"
+packagesbuild -v Aeneas_Installer_v1.5.1.0.pkgproj
+[ $? = 0 ] || exit 1
+if [ -f "aeneas-mac-setup-1.5.1.0.pkg" ]; then
+	echo -e "Resulting Installer program filename is:\n$(pwd)/aeneas-mac-setup-1.5.1.0.pkg"
 fi
