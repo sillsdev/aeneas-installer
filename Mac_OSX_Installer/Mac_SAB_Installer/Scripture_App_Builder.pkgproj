@@ -475,12 +475,12 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>ffmpeg-3.0.2</string>
+				<string>ffmpeg-3.1.1</string>
 			</dict>
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>../ffmpeg30-3.0.2.pkg</string>
+				<string>../ffmpeg-3.1.1.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -500,7 +500,7 @@
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>../espeak148-1.48.04_1.pkg</string>
+				<string>../espeak-1.48.04_1.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -575,12 +575,12 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>aeneas-1.5.0.3</string>
+				<string>aeneas-1.5.1.0</string>
 			</dict>
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>../aeneas-1.5.0.3.pkg</string>
+				<string>../aeneas-1.5.1.0.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>

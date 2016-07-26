@@ -8,7 +8,7 @@ echo "Uninstalling espeak..."
 function pkgutil-rm {
 	location=$(pkgutil --pkg-info $1 | grep "location:" | cut -d':' -f2 | sed -e "s/^[[:space:]]*//")
 	volume=$(pkgutil --pkg-info $1 | grep "volume:" | cut -d':' -f2 | sed -e "s/^[[:space:]]*//")
-	path=$(echo "$volume/$location/"| sed -e 's#//#/#g' -e 's#//#/#g' -e 's#//#/#g'); 
+	path=$(echo "$volume/$location/" | sed -e 's#//#/#g' -e 's#//#/#g' -e 's#//#/#g' -e 's#/$##'); 
 	for file in `pkgutil --only-files --files $1`; do 
 		sudo rm -v "$path/$file"; 
 	done

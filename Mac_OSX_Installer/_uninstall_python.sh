@@ -11,7 +11,7 @@ echo "Uninstalling python-2.7.11 packages..."
 function pkgutil-rm {
 	location=$(pkgutil --pkg-info $1 | grep "location:" | cut -d':' -f2 | sed -e "s/^[[:space:]]*//")
 	volume=$(pkgutil --pkg-info $1 | grep "volume:" | cut -d':' -f2 | sed -e "s/^[[:space:]]*//")
-	path=$(echo "$volume/$location/"| sed -e 's#//#/#g' -e 's#//#/#g' -e 's#//#/#g'); 
+	path=$(echo "$volume/$location/" | sed -e 's#//#/#g' -e 's#//#/#g' -e 's#//#/#g' -e 's#/$##'); 
 	for file in `pkgutil --only-files --files $1`; do 
 		sudo rm -v "$path/$file"; 
 	done
@@ -24,9 +24,8 @@ if [[ ! -z $pkgs ]]; then
 	for pkg in $pkgs; do
 		pkgutil-rm $pkg
 	done
-	sudo rm -rf /Applications/Python\ 2.7
-	sudo rm -rf /Library/Frameworks/Python.framework
-	sudo rm -rf /Users/Shared/python-2.7.11-macosx10.6.pkg
+	sudo rm -rf /usr/local/Frameworks/Python.framework
+	sudo rm -rf /usr/local/Cellar/python
 fi
 
 sudo chown -R $USER:admin /usr/local
