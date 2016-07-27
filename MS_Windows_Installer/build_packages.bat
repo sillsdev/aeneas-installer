@@ -33,6 +33,36 @@ if %ERRORLEVEL%==0 goto exeCurl
   set CURL=curl.exe -L
 :endIf
 
+IF NOT EXIST "%cd%\setup_espeak-1.48.04.exe" (
+  echo Downloading eSpeak...
+  %CURL% http://internode.dl.sourceforge.net/project/espeak/espeak/espeak-1.48/setup_espeak-1.48.04.exe -o %cd%\setup_espeak-1.48.04.exe
+)
+IF EXIST "%cd%\setup_espeak-1.48.04.exe" (
+  echo Installing eSpeak...
+  "%cd%\setup_espeak-1.48.04.exe" /SILENT
+) ELSE (
+  echo Could not find eSpeak...
+  START https://ffmpeg.zeranoe.com/builds/win32/static/ffmpeg-latest-win32-static.7z
+)
+
+IF NOT EXIST "%cd%\ffmpeg-latest-win32-static.7z" (
+  echo Downloading FFmpeg...
+  %CURL% https://ffmpeg.zeranoe.com/builds/win32/static/ffmpeg-latest-win32-static.7z -o %cd%\ffmpeg-latest-win32-static.7z
+)
+IF NOT EXIST "%cd%\setup_ffmpeg-3.0.2.exe" (
+  "%PF32%\7-Zip\7z.exe" x ffmpeg-*-win32-static.7z -aoa
+  rmdir /q/s ffmpeg-3.0.2
+  move /y ffmpeg-*-win32-static ffmpeg-3.0.2
+  "%PF32%\Inno Setup 5\ISCC.exe" FFmpeg_Installer.iss
+)
+IF EXIST "%cd%\setup_ffmpeg-3.0.2.exe" (
+  echo Installing FFmpeg...
+  "%cd%\setup_ffmpeg-3.0.2.exe" /SILENT
+) ELSE (
+  echo Could not find FFmpeg...
+  START http://internode.dl.sourceforge.net/project/espeak/espeak/espeak-1.48/setup_espeak-1.48.04.exe
+)
+
 
 C:\Python27\python -m pip download pip==8.1.2
 C:\Python27\python -m pip download beautifulsoup4==4.4.1
@@ -69,42 +99,31 @@ REM SET MSSDK=1
 REM cd aeneas-1.5.0.3
 REM C:\Python27\python.exe -m patch -v -p 1 --debug ..\aeneas-patches\setup.patch
 REM C:\Python27\python.exe -m patch -v -p 1 --debug ..\aeneas-patches\diagnostics.patch
+REM REM cd aeneas\cew
+REM REM C:\Python27\python cew_setup.py build_ext --inplace
+REM REM cd ..\..
 cd aeneas-1.5.1.0
-REM cd aeneas\cew
-REM C:\Python27\python cew_setup.py build_ext --inplace
-REM cd ..\..
 C:\Python27\python setup.py build_ext --inplace
 C:\Python27\python setup.py bdist_wheel
 copy /b/v/y dist\aeneas-*-win32.whl ..\
 cd %CURDIR%
 
-C:\Python27\python -m pip uninstall -y aeneas
-C:\Python27\python -m pip install aeneas-1.5.1.0-cp27-cp27m-win32.whl
+call install_packages.bat
+
+C:\Windows\System32\ping 127.0.0.1 -n 10 -w 1000 > NUL
+
+echo ""
+set PYTHONIOENCODING=UTF-8
 C:\Python27\python -m aeneas.diagnostics
 C:\Python27\python -m aeneas.tools.execute_task --version
 C:\Python27\python -m aeneas.tools.synthesize_text list "This is a test|with two lines" eng -v C:\Windows\Temp\test.wav
+echo ""
 
+C:\Windows\System32\ping 127.0.0.1 -n 5 -w 1000 > NUL
 
 IF NOT EXIST "%cd%\python-2.7.11.msi" (
   echo Downloading Python 2.7.11...
   %CURL% https://www.python.org/ftp/python/2.7.11/python-2.7.11.msi -o %cd%\python-2.7.11.msi
-)
-
-IF NOT EXIST "%cd%\setup_espeak-1.48.04.exe" (
-  echo Downloading eSpeak...
-  %CURL% http://internode.dl.sourceforge.net/project/espeak/espeak/espeak-1.48/setup_espeak-1.48.04.exe -o %cd%\setup_espeak-1.48.04.exe
-)
-
-IF NOT EXIST "%cd%\ffmpeg-latest-win32-static.7z" (
-  echo Downloading FFmpeg...
-  %CURL% https://ffmpeg.zeranoe.com/builds/win32/static/ffmpeg-latest-win32-static.7z -o %cd%\ffmpeg-latest-win32-static.7z
-)
-
-IF NOT EXIST "%cd%\setup_ffmpeg-3.0.2.exe" (
-  "%PF32%\7-Zip\7z.exe" x ffmpeg-*-win32-static.7z -aoa
-  rmdir /q/s ffmpeg-3.0.2
-  move /y ffmpeg-*-win32-static ffmpeg-3.0.2
-  "%PF32%\Inno Setup 5\ISCC.exe" FFmpeg_Installer.iss
 )
 
 "%PF32%\Inno Setup 5\ISCC.exe" Aeneas_Installer.iss
