@@ -11,5 +11,5 @@ IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
 C:
 cd C:\Python27\Scripts
 set PYTHONIOENCODING=UTF-8
-C:\Python27\python aeneas_check_setup
+C:\Python27\python aeneas_check_setup.py
 C:\Windows\System32\ping 127.0.0.1 -n 5 -w 1000 > NUL

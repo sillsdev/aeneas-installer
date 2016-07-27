@@ -2,11 +2,11 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "aeneas tools"
-#define MyAppVersion "1.5.0.3"
+#define MyAppVersion "1.5.1.0"
 #define MyAppPublisher "Daniel Bair"
 #define MyAppURL "http://www.danielbair.com/"
 #define MyAppInstallDir "C:\aeneas-install"
-#define MyAppFileName "aeneas-windows-setup-1.5.0.3"
+#define MyAppFileName "aeneas-windows-setup-1.5.1.0"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -37,7 +37,7 @@ ChangesEnvironment=yes
 ;SignTool=mysigntool
 
 [Messages]
-WelcomeLabel2=This will install aeneas 1.5.0.3 on your computer.%n%naeneas is a Python library and a set of tools for automated audio and text synchronization.%n%nIn addition to aeneas, the following independent programs necessary for running aeneas are contained in this installer:%n1. FFmpeg%n2. eSpeak%n3. Python%n%nIt is recommended that you close all other applications before continuing.
+WelcomeLabel2=This will install aeneas 1.5.1.0 on your computer.%n%naeneas is a Python library and a set of tools for automated audio and text synchronization.%n%nIn addition to aeneas, the following independent programs necessary for running aeneas are contained in this installer:%n1. FFmpeg%n2. eSpeak%n3. Python%n%nIt is recommended that you close all other applications before continuing.
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -55,10 +55,10 @@ Name: "python"; Description: "Install Python 2.7.11"; ExtraDiskSpaceRequired: 10
 Name: "bs4"; Description: "Install Python Module BeautifulSoup4 4.4.1"; ExtraDiskSpaceRequired: 3400000; Types: full compact custom; Flags: fixed
 Name: "lxml"; Description: "Install Python Module lxml 3.6.0"; ExtraDiskSpaceRequired: 0; Types: full compact custom; Flags: fixed
 Name: "numpy"; Description: "Install Python Module NumPy 1.10.1"; ExtraDiskSpaceRequired: 0; Types: full compact custom; Flags: fixed
-Name: "aeneas"; Description: "Install Python Module aeneas 1.5.0.3"; ExtraDiskSpaceRequired: 0; Types: full compact custom; Flags: fixed
+Name: "aeneas"; Description: "Install Python Module aeneas 1.5.1.0"; ExtraDiskSpaceRequired: 0; Types: full compact custom; Flags: fixed
 
 [Files]
-Source: "aeneas-1.5.0.3-cp27-cp27m-win32.whl"; DestDir: "{app}"; Components: aeneas; Flags: ignoreversion
+Source: "aeneas-1.5.1.0-cp27-cp27m-win32.whl"; DestDir: "{app}"; Components: aeneas; Flags: ignoreversion
 Source: "aeneas_check_setup.bat"; DestDir: "{app}"; Components: aeneas; Flags: ignoreversion
 Source: "beautifulsoup4-4.4.1-py2-none-any.whl"; DestDir: "{app}"; Components: bs4; Flags: ignoreversion
 Source: "install_packages.bat"; DestDir: "{app}"; Components: aeneas; Flags: ignoreversion
