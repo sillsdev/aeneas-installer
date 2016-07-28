@@ -38,11 +38,11 @@ IF NOT EXIST "%cd%\setup_espeak-1.48.04.exe" (
   %CURL% http://internode.dl.sourceforge.net/project/espeak/espeak/espeak-1.48/setup_espeak-1.48.04.exe -o %cd%\setup_espeak-1.48.04.exe
 )
 IF EXIST "%cd%\setup_espeak-1.48.04.exe" (
-  echo Installing eSpeak...
-  "%cd%\setup_espeak-1.48.04.exe" /SILENT
+REM   echo Installing eSpeak...
+REM   "%cd%\setup_espeak-1.48.04.exe" /SILENT
 ) ELSE (
   echo Could not find eSpeak...
-  START https://ffmpeg.zeranoe.com/builds/win32/static/ffmpeg-latest-win32-static.7z
+  echo START https://ffmpeg.zeranoe.com/builds/win32/static/ffmpeg-latest-win32-static.7z
 )
 
 IF NOT EXIST "%cd%\ffmpeg-latest-win32-static.7z" (
@@ -56,11 +56,11 @@ IF NOT EXIST "%cd%\setup_ffmpeg-3.0.2.exe" (
   "%PF32%\Inno Setup 5\ISCC.exe" FFmpeg_Installer.iss
 )
 IF EXIST "%cd%\setup_ffmpeg-3.0.2.exe" (
-  echo Installing FFmpeg...
-  "%cd%\setup_ffmpeg-3.0.2.exe" /SILENT
+REM   echo Installing FFmpeg...
+REM   "%cd%\setup_ffmpeg-3.0.2.exe" /SILENT
 ) ELSE (
   echo Could not find FFmpeg...
-  START http://internode.dl.sourceforge.net/project/espeak/espeak/espeak-1.48/setup_espeak-1.48.04.exe
+  echo START http://internode.dl.sourceforge.net/project/espeak/espeak/espeak-1.48/setup_espeak-1.48.04.exe
 )
 
 
@@ -108,18 +108,18 @@ C:\Python27\python setup.py bdist_wheel
 copy /b/v/y dist\aeneas-*-win32.whl ..\
 cd %CURDIR%
 
-call install_packages.bat
+REM call install_packages.bat
 
-C:\Windows\System32\ping 127.0.0.1 -n 10 -w 1000 > NUL
+REM C:\Windows\System32\ping 127.0.0.1 -n 10 -w 1000 > NUL
 
-echo ""
+echo.
 set PYTHONIOENCODING=UTF-8
-C:\Python27\python -m aeneas.diagnostics
-C:\Python27\python -m aeneas.tools.execute_task --version
-C:\Python27\python -m aeneas.tools.synthesize_text list "This is a test|with two lines" eng -v C:\Windows\Temp\test.wav
-echo ""
+REM C:\Python27\python -m aeneas.diagnostics
+REM C:\Python27\python -m aeneas.tools.execute_task --version
+REM C:\Python27\python -m aeneas.tools.synthesize_text list "This is a test|with two lines" eng -v C:\Windows\Temp\test.wav
+REM echo.
 
-C:\Windows\System32\ping 127.0.0.1 -n 5 -w 1000 > NUL
+REM C:\Windows\System32\ping 127.0.0.1 -n 5 -w 1000 > NUL
 
 IF NOT EXIST "%cd%\python-2.7.11.msi" (
   echo Downloading Python 2.7.11...
