@@ -22,14 +22,14 @@ python -m aeneas.tools.synthesize_text list "This is a test|with two lines" eng 
 
 if [ ! -f "ffmpeg-3.1.1.pkg" ]; then
 	echo ""
-	brew pkg --with-deps --without-kegs --postinstall-script ./install_package.sh ffmpeg
+	brew pkg --with-deps --without-kegs --postinstall-script ./install_package.sh danielbair/tap/ffmpeg
 	[ $? = 0 ] || exit 1
 else
 	echo "Found ffmpeg-3.1.1.pkg"
 fi
 if [ ! -f "espeak-1.48.04_1.pkg" ]; then
 	echo ""
-	brew pkg --with-deps --without-kegs --postinstall-script ./install_package.sh espeak
+	brew pkg --with-deps --without-kegs --postinstall-script ./install_package.sh danielbair/tap/espeak
 	[ $? = 0 ] || exit 1
 else
 	echo "Found espeak-1.48.04_1.pkg"
@@ -45,28 +45,28 @@ if [ ! -f "aeneas-1.5.1.0.pkg" ]; then
 	echo ""
 	brew pkg --identifier-prefix org.python.python --with-deps --without-kegs --postinstall-script ./install_aeneas.sh aeneas
 	mv -v aeneas-1.5.1.0.pkg aeneas-full-1.5.1.0.pkg
-	brew pkg --identifier-prefix org.python.python --without-kegs --postinstall-script ./install_aeneas.sh aeneas
+	brew pkg --identifier-prefix org.python.python --without-kegs --postinstall-script ./install_aeneas.sh danielbair/tap/aeneas
 	[ $? = 0 ] || exit 1
 else
 	echo "Found aeneas-1.5.1.0.pkg"
 fi
 if [ ! -f "numpy-1.11.1.pkg" ]; then
 	echo ""
-	brew pkg --identifier-prefix org.python.python --without-kegs --postinstall-script ./install_numpy.sh numpy
+	brew pkg --identifier-prefix org.python.python --without-kegs --postinstall-script ./install_numpy.sh danielbair/tap/numpy
 	[ $? = 0 ] || exit 1
 else
 	echo "Found numpy-1.11.1.pkg"
 fi
 if [ ! -f "lxml-3.6.0.pkg" ]; then
 	echo ""
-	brew pkg --identifier-prefix org.python.python --without-kegs --postinstall-script ./install_lxml.sh lxml
+	brew pkg --identifier-prefix org.python.python --without-kegs --postinstall-script ./install_lxml.sh danielbair/tap/lxml
 	[ $? = 0 ] || exit 1
 else
 	echo "Found lxml-3.6.0.pkg"
 fi
 if [ ! -f "bs4-4.4.1.pkg" ]; then
 	echo ""
-	brew pkg --identifier-prefix org.python.python --without-kegs --postinstall-script ./install_bs4.sh bs4
+	brew pkg --identifier-prefix org.python.python --without-kegs --postinstall-script ./install_bs4.sh danielbair/tap/bs4
 	[ $? = 0 ] || exit 1
 else
 	echo "Found bs4-4.4.1.pkg"

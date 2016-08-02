@@ -24,7 +24,7 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 brew tap danielbair/tap
 echo Running brew update
 brew update
-brew install brew-pkg
+brew install danielbair/tap/brew-pkg
 brew install gettext
 brew install ruby
 brew link ruby
