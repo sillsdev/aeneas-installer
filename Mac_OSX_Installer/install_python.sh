@@ -2,8 +2,8 @@
 
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
-python -m ensurepip 2> /dev/null
-pip install -U pip setuptools wheel
+#python -m ensurepip 2> /dev/null
+#pip install -U pip setuptools wheel
 
 mkdir -p $HOME/Library/Python/2.7/lib/python/site-packages
 touch $HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth
