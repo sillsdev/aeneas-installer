@@ -21,7 +21,7 @@ IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
 C:\Python27\python -m ensurepip
 C:\Python27\python -m pip install -U pip setuptools wheel
 
-REM C:\Python27\python -m pip install -U patch
+C:\Python27\python -m pip install -U patch
 
 C:\Python27\python -m pip install -U wget
 2>nul curl.exe --version
@@ -103,6 +103,7 @@ REM REM cd aeneas\cew
 REM REM C:\Python27\python cew_setup.py build_ext --inplace
 REM REM cd ..\..
 cd aeneas-1.5.1.0
+C:\Python27\python.exe -m patch -v -p 0 --debug ..\aeneas-patches\1.5.1.0-windows.diff
 C:\Python27\python setup.py build_ext --inplace
 C:\Python27\python setup.py bdist_wheel
 copy /b/v/y dist\aeneas-*-win32.whl ..\
