@@ -78,7 +78,7 @@ Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
 Filename: "{app}\setup_ffmpeg-3.0.2.exe"; Parameters: "/SILENT"; Description: "Install FFmpeg 3.0.2"; Components: ffmpeg; Flags: shellexec waituntilterminated
 Filename: "{app}\setup_espeak-1.48.04.exe"; Parameters: "/SILENT"; Description: "Install eSpeak 1.48.04"; Components: espeak; Flags: shellexec waituntilterminated
 Filename: "{app}\python-2.7.11.msi"; Parameters: "/PASSIVE"; Description: "Install Python 2.7.11"; Components: python; Flags: shellexec waituntilterminated
-Filename: "{app}\install_packages.bat"; Description: "Install Aeneas 1.5.0.3 and dependencies"; Components: aeneas; Flags: shellexec waituntilterminated
+Filename: "{app}\install_packages.bat"; Description: "Install Aeneas 1.5.1.0 and dependencies"; Components: aeneas; Flags: shellexec waituntilterminated
 Filename: "{app}\aeneas_check_setup.bat"; Description: "Check Aeneas Setup"; Components: aeneas; Flags: shellexec waituntilterminated
 
 [UninstallRun]
