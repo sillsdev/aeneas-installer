@@ -31,8 +31,8 @@ fi
 if [ ! -f "espeak-1.48.04_1.pkg" ]; then
 	echo ""
 	sudo install_name_tool -id /usr/local/lib/libespeak.dylib /usr/local/lib/libespeak.dylib
-	sudo install_name_tool /usr/local/lib/libportaudio.2.dylib -id /usr/local/lib/libportaudio.2.dylib 
-	sudo install_name_tool /usr/local/lib/libespeak.dylib -change /usr/local/opt/portaudio/lib/libportaudio.2.dylib /usr/local/lib/libportaudio.2.dylib 
+	sudo install_name_tool /usr/local/lib/libportaudio.2.dylib -id /usr/local/lib/libportaudio.2.dylib
+	sudo install_name_tool /usr/local/lib/libespeak.dylib -change /usr/local/opt/portaudio/lib/libportaudio.2.dylib /usr/local/lib/libportaudio.2.dylib
 	brew pkg --with-deps --without-kegs --postinstall-script ./install_package.sh espeak
 	[ $? = 0 ] || exit 1
 else
@@ -47,12 +47,12 @@ if [ ! -f "aeneas-1.7.0.pkg" ]; then
 else
 	echo "Found aeneas-1.7.0.pkg"
 fi
-if [ ! -f "numpy-1.11.1.pkg" ]; then
+if [ ! -f "numpy-1.11.2.pkg" ]; then
 	echo ""
 	brew pkg --identifier-prefix org.python.python --without-kegs --postinstall-script ./install_numpy.sh danielbair/tap/numpy
 	[ $? = 0 ] || exit 1
 else
-	echo "Found numpy-1.11.1.pkg"
+	echo "Found numpy-1.11.2.pkg"
 fi
 if [ ! -f "lxml-3.6.0.pkg" ]; then
 	echo ""
@@ -61,12 +61,12 @@ if [ ! -f "lxml-3.6.0.pkg" ]; then
 else
 	echo "Found lxml-3.6.0.pkg"
 fi
-if [ ! -f "bs4-4.4.1.pkg" ]; then
+if [ ! -f "bs4-4.5.1.pkg" ]; then
 	echo ""
 	brew pkg --identifier-prefix org.python.python --without-kegs --postinstall-script ./install_bs4.sh danielbair/tap/bs4
 	[ $? = 0 ] || exit 1
 else
-	echo "Found bs4-4.4.1.pkg"
+	echo "Found bs4-4.5.1.pkg"
 fi
 
 brew install python
