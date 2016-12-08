@@ -44,5 +44,5 @@ C:\Python27\python -m pip install -U beautifulsoup4-4.4.1-py2-none-any.whl
 C:\Python27\python -m pip install -U lxml-3.6.0-cp27-none-win32.whl
 C:\Python27\python -m pip install -U numpy-1.10.1-cp27-cp27m-win32.whl
 C:\Python27\python -m pip uninstall -y aeneas
-C:\Python27\python -m pip install aeneas-1.5.1.0-cp27-cp27m-win32.whl
+C:\Python27\python -m pip install aeneas-1.7.0.0-cp27-cp27m-win32.whl
 
