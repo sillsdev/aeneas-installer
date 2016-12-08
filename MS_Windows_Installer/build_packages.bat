@@ -47,7 +47,8 @@ REM   "%cd%\setup_espeak-1.48.04.exe" /SILENT
 
 IF NOT EXIST "%cd%\ffmpeg-3.2-win32-static.zip" (
   echo Downloading FFmpeg...
-  %CURL% https://ffmpeg.zeranoe.com/builds/win32/static/ffmpeg-3.2-win32-static.zip -o %cd%\ffmpeg-3.2-win32-static.zip
+  %CURL% https://archive.org/download/ffmpeg-3.2-win32-static/ffmpeg-3.2-win32-static.zip -o %cd%\ffmpeg-3.2-win32-static.zip
+  REM %CURL% https://ffmpeg.zeranoe.com/builds/win32/static/ffmpeg-3.2-win32-static.zip -o %cd%\ffmpeg-3.2-win32-static.zip
 )
 IF NOT EXIST "%cd%\setup_ffmpeg-3.2.exe" (
   "%PF32%\7-Zip\7z.exe" x ffmpeg-*-win32-static.zip -aoa
