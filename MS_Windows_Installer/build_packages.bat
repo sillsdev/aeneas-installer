@@ -45,6 +45,7 @@ REM   "%cd%\setup_espeak-1.48.04.exe" /SILENT
   echo START http://internode.dl.sourceforge.net/project/espeak/espeak/espeak-1.48/setup_espeak-1.48.04.exe
 )
 
+DEL "%cd%\ffmpeg-3.2-win32-static.zip"
 IF NOT EXIST "%cd%\ffmpeg-3.2-win32-static.zip" (
   echo Downloading FFmpeg...
   %CURL% https://archive.org/download/ffmpeg-3.2-win32-static/ffmpeg-3.2-win32-static.zip -o %cd%\ffmpeg-3.2-win32-static.zip
