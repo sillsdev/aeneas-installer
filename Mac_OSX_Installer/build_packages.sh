@@ -31,6 +31,8 @@ fi
 if [ ! -f "espeak-1.48.04_1.pkg" ]; then
 	echo ""
 	sudo install_name_tool -id /usr/local/lib/libespeak.dylib /usr/local/lib/libespeak.dylib
+	sudo install_name_tool /usr/local/lib/libportaudio.2.dylib -id /usr/local/lib/libportaudio.2.dylib 
+	sudo install_name_tool /usr/local/lib/libespeak.dylib -change /usr/local/opt/portaudio/lib/libportaudio.2.dylib /usr/local/lib/libportaudio.2.dylib 
 	brew pkg --with-deps --without-kegs --postinstall-script ./install_package.sh espeak
 	[ $? = 0 ] || exit 1
 else
