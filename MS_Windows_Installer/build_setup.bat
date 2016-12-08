@@ -32,16 +32,16 @@ IF EXIST "%cd%\innosetup-5.5.9-unicode.exe" (
   START http://www.jrsoftware.org/isdl.php
 )
 
-IF NOT EXIST "%cd%\python-2.7.11.msi" (
-  echo Downloading Python 2.7.11...
-  %CURL% "https://www.python.org/ftp/python/2.7.11/python-2.7.11.msi" -o "%cd%\python-2.7.11.msi"
+IF NOT EXIST "%cd%\python-2.7.12.msi" (
+  echo Downloading Python 2.7.12...
+  %CURL% "https://www.python.org/ftp/python/2.7.12/python-2.7.12.msi" -o "%cd%\python-2.7.12.msi"
 )
-IF EXIST "%cd%\python-2.7.11.msi" (
-  echo Installing Python 2.7.11...
-  python-2.7.11.msi /PASSIVE
+IF EXIST "%cd%\python-2.7.12.msi" (
+  echo Installing Python 2.7.12...
+  python-2.7.12.msi /PASSIVE
 ) ELSE (
   echo Could not find Python 2.7.11...
-  START https://www.python.org/downloads/release/python-2711/
+  START https://www.python.org/downloads/release/python-2712/
 )
 
 IF NOT EXIST "%cd%\VCForPython27.msi" (

@@ -64,22 +64,14 @@ REM   "%cd%\setup_ffmpeg-3.0.2.exe" /SILENT
 )
 
 
-C:\Python27\python -m pip download pip==8.1.2
-C:\Python27\python -m pip download beautifulsoup4==4.4.1
+C:\Python27\python -m pip download pip==9.0.1
+C:\Python27\python -m pip download beautifulsoup4==4.5.1
 C:\Python27\python -m pip download lxml==3.6.0
-C:\Python27\python -m pip download numpy==1.10.1
+C:\Python27\python -m pip download numpy==1.11.2
 
-IF NOT EXIST "%cd%\numpy-1.10.1-cp27-cp27m-win32.whl" (
-  "%PF32%\7-Zip\7z.exe" x numpy-1.10.1.zip -aoa
-  cd numpy-1.10.1
-  C:\Python27\python setup.py bdist_wheel
-  copy /b/v/y dist\numpy-1.10.1-cp27-cp27m-win32.whl ..\
-  cd %CURDIR%
-)
-
-C:\Python27\python -m pip install -U numpy-1.10.1-cp27-cp27m-win32.whl
+C:\Python27\python -m pip install -U numpy-1.11.2-cp27-none-win32.whl
 C:\Python27\python -m pip install -U lxml-3.6.0-cp27-none-win32.whl
-C:\Python27\python -m pip install -U beautifulsoup4-4.4.1-py2-none-any.whl
+C:\Python27\python -m pip install -U beautifulsoup4-4.5.1-py2-none-any.whl
 
 C:\Python27\python -m pip download aeneas==1.7.0
 
@@ -89,7 +81,8 @@ RMDIR /S /Q aeneas-1.7.0.0
 echo copying espeak.lib to C:\Python27\libs\
 copy /b/v/y espeak.lib C:\Python27\libs\
 cd aeneas-1.7.0.0
-copy ..\setupmeta.py .
+REM copy ..\aeneas-patches\setupmeta.py .
+C:\Python27\python.exe -m patch -v -p 1 --debug ..\aeneas-patches\1.7.0.0-windows.diff
 C:\Python27\python setup.py build_ext --inplace
 C:\Python27\python setup.py bdist_wheel
 copy /b/v/y dist\aeneas-*-win32.whl ..\
@@ -108,9 +101,9 @@ REM echo.
 
 REM C:\Windows\System32\ping 127.0.0.1 -n 5 -w 1000 > NUL
 
-IF NOT EXIST "%cd%\python-2.7.11.msi" (
-  echo Downloading Python 2.7.11...
-  %CURL% https://www.python.org/ftp/python/2.7.11/python-2.7.11.msi -o %cd%\python-2.7.11.msi
+IF NOT EXIST "%cd%\python-2.7.12.msi" (
+  echo Downloading Python 2.7.12...
+  %CURL% https://www.python.org/ftp/python/2.7.12/python-2.7.12.msi -o %cd%\python-2.7.12.msi
 )
 
 "%PF32%\Inno Setup 5\ISCC.exe" Aeneas_Installer.iss
