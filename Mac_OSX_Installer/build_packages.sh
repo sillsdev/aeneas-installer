@@ -72,7 +72,7 @@ fi
 
 brew install python
 
-if [ ! -f "python-2.7.12.pkg" ]; then
+if [ ! -f "python-2.7.13.pkg" ]; then
 	echo ""
 	brew pkg --identifier-prefix org.python --with-deps --without-kegs --postinstall-script ./install_python.sh python
 	[ $? = 0 ] || exit 1

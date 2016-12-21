@@ -50,12 +50,12 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>python-2.7.12_2</string>
+				<string>python-2.7.13</string>
 			</dict>
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>python-2.7.12_2.pkg</string>
+				<string>python-2.7.13.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
