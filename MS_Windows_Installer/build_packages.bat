@@ -26,8 +26,8 @@ C:\Python27\python -m pip install -U patch
 C:\Python27\python -m pip install -U wget
 2>nul curl.exe --version
 if %ERRORLEVEL%==0 goto exeCurl
-  set CURL=C:\Python27\python -m wget
-  REM set CURL=call curl.bat -L
+  REM set CURL=C:\Python27\python -m wget
+  set CURL=call curl.bat -L
   goto endIf
 :exeCurl
   set CURL=curl.exe -L
@@ -75,16 +75,16 @@ C:\Python27\python -m pip install -U numpy-1.11.2-cp27-none-win32.whl
 C:\Python27\python -m pip install -U lxml-3.6.0-cp27-none-win32.whl
 C:\Python27\python -m pip install -U beautifulsoup4-4.5.1-py2-none-any.whl
 
-C:\Python27\python -m pip download aeneas==1.7.0
+C:\Python27\python -m pip download aeneas==1.7.1
 
-RMDIR /S /Q aeneas-1.7.0.0
-"%PF32%\7-Zip\7z.exe" e aeneas-1.7.0.0.tar.gz -aoa
-"%PF32%\7-Zip\7z.exe" x aeneas-1.7.0.0.tar -aoa
+RMDIR /S /Q aeneas-1.7.1.0
+"%PF32%\7-Zip\7z.exe" e aeneas-1.7.1.0.tar.gz -aoa
+"%PF32%\7-Zip\7z.exe" x aeneas-1.7.1.0.tar -aoa
 echo copying espeak.lib to C:\Python27\libs\
 copy /b/v/y espeak.lib C:\Python27\libs\
-cd aeneas-1.7.0.0
+cd aeneas-1.7.1.0
 REM copy ..\aeneas-patches\setupmeta.py .
-C:\Python27\python.exe -m patch -v -p 1 --debug ..\aeneas-patches\1.7.0.0-windows.diff
+REM C:\Python27\python.exe -m patch -v -p 1 --debug ..\aeneas-patches\1.7.0.0-windows.diff
 C:\Python27\python setup.py build_ext --inplace
 C:\Python27\python setup.py bdist_wheel
 copy /b/v/y dist\aeneas-*-win32.whl ..\
@@ -103,9 +103,9 @@ REM echo.
 
 REM C:\Windows\System32\ping 127.0.0.1 -n 5 -w 1000 > NUL
 
-IF NOT EXIST "%cd%\python-2.7.12.msi" (
-  echo Downloading Python 2.7.12...
-  %CURL% https://www.python.org/ftp/python/2.7.12/python-2.7.12.msi -o %cd%\python-2.7.12.msi
+IF NOT EXIST "%cd%\python-2.7.13.msi" (
+  echo Downloading Python 2.7.13...
+  %CURL% https://www.python.org/ftp/python/2.7.13/python-2.7.13.msi -o %cd%\python-2.7.13.msi
 )
 
 "%PF32%\Inno Setup 5\ISCC.exe" Aeneas_Installer.iss

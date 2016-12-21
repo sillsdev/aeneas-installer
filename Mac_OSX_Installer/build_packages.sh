@@ -38,15 +38,15 @@ if [ ! -f "espeak-1.48.04_1.pkg" ]; then
 else
 	echo "Found espeak-1.48.04_1.pkg"
 fi
-if [ ! -f "aeneas-1.7.0.pkg" ]; then
+if [ ! -f "aeneas-1.7.1.pkg" ]; then
 	echo ""
 	sudo install_name_tool /usr/local/lib/python2.7/site-packages/aeneas/cew/cew.so -change /usr/local/opt/espeak/lib/libespeak.dylib /usr/local/lib/libespeak.dylib 
 	brew pkg --identifier-prefix org.python.python --with-deps --without-kegs --postinstall-script ./install_aeneas.sh aeneas
-	mv -v aeneas-1.7.0.pkg aeneas-full-1.7.0.pkg
+	mv -v aeneas-1.7.1.pkg aeneas-full-1.7.1.pkg
 	brew pkg --identifier-prefix org.python.python --without-kegs --postinstall-script ./install_aeneas.sh danielbair/tap/aeneas
 	[ $? = 0 ] || exit 1
 else
-	echo "Found aeneas-1.7.0.pkg"
+	echo "Found aeneas-1.7.1.pkg"
 fi
 if [ ! -f "numpy-1.11.2.pkg" ]; then
 	echo ""
@@ -72,7 +72,7 @@ fi
 
 brew install python
 
-if [ ! -f "python-2.7.12.pkg" ]; then
+if [ ! -f "python-2.7.13.pkg" ]; then
 	echo ""
 	brew pkg --identifier-prefix org.python --with-deps --without-kegs --postinstall-script ./install_python.sh python
 	[ $? = 0 ] || exit 1
@@ -81,8 +81,8 @@ fi
 echo cd $CURDIR
 cd $CURDIR
 
-packagesbuild -v Aeneas_Installer_v1.7.0.pkgproj
+packagesbuild -v Aeneas_Installer.pkgproj
 [ $? = 0 ] || exit 1
-if [ -f "aeneas-mac-setup-1.7.0.pkg" ]; then
-	echo -e "Resulting Installer program filename is:\n$(pwd)/aeneas-mac-setup-1.7.0.pkg"
+if [ -f "aeneas-mac-setup-1.7.1.pkg" ]; then
+	echo -e "Resulting Installer program filename is:\n$(pwd)/aeneas-mac-setup-1.7.1.pkg"
 fi
