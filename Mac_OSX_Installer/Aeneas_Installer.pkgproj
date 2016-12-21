@@ -50,12 +50,12 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>python-2.7.12_2</string>
+				<string>python-2.7.13</string>
 			</dict>
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>python-2.7.12_2.pkg</string>
+				<string>python-2.7.13.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -70,12 +70,12 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>numpy-1.11.1</string>
+				<string>numpy-1.11.2</string>
 			</dict>
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>numpy-1.11.1.pkg</string>
+				<string>numpy-1.11.2.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -110,12 +110,12 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>bs4-4.4.1</string>
+				<string>bs4-4.5.1</string>
 			</dict>
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>bs4-4.4.1.pkg</string>
+				<string>bs4-4.5.1.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -130,12 +130,12 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>aeneas-1.7.0</string>
+				<string>aeneas-1.7.1</string>
 			</dict>
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>aeneas-1.7.0.pkg</string>
+				<string>aeneas-1.7.1.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -850,7 +850,7 @@
 				</dict>
 			</array>
 			<key>NAME</key>
-			<string>aeneas-mac-setup-1.7.0</string>
+			<string>aeneas-mac-setup-1.7.1</string>
 		</dict>
 	</dict>
 	<key>TYPE</key>
