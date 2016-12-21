@@ -26,8 +26,8 @@ C:\Python27\python -m pip install -U patch
 C:\Python27\python -m pip install -U wget
 2>nul curl.exe --version
 if %ERRORLEVEL%==0 goto exeCurl
-  set CURL=C:\Python27\python -m wget
-  REM set CURL=call curl.bat -L
+  REM set CURL=C:\Python27\python -m wget
+  set CURL=call curl.bat -L
   goto endIf
 :exeCurl
   set CURL=curl.exe -L
