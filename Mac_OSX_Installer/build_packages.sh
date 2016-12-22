@@ -81,7 +81,7 @@ fi
 echo cd $CURDIR
 cd $CURDIR
 
-packagesbuild -v Aeneas_Installer_v1.7.1.pkgproj
+packagesbuild -v Aeneas_Installer.pkgproj
 [ $? = 0 ] || exit 1
 if [ -f "aeneas-mac-setup-1.7.1.pkg" ]; then
 	echo -e "Resulting Installer program filename is:\n$(pwd)/aeneas-mac-setup-1.7.1.pkg"
