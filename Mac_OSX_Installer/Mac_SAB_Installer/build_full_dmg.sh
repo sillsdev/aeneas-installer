@@ -10,9 +10,8 @@ brew install danielbair/tap/create-dmg
 
 mkdir -p aeneas-mac-uninstall-scripts
 cp ../_*.sh aeneas-mac-uninstall-scripts
-# VERSION="1.5.0.3"
-VERSION="1.5.1.0"
-DMGFILE="Scripture_App_Builder-full-1.11.1.dmg"
+VERSION="1.7.2"
+DMGFILE="Scripture_App_Builder-full-3.3.dmg"
 BUILDTMP="$(mktemp -d -t createdmg.tmp.XXXXXXXX)"
 cp -r /Applications/Scripture\ App\ Builder.app $BUILDTMP
 rm -f "$DMGFILE"

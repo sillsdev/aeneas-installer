@@ -10,12 +10,12 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>ffmpeg-3.2.2</string>
+				<string>ffmpeg-3.2.4</string>
 			</dict>
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>./ffmpeg-3.2.2.pkg</string>
+				<string>./ffmpeg-3.2.4_1.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -130,12 +130,12 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>aeneas-1.7.1</string>
+				<string>aeneas-1.7.2</string>
 			</dict>
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>aeneas-1.7.1.pkg</string>
+				<string>aeneas-1.7.2.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -850,7 +850,7 @@
 				</dict>
 			</array>
 			<key>NAME</key>
-			<string>aeneas-mac-setup-1.7.1</string>
+			<string>aeneas-mac-setup-1.7.2</string>
 		</dict>
 	</dict>
 	<key>TYPE</key>
