@@ -15,7 +15,7 @@
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>./ffmpeg-3.2.4_1.pkg</string>
+				<string>./ffmpeg-3.2.4.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>

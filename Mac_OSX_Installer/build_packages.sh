@@ -15,25 +15,26 @@ if [ -d "/usr/local/Cellar/python" ]; then
 brew uninstall python
 fi
 
+brew reinstall danielbair/tap/espeak
 brew reinstall danielbair/tap/numpy
 brew reinstall danielbair/tap/aeneas
 
 python -m aeneas.diagnostics
 python -m aeneas.tools.synthesize_text list "This is a test|with two lines" eng -v /tmp/test.wav
 
-if [ ! -f "ffmpeg-3.2.4_1.pkg" ]; then
+if [ ! -f "ffmpeg-3.2.4.pkg" ]; then
 	echo ""
 	brew pkg --with-deps --without-kegs --postinstall-script ./install_ffmpeg.sh ffmpeg
 	[ $? = 0 ] || exit 1
 else
-	echo "Found ffmpeg-3.2.4_1.pkg"
+	echo "Found ffmpeg-3.2.4.pkg"
 fi
 if [ ! -f "espeak-1.48.04_1.pkg" ]; then
 	echo ""
 	sudo install_name_tool -id /usr/local/lib/libespeak.dylib /usr/local/lib/libespeak.dylib 
 	sudo install_name_tool /usr/local/lib/libportaudio.2.dylib -id /usr/local/lib/libportaudio.2.dylib 
 	sudo install_name_tool /usr/local/lib/libespeak.dylib -change /usr/local/opt/portaudio/lib/libportaudio.2.dylib /usr/local/lib/libportaudio.2.dylib 
-	brew pkg --with-deps --without-kegs --postinstall-script ./install_espeak.sh espeak
+	brew pkg --with-deps --without-kegs --postinstall-script ./install_espeak.sh danielbair/tap/espeak
 	[ $? = 0 ] || exit 1
 else
 	echo "Found espeak-1.48.04_1.pkg"
@@ -86,3 +87,6 @@ packagesbuild -v Aeneas_Installer.pkgproj
 if [ -f "aeneas-mac-setup-1.7.2.pkg" ]; then
 	echo -e "Resulting Installer program filename is:\n$(pwd)/aeneas-mac-setup-1.7.2.pkg"
 fi
+
+#productsign --timestamp=none --sign "Developer ID Installer" ~/build/10.7/aeneas-mac-setup-1.7.2.pkg ~/build/10.7/aeneas-mac-setup-1.7.2_signed.pkg
+
