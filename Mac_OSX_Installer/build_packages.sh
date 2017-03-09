@@ -11,9 +11,11 @@ cd $CURDIR
 echo Running brew update
 brew update
 
-if [ -d "/usr/local/Cellar/python" ]; then
-brew uninstall python
-fi
+#if [ -d "/usr/local/Cellar/python" ]; then
+#brew uninstall --ignore-dependencies -force python
+#fi
+
+brew uninstall --ignore-dependencies -force aeneas bs4 lxml numpy python
 
 brew reinstall danielbair/tap/numpy
 brew reinstall danielbair/tap/aeneas
@@ -21,32 +23,32 @@ brew reinstall danielbair/tap/aeneas
 python -m aeneas.diagnostics
 python -m aeneas.tools.synthesize_text list "This is a test|with two lines" eng -v /tmp/test.wav
 
-if [ ! -f "ffmpeg-3.2.2.pkg" ]; then
+if [ ! -f "ffmpeg-3.2.4.pkg" ]; then
 	echo ""
-	brew pkg --with-deps --without-kegs --postinstall-script ./install_package.sh ffmpeg
+	brew pkg --with-deps --without-kegs --postinstall-script ./install_ffmpeg.sh ffmpeg
 	[ $? = 0 ] || exit 1
 else
-	echo "Found ffmpeg-3.2.2.pkg"
+	echo "Found ffmpeg-3.2.4.pkg"
 fi
 if [ ! -f "espeak-1.48.04_1.pkg" ]; then
 	echo ""
 	sudo install_name_tool -id /usr/local/lib/libespeak.dylib /usr/local/lib/libespeak.dylib 
 	sudo install_name_tool /usr/local/lib/libportaudio.2.dylib -id /usr/local/lib/libportaudio.2.dylib 
 	sudo install_name_tool /usr/local/lib/libespeak.dylib -change /usr/local/opt/portaudio/lib/libportaudio.2.dylib /usr/local/lib/libportaudio.2.dylib 
-	brew pkg --with-deps --without-kegs --postinstall-script ./install_package.sh espeak
+	brew pkg --with-deps --without-kegs --postinstall-script ./install_espeak.sh danielbair/tap/espeak
 	[ $? = 0 ] || exit 1
 else
 	echo "Found espeak-1.48.04_1.pkg"
 fi
-if [ ! -f "aeneas-1.7.1.pkg" ]; then
+if [ ! -f "aeneas-1.7.2.pkg" ]; then
 	echo ""
 	sudo install_name_tool /usr/local/lib/python2.7/site-packages/aeneas/cew/cew.so -change /usr/local/opt/espeak/lib/libespeak.dylib /usr/local/lib/libespeak.dylib 
 	brew pkg --identifier-prefix org.python.python --with-deps --without-kegs --postinstall-script ./install_aeneas.sh aeneas
-	mv -v aeneas-1.7.1.pkg aeneas-full-1.7.1.pkg
+	mv -v aeneas-1.7.2.pkg aeneas-full-1.7.2.pkg
 	brew pkg --identifier-prefix org.python.python --without-kegs --postinstall-script ./install_aeneas.sh danielbair/tap/aeneas
 	[ $? = 0 ] || exit 1
 else
-	echo "Found aeneas-1.7.1.pkg"
+	echo "Found aeneas-1.7.2.pkg"
 fi
 if [ ! -f "numpy-1.11.2.pkg" ]; then
 	echo ""
@@ -83,6 +85,9 @@ cd $CURDIR
 
 packagesbuild -v Aeneas_Installer.pkgproj
 [ $? = 0 ] || exit 1
-if [ -f "aeneas-mac-setup-1.7.1.pkg" ]; then
-	echo -e "Resulting Installer program filename is:\n$(pwd)/aeneas-mac-setup-1.7.1.pkg"
+if [ -f "aeneas-mac-setup-1.7.2.pkg" ]; then
+	echo -e "Resulting Installer program filename is:\n$(pwd)/aeneas-mac-setup-1.7.2.pkg"
 fi
+
+#productsign --timestamp=none --sign "Developer ID Installer" ~/build/10.7/aeneas-mac-setup-1.7.2.pkg ~/build/10.7/aeneas-mac-setup-1.7.2_signed.pkg
+

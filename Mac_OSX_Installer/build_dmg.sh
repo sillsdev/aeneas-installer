@@ -9,7 +9,7 @@ brew install danielbair/tap/create-dmg
 
 mkdir -p aeneas-mac-uninstall-scripts
 cp _*.sh aeneas-mac-uninstall-scripts
-VERSION="1.7.1"
+VERSION="1.7.2"
 DMGFILE="Aeneas_Tools-$VERSION.dmg"
 BUILDTMP="$(mktemp -d -t createdmg.tmp.XXXXXXXX)"
 rm -f "$DMGFILE"

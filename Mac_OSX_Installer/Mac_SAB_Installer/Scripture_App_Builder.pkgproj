@@ -460,11 +460,11 @@
 				<key>IDENTIFIER</key>
 				<string>org.sil.software.ScriptureAppBuilder</string>
 				<key>NAME</key>
-				<string>Scripture-App-Builder-1.11.1</string>
+				<string>Scripture-App-Builder-3.3</string>
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>VERSION</key>
-				<string>1.11.1</string>
+				<string>3.3</string>
 			</dict>
 			<key>UUID</key>
 			<string>49A57FB2-6C81-4F5D-AD49-F7DAEC7FB45A</string>
@@ -475,12 +475,12 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>ffmpeg-3.1.1</string>
+				<string>ffmpeg-3.2.4</string>
 			</dict>
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>../ffmpeg-3.1.1.pkg</string>
+				<string>../ffmpeg-3.2.4_1.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -515,12 +515,12 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>bs4-4.4.1</string>
+				<string>bs4-4.5.1</string>
 			</dict>
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>../bs4-4.4.1.pkg</string>
+				<string>../bs4-4.5.1.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -555,12 +555,12 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>numpy-1.11.1</string>
+				<string>numpy-1.11.2</string>
 			</dict>
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>../numpy-1.11.1.pkg</string>
+				<string>../numpy-1.11.2.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -575,12 +575,12 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>aeneas-1.5.1.0</string>
+				<string>aeneas-1.7.2</string>
 			</dict>
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>../aeneas-1.5.1.0.pkg</string>
+				<string>../aeneas-1.7.2.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -595,12 +595,12 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>python-2.7.12</string>
+				<string>python-2.7.13</string>
 			</dict>
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>../python-2.7.12.pkg</string>
+				<string>../python-2.7.13.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -1090,7 +1090,7 @@
 										<key>LANGUAGE</key>
 										<string>English</string>
 										<key>VALUE</key>
-										<string>Aeneas-Tools-1.5.0.3</string>
+										<string>Aeneas-Tools-1.7.2</string>
 									</dict>
 								</array>
 								<key>TYPE</key>
