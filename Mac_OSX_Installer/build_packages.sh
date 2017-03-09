@@ -11,11 +11,12 @@ cd $CURDIR
 echo Running brew update
 brew update
 
-if [ -d "/usr/local/Cellar/python" ]; then
-brew uninstall python
-fi
+#if [ -d "/usr/local/Cellar/python" ]; then
+#brew uninstall --ignore-dependencies -force python
+#fi
 
-brew reinstall danielbair/tap/espeak
+brew uninstall --ignore-dependencies -force aeneas bs4 lxml numpy python
+
 brew reinstall danielbair/tap/numpy
 brew reinstall danielbair/tap/aeneas
 
