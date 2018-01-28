@@ -23,4 +23,4 @@ ln -s /usr/local/Frameworks/Python.framework /usr/local/Cellar/python/2.7.12/Fra
 #mkdir -p /usr/local/opt/
 #ln -s /usr/local/Cellar/python/2.7.12 /usr/local/opt/python
 
-chown -R $USER:admin /usr/local
+chown -R $USER:admin /usr/local/*
