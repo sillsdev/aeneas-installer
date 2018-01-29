@@ -9,4 +9,4 @@ if [ ! -n "$(grep 'PATH=/usr/local/bin:/usr/local/sbin:$PATH' $HOME/.bash_profil
 	chown $USER $HOME/.bash_profile
 fi
 
-chown -R $USER:admin /usr/local
+chown -R $USER:admin /usr/local/*
