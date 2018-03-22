@@ -75,14 +75,14 @@ C:\Python27\python -m pip install -U numpy-1.11.2-cp27-none-win32.whl
 C:\Python27\python -m pip install -U lxml-3.6.0-cp27-none-win32.whl
 C:\Python27\python -m pip install -U beautifulsoup4-4.5.1-py2-none-any.whl
 
-C:\Python27\python -m pip download aeneas==1.7.2
+C:\Python27\python -m pip download aeneas==1.7.3
 
-RMDIR /S /Q aeneas-1.7.2.0
-"%PF32%\7-Zip\7z.exe" e aeneas-1.7.2.0.tar.gz -aoa
-"%PF32%\7-Zip\7z.exe" x aeneas-1.7.2.0.tar -aoa
+RMDIR /S /Q aeneas-1.7.3.0
+"%PF32%\7-Zip\7z.exe" e aeneas-1.7.3.0.tar.gz -aoa
+"%PF32%\7-Zip\7z.exe" x aeneas-1.7.3.0.tar -aoa
 echo copying espeak.lib to C:\Python27\libs\
 copy /b/v/y espeak.lib C:\Python27\libs\
-cd aeneas-1.7.2.0
+cd aeneas-1.7.3.0
 REM copy ..\aeneas-patches\setupmeta.py .
 REM C:\Python27\python.exe -m patch -v -p 1 --debug ..\aeneas-patches\1.7.0.0-windows.diff
 C:\Python27\python setup.py build_ext --inplace

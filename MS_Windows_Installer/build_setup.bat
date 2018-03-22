@@ -10,11 +10,11 @@ if %ERRORLEVEL%==0 goto exeCurl
 
 IF NOT EXIST "%cd%\7z1602.exe" (
   echo Downloading 7-zip... 
-  %CURL% "http://www.7-zip.org/a/7z1602.exe" -o "%cd%\7z1602.exe"
+  %CURL% "https://www.7-zip.org/a/7z1801.exe" -o "%cd%\7zSetup.exe"
 )
-IF EXIST "%cd%\7z1602.exe" (
+IF EXIST "%cd%\7zSetup.exe" (
   echo Installing 7-zip...
-  7z1602.exe
+  7zSetup.exe
 ) ELSE (
   echo Could not find 7-zip...
   START http://www.7-zip.org/

@@ -1,4 +1,4 @@
-This will install aeneas 1.7.2 on your computer.
+This will install aeneas 1.7.3 on your computer.
 
 aeneas is a Python library and a set of tools for automated audio and text synchronization.
 
