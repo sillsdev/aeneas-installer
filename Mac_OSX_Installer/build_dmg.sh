@@ -4,12 +4,16 @@ export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 CURDIR=`dirname $0`
 cd $CURDIR
+VERSION="1.7.3"
 
 brew install danielbair/tap/create-dmg
 
+productsign --timestamp=none --sign "Developer ID Installer" aeneas-mac-setup-$VERSION.pkg aeneas-mac-setup-$VERSION-signed.pkg
+cp -v aeneas-mac-setup-$VERSION.pkg aeneas-mac-setup-$VERSION-unsigned.pkg
+cp -v aeneas-mac-setup-$VERSION-signed.pkg aeneas-mac-setup-$VERSION.pkg
+
 mkdir -p aeneas-mac-uninstall-scripts
 cp _*.sh aeneas-mac-uninstall-scripts
-VERSION="1.7.3"
 DMGFILE="Aeneas_Tools-$VERSION.dmg"
 BUILDTMP="$(mktemp -d -t createdmg.tmp.XXXXXXXX)"
 rm -f "$DMGFILE"
@@ -23,3 +27,5 @@ rm -rf aeneas-mac-uninstall-scripts
 rm -rf "$BUILDTMP"
 open -R "$DMGFILE"
 open "$DMGFILE"
+
+cp -v Aeneas_Tools-$VERSION.dmg aeneas-mac-setup-$VERSION.dmg
