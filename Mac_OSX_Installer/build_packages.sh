@@ -89,5 +89,3 @@ if [ -f "aeneas-mac-setup-1.7.3.pkg" ]; then
 	echo -e "Resulting Installer program filename is:\n$(pwd)/aeneas-mac-setup-1.7.3.pkg"
 fi
 
-#productsign --timestamp=none --sign "Developer ID Installer" ~/build/10.7/aeneas-mac-setup-1.7.3.pkg ~/build/10.7/aeneas-mac-setup-1.7.3_signed.pkg
-
