@@ -50,12 +50,12 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>python@2-2.7.16</string>
+				<string>python-2.7.16</string>
 			</dict>
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>python@2-2.7.16.pkg</string>
+				<string>python-2.7.16.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -70,12 +70,12 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>numpy-1.16.4</string>
+				<string>numpy-1.11.2</string>
 			</dict>
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>numpy-1.16.4.pkg</string>
+				<string>numpy-1.11.2.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -608,7 +608,7 @@
 						<key>IC_REQUIREMENT_DISKSPACE_MINIMUM_SIZE_UNIT</key>
 						<integer>0</integer>
 						<key>IC_REQUIREMENT_DISKSPACE_MINIMUM_SIZE_VALUE</key>
-						<integer>373</integer>
+						<integer>755</integer>
 					</dict>
 					<key>IC_REQUIREMENT_CHECK_TYPE</key>
 					<integer>1</integer>
@@ -620,7 +620,7 @@
 							<key>LANGUAGE</key>
 							<string>English</string>
 							<key>VALUE</key>
-							<string>This installer needs a minimum of 373MB of disk space available.</string>
+							<string>This installer needs a minimum of 755MB of disk space available.</string>
 						</dict>
 					</array>
 					<key>NAME</key>
@@ -638,7 +638,7 @@
 						<key>IC_REQUIREMENT_OS_DISTRIBUTION_TYPE</key>
 						<integer>0</integer>
 						<key>IC_REQUIREMENT_OS_MINIMUM_VERSION</key>
-						<integer>100705</integer>
+						<integer>100905</integer>
 					</dict>
 					<key>IC_REQUIREMENT_CHECK_TYPE</key>
 					<integer>1</integer>
@@ -650,7 +650,7 @@
 							<key>LANGUAGE</key>
 							<string>English</string>
 							<key>VALUE</key>
-							<string>Minimum OS X version 10.7.5 is required</string>
+							<string>Minimum OS X version 10.9.5 is required</string>
 						</dict>
 					</array>
 					<key>NAME</key>

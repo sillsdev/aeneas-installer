@@ -25,7 +25,7 @@ python -m aeneas.tools.synthesize_text list "This is a test|with two lines" eng 
 
 if [ ! -f "ffmpeg-4.1.4_1.pkg" ]; then
 	echo ""
-	brew pkg --with-deps --without-kegs --postinstall-script="./install_ffmpeg.sh" ffmpeg
+	brew pkg --with-deps --without-kegs --postinstall-script="./postinstall-scripts/postinstall_ffmpeg.sh" ffmpeg
 	[ $? = 0 ] || exit 1
 else
 	echo "Found ffmpeg-4.1.4_1.pkg"
@@ -35,7 +35,7 @@ if [ ! -f "espeak-1.48.04_1.pkg" ]; then
 	sudo install_name_tool -id /usr/local/lib/libespeak.dylib /usr/local/lib/libespeak.dylib 
 	sudo install_name_tool /usr/local/lib/libportaudio.2.dylib -id /usr/local/lib/libportaudio.2.dylib 
 	sudo install_name_tool /usr/local/lib/libespeak.dylib -change /usr/local/opt/portaudio/lib/libportaudio.2.dylib /usr/local/lib/libportaudio.2.dylib 
-	brew pkg --with-deps --without-kegs --postinstall-script="./install_espeak.sh" danielbair/tap/espeak
+	brew pkg --with-deps --without-kegs --postinstall-script="./postinstall-scripts/postinstall_espeak.sh" danielbair/tap/espeak
 	[ $? = 0 ] || exit 1
 else
 	echo "Found espeak-1.48.04_1.pkg"
@@ -43,30 +43,30 @@ fi
 if [ ! -f "aeneas-1.7.3.pkg" ]; then
 	echo ""
 	sudo install_name_tool /usr/local/lib/python2.7/site-packages/aeneas/cew/cew.so -change /usr/local/opt/espeak/lib/libespeak.dylib /usr/local/lib/libespeak.dylib 
-	brew pkg --identifier-prefix="org.python.python" --with-deps --without-kegs --postinstall-script="./install_aeneas.sh" aeneas
+	brew pkg --identifier-prefix="org.python.python" --with-deps --without-kegs --postinstall-script="./postinstall-scripts/postinstall_aeneas.sh" danielbair/tap/aeneas
 	mv -v aeneas-1.7.3.pkg aeneas-full-1.7.3.pkg
-	brew pkg --identifier-prefix="org.python.python" --without-kegs --postinstall-script="./install_aeneas.sh" danielbair/tap/aeneas
+	brew pkg --identifier-prefix="org.python.python" --without-kegs --postinstall-script="./postinstall-scripts/postinstall_aeneas.sh" danielbair/tap/aeneas
 	[ $? = 0 ] || exit 1
 else
 	echo "Found aeneas-1.7.3.pkg"
 fi
 if [ ! -f "numpy-1.16.4.pkg" ]; then
 	echo ""
-	brew pkg --identifier-prefix="org.python.python" --without-kegs --postinstall-script="./install_numpy.sh" numpy
+	brew pkg --identifier-prefix="org.python.python" --without-kegs --postinstall-script="./postinstall-scripts/postinstall_numpy.sh" numpy
 	[ $? = 0 ] || exit 1
 else
 	echo "Found numpy-1.16.4.pkg"
 fi
 if [ ! -f "lxml-3.6.0.pkg" ]; then
 	echo ""
-	brew pkg --identifier-prefix="org.python.python" --without-kegs --postinstall-script="./install_lxml.sh" danielbair/tap/lxml
+	brew pkg --identifier-prefix="org.python.python" --without-kegs --postinstall-script="./postinstall-scripts/postinstall_lxml.sh" danielbair/tap/lxml
 	[ $? = 0 ] || exit 1
 else
 	echo "Found lxml-3.6.0.pkg"
 fi
 if [ ! -f "bs4-4.5.1.pkg" ]; then
 	echo ""
-	brew pkg --identifier-prefix="org.python.python" --without-kegs --postinstall-script="./install_bs4.sh" danielbair/tap/bs4
+	brew pkg --identifier-prefix="org.python.python" --without-kegs --postinstall-script="./postinstall-scripts/postinstall_bs4.sh" danielbair/tap/bs4
 	[ $? = 0 ] || exit 1
 else
 	echo "Found bs4-4.5.1.pkg"
@@ -76,16 +76,24 @@ brew install python@2
 
 if [ ! -f "python@2-2.7.16.pkg" ]; then
 	echo ""
-	brew pkg --identifier-prefix="org.python" --with-deps --without-kegs --postinstall-script="./install_python.sh" python@2
+	brew pkg --identifier-prefix="org.python" --with-deps --without-kegs --postinstall-script="./postinstall-scripts/postinstall_python.sh" python@2
 	[ $? = 0 ] || exit 1
 fi
 
 echo cd $CURDIR
 cd $CURDIR
 
+cd aeneas-mac-installer-packages
+mv -v ../*.pkg .
+cp -v ../*.txt .
+cp -v ../Aeneas_Installer.pkgproj .
+bash ../sign_packages.sh
 packagesbuild -v Aeneas_Installer.pkgproj
 [ $? = 0 ] || exit 1
 if [ -f "aeneas-mac-setup-1.7.3.pkg" ]; then
 	echo -e "Resulting Installer program filename is:\n$(pwd)/aeneas-mac-setup-1.7.3.pkg"
+	productsign --timestamp=none --sign "Developer ID Installer" aeneas-mac-setup-1.7.3.pkg /tmp/aeneas-mac-setup-1.7.3.pkg
+	cp -v /tmp/aeneas-mac-setup-1.7.3.pkg aeneas-mac-setup-1.7.3.pkg
+	mv -v aeneas-mac-setup-1.7.3.pkg ../
 fi
 
