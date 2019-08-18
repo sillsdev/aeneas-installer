@@ -4,7 +4,7 @@ export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 CURDIR=`dirname $0`
 cd $CURDIR
-VERSION="1.7.3"
+VERSION="1.7.3_1"
 
 brew install danielbair/tap/create-dmg
 

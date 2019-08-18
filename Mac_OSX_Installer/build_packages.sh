@@ -83,17 +83,3 @@ fi
 echo cd $CURDIR
 cd $CURDIR
 
-cd aeneas-mac-installer-packages
-mv -v ../*.pkg .
-cp -v ../*.txt .
-cp -v ../Aeneas_Installer.pkgproj .
-bash ../sign_packages.sh
-packagesbuild -v Aeneas_Installer.pkgproj
-[ $? = 0 ] || exit 1
-if [ -f "aeneas-mac-setup-1.7.3.pkg" ]; then
-	echo -e "Resulting Installer program filename is:\n$(pwd)/aeneas-mac-setup-1.7.3.pkg"
-	productsign --timestamp=none --sign "Developer ID Installer" aeneas-mac-setup-1.7.3.pkg /tmp/aeneas-mac-setup-1.7.3.pkg
-	cp -v /tmp/aeneas-mac-setup-1.7.3.pkg aeneas-mac-setup-1.7.3.pkg
-	mv -v aeneas-mac-setup-1.7.3.pkg ../
-fi
-

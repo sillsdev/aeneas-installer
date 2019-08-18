@@ -15,7 +15,7 @@
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>ffmpeg-4.1.4_1.pkg</string>
+				<string>./aeneas-mac-installer-packages/ffmpeg-4.1.4_1.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -35,7 +35,7 @@
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>espeak-1.48.04_1.pkg</string>
+				<string>./aeneas-mac-installer-packages/espeak-1.48.04_1.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -55,7 +55,7 @@
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>python-2.7.16.pkg</string>
+				<string>./aeneas-mac-installer-packages/python-2.7.16.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -75,7 +75,7 @@
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>numpy-1.11.2.pkg</string>
+				<string>./aeneas-mac-installer-packages/numpy-1.11.2.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -95,7 +95,7 @@
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>lxml-3.6.0.pkg</string>
+				<string>./aeneas-mac-installer-packages/lxml-3.6.0.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -115,7 +115,7 @@
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>bs4-4.5.1.pkg</string>
+				<string>./aeneas-mac-installer-packages/bs4-4.5.1.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -135,7 +135,7 @@
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>aeneas-1.7.3.pkg</string>
+				<string>./aeneas-mac-installer-packages/aeneas-1.7.3.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -533,7 +533,7 @@
 						<key>VALUE</key>
 						<dict>
 							<key>PATH</key>
-							<string>INFO.txt</string>
+							<string>./INFO.txt</string>
 							<key>PATH_TYPE</key>
 							<integer>1</integer>
 						</dict>
@@ -552,7 +552,7 @@
 						<key>VALUE</key>
 						<dict>
 							<key>PATH</key>
-							<string>LICENSE.txt</string>
+							<string>./LICENSE.txt</string>
 							<key>PATH_TYPE</key>
 							<integer>1</integer>
 						</dict>
@@ -571,7 +571,7 @@
 						<key>VALUE</key>
 						<dict>
 							<key>PATH</key>
-							<string>README.txt</string>
+							<string>./README.txt</string>
 							<key>PATH_TYPE</key>
 							<integer>1</integer>
 						</dict>
@@ -850,7 +850,7 @@
 				</dict>
 			</array>
 			<key>NAME</key>
-			<string>aeneas-mac-setup-1.7.3</string>
+			<string>aeneas-mac-setup-1.7.3_1</string>
 		</dict>
 	</dict>
 	<key>TYPE</key>

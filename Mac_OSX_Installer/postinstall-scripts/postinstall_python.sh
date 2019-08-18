@@ -18,13 +18,14 @@ if [ ! -n "$(grep 'PATH=/usr/local/bin:/usr/local/sbin:$PATH' $HOME/.bash_profil
 	chown $USER $HOME/.bash_profile
 fi
 
-mkdir -p /usr/local/Cellar/python@2/2.7.16/Frameworks/
-ln -s /usr/local/Frameworks/Python.framework /usr/local/Cellar/python@2/2.7.16/Frameworks/
-mkdir -p /usr/local/opt/python@2
-ln -s /usr/local/bin /usr/local/opt/python@2
-mkdir -p /usr/local/opt/
-ln -s /usr/local/Cellar/python@2/2.7.16 /usr/local/opt/python
-mkdir -p /usr/local/opt/python
-ln -s /usr/local/opt/python/Frameworks/Python.framework/Versions/Current/bin /usr/local/opt/python/
+mkdir -p /usr/local/Cellar/python/
+ln -s /usr/local/Frameworks/Python.framework/Versions/2.7/ /usr/local/Cellar/python/2.7.13
+ln -s /usr/local/Frameworks /usr/local/Cellar/python/2.7.13/
+mkdir -p /usr/local/Cellar/python/
+ln -s /usr/local/Frameworks/Python.framework/Versions/3.7/ /usr/local/Cellar/python/3.7.4
+ln -s /usr/local/Frameworks /usr/local/Cellar/python/3.7.4/
+mkdir -p /usr/local/opt
+ln -s /usr/local/Frameworks/Python.framework/Versions/2.7 /usr/local/opt/python
 
 chown -R $USER:admin /usr/local/*
+
