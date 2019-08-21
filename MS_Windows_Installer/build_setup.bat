@@ -10,7 +10,7 @@ if %ERRORLEVEL%==0 goto exeCurl
 
 IF NOT EXIST "%cd%\7z1602.exe" (
   echo Downloading 7-zip... 
-  %CURL% "https://www.7-zip.org/a/7z1801.exe" -o "%cd%\7zSetup.exe"
+  %CURL% "https://www.7-zip.org/a/7z1900.exe" -o "%cd%\7zSetup.exe"
 )
 IF EXIST "%cd%\7zSetup.exe" (
   echo Installing 7-zip...
@@ -22,11 +22,11 @@ IF EXIST "%cd%\7zSetup.exe" (
 
 IF NOT EXIST "%cd%\innosetup-5.5.9-unicode.exe" (
   echo Downloading Inno Setup...
-  %CURL% "http://www.jrsoftware.org/download.php/is-unicode.exe" -o "%cd%\innosetup-5.5.9-unicode.exe"
+  %CURL% "http://www.jrsoftware.org/download.php/is.exe" -o "%cd%\innosetup-6.0.2.exe"
 )
-IF EXIST "%cd%\innosetup-5.5.9-unicode.exe" (
+IF EXIST "%cd%\innosetup-6.0.2.exe" (
   echo Installing InnoSetup...
-  innosetup-5.5.9-unicode.exe /SILENT
+  innosetup-6.0.2.exe /SILENT
 ) ELSE (
   echo Could not find InnoSetup...
   START http://www.jrsoftware.org/isdl.php
@@ -34,14 +34,14 @@ IF EXIST "%cd%\innosetup-5.5.9-unicode.exe" (
 
 IF NOT EXIST "%cd%\python-2.7.13.msi" (
   echo Downloading Python 2.7.13...
-  %CURL% "https://www.python.org/ftp/python/2.7.13/python-2.7.13.msi" -o "%cd%\python-2.7.13.msi"
+  %CURL% "https://www.python.org/ftp/python/2.7.16/python-2.7.16.msi" -o "%cd%\python-2.7.16.msi"
 )
-IF EXIST "%cd%\python-2.7.13.msi" (
-  echo Installing Python 2.7.13...
-  python-2.7.13.msi /PASSIVE
+IF EXIST "%cd%\python-2.7.16.msi" (
+  echo Installing Python 2.7.16...
+  python-2.7.16.msi /PASSIVE
 ) ELSE (
-  echo Could not find Python 2.7.11...
-  START https://www.python.org/downloads/release/python-2712/
+  echo Could not find Python 2.7.16...
+  START https://www.python.org/downloads/release/python-2716/
 )
 
 IF NOT EXIST "%cd%\VCForPython27.msi" (

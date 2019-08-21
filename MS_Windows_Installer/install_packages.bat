@@ -39,10 +39,12 @@ echo Copying espeak.lib to C:\Python\libs\
 copy /b/v/y espeak.lib C:\Python27\libs\
 
 C:\Python27\python -m ensurepip
-C:\Python27\python -m pip install -U pip-9.0.1-py2.py3-none-any.whl
-C:\Python27\python -m pip install -U beautifulsoup4-4.5.1-py2-none-any.whl
+C:\Python27\python -m pip install -U pip-19.2.2-py2.py3-none-any.whl
+C:\Python27\python -m pip install -U numpy-1.16.4-cp27-cp27m-win32.whl
 C:\Python27\python -m pip install -U lxml-3.6.0-cp27-none-win32.whl
-C:\Python27\python -m pip install -U numpy-1.11.2-cp27-none-win32.whl
+C:\Python27\python -m pip install -U beautifulsoup4-4.5.1-py2-none-any.whl
+REM C:\Python27\python -m pip install -U soupsieve-1.9.3-py2.py3-none-any.whl
+REM C:\Python27\python -m pip install -U backports.functools_lru_cache-1.5-py2.py3-none-any.whl
 C:\Python27\python -m pip uninstall -y aeneas
 C:\Python27\python -m pip install aeneas-1.7.3.0-cp27-cp27m-win32.whl
 
