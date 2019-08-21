@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "FFmpeg"
-#define MyAppVersion "3.2"
+#define MyAppVersion "4.2"
 #define MyAppPublisher "Daniel Bair"
 #define MyAppURL "http://www.danielbair.com/"
 #define MyAppExeName "ff-prompt.bat"
@@ -24,9 +24,9 @@ DefaultDirName={pf}\{#MyAppName}
 DisableDirPage=no
 DefaultGroupName={#MyAppName}
 AllowNoIcons=no
-InfoBeforeFile=ffmpeg-3.2\README.txt
+InfoBeforeFile=ffmpeg-4.2\README.txt
 OutputDir=.\
-OutputBaseFilename=setup_ffmpeg-3.2
+OutputBaseFilename=setup_ffmpeg-4.2
 Compression=lzma
 SolidCompression=yes
 ChangesEnvironment=yes
@@ -36,10 +36,10 @@ ChangesEnvironment=yes
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Components]
-Name: "ffmpeg"; Description: "Install FFmpeg 3.2"; ExtraDiskSpaceRequired: 0; Types: full compact custom; Flags: fixed
+Name: "ffmpeg"; Description: "Install FFmpeg 4.2"; ExtraDiskSpaceRequired: 0; Types: full compact custom; Flags: fixed
 
 [Files]
-Source: "ffmpeg-3.2\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "ffmpeg-4.2\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

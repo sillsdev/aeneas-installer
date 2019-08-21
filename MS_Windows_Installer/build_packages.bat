@@ -45,33 +45,33 @@ REM   "%cd%\setup_espeak-1.48.04.exe" /SILENT
   echo START http://internode.dl.sourceforge.net/project/espeak/espeak/espeak-1.48/setup_espeak-1.48.04.exe
 )
 
-DEL "%cd%\ffmpeg-3.2-win32-static.zip"
-IF NOT EXIST "%cd%\ffmpeg-3.2-win32-static.zip" (
+REM DEL "%cd%\ffmpeg-4.2-win32-static.zip"
+IF NOT EXIST "%cd%\ffmpeg-4.2-win32-static.zip" (
   echo Downloading FFmpeg...
-  %CURL% https://archive.org/download/ffmpeg-3.2-win32-static/ffmpeg-3.2-win32-static.zip -o %cd%\ffmpeg-3.2-win32-static.zip
-  REM %CURL% https://ffmpeg.zeranoe.com/builds/win32/static/ffmpeg-3.2-win32-static.zip -o %cd%\ffmpeg-3.2-win32-static.zip
+  REM %CURL% https://archive.org/download/ffmpeg-4.2-win32-static/ffmpeg-4.2-win32-static.zip -o %cd%\ffmpeg-3.2-win32-static.zip
+  %CURL% https://ffmpeg.zeranoe.com/builds/win32/static/ffmpeg-4.2-win32-static.zip -o %cd%\ffmpeg-4.2-win32-static.zip
 )
-IF NOT EXIST "%cd%\setup_ffmpeg-3.2.exe" (
-  "%PF32%\7-Zip\7z.exe" x ffmpeg-*-win32-static.zip -aoa
-  rmdir /q/s ffmpeg-3.2
-  move /y ffmpeg-*-win32-static ffmpeg-3.2
-  "%PF32%\Inno Setup 5\ISCC.exe" FFmpeg_Installer.iss
+IF NOT EXIST "%cd%\setup_ffmpeg-4.2.exe" (
+  "%PF32%\7-Zip\7z.exe" x ffmpeg-4.2-win32-static.zip -aoa
+  rmdir /q/s ffmpeg-4.2
+  move /y ffmpeg-4.2-win32-static ffmpeg-4.2
+  "%PF32%\Inno Setup 6\ISCC.exe" FFmpeg_Installer.iss
 )
-IF EXIST "%cd%\setup_ffmpeg-3.0.2.exe" (
+IF EXIST "%cd%\setup_ffmpeg-4.2.exe" (
 REM   echo Installing FFmpeg...
-REM   "%cd%\setup_ffmpeg-3.0.2.exe" /SILENT
+REM   "%cd%\setup_ffmpeg-4.2.exe" /SILENT
 ) ELSE (
   echo Could not find FFmpeg...
-  echo START http://internode.dl.sourceforge.net/project/espeak/espeak/espeak-1.48/setup_espeak-1.48.04.exe
+  echo START https://ffmpeg.zeranoe.com/builds/
 )
 
 
-C:\Python27\python -m pip download pip==9.0.1
+C:\Python27\python -m pip download pip==19.2.2
 C:\Python27\python -m pip download beautifulsoup4==4.5.1
 C:\Python27\python -m pip download lxml==3.6.0
-C:\Python27\python -m pip download numpy==1.11.2
+C:\Python27\python -m pip download numpy==1.16.4
 
-C:\Python27\python -m pip install -U numpy-1.11.2-cp27-none-win32.whl
+C:\Python27\python -m pip install -U numpy-1.16.4-cp27-cp27m-win32.whl
 C:\Python27\python -m pip install -U lxml-3.6.0-cp27-none-win32.whl
 C:\Python27\python -m pip install -U beautifulsoup4-4.5.1-py2-none-any.whl
 
@@ -103,11 +103,11 @@ REM echo.
 
 REM C:\Windows\System32\ping 127.0.0.1 -n 5 -w 1000 > NUL
 
-IF NOT EXIST "%cd%\python-2.7.13.msi" (
-  echo Downloading Python 2.7.13...
-  %CURL% https://www.python.org/ftp/python/2.7.13/python-2.7.13.msi -o %cd%\python-2.7.13.msi
+IF NOT EXIST "%cd%\python-2.7.16.msi" (
+  echo Downloading Python 2.7.16...
+  %CURL% "https://www.python.org/ftp/python/2.7.16/python-2.7.16.msi" -o "%cd%\python-2.7.16.msi"
 )
 
-"%PF32%\Inno Setup 5\ISCC.exe" Aeneas_Installer.iss
+"%PF32%\Inno Setup 6\ISCC.exe" Aeneas_Installer.iss
 
 ENDLOCAL
