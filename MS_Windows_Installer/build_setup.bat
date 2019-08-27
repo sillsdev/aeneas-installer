@@ -32,16 +32,16 @@ IF EXIST "%cd%\innosetup-6.0.2.exe" (
   START http://www.jrsoftware.org/isdl.php
 )
 
-IF NOT EXIST "%cd%\python-2.7.13.msi" (
-  echo Downloading Python 2.7.13...
-  %CURL% "https://www.python.org/ftp/python/2.7.16/python-2.7.16.msi" -o "%cd%\python-2.7.16.msi"
+IF NOT EXIST "%cd%\python-3.7.4.exe" (
+  echo Downloading Python 3.7.4...
+  %CURL% "https://www.python.org/ftp/python/3.7.4/python-3.7.4.exe" -o "%cd%\python-3.7.4.exe"
 )
-IF EXIST "%cd%\python-2.7.16.msi" (
-  echo Installing Python 2.7.16...
-  python-2.7.16.msi /PASSIVE
+IF EXIST "%cd%\python-3.7.4.exe" (
+  echo Installing Python 3.7.4...
+  python-3.7.4.exe /passive InstallAllUsers=1 TargetDir=C:\Python37-32 PrependPath=1
 ) ELSE (
-  echo Could not find Python 2.7.16...
-  START https://www.python.org/downloads/release/python-2716/
+  echo Could not find Python 3.7.4...
+  START https://www.python.org/downloads/release/python-374/
 )
 
 IF NOT EXIST "%cd%\VCForPython27.msi" (
@@ -66,6 +66,18 @@ IF EXIST "%cd%\dotNetFx35setup.exe" (
 ) ELSE (
   echo Could not find Microsoft .NET Framework 3.5...
   START http://www.microsoft.com/en-us/download/details.aspx?id=21
+)
+
+IF NOT EXIST "%cd%\Git-2.23.0-32-bit.exe" (
+echo Downloading Git for Windows 2.23.0...
+  %CURL% "https://github.com/git-for-windows/git/releases/download/v2.23.0.windows.1/Git-2.23.0-32-bit.exe" -o "%cd%\Git-2.23.0-32-bit.exe"
+)
+IF EXIST "%cd%\Git-2.23.0-32-bit.exe" (
+  echo Installing Git for Windows 2.23.0...
+  Git-2.23.0-32-bit.exe /SILENT
+) ELSE (
+  echo Could not find Git for Windows 2.23.0...
+  START https://git-scm.com/download/win
 )
 
 echo Now run build_packages.bat
