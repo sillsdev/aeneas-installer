@@ -1,19 +1,27 @@
 #!/bin/bash
 
-if [ ! -f "/usr/local/bin/node" ]; then
-	brew install node
-fi
-if [ ! -f "/usr/local/bin/appdmg" ]; then
-	npm install -g appdmg
-fi
-if [ ! -f "/Applications/Scripture App Builder.app" ]; then
-	open "https://drive.google.com/uc?export=download&id=0BzKJe4QoGwmXZHFQOXNTT2w4eHc"
-	echo "Cannot find /Applications/Scripture App Builder.app"
-	exit
-fi
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
-rm -vf ./Scripture\ App\ Builder-1.11.1.dmg
-appdmg appdmg.json ./Scripture\ App\ Builder-1.11.1.dmg
-open -R ./Scripture\ App\ Builder-1.11.1.dmg
-open ./Scripture\ App\ Builder-1.11.1.dmg
+CURDIR=`dirname $0`
+echo cd $CURDIR
+cd $CURDIR
+
+brew install danielbair/tap/create-dmg
+
+# mkdir -p aeneas-mac-uninstall-scripts
+# cp _*.sh aeneas-mac-uninstall-scripts
+DMGFILE="Scripture_App_Builder-3.3.dmg"
+BUILDTMP="$(mktemp -d -t createdmg.tmp.XXXXXXXX)"
+cp -r /Applications/Scripture\ App\ Builder.app $BUILDTMP
+rm -f "$DMGFILE"
+create-dmg --volname Scripture_App_Builder \
+	--window-pos 20 20 \
+	--icon-size 80 \
+	--icon 'Scripture App Builder.app' 144 144 \
+	--app-drop-link 344 144 \
+	$DMGFILE $BUILDTMP
+# rm -rf aeneas-mac-uninstall-scripts
+rm -rf "$BUILDTMP"
+open -R "$DMGFILE"
+open "$DMGFILE"
 

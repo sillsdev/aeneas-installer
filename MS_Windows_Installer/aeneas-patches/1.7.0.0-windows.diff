@@ -1,0 +1,21 @@
+Binary files aeneas-1.7.0.0-orig/.DS_Store and aeneas-1.7.0.0/.DS_Store differ
+Common subdirectories: aeneas-1.7.0.0-orig/aeneas and aeneas-1.7.0.0/aeneas
+Common subdirectories: aeneas-1.7.0.0-orig/aeneas.egg-info and aeneas-1.7.0.0/aeneas.egg-info
+Common subdirectories: aeneas-1.7.0.0-orig/bin and aeneas-1.7.0.0/bin
+Common subdirectories: aeneas-1.7.0.0-orig/docs and aeneas-1.7.0.0/docs
+Common subdirectories: aeneas-1.7.0.0-orig/licenses and aeneas-1.7.0.0/licenses
+Common subdirectories: aeneas-1.7.0.0-orig/output and aeneas-1.7.0.0/output
+diff -u aeneas-1.7.0.0-orig/setupmeta.py aeneas-1.7.0.0/setupmeta.py
+--- aeneas-1.7.0.0-orig/setupmeta.py	2016-12-07 03:38:34.000000000 -0500
++++ aeneas-1.7.0.0/setupmeta.py	2016-12-08 11:22:19.000000000 -0500
+@@ -54,7 +54,7 @@
+ # NOTE: this list should be the same as requirements.txt
+ PKG_INSTALL_REQUIRES = [
+     "BeautifulSoup4>=4.5.1",
+-    "lxml>=3.6.4",
++    "lxml>=3.6.0",
+     "numpy>=1.9"
+ ]
+ 
+Common subdirectories: aeneas-1.7.0.0-orig/thirdparty and aeneas-1.7.0.0/thirdparty
+Common subdirectories: aeneas-1.7.0.0-orig/wiki and aeneas-1.7.0.0/wiki
