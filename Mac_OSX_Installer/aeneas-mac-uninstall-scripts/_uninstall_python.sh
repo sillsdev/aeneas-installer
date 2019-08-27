@@ -6,7 +6,7 @@ export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 #python -m ensurepip > /dev/null
 #sudo -H pip uninstall -y setuptools
 
-echo "Uninstalling python-2.7.11 packages..."
+echo "Uninstalling python packages..."
 
 function pkgutil-rm {
 	location=$(pkgutil --pkg-info $1 | grep "location:" | cut -d':' -f2 | sed -e "s/^[[:space:]]*//")

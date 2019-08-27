@@ -5,41 +5,17 @@
 	<key>PACKAGES</key>
 	<array>
 		<dict>
-			<key>MUST-CLOSE-APPLICATION-ITEMS</key>
-			<array/>
-			<key>MUST-CLOSE-APPLICATIONS</key>
-			<false/>
 			<key>PACKAGE_SETTINGS</key>
 			<dict>
-				<key>AUTHENTICATION</key>
-				<integer>0</integer>
-				<key>CONCLUSION_ACTION</key>
-				<integer>0</integer>
-				<key>FOLLOW_SYMBOLIC_LINKS</key>
-				<false/>
-				<key>IDENTIFIER</key>
-				<string></string>
 				<key>LOCATION</key>
-				<integer>3</integer>
+				<integer>0</integer>
 				<key>NAME</key>
-				<string>ffmpeg-4.1.4_1</string>
-				<key>OVERWRITE_PERMISSIONS</key>
-				<false/>
-				<key>PAYLOAD_SIZE</key>
-				<integer>-1</integer>
-				<key>REFERENCE_PATH</key>
-				<string>./aeneas-mac-installer-packages/ffmpeg-4.1.4_1.pkg</string>
-				<key>RELOCATABLE</key>
-				<false/>
-				<key>USE_HFS+_COMPRESSION</key>
-				<false/>
-				<key>VERSION</key>
-				<string></string>
+				<string>ffmpeg-[FFMPEG_VER]</string>
 			</dict>
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>./aeneas-mac-installer-packages/ffmpeg-4.1.4_1.pkg</string>
+				<string>./aeneas-mac-installer-packages/ffmpeg-[FFMPEG_VER].pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -49,41 +25,17 @@
 			<string>5D12B5F3-03FB-412F-B2D9-DDF1340FFF5F</string>
 		</dict>
 		<dict>
-			<key>MUST-CLOSE-APPLICATION-ITEMS</key>
-			<array/>
-			<key>MUST-CLOSE-APPLICATIONS</key>
-			<false/>
 			<key>PACKAGE_SETTINGS</key>
 			<dict>
-				<key>AUTHENTICATION</key>
-				<integer>0</integer>
-				<key>CONCLUSION_ACTION</key>
-				<integer>0</integer>
-				<key>FOLLOW_SYMBOLIC_LINKS</key>
-				<false/>
-				<key>IDENTIFIER</key>
-				<string></string>
 				<key>LOCATION</key>
-				<integer>3</integer>
+				<integer>0</integer>
 				<key>NAME</key>
-				<string>espeak-1.48.04_2</string>
-				<key>OVERWRITE_PERMISSIONS</key>
-				<false/>
-				<key>PAYLOAD_SIZE</key>
-				<integer>-1</integer>
-				<key>REFERENCE_PATH</key>
-				<string>./</string>
-				<key>RELOCATABLE</key>
-				<false/>
-				<key>USE_HFS+_COMPRESSION</key>
-				<false/>
-				<key>VERSION</key>
-				<string></string>
+				<string>espeak-[ESPEAK_VER]</string>
 			</dict>
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>./aeneas-mac-installer-packages/espeak-1.48.04_2.pkg</string>
+				<string>./aeneas-mac-installer-packages/espeak-[ESPEAK_VER].pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -93,41 +45,17 @@
 			<string>620DA092-85CF-4EFB-9CDE-F8BC44EFBA48</string>
 		</dict>
 		<dict>
-			<key>MUST-CLOSE-APPLICATION-ITEMS</key>
-			<array/>
-			<key>MUST-CLOSE-APPLICATIONS</key>
-			<false/>
 			<key>PACKAGE_SETTINGS</key>
 			<dict>
-				<key>AUTHENTICATION</key>
-				<integer>0</integer>
-				<key>CONCLUSION_ACTION</key>
-				<integer>0</integer>
-				<key>FOLLOW_SYMBOLIC_LINKS</key>
-				<false/>
-				<key>IDENTIFIER</key>
-				<string></string>
 				<key>LOCATION</key>
-				<integer>3</integer>
+				<integer>0</integer>
 				<key>NAME</key>
-				<string>python-3.7.4</string>
-				<key>OVERWRITE_PERMISSIONS</key>
-				<false/>
-				<key>PAYLOAD_SIZE</key>
-				<integer>-1</integer>
-				<key>REFERENCE_PATH</key>
-				<string>./</string>
-				<key>RELOCATABLE</key>
-				<false/>
-				<key>USE_HFS+_COMPRESSION</key>
-				<false/>
-				<key>VERSION</key>
-				<string></string>
+				<string>python-[PYTHON_VER]</string>
 			</dict>
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>./aeneas-mac-installer-packages/python-3.7.4.pkg</string>
+				<string>./aeneas-mac-installer-packages/python-[PYTHON_VER].pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -137,41 +65,17 @@
 			<string>73764B79-9E35-4A80-A0AD-698DE118995A</string>
 		</dict>
 		<dict>
-			<key>MUST-CLOSE-APPLICATION-ITEMS</key>
-			<array/>
-			<key>MUST-CLOSE-APPLICATIONS</key>
-			<false/>
 			<key>PACKAGE_SETTINGS</key>
 			<dict>
-				<key>AUTHENTICATION</key>
-				<integer>0</integer>
-				<key>CONCLUSION_ACTION</key>
-				<integer>0</integer>
-				<key>FOLLOW_SYMBOLIC_LINKS</key>
-				<false/>
-				<key>IDENTIFIER</key>
-				<string></string>
 				<key>LOCATION</key>
-				<integer>3</integer>
+				<integer>0</integer>
 				<key>NAME</key>
-				<string>numpy-1.17.1</string>
-				<key>OVERWRITE_PERMISSIONS</key>
-				<false/>
-				<key>PAYLOAD_SIZE</key>
-				<integer>-1</integer>
-				<key>REFERENCE_PATH</key>
-				<string>./</string>
-				<key>RELOCATABLE</key>
-				<false/>
-				<key>USE_HFS+_COMPRESSION</key>
-				<false/>
-				<key>VERSION</key>
-				<string></string>
+				<string>numpy-[NUMPY_VER]</string>
 			</dict>
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>./aeneas-mac-installer-packages/numpy-1.17.1.pkg</string>
+				<string>./aeneas-mac-installer-packages/numpy-[NUMPY_VER].pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -181,41 +85,17 @@
 			<string>2A255122-9AEC-4254-8A88-BF0AA02CF92E</string>
 		</dict>
 		<dict>
-			<key>MUST-CLOSE-APPLICATION-ITEMS</key>
-			<array/>
-			<key>MUST-CLOSE-APPLICATIONS</key>
-			<false/>
 			<key>PACKAGE_SETTINGS</key>
 			<dict>
-				<key>AUTHENTICATION</key>
-				<integer>0</integer>
-				<key>CONCLUSION_ACTION</key>
-				<integer>0</integer>
-				<key>FOLLOW_SYMBOLIC_LINKS</key>
-				<false/>
-				<key>IDENTIFIER</key>
-				<string></string>
 				<key>LOCATION</key>
-				<integer>3</integer>
+				<integer>0</integer>
 				<key>NAME</key>
-				<string>lxml-4.4.1</string>
-				<key>OVERWRITE_PERMISSIONS</key>
-				<false/>
-				<key>PAYLOAD_SIZE</key>
-				<integer>-1</integer>
-				<key>REFERENCE_PATH</key>
-				<string>./</string>
-				<key>RELOCATABLE</key>
-				<false/>
-				<key>USE_HFS+_COMPRESSION</key>
-				<false/>
-				<key>VERSION</key>
-				<string></string>
+				<string>lxml-[LXML_VER]</string>
 			</dict>
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>./aeneas-mac-installer-packages/lxml-4.4.1.pkg</string>
+				<string>./aeneas-mac-installer-packages/lxml-[LXML_VER].pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -225,41 +105,17 @@
 			<string>F6331165-F81F-49A5-AB55-E9B9EF99337D</string>
 		</dict>
 		<dict>
-			<key>MUST-CLOSE-APPLICATION-ITEMS</key>
-			<array/>
-			<key>MUST-CLOSE-APPLICATIONS</key>
-			<false/>
 			<key>PACKAGE_SETTINGS</key>
 			<dict>
-				<key>AUTHENTICATION</key>
-				<integer>0</integer>
-				<key>CONCLUSION_ACTION</key>
-				<integer>0</integer>
-				<key>FOLLOW_SYMBOLIC_LINKS</key>
-				<false/>
-				<key>IDENTIFIER</key>
-				<string></string>
 				<key>LOCATION</key>
-				<integer>3</integer>
+				<integer>0</integer>
 				<key>NAME</key>
-				<string>bs4-4.8.0</string>
-				<key>OVERWRITE_PERMISSIONS</key>
-				<false/>
-				<key>PAYLOAD_SIZE</key>
-				<integer>-1</integer>
-				<key>REFERENCE_PATH</key>
-				<string>./</string>
-				<key>RELOCATABLE</key>
-				<false/>
-				<key>USE_HFS+_COMPRESSION</key>
-				<false/>
-				<key>VERSION</key>
-				<string></string>
+				<string>bs4-[BS4_VER]</string>
 			</dict>
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>./aeneas-mac-installer-packages/bs4-4.8.0.pkg</string>
+				<string>./aeneas-mac-installer-packages/bs4-[BS4_VER].pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -269,41 +125,17 @@
 			<string>BD5AC9AC-4159-4DE6-A8E1-D44FDF3C000A</string>
 		</dict>
 		<dict>
-			<key>MUST-CLOSE-APPLICATION-ITEMS</key>
-			<array/>
-			<key>MUST-CLOSE-APPLICATIONS</key>
-			<false/>
 			<key>PACKAGE_SETTINGS</key>
 			<dict>
-				<key>AUTHENTICATION</key>
-				<integer>0</integer>
-				<key>CONCLUSION_ACTION</key>
-				<integer>0</integer>
-				<key>FOLLOW_SYMBOLIC_LINKS</key>
-				<false/>
-				<key>IDENTIFIER</key>
-				<string></string>
 				<key>LOCATION</key>
-				<integer>3</integer>
+				<integer>0</integer>
 				<key>NAME</key>
-				<string>aeneas-1.7.3.0</string>
-				<key>OVERWRITE_PERMISSIONS</key>
-				<false/>
-				<key>PAYLOAD_SIZE</key>
-				<integer>-1</integer>
-				<key>REFERENCE_PATH</key>
-				<string>./</string>
-				<key>RELOCATABLE</key>
-				<false/>
-				<key>USE_HFS+_COMPRESSION</key>
-				<false/>
-				<key>VERSION</key>
-				<string></string>
+				<string>aeneas-[AENEAS_VER]</string>
 			</dict>
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>./aeneas-mac-installer-packages/aeneas-1.7.3.0.pkg</string>
+				<string>./aeneas-mac-installer-packages/aeneas-[AENEAS_VER].pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -627,6 +459,8 @@
 						<dict/>
 					</dict>
 				</dict>
+				<key>INSTALLATION TYPE</key>
+				<integer>0</integer>
 				<key>MODE</key>
 				<integer>0</integer>
 			</dict>
@@ -708,6 +542,8 @@
 			</dict>
 			<key>LICENSE</key>
 			<dict>
+				<key>KEYWORDS</key>
+				<dict/>
 				<key>LOCALIZATIONS</key>
 				<array>
 					<dict>
@@ -823,6 +659,10 @@
 					<true/>
 				</dict>
 			</array>
+			<key>POSTINSTALL_PATH</key>
+			<dict/>
+			<key>PREINSTALL_PATH</key>
+			<dict/>
 			<key>RESOURCES</key>
 			<array/>
 			<key>ROOT_VOLUME_ONLY</key>
@@ -830,6 +670,8 @@
 		</dict>
 		<key>PROJECT_SETTINGS</key>
 		<dict>
+			<key>ADVANCED_OPTIONS</key>
+			<dict/>
 			<key>BUILD_FORMAT</key>
 			<integer>0</integer>
 			<key>BUILD_PATH</key>
@@ -1008,11 +850,7 @@
 				</dict>
 			</array>
 			<key>NAME</key>
-			<string>aeneas-mac-setup-1.7.3.0_2</string>
-			<key>PAYLOAD_ONLY</key>
-			<false/>
-			<key>TREAT_MISSING_PRESENTATION_DOCUMENTS_AS_WARNING</key>
-			<false/>
+			<string>aeneas-mac-setup-[AENEAS_VER]_2</string>
 		</dict>
 	</dict>
 	<key>TYPE</key>

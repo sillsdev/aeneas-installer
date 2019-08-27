@@ -15,3 +15,4 @@ fi
 #ln -s /usr/local/Cellar/espeak/1.48.04_1 /usr/local/opt/espeak
 
 chown -R $USER:admin /usr/local/*
+

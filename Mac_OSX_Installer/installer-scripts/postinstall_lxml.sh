@@ -2,9 +2,6 @@
 
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
-#python -m ensurepip 2> /dev/null
-#pip install -U pip setuptools wheel
-
 mkdir -p $HOME/Library/Python/2.7/lib/python/site-packages
 touch $HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth
 if [ ! -n "$(grep '/usr/local/lib/python2.7/site-packages' $HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth)" ]; then
@@ -18,14 +15,7 @@ if [ ! -n "$(grep 'PATH=/usr/local/bin:/usr/local/sbin:$PATH' $HOME/.bash_profil
 	chown $USER $HOME/.bash_profile
 fi
 
-mkdir -p /usr/local/Cellar/python/
-ln -s /usr/local/Frameworks/Python.framework/Versions/2.7/ /usr/local/Cellar/python/2.7.13
-ln -s /usr/local/Frameworks /usr/local/Cellar/python/2.7.13/
-mkdir -p /usr/local/Cellar/python/
-ln -s /usr/local/Frameworks/Python.framework/Versions/3.7/ /usr/local/Cellar/python/3.7.4
-ln -s /usr/local/Frameworks /usr/local/Cellar/python/3.7.4/
-mkdir -p /usr/local/opt
-ln -s /usr/local/Frameworks/Python.framework/Versions/2.7 /usr/local/opt/python
-
+chown -R $USER:admin /usr/local/*
+pip3 install -U /usr/local/share/aeneas_tools/lxml-*.whl
 chown -R $USER:admin /usr/local/*
 

@@ -3,11 +3,11 @@ IFS=$'\n'
 
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
-python -m ensurepip > /dev/null
+python3 -m ensurepip > /dev/null
 
 echo "Uninstalling python-numpy..."
 
-sudo -H pip uninstall -y numpy
+sudo -H pip3 uninstall -y numpy
 
 function pkgutil-rm {
 	location=$(pkgutil --pkg-info $1 | grep "location:" | cut -d':' -f2 | sed -e "s/^[[:space:]]*//")

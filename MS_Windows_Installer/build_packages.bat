@@ -18,15 +18,16 @@ IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
   (call )
 :ENDIF
 
-C:\Python27\python -m ensurepip
-C:\Python27\python -m pip install -U pip setuptools wheel
+C:\Python37-32\python -m ensurepip
+C:\Python37-32\Scripts\pip install -U pip setuptools wheel
 
-C:\Python27\python -m pip install -U patch
+C:\Python37-32\Scripts\pip install -U patch
 
-C:\Python27\python -m pip install -U wget
+C:\Python37-32\Scripts\pip install -U wget
+
 2>nul curl.exe --version
 if %ERRORLEVEL%==0 goto exeCurl
-  REM set CURL=C:\Python27\python -m wget
+  REM set CURL=C:\Python37-32\python -m wget
   set CURL=call curl.bat -L
   goto endIf
 :exeCurl
@@ -65,29 +66,13 @@ REM   "%cd%\setup_ffmpeg-4.2.exe" /SILENT
   echo START https://ffmpeg.zeranoe.com/builds/
 )
 
+C:\Python37-32\Scripts\pip install -U numpy
+C:\Python37-32\Scripts\pip install -U aeneas
 
-C:\Python27\python -m pip download pip==19.2.2
-C:\Python27\python -m pip download beautifulsoup4==4.5.1
-C:\Python27\python -m pip download lxml==3.6.0
-C:\Python27\python -m pip download numpy==1.16.4
+C:\Python37-32\Scripts\pip wheel pip
+C:\Python37-32\Scripts\pip wheel numpy
+C:\Python37-32\Scripts\pip wheel aeneas
 
-C:\Python27\python -m pip install -U numpy-1.16.4-cp27-cp27m-win32.whl
-C:\Python27\python -m pip install -U lxml-3.6.0-cp27-none-win32.whl
-C:\Python27\python -m pip install -U beautifulsoup4-4.5.1-py2-none-any.whl
-
-C:\Python27\python -m pip download aeneas==1.7.3
-
-RMDIR /S /Q aeneas-1.7.3.0
-"%PF32%\7-Zip\7z.exe" e aeneas-1.7.3.0.tar.gz -aoa
-"%PF32%\7-Zip\7z.exe" x aeneas-1.7.3.0.tar -aoa
-echo copying espeak.lib to C:\Python27\libs\
-copy /b/v/y espeak.lib C:\Python27\libs\
-cd aeneas-1.7.3.0
-REM copy ..\aeneas-patches\setupmeta.py .
-REM C:\Python27\python.exe -m patch -v -p 1 --debug ..\aeneas-patches\1.7.0.0-windows.diff
-C:\Python27\python setup.py build_ext --inplace
-C:\Python27\python setup.py bdist_wheel
-copy /b/v/y dist\aeneas-*-win32.whl ..\
 cd %CURDIR%
 
 REM call install_packages.bat
@@ -96,18 +81,25 @@ REM C:\Windows\System32\ping 127.0.0.1 -n 10 -w 1000 > NUL
 
 echo.
 set PYTHONIOENCODING=UTF-8
-REM C:\Python27\python -m aeneas.diagnostics
-REM C:\Python27\python -m aeneas.tools.execute_task --version
-REM C:\Python27\python -m aeneas.tools.synthesize_text list "This is a test|with two lines" eng -v C:\Windows\Temp\test.wav
+REM C:\Python37-32\python -m aeneas.diagnostics
+REM C:\Python37-32\python -m aeneas.tools.execute_task --version
+REM C:\Python37-32\python -m aeneas.tools.synthesize_text list "This is a test|with two lines" eng -v C:\Windows\Temp\test.wav
 REM echo.
 
 REM C:\Windows\System32\ping 127.0.0.1 -n 5 -w 1000 > NUL
 
-IF NOT EXIST "%cd%\python-2.7.16.msi" (
-  echo Downloading Python 2.7.16...
-  %CURL% "https://www.python.org/ftp/python/2.7.16/python-2.7.16.msi" -o "%cd%\python-2.7.16.msi"
+IF NOT EXIST "%cd%\python-3.7.4.exe" (
+  echo Downloading Python 3.7.4...
+  %CURL% "https://www.python.org/ftp/python/3.7.4/python-3.7.4.exe" -o "%cd%\python-3.7.4.exe"
+)
+IF EXIST "%cd%\python-3.7.4.exe" (
+  echo Installing Python 3.7.4...
+  python-3.7.4.exe /passive InstallAllUsers=1 TargetDir=C:\Python37-32 PrependPath=1
+) ELSE (
+  echo Could not find Python 3.7.4...
+  START https://www.python.org/downloads/release/python-374/
 )
 
-"%PF32%\Inno Setup 6\ISCC.exe" Aeneas_Installer.iss
+echo Now run build_installer.bat
 
 ENDLOCAL
