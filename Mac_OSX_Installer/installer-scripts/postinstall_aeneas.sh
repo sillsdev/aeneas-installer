@@ -16,6 +16,8 @@ if [ ! -n "$(grep 'PATH=/usr/local/bin:/usr/local/sbin:$PATH' $HOME/.bash_profil
 fi
 
 chown -R $USER:admin /usr/local/*
+pip3 install -U /usr/local/share/aeneas_tools/aeneas-*.whl
+chown -R $USER:admin /usr/local/*
 
 osascript <<END
 tell application "Terminal"

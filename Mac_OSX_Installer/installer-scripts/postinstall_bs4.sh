@@ -2,7 +2,6 @@
 
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
-mkdir -p $HOME/Library/Python/2.7/lib/python/site-packages
 touch $HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth
 if [ ! -n "$(grep '/usr/local/lib/python2.7/site-packages' $HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth)" ]; then
 	echo 'import sys; sys.path.insert(1, "/usr/local/lib/python2.7/site-packages")' >> $HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth
@@ -16,3 +15,8 @@ if [ ! -n "$(grep 'PATH=/usr/local/bin:/usr/local/sbin:$PATH' $HOME/.bash_profil
 fi
 
 chown -R $USER:admin /usr/local/*
+pip3 install -U /usr/local/share/aeneas_tools/bs4-*.whl
+chown -R $USER:admin /usr/local/*
+pip3 install -U /usr/local/share/aeneas_tools/soupsieve-*.whl
+chown -R $USER:admin /usr/local/*
+
