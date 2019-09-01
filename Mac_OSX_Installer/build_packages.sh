@@ -134,23 +134,7 @@ if [ ! -f "aeneas-mac-installer-packages/bs4-$bs4_ver.pkg" ]; then
 else
 	echo "Found bs4-$bs4_ver.pkg"
 fi
-#if [ ! -f "aeneas-mac-installer-packages/soupsieve-$soupsieve_ver.pkg" ]; then
-#	echo ""
-#	pip3 wheel soupsieve
-#	BUILDTMP="$(mktemp -d -t soupsieve.tmp.XXXXXXXX)"
-#	mkdir -p $BUILDTMP/Payload/usr/local/share/aeneas_tools/
-#	cp -v soupsieve-$soupsieve_ver*.whl $BUILDTMP/Payload/usr/local/share/aeneas_tools/
-#	mv -v soupsieve-$soupsieve_ver*.whl python_wheels/
-#	mkdir -p $BUILDTMP/Scripts/
-#	cp -v installer-scripts/postinstall_soupsieve.sh $BUILDTMP/Scripts/postinstall
-#	cp -v installer-scripts/preinstall_soupsieve.sh $BUILDTMP/Scripts/preinstall
-#	pkgbuild --quiet --root "$BUILDTMP/Payload" --identifier "org.python.python.soupsieve" --version "$soupsieve_ver" --scripts "$BUILDTMP/Scripts" "soupsieve-$soupsieve_ver.pkg"
-#	[ $? = 0 ] || exit 1
-#	mv bs4*.pkg aeneas-mac-installer-packages/
-#	rm -rf $BUILDTMP
-#else
-#	echo "Found soupsieve-$soupsieve_ver.pkg"
-#fi
 
 cd $CURDIR
 
+echo -e "\n\nNow run build_installer.sh\n\n"

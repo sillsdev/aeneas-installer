@@ -42,3 +42,4 @@ if [ -f "aeneas-mac-setup-$VERSION.pkg" ]; then
 	cp -v /tmp/aeneas-mac-setup-$VERSION.pkg ./
 fi
 
+echo -e "\n\nNow run build_dmg.sh\n\n"
