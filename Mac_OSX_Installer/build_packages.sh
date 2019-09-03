@@ -14,14 +14,15 @@ brew update
 brew install danielbair/tap/espeak ffmpeg python
 
 export espeak_ver=`brew info danielbair/tap/espeak | grep Cellar | cut -d' ' -f1 | cut -d'/' -f6`
-export ffmpeg_ver=`brew info ffmpeg | grep Cellar | cut -d' ' -f1 | cut -d'/' -f6`
+export ffmpeg_ver=`curl -s https://evermeet.cx/ffmpeg/info/ffmpeg/release | jq -r '.version'`
+#export ffmpeg_ver=`brew info ffmpeg | grep Cellar | cut -d' ' -f1 | cut -d'/' -f6`
 export python_ver=`brew info python | grep Cellar | cut -d' ' -f1 | cut -d'/' -f6`
 
 if [ ! -f "aeneas-mac-installer-packages/espeak-$espeak_ver.pkg" ]; then
         echo ""
-        install_name_tool -id /usr/local/lib/libespeak.dylib /usr/local/lib/libespeak.dylib 
-        install_name_tool /usr/local/lib/libportaudio.2.dylib -id /usr/local/lib/libportaudio.2.dylib 
-        install_name_tool /usr/local/lib/libespeak.dylib -change /usr/local/opt/portaudio/lib/libportaudio.2.dylib /usr/local/lib/libportaudio.2.dylib 
+        sudo install_name_tool -id /usr/local/lib/libespeak.dylib /usr/local/lib/libespeak.dylib 
+        sudo install_name_tool /usr/local/lib/libportaudio.2.dylib -id /usr/local/lib/libportaudio.2.dylib 
+        sudo install_name_tool /usr/local/lib/libespeak.dylib -change /usr/local/opt/portaudio/lib/libportaudio.2.dylib /usr/local/lib/libportaudio.2.dylib 
         brew pkg --with-deps --without-kegs --postinstall-script="./installer-scripts/postinstall_espeak.sh" danielbair/tap/espeak
         [ $? = 0 ] || exit 1
 	mv espeak*.pkg aeneas-mac-installer-packages/
@@ -29,15 +30,37 @@ else
         echo "Found espeak-$espeak_ver.pkg"
 fi
 if [ ! -f "aeneas-mac-installer-packages/ffmpeg-$ffmpeg_ver.pkg" ]; then
-        echo ""
-        brew pkg --with-deps --without-kegs --postinstall-script="./installer-scripts/postinstall_ffmpeg.sh" ffmpeg
+	echo ""
+        if [ ! -f "./ffmpeg-$ffmpeg_ver-macos64-static.zip" ]; then
+                wget --trust-server-names https://ffmpeg.zeranoe.com/builds/macos64/static/ffmpeg-$ffmpeg_ver-macos64-static.zip
+        fi
+        BUILDTMP="$(mktemp -d -t ffmpeg.tmp.XXXXXXXX)"
+        mkdir -p $BUILDTMP/Payload/usr/local/opt/
+        unzip ffmpeg-$ffmpeg_ver-macos64-static.zip -d $BUILDTMP/Payload/usr/local/opt/
+        mv -v $BUILDTMP/Payload/usr/local/opt/ffmpeg-$ffmpeg_ver-macos64-static $BUILDTMP/Payload/usr/local/opt/ffmpeg
+        mkdir -p $BUILDTMP/Payload/usr/local/opt/ffmpeg/share/
+        mv -v $BUILDTMP/Payload/usr/local/opt/ffmpeg/doc $BUILDTMP/Payload/usr/local/opt/ffmpeg/share/doc
+        mkdir -p $BUILDTMP/Scripts/
+        cp -v installer-scripts/postinstall_ffmpeg.sh $BUILDTMP/Scripts/postinstall
+        cp -v installer-scripts/preinstall_ffmpeg.sh $BUILDTMP/Scripts/preinstall
+        pkgbuild --root "$BUILDTMP/Payload" --identifier "org.ffmpeg.ffmpeg" --version "$ffmpeg_ver" --scripts "$BUILDTMP/Scripts" "ffmpeg-$ffmpeg_ver.pkg"
         [ $? = 0 ] || exit 1
-	mv ffmpeg*.pkg aeneas-mac-installer-packages/
+        mv ffmpeg*.pkg aeneas-mac-installer-packages/
+        rm -rf $BUILDTMP
 else
         echo "Found ffmpeg-$ffmpeg_ver.pkg"
 fi
+#if [ ! -f "aeneas-mac-installer-packages/ffmpeg-$ffmpeg_ver.pkg" ]; then
+#        echo ""
+#        brew pkg --with-deps --without-kegs --postinstall-script="./installer-scripts/postinstall_ffmpeg.sh" ffmpeg
+#        [ $? = 0 ] || exit 1
+#	mv ffmpeg*.pkg aeneas-mac-installer-packages/
+#else
+#        echo "Found ffmpeg-$ffmpeg_ver.pkg"
+#fi
 if [ ! -f "aeneas-mac-installer-packages/python-$python_ver.pkg" ]; then
         echo ""
+	#wget --trust-server-names https://www.python.org/ftp/python/3.7.4/python-3.7.4-macosx10.9.pkg
         brew pkg --identifier-prefix="org.python" --with-deps --without-kegs --preinstall-script="./installer-scripts/preinstall_python.sh" --postinstall-script="./installer-scripts/postinstall_python.sh" python
         [ $? = 0 ] || exit 1
 	mv python*.pkg aeneas-mac-installer-packages/
@@ -74,7 +97,7 @@ if [ ! -f "aeneas-mac-installer-packages/aeneas-$aeneas_ver.pkg" ]; then
 	mkdir -p $BUILDTMP/Scripts/
 	cp -v installer-scripts/postinstall_aeneas.sh $BUILDTMP/Scripts/postinstall
 	cp -v installer-scripts/preinstall_aeneas.sh $BUILDTMP/Scripts/preinstall
-	pkgbuild --quiet --root "$BUILDTMP/Payload" --identifier "org.python.python.aeneas" --version "$aeneas_ver" --scripts "$BUILDTMP/Scripts" "aeneas-$aeneas_ver.pkg"
+	pkgbuild --root "$BUILDTMP/Payload" --identifier "org.python.python.aeneas" --version "$aeneas_ver" --scripts "$BUILDTMP/Scripts" "aeneas-$aeneas_ver.pkg"
 	[ $? = 0 ] || exit 1
 	mv aeneas*.pkg aeneas-mac-installer-packages/
 	rm -rf $BUILDTMP
@@ -91,7 +114,7 @@ if [ ! -f "aeneas-mac-installer-packages/numpy-$numpy_ver.pkg" ]; then
 	mkdir -p $BUILDTMP/Scripts/
 	cp -v installer-scripts/postinstall_numpy.sh $BUILDTMP/Scripts/postinstall
 	cp -v installer-scripts/preinstall_numpy.sh $BUILDTMP/Scripts/preinstall
-	pkgbuild --quiet --root "$BUILDTMP/Payload" --identifier "org.python.python.numpy" --version "$numpy_ver" --scripts "$BUILDTMP/Scripts" "numpy-$numpy_ver.pkg"
+	pkgbuild --root "$BUILDTMP/Payload" --identifier "org.python.python.numpy" --version "$numpy_ver" --scripts "$BUILDTMP/Scripts" "numpy-$numpy_ver.pkg"
 	[ $? = 0 ] || exit 1
 	mv numpy*.pkg aeneas-mac-installer-packages/
 	rm -rf $BUILDTMP
@@ -108,7 +131,7 @@ if [ ! -f "aeneas-mac-installer-packages/lxml-$lxml_ver.pkg" ]; then
 	mkdir -p $BUILDTMP/Scripts/
 	cp -v installer-scripts/postinstall_lxml.sh $BUILDTMP/Scripts/postinstall
 	cp -v installer-scripts/preinstall_lxml.sh $BUILDTMP/Scripts/preinstall
-	pkgbuild --quiet --root "$BUILDTMP/Payload" --identifier "org.python.python.lxml" --version "$lxml_ver" --scripts "$BUILDTMP/Scripts" "lxml-$lxml_ver.pkg"
+	pkgbuild --root "$BUILDTMP/Payload" --identifier "org.python.python.lxml" --version "$lxml_ver" --scripts "$BUILDTMP/Scripts" "lxml-$lxml_ver.pkg"
 	[ $? = 0 ] || exit 1
 	mv lxml*.pkg aeneas-mac-installer-packages/
 	rm -rf $BUILDTMP
@@ -127,7 +150,7 @@ if [ ! -f "aeneas-mac-installer-packages/bs4-$bs4_ver.pkg" ]; then
 	mkdir -p $BUILDTMP/Scripts/
 	cp -v installer-scripts/postinstall_bs4.sh $BUILDTMP/Scripts/postinstall
 	cp -v installer-scripts/preinstall_bs4.sh $BUILDTMP/Scripts/preinstall
-	pkgbuild --quiet --root "$BUILDTMP/Payload" --identifier "org.python.python.bs4" --version "$bs4_ver" --scripts "$BUILDTMP/Scripts" "bs4-$bs4_ver.pkg"
+	pkgbuild --root "$BUILDTMP/Payload" --identifier "org.python.python.bs4" --version "$bs4_ver" --scripts "$BUILDTMP/Scripts" "bs4-$bs4_ver.pkg"
 	[ $? = 0 ] || exit 1
 	mv bs4*.pkg aeneas-mac-installer-packages/
 	rm -rf $BUILDTMP

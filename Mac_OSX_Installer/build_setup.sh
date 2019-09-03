@@ -11,6 +11,7 @@ brew tap danielbair/tap
 echo Running brew update
 brew update
 brew install danielbair/tap/brew-pkg
+brew install wget jq
 
 mkdir -p $HOME/Library/Python/2.7/lib/python/site-packages
 touch $HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth

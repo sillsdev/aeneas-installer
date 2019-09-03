@@ -15,7 +15,8 @@ cd $CURDIR
 bash ./sign_packages.sh
 
 export espeak_ver=`brew info danielbair/tap/espeak | grep Cellar | cut -d' ' -f1 | cut -d'/' -f6`
-export ffmpeg_ver=`brew info ffmpeg | grep Cellar | cut -d' ' -f1 | cut -d'/' -f6`
+export ffmpeg_ver=`curl -s https://evermeet.cx/ffmpeg/info/ffmpeg/release | jq -r '.version'`
+#export ffmpeg_ver=`brew info ffmpeg | grep Cellar | cut -d' ' -f1 | cut -d'/' -f6`
 export python_ver=`brew info python | grep Cellar | cut -d' ' -f1 | cut -d'/' -f6`
 export aeneas_ver=`pip3 show aeneas | grep Version | cut -d' ' -f2`
 export numpy_ver=`pip3 show numpy | grep Version | cut -d' ' -f2`
@@ -42,4 +43,3 @@ if [ -f "aeneas-mac-setup-$VERSION.pkg" ]; then
 	cp -v /tmp/aeneas-mac-setup-$VERSION.pkg ./
 fi
 
-echo -e "\n\nNow run build_dmg.sh\n\n"

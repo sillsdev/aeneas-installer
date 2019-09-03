@@ -22,13 +22,13 @@
 				<key>LOCATION</key>
 				<integer>3</integer>
 				<key>NAME</key>
-				<string>ffmpeg-4.1.4_1</string>
+				<string>ffmpeg-4.2</string>
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>PAYLOAD_SIZE</key>
 				<integer>-1</integer>
 				<key>REFERENCE_PATH</key>
-				<string>./aeneas-mac-installer-packages/ffmpeg-4.1.4_1.pkg</string>
+				<string>Aeneas_Tools/aeneas-mac-installer-packages</string>
 				<key>RELOCATABLE</key>
 				<false/>
 				<key>USE_HFS+_COMPRESSION</key>
@@ -39,7 +39,7 @@
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>./aeneas-mac-installer-packages/ffmpeg-4.1.4_1.pkg</string>
+				<string>./aeneas-mac-installer-packages/ffmpeg-4.2.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -72,7 +72,7 @@
 				<key>PAYLOAD_SIZE</key>
 				<integer>-1</integer>
 				<key>REFERENCE_PATH</key>
-				<string>./</string>
+				<string>Aeneas_Tools/aeneas-mac-installer-packages</string>
 				<key>RELOCATABLE</key>
 				<false/>
 				<key>USE_HFS+_COMPRESSION</key>
@@ -116,7 +116,7 @@
 				<key>PAYLOAD_SIZE</key>
 				<integer>-1</integer>
 				<key>REFERENCE_PATH</key>
-				<string>./</string>
+				<string>Aeneas_Tools/aeneas-mac-installer-packages</string>
 				<key>RELOCATABLE</key>
 				<false/>
 				<key>USE_HFS+_COMPRESSION</key>
@@ -160,7 +160,7 @@
 				<key>PAYLOAD_SIZE</key>
 				<integer>-1</integer>
 				<key>REFERENCE_PATH</key>
-				<string>./</string>
+				<string>Aeneas_Tools/aeneas-mac-installer-packages</string>
 				<key>RELOCATABLE</key>
 				<false/>
 				<key>USE_HFS+_COMPRESSION</key>
@@ -204,7 +204,7 @@
 				<key>PAYLOAD_SIZE</key>
 				<integer>-1</integer>
 				<key>REFERENCE_PATH</key>
-				<string>./</string>
+				<string>Aeneas_Tools/aeneas-mac-installer-packages</string>
 				<key>RELOCATABLE</key>
 				<false/>
 				<key>USE_HFS+_COMPRESSION</key>
@@ -248,7 +248,7 @@
 				<key>PAYLOAD_SIZE</key>
 				<integer>-1</integer>
 				<key>REFERENCE_PATH</key>
-				<string>./</string>
+				<string>Aeneas_Tools/aeneas-mac-installer-packages</string>
 				<key>RELOCATABLE</key>
 				<false/>
 				<key>USE_HFS+_COMPRESSION</key>
@@ -292,7 +292,7 @@
 				<key>PAYLOAD_SIZE</key>
 				<integer>-1</integer>
 				<key>REFERENCE_PATH</key>
-				<string>./</string>
+				<string>Aeneas_Tools/aeneas-mac-installer-packages</string>
 				<key>RELOCATABLE</key>
 				<false/>
 				<key>USE_HFS+_COMPRESSION</key>
@@ -772,7 +772,7 @@
 						<key>IC_REQUIREMENT_DISKSPACE_MINIMUM_SIZE_UNIT</key>
 						<integer>0</integer>
 						<key>IC_REQUIREMENT_DISKSPACE_MINIMUM_SIZE_VALUE</key>
-						<integer>373</integer>
+						<integer>375</integer>
 					</dict>
 					<key>IC_REQUIREMENT_CHECK_TYPE</key>
 					<integer>1</integer>
@@ -784,7 +784,7 @@
 							<key>LANGUAGE</key>
 							<string>English</string>
 							<key>VALUE</key>
-							<string>This installer needs a minimum of 373MB of disk space available.</string>
+							<string>This installer needs a minimum of 375MB of disk space available.</string>
 						</dict>
 					</array>
 					<key>NAME</key>
