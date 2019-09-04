@@ -33,6 +33,8 @@ cat Aeneas_Installer_TEMPLATE.pkgproj |\
        	sed -e 's/\[LXML_VER\]/'$lxml_ver'/g' |\
        	sed -e 's/\[BS4_VER\]/'$bs4_ver'/g' |\
        	sed -e 's/\[AENEAS_VER\]/'$aeneas_ver'/g' |\
+       	sed -e 's/\[VERSION\]/'$VERSION'/g' |\
+       	sed -e 's/\[USER\]/'$USER'/g' |\
 	tee Aeneas_Installer.pkgproj
 
 packagesbuild -v Aeneas_Installer.pkgproj
@@ -43,3 +45,4 @@ if [ -f "aeneas-mac-setup-$VERSION.pkg" ]; then
 	cp -v /tmp/aeneas-mac-setup-$VERSION.pkg ./
 fi
 
+exit 0

@@ -20,7 +20,7 @@
 				<key>IDENTIFIER</key>
 				<string></string>
 				<key>LOCATION</key>
-				<integer>3</integer>
+				<integer>0</integer>
 				<key>NAME</key>
 				<string>ffmpeg-[FFMPEG_VER]</string>
 				<key>OVERWRITE_PERMISSIONS</key>
@@ -28,7 +28,7 @@
 				<key>PAYLOAD_SIZE</key>
 				<integer>-1</integer>
 				<key>REFERENCE_PATH</key>
-				<string>Aeneas_Tools/aeneas-mac-installer-packages</string>
+				<string></string>
 				<key>RELOCATABLE</key>
 				<false/>
 				<key>USE_HFS+_COMPRESSION</key>
@@ -64,7 +64,7 @@
 				<key>IDENTIFIER</key>
 				<string></string>
 				<key>LOCATION</key>
-				<integer>3</integer>
+				<integer>0</integer>
 				<key>NAME</key>
 				<string>espeak-[ESPEAK_VER]</string>
 				<key>OVERWRITE_PERMISSIONS</key>
@@ -72,7 +72,7 @@
 				<key>PAYLOAD_SIZE</key>
 				<integer>-1</integer>
 				<key>REFERENCE_PATH</key>
-				<string>Aeneas_Tools/aeneas-mac-installer-packages</string>
+				<string></string>
 				<key>RELOCATABLE</key>
 				<false/>
 				<key>USE_HFS+_COMPRESSION</key>
@@ -108,7 +108,7 @@
 				<key>IDENTIFIER</key>
 				<string></string>
 				<key>LOCATION</key>
-				<integer>3</integer>
+				<integer>0</integer>
 				<key>NAME</key>
 				<string>python-[PYTHON_VER]</string>
 				<key>OVERWRITE_PERMISSIONS</key>
@@ -116,7 +116,7 @@
 				<key>PAYLOAD_SIZE</key>
 				<integer>-1</integer>
 				<key>REFERENCE_PATH</key>
-				<string>Aeneas_Tools/aeneas-mac-installer-packages</string>
+				<string></string>
 				<key>RELOCATABLE</key>
 				<false/>
 				<key>USE_HFS+_COMPRESSION</key>
@@ -152,7 +152,7 @@
 				<key>IDENTIFIER</key>
 				<string></string>
 				<key>LOCATION</key>
-				<integer>3</integer>
+				<integer>0</integer>
 				<key>NAME</key>
 				<string>numpy-[NUMPY_VER]</string>
 				<key>OVERWRITE_PERMISSIONS</key>
@@ -160,7 +160,7 @@
 				<key>PAYLOAD_SIZE</key>
 				<integer>-1</integer>
 				<key>REFERENCE_PATH</key>
-				<string>Aeneas_Tools/aeneas-mac-installer-packages</string>
+				<string></string>
 				<key>RELOCATABLE</key>
 				<false/>
 				<key>USE_HFS+_COMPRESSION</key>
@@ -196,7 +196,7 @@
 				<key>IDENTIFIER</key>
 				<string></string>
 				<key>LOCATION</key>
-				<integer>3</integer>
+				<integer>0</integer>
 				<key>NAME</key>
 				<string>lxml-[LXML_VER]</string>
 				<key>OVERWRITE_PERMISSIONS</key>
@@ -204,7 +204,7 @@
 				<key>PAYLOAD_SIZE</key>
 				<integer>-1</integer>
 				<key>REFERENCE_PATH</key>
-				<string>Aeneas_Tools/aeneas-mac-installer-packages</string>
+				<string></string>
 				<key>RELOCATABLE</key>
 				<false/>
 				<key>USE_HFS+_COMPRESSION</key>
@@ -240,7 +240,7 @@
 				<key>IDENTIFIER</key>
 				<string></string>
 				<key>LOCATION</key>
-				<integer>3</integer>
+				<integer>0</integer>
 				<key>NAME</key>
 				<string>bs4-[BS4_VER]</string>
 				<key>OVERWRITE_PERMISSIONS</key>
@@ -248,7 +248,7 @@
 				<key>PAYLOAD_SIZE</key>
 				<integer>-1</integer>
 				<key>REFERENCE_PATH</key>
-				<string>Aeneas_Tools/aeneas-mac-installer-packages</string>
+				<string></string>
 				<key>RELOCATABLE</key>
 				<false/>
 				<key>USE_HFS+_COMPRESSION</key>
@@ -284,7 +284,7 @@
 				<key>IDENTIFIER</key>
 				<string></string>
 				<key>LOCATION</key>
-				<integer>3</integer>
+				<integer>0</integer>
 				<key>NAME</key>
 				<string>aeneas-[AENEAS_VER]</string>
 				<key>OVERWRITE_PERMISSIONS</key>
@@ -292,7 +292,7 @@
 				<key>PAYLOAD_SIZE</key>
 				<integer>-1</integer>
 				<key>REFERENCE_PATH</key>
-				<string>Aeneas_Tools/aeneas-mac-installer-packages</string>
+				<string></string>
 				<key>RELOCATABLE</key>
 				<false/>
 				<key>USE_HFS+_COMPRESSION</key>
@@ -334,6 +334,18 @@
 		</dict>
 		<key>PROJECT_PRESENTATION</key>
 		<dict>
+			<key>BACKGROUND</key>
+			<dict>
+				<key>APPAREANCES</key>
+				<dict>
+					<key>DARK_AQUA</key>
+					<dict/>
+					<key>LIGHT_AQUA</key>
+					<dict/>
+				</dict>
+				<key>SHARED_SETTINGS_FOR_ALL_APPAREANCES</key>
+				<true/>
+			</dict>
 			<key>INSTALLATION TYPE</key>
 			<dict>
 				<key>HIERARCHIES</key>
@@ -802,7 +814,7 @@
 						<key>IC_REQUIREMENT_OS_DISTRIBUTION_TYPE</key>
 						<integer>0</integer>
 						<key>IC_REQUIREMENT_OS_MINIMUM_VERSION</key>
-						<integer>101005</integer>
+						<integer>100905</integer>
 					</dict>
 					<key>IC_REQUIREMENT_CHECK_TYPE</key>
 					<integer>1</integer>
@@ -814,7 +826,7 @@
 							<key>LANGUAGE</key>
 							<string>English</string>
 							<key>VALUE</key>
-							<string>Minimum OS X version 10.10.5 is required</string>
+							<string>Minimum OS X version 10.9.5 is required</string>
 						</dict>
 					</array>
 					<key>NAME</key>
@@ -830,6 +842,13 @@
 		</dict>
 		<key>PROJECT_SETTINGS</key>
 		<dict>
+			<key>ADVANCED_OPTIONS</key>
+			<dict>
+				<key>installer-script.domains:enable_anywhere</key>
+				<integer>0</integer>
+				<key>installer-script.domains:enable_localSystem</key>
+				<integer>1</integer>
+			</dict>
 			<key>BUILD_FORMAT</key>
 			<integer>0</integer>
 			<key>BUILD_PATH</key>
@@ -838,6 +857,13 @@
 				<string>./</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
+			</dict>
+			<key>CERTIFICATE</key>
+			<dict>
+				<key>NAME</key>
+				<string>Developer ID Installer: Daniel Bair (RZRD74Y6H6)</string>
+				<key>PATH</key>
+				<string>/Users/[USER]/Library/Keychains/login.keychain</string>
 			</dict>
 			<key>EXCLUDED_FILES</key>
 			<array>

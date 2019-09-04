@@ -25,3 +25,5 @@ open -R "$DMGFILE"
 open "$DMGFILE"
 
 cp -v Aeneas_Tools-$VERSION.dmg aeneas-mac-setup-$VERSION.dmg
+
+exit 0

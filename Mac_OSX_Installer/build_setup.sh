@@ -6,12 +6,14 @@ CURDIR=`dirname $0`
 cd $CURDIR
 
 #./install_homebrew.sh
-brew install binutils git
+brew install git
 brew tap danielbair/tap
 echo Running brew update
 brew update
+brew install binutils wget jq
 brew install danielbair/tap/brew-pkg
-brew install wget jq
+#brew install danielbair/tap/create-dmg
+brew install create-dmg
 
 mkdir -p $HOME/Library/Python/2.7/lib/python/site-packages
 touch $HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth
@@ -25,3 +27,5 @@ if [ ! -f "/usr/local/bin/packagesbuild" ]; then
 fi
 
 echo -e "\n\nNow run build_packages.sh\n\n"
+
+exit 0
