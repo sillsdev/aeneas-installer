@@ -1034,7 +1034,7 @@
 				</dict>
 			</array>
 			<key>NAME</key>
-			<string>aeneas-mac-setup-[INSTALLER_VER]</string>
+			<string>aeneas-mac-setup-1.7.3.0_2</string>
 			<key>PAYLOAD_ONLY</key>
 			<false/>
 			<key>TREAT_MISSING_PRESENTATION_DOCUMENTS_AS_WARNING</key>

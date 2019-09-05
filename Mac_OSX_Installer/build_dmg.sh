@@ -4,11 +4,12 @@ export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 CURDIR=`dirname $0`
 cd $CURDIR
-export aeneas_ver=`pip3 show aeneas | grep Version | cut -d' ' -f2`
-export VERSION="$aeneas_ver"_2
 
 brew install create-dmg
 #brew install danielbair/tap/create-dmg
+
+export aeneas_ver=`pip3 show aeneas | grep "Version:" | cut -d' ' -f2`
+export VERSION="$aeneas_ver"_2
 
 DMGFILE="Aeneas_Tools-$VERSION.dmg"
 BUILDTMP="$(mktemp -d -t createdmg.tmp.XXXXXXXX)"

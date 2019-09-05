@@ -6,23 +6,20 @@ export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 CURDIR=`dirname $0`
 cd $CURDIR
 
-echo Running brew update
-brew update
-
-echo cd $CURDIR
-cd $CURDIR
+#echo Running brew update
+#brew update
 
 bash ./sign_packages.sh
 
 export espeak_ver=`brew info danielbair/tap/espeak | grep Cellar | cut -d' ' -f1 | cut -d'/' -f6`
 export ffmpeg_ver=`curl -s https://evermeet.cx/ffmpeg/info/ffmpeg/release | jq -r '.version'`
 #export ffmpeg_ver=`brew info ffmpeg | grep Cellar | cut -d' ' -f1 | cut -d'/' -f6`
-export python_ver=`brew info python | grep Cellar | cut -d' ' -f1 | cut -d'/' -f6`
-export aeneas_ver=`pip3 show aeneas | grep Version | cut -d' ' -f2`
-export numpy_ver=`pip3 show numpy | grep Version | cut -d' ' -f2`
-export lxml_ver=`pip3 show lxml | grep Version | cut -d' ' -f2`
-export bs4_ver=`pip3 show beautifulsoup4 | grep Version | cut -d' ' -f2`
-export soupsieve_ver=`pip3 show soupsieve | grep Version | cut -d' ' -f2`
+export python_ver=`python3 --version | cut -d' ' -f2`
+export aeneas_ver=`pip3 show aeneas | grep "Version:" | cut -d' ' -f2`
+export numpy_ver=`pip3 show numpy | grep "Version:" | cut -d' ' -f2`
+export lxml_ver=`pip3 show lxml | grep "Version:" | cut -d' ' -f2`
+export bs4_ver=`pip3 show beautifulsoup4 | grep "Version:" | cut -d' ' -f2`
+export soupsieve_ver=`pip3 show soupsieve | grep "Version:" | cut -d' ' -f2`
 export VERSION="$aeneas_ver"_2
 
 cat Aeneas_Installer_TEMPLATE.pkgproj |\
@@ -33,7 +30,7 @@ cat Aeneas_Installer_TEMPLATE.pkgproj |\
        	sed -e 's/\[LXML_VER\]/'$lxml_ver'/g' |\
        	sed -e 's/\[BS4_VER\]/'$bs4_ver'/g' |\
        	sed -e 's/\[AENEAS_VER\]/'$aeneas_ver'/g' |\
-       	sed -e 's/\[VERSION\]/'$VERSION'/g' |\
+       	sed -e 's/\[INSTALLER_VER\]/'$VERSION'/g' |\
        	sed -e 's/\[USER\]/'$USER'/g' |\
 	tee Aeneas_Installer.pkgproj
 

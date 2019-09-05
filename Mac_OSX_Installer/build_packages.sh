@@ -8,11 +8,12 @@ cd $CURDIR
 
 #HOMEBREW_BUILD_FROM_SOURCE=true
 
-echo Running brew update
-brew update
+#echo Running brew update
+#brew update
 
 brew install danielbair/tap/espeak
-brew install ffmpeg python
+#brew install ffmpeg
+brew install python
 
 export espeak_ver=`brew info danielbair/tap/espeak | grep Cellar | cut -d' ' -f1 | cut -d'/' -f6`
 export ffmpeg_ver=`curl -s https://evermeet.cx/ffmpeg/info/ffmpeg/release | jq -r '.version'`
@@ -45,6 +46,7 @@ if [ ! -f "aeneas-mac-installer-packages/ffmpeg-$ffmpeg_ver.pkg" ]; then
         cp -v installer-scripts/postinstall_ffmpeg.sh $BUILDTMP/Scripts/postinstall
         pkgbuild --root "$BUILDTMP/Payload" --identifier "org.ffmpeg.ffmpeg" --version "$ffmpeg_ver" --scripts "$BUILDTMP/Scripts" "ffmpeg-$ffmpeg_ver.pkg"
         [ $? = 0 ] || exit 1
+	sudo installer -pkg ffmpeg-$ffmpeg_ver.pkg -target /
         mv ffmpeg-$ffmpeg_ver.pkg aeneas-mac-installer-packages/
         rm -rf $BUILDTMP
 else
@@ -66,7 +68,7 @@ if [ ! -f "aeneas-mac-installer-packages/python-$python_ver.pkg" ]; then
         SOURCETMP="$(mktemp -d -t python.tmp.XXXXXXXX)"
         BUILDTMP="$(mktemp -d -t python.tmp.XXXXXXXX)"
 
-	pkgutil --expand-full ~/Downloads/python-$python_ver-macosx10.9.pkg $SOURCETMP/python-$python_ver-macosx10.9.pkg
+	pkgutil --expand-full python-$python_ver-macosx10.9.pkg $SOURCETMP/python-$python_ver-macosx10.9.pkg
         SOURCETMP="$SOURCETMP/python-$python_ver-macosx10.9.pkg"
 	#cat $SOURCETMP/*.pkg/PackageInfo | grep "install-location" | cut -d' ' -f10 | cut -d'=' -f2
 	#for pkg in $SOURCETMP/*.pkg; do echo $pkg; cat $pkg/PackageInfo | grep "install-location" | cut -d' ' -f10 | cut -d'=' -f2; done
@@ -82,8 +84,9 @@ if [ ! -f "aeneas-mac-installer-packages/python-$python_ver.pkg" ]; then
 	cat $SOURCETMP/*.pkg/Scripts/postinstall | sed -e 's/exit 0/#exit 0/g' > $BUILDTMP/Scripts/postinstall
 	echo -e "\nexit 0" >> $BUILDTMP/Scripts/postinstall
 	chmod +x $BUILDTMP/Scripts/postinstall
-	pkgbuild --root "$BUILDTMP/Payload" --identifier "org.python.python" --version "$python_ver" --scripts "$BUILDTMP/Scripts" "aeneas-mac-installer-packages/python-$python_ver.pkg"
+	pkgbuild --root "$BUILDTMP/Payload" --identifier "org.python.python" --version "$python_ver" --scripts "$BUILDTMP/Scripts" "python-$python_ver.pkg"
         [ $? = 0 ] || exit 1
+	sudo installer -pkg python-$python_ver.pkg -target /
 	mv python-$python_ver.pkg aeneas-mac-installer-packages/
 	rm -rf $SOURCETMP
         rm -rf $BUILDTMP
@@ -101,7 +104,7 @@ fi
 
 python3 -m ensurepip
 pip3 install -U wheel pip setuptools
-#pip_ver=`pip3 show pip | grep Version | cut -d' ' -f2`
+#pip_ver=`pip3 show pip | grep "Version:" | cut -d' ' -f2`
 #rm -f aeneas-mac-installer-packages/pip-*.whl
 #mv -v pip-$pip_ver*.whl aeneas-mac-installer-packages/
 
@@ -112,11 +115,11 @@ python3 -m aeneas.diagnostics
 python3 -m aeneas.tools.synthesize_text list "This is a test|with two lines" eng -v /tmp/test.wav
 python3 -m aeneas.diagnostics
 
-export aeneas_ver=`pip3 show aeneas | grep Version | cut -d' ' -f2`
-export numpy_ver=`pip3 show numpy | grep Version | cut -d' ' -f2`
-export lxml_ver=`pip3 show lxml | grep Version | cut -d' ' -f2`
-export bs4_ver=`pip3 show beautifulsoup4 | grep Version | cut -d' ' -f2`
-export soupsieve_ver=`pip3 show soupsieve | grep Version | cut -d' ' -f2`
+export aeneas_ver=`pip3 show aeneas | grep "Version:" | cut -d' ' -f2`
+export numpy_ver=`pip3 show numpy | grep "Version:" | cut -d' ' -f2`
+export lxml_ver=`pip3 show lxml | grep "Version:" | cut -d' ' -f2`
+export bs4_ver=`pip3 show beautifulsoup4 | grep "Version:" | cut -d' ' -f2`
+export soupsieve_ver=`pip3 show soupsieve | grep "Version:" | cut -d' ' -f2`
 
 if [ ! -f "aeneas-mac-installer-packages/aeneas-$aeneas_ver.pkg" ]; then
 	echo ""
