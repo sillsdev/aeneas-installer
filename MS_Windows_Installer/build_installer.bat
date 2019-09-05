@@ -18,11 +18,33 @@ IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
   (call )
 :ENDIF
 
+IF EXIST "%PF32%\Inno Setup 6" GOTO INNO6PATH
+:INNO5PATH
+  set INNOPATH=%PF32%\Inno Setup 5
+  (call )
+  GOTO ENDIF
+:INNO6PATH
+  set INNOPATH=%PF32%\Inno Setup 6
+  (call )
+:ENDIF
+
+IF EXIST "C:\Program Files\Git\usr\bin" GOTO SETGITPATH
+:LOCALPATH
+	set cat="cat.exe"
+	set cut="cut.exe"
+	set sed="sed.exe"
+	set grep="grep.exe"
+  (call )
+  GOTO ENDIF
+:SETGITPATH
+	set cat="C:\Program Files\Git\usr\bin\cat.exe"
+	set cut="C:\Program Files\Git\usr\bin\cut.exe"
+	set sed="C:\Program Files\Git\usr\bin\sed.exe"
+	set grep="C:\Program Files\Git\usr\bin\grep.exe"
+  (call )
+:ENDIF
+
 set pip=C:\Python37-32\Scripts\pip
-set cat="C:\Program Files\Git\usr\bin\cat.exe"
-set cut="C:\Program Files\Git\usr\bin\cut.exe"
-set sed="C:\Program Files\Git\usr\bin\sed.exe"
-set grep="C:\Program Files\Git\usr\bin\grep.exe"
 
 FOR /F "tokens=* USEBACKQ" %%F IN (`ffmpeg -version ^| %grep% version -m 1 ^| %cut% -d' ' -f3`) DO (SET ffmpeg_ver=%%F)
 FOR /F "tokens=* USEBACKQ" %%F IN (`python --version ^| %cut% -d' ' -f2`) DO (SET python_ver=%%F)
@@ -47,6 +69,6 @@ FOR /F "tokens=* USEBACKQ" %%F IN (`dir soupsieve-%soupsieve_ver%*.whl /b`) DO (
 %cat% install_packages_TEMPLATE.bat | %sed% -e 's/\[PIP_FILE\]/'%pip_file%'/g' | %sed% -e 's/\[FFMPEG_VER\]/'%ffmpeg_ver%'/g' | %sed% -e 's/\[FFMPEG_FILE\]/'%ffmpeg_file%'/g' | %sed% -e 's/\[PYTHON_VER\]/'%python_ver%'/g' | %sed% -e 's/\[PYTHON_FILE\]/'%python_file%'/g' | %sed% -e 's/\[NUMPY_VER\]/'%numpy_ver%'/g' | %sed% -e 's/\[NUMPY_FILE\]/'%numpy_file%'/g' | %sed% -e 's/\[LXML_VER\]/'%lxml_ver%'/g' | %sed% -e 's/\[LXML_FILE\]/'%lxml_file%'/g' | %sed% -e 's/\[BS4_VER\]/'%bs4_ver%'/g' | %sed% -e 's/\[BS4_FILE\]/'%bs4_file%'/g' | %sed% -e 's/\[SOUPSIEVE_VER\]/'%soupsieve_ver%'/g' | %sed% -e 's/\[SOUPSIEVE_FILE\]/'%soupsieve_file%'/g' | %sed% -e 's/\[AENEAS_VER\]/'%aeneas_ver%'/g' | %sed% -e 's/\[AENEAS_FILE\]/'%aeneas_file%'/g' > install_packages.bat
 %cat% Aeneas_Installer_TEMPLATE.iss | %sed% -e 's/\[PIP_FILE\]/'%pip_file%'/g' | %sed% -e 's/\[FFMPEG_VER\]/'%ffmpeg_ver%'/g' | %sed% -e 's/\[FFMPEG_FILE\]/'%ffmpeg_file%'/g' | %sed% -e 's/\[PYTHON_VER\]/'%python_ver%'/g' | %sed% -e 's/\[PYTHON_FILE\]/'%python_file%'/g' | %sed% -e 's/\[NUMPY_VER\]/'%numpy_ver%'/g' | %sed% -e 's/\[NUMPY_FILE\]/'%numpy_file%'/g' | %sed% -e 's/\[LXML_VER\]/'%lxml_ver%'/g' | %sed% -e 's/\[LXML_FILE\]/'%lxml_file%'/g' | %sed% -e 's/\[BS4_VER\]/'%bs4_ver%'/g' | %sed% -e 's/\[BS4_FILE\]/'%bs4_file%'/g' | %sed% -e 's/\[SOUPSIEVE_VER\]/'%soupsieve_ver%'/g' | %sed% -e 's/\[SOUPSIEVE_FILE\]/'%soupsieve_file%'/g' | %sed% -e 's/\[AENEAS_VER\]/'%aeneas_ver%'/g' | %sed% -e 's/\[AENEAS_FILE\]/'%aeneas_file%'/g' > Aeneas_Installer.iss
 
-"%PF32%\Inno Setup 6\ISCC.exe" Aeneas_Installer.iss
+"%INNOPATH%\ISCC.exe" Aeneas_Installer.iss
 
 ENDLOCAL
