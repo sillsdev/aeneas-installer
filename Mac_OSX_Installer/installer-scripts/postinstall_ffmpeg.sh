@@ -11,3 +11,11 @@ fi
 
 chown -R $USER:admin /usr/local/*
 
+ln -fs /usr/local/opt/ffmpeg/bin/* /usr/local/bin/
+
+chown -R $USER:admin /usr/local/*
+
+ln -fs /usr/local/opt/ffmpeg/share/doc/ffmpeg /usr/local/share/doc/ffmpeg
+
+chown -R $USER:admin /usr/local/*
+

@@ -18,12 +18,38 @@ IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
   (call )
 :ENDIF
 
+IF EXIST "%PF32%\Inno Setup 6" GOTO INNO6PATH
+:INNO5PATH
+  set INNOPATH=%PF32%\Inno Setup 5
+  (call )
+  GOTO ENDIF
+:INNO6PATH
+  set INNOPATH=%PF32%\Inno Setup 6
+  (call )
+:ENDIF
+
+IF NOT EXIST "%cd%\python-3.7.4.exe" (
+  echo Downloading Python 3.7.4...
+  %CURL% "https://www.python.org/ftp/python/3.7.4/python-3.7.4.exe" -o "%cd%\python-3.7.4.exe"
+)
+IF EXIST "C:\Python37-32\python.exe" (
+  IF NOT EXIST "%cd%\python-3.7.4.exe" (
+    echo Installing Python 3.7.4...
+    python-3.7.4.exe /quiet InstallAllUsers=1 TargetDir=C:\Python37-32 PrependPath=1
+  )
+) ELSE (
+  echo Could not find Python 3.7.4...
+  START https://www.python.org/downloads/release/python-374/
+)
+
 C:\Python37-32\python -m ensurepip
-C:\Python37-32\Scripts\pip install -U pip setuptools wheel
+set pip=C:\Python37-32\Scripts\pip
 
-C:\Python37-32\Scripts\pip install -U patch
+%pip% install -U pip setuptools wheel
 
-C:\Python37-32\Scripts\pip install -U wget
+%pip% install -U patch
+
+%pip% install -U wget
 
 2>nul curl.exe --version
 if %ERRORLEVEL%==0 goto exeCurl
@@ -56,7 +82,7 @@ IF NOT EXIST "%cd%\setup_ffmpeg-4.2.exe" (
   "%PF32%\7-Zip\7z.exe" x ffmpeg-4.2-win32-static.zip -aoa
   rmdir /q/s ffmpeg-4.2
   move /y ffmpeg-4.2-win32-static ffmpeg-4.2
-  "%PF32%\Inno Setup 6\ISCC.exe" FFmpeg_Installer.iss
+  "%INNOPATH%\ISCC.exe" FFmpeg_Installer.iss
 )
 IF EXIST "%cd%\setup_ffmpeg-4.2.exe" (
 REM   echo Installing FFmpeg...
@@ -66,12 +92,12 @@ REM   "%cd%\setup_ffmpeg-4.2.exe" /SILENT
   echo START https://ffmpeg.zeranoe.com/builds/
 )
 
-C:\Python37-32\Scripts\pip install -U numpy
-C:\Python37-32\Scripts\pip install -U aeneas
+%pip% install -U numpy
+%pip% install -U aeneas lxml beautifulsoup4 soupsieve
 
-C:\Python37-32\Scripts\pip wheel pip
-C:\Python37-32\Scripts\pip wheel numpy
-C:\Python37-32\Scripts\pip wheel aeneas
+%pip% wheel pip
+%pip% wheel numpy
+%pip% wheel aeneas
 
 cd %CURDIR%
 
@@ -81,24 +107,12 @@ REM C:\Windows\System32\ping 127.0.0.1 -n 10 -w 1000 > NUL
 
 echo.
 set PYTHONIOENCODING=UTF-8
-REM C:\Python37-32\python -m aeneas.diagnostics
-REM C:\Python37-32\python -m aeneas.tools.execute_task --version
-REM C:\Python37-32\python -m aeneas.tools.synthesize_text list "This is a test|with two lines" eng -v C:\Windows\Temp\test.wav
-REM echo.
+C:\Python37-32\python -m aeneas.diagnostics
+C:\Python37-32\python -m aeneas.tools.execute_task --version
+C:\Python37-32\python -m aeneas.tools.synthesize_text list "This is a test|with two lines" eng -v C:\Windows\Temp\test.wav
+echo.
 
 REM C:\Windows\System32\ping 127.0.0.1 -n 5 -w 1000 > NUL
-
-IF NOT EXIST "%cd%\python-3.7.4.exe" (
-  echo Downloading Python 3.7.4...
-  %CURL% "https://www.python.org/ftp/python/3.7.4/python-3.7.4.exe" -o "%cd%\python-3.7.4.exe"
-)
-IF EXIST "%cd%\python-3.7.4.exe" (
-  echo Installing Python 3.7.4...
-  python-3.7.4.exe /passive InstallAllUsers=1 TargetDir=C:\Python37-32 PrependPath=1
-) ELSE (
-  echo Could not find Python 3.7.4...
-  START https://www.python.org/downloads/release/python-374/
-)
 
 echo Now run build_installer.bat
 
