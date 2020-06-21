@@ -42,4 +42,8 @@ if [ -f "aeneas-mac-setup-$VERSION.pkg" ]; then
 	cp -v /tmp/aeneas-mac-setup-$VERSION.pkg ./
 fi
 
+xcrun altool --notarize-app --verbose -f "aeneas-mac-setup-$VERSION.pkg.pkg" --primary-bundle-id com.danielbair.pkg --username "bair.daniel@gmail.com" --password "@keychain:altool"
+xcrun stapler staple "aeneas-mac-setup-$VERSION.pkg.pkg"
+spctl -a -vvv -t install "aeneas-mac-setup-$VERSION.pkg.pkg"
+
 exit 0

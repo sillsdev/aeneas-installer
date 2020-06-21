@@ -33,15 +33,24 @@ else
 fi
 if [ ! -f "aeneas-mac-installer-packages/ffmpeg-$ffmpeg_ver.pkg" ]; then
 	echo ""
+	BUILDTMP="$(mktemp -d -t ffmpeg.tmp.XXXXXXXX)"
+	mkdir -vp $BUILDTMP/Payload/usr/local/opt/
         if [ ! -f "./ffmpeg-$ffmpeg_ver-macos64-static.zip" ]; then
                 wget --trust-server-names https://ffmpeg.zeranoe.com/builds/macos64/static/ffmpeg-$ffmpeg_ver-macos64-static.zip
+                unzip ffmpeg-$ffmpeg_ver-macos64-static.zip -d $BUILDTMP/Payload/usr/local/opt/
+                mv -v $BUILDTMP/Payload/usr/local/opt/ffmpeg-$ffmpeg_ver-macos64-static $BUILDTMP/Payload/usr/local/opt/ffmpeg
+                mkdir -vp $BUILDTMP/Payload/usr/local/opt/ffmpeg/share/
+                mv -v $BUILDTMP/Payload/usr/local/opt/ffmpeg/doc $BUILDTMP/Payload/usr/local/opt/ffmpeg/share/doc
         fi
-        BUILDTMP="$(mktemp -d -t ffmpeg.tmp.XXXXXXXX)"
-        mkdir -vp $BUILDTMP/Payload/usr/local/opt/
-        unzip ffmpeg-$ffmpeg_ver-macos64-static.zip -d $BUILDTMP/Payload/usr/local/opt/
-        mv -v $BUILDTMP/Payload/usr/local/opt/ffmpeg-$ffmpeg_ver-macos64-static $BUILDTMP/Payload/usr/local/opt/ffmpeg
-        mkdir -vp $BUILDTMP/Payload/usr/local/opt/ffmpeg/share/
-        mv -v $BUILDTMP/Payload/usr/local/opt/ffmpeg/doc $BUILDTMP/Payload/usr/local/opt/ffmpeg/share/doc
+        if [ ! -f "./ffmpeg-$ffmpeg_ver-macos64-static.zip" ]; then
+                wget --trust-server-names https://evermeet.cx/ffmpeg/ffmpeg-$ffmpeg_ver.zip
+                wget --trust-server-names https://evermeet.cx/ffmpeg/ffprobe-$ffmpeg_ver.zip
+                wget --trust-server-names https://evermeet.cx/ffmpeg/ffplay-$ffmpeg_ver.zip
+                mkdir -vp $BUILDTMP/Payload/usr/local/opt/ffmpeg/bin
+                unzip ffmpeg-$ffmpeg_ver.zip -d $BUILDTMP/Payload/usr/local/opt/ffmpeg/bin/
+                unzip ffprobe-$ffmpeg_ver.zip -d $BUILDTMP/Payload/usr/local/opt/ffmpeg/bin/
+                unzip ffplay-$ffmpeg_ver.zip -d $BUILDTMP/Payload/usr/local/opt/ffmpeg/bin/
+        fi
         mkdir -vp $BUILDTMP/Scripts/
         cp -v installer-scripts/postinstall_ffmpeg.sh $BUILDTMP/Scripts/postinstall
         pkgbuild --root "$BUILDTMP/Payload" --identifier "org.ffmpeg.ffmpeg" --version "$ffmpeg_ver" --scripts "$BUILDTMP/Scripts" "ffmpeg-$ffmpeg_ver.pkg"
