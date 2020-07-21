@@ -471,7 +471,7 @@
 												<key>LANGUAGE</key>
 												<string>English</string>
 												<key>VALUE</key>
-												<string>Python version equal to or greater than 3.8.4</string>
+												<string>Python version is greater than or equal to 3.8.4</string>
 											</dict>
 										</array>
 										<key>NAME</key>
@@ -587,15 +587,6 @@
 								<dict>
 									<key>DEPENDENCY</key>
 									<dict>
-										<key>ENABLED_DEPENDENCY</key>
-										<dict>
-											<key>COMPARATOR</key>
-											<integer>0</integer>
-											<key>OBJECT</key>
-											<integer>0</integer>
-											<key>UUID</key>
-											<string>32FDCE85-FA21-49D2-9183-17A939382D16</string>
-										</dict>
 										<key>ENABLED_MODE</key>
 										<integer>0</integer>
 										<key>SELECTED_DEPENDENCY</key>
@@ -1078,7 +1069,7 @@
 				</dict>
 			</array>
 			<key>NAME</key>
-			<string>aeneas-mac-setup-1.7.3.0_2</string>
+			<string>aeneas-mac-setup-1.7.3.0_3</string>
 			<key>PAYLOAD_ONLY</key>
 			<false/>
 			<key>TREAT_MISSING_PRESENTATION_DOCUMENTS_AS_WARNING</key>

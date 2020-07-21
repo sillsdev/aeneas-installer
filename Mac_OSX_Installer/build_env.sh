@@ -9,7 +9,7 @@ cd `dirname $0`
 export CURDIR=`pwd`
 pwd
 
-export REVISION=_2
+export REVISION=_3
 
 export FFMPEG_VER=`curl -s https://evermeet.cx/ffmpeg/info/ffmpeg/release | jq -r '.version'`
 export ESPEAK_VER=`port info --version espeak-ng | cut -d' ' -f2`

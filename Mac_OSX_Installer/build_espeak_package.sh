@@ -4,9 +4,14 @@ source ./build_env.sh
 
 if [ ! -f "aeneas-mac-installer-packages/espeak-ng-$ESPEAK_VER.pkg" ]; then
         echo ""
-	sudo port -N deactivate espeakedit espeak
-	sudo port -N uninstall espeak-ng pcaudiolib sonic
-	sudo port -N clean espeak-ng pcaudiolib sonic
+	sudo port -N deactivate espeakedit
+	sudo port -N deactivate espeak
+	sudo port -N uninstall sonic
+	sudo port -N uninstall pcaudiolib
+	sudo port -N uninstall espeak-ng
+	sudo port -N clean sonic
+	sudo port -N clean pcaudiolib
+	sudo port -N clean espeak-ng
 	sudo port -N install espeak-ng
 	sudo port -N mpkg espeak-ng
         SOURCETMP="$(mktemp -d -t espeak.src.XXXXXXXX)"
