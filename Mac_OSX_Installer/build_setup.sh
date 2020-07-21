@@ -21,7 +21,9 @@ sudo ./configure --enable-readline --prefix=$MP_PREFIX --with-applications-dir=/
 sudo make
 sudo make install
 sudo make distclean
-sudo cp ~/etc-macports-sources.conf $MP_PREFIX/etc/macports/sources.conf
+if [ -f " ~/etc-macports-sources.conf" ]; then
+  sudo cp ~/etc-macports-sources.conf $MP_PREFIX/etc/macports/sources.conf
+fi
 sudo port selfupdate
 
 cd $CURDIR
