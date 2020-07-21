@@ -66,7 +66,7 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>espeak-[ESPEAK_VER]</string>
+				<string>espeak-ng-[ESPEAK_VER]</string>
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>PAYLOAD_SIZE</key>
@@ -83,7 +83,7 @@
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>./aeneas-mac-installer-packages/espeak-[ESPEAK_VER].pkg</string>
+				<string>./aeneas-mac-installer-packages/espeak-ng-[ESPEAK_VER].pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -391,7 +391,7 @@
 										<key>LANGUAGE</key>
 										<string>English</string>
 										<key>VALUE</key>
-										<string>espeak is a compact open source software speech synthesizer for English and other languages.</string>
+										<string>espeak-ng is a compact open source software speech synthesizer for English and other languages.</string>
 									</dict>
 								</array>
 								<key>OPTIONS</key>

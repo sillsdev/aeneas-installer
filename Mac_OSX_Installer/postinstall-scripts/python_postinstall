@@ -1,0 +1,11 @@
+
+if [ ! -f $HOME/.bash_profile ]; then
+  touch $HOME/.bash_profile
+  /bin/chmod 0755 $HOME/.bash_profile
+  /usr/sbin/chown $USER $HOME/.bash_profile
+fi
+if [ ! -n "$(/usr/bin/grep '^export PATH="/Library/Frameworks/Python.framework/Versions/Current/bin' $HOME/.bash_profile)" ]; then
+  echo 'export PATH="/Library/Frameworks/Python.framework/Versions/Current/bin:$PATH"' >> $HOME/.bash_profile
+fi
+
+exit 0

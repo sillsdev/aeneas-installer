@@ -22,7 +22,7 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>ffmpeg-4.2</string>
+				<string>ffmpeg-4.3.1</string>
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>PAYLOAD_SIZE</key>
@@ -39,7 +39,7 @@
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>./aeneas-mac-installer-packages/ffmpeg-4.2.pkg</string>
+				<string>./aeneas-mac-installer-packages/ffmpeg-4.3.1.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -66,7 +66,7 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>espeak-1.48.04_2</string>
+				<string>espeak-ng-1.50</string>
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>PAYLOAD_SIZE</key>
@@ -83,7 +83,7 @@
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>./aeneas-mac-installer-packages/espeak-1.48.04_2.pkg</string>
+				<string>./aeneas-mac-installer-packages/espeak-ng-1.50.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -110,7 +110,7 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>python-3.7.4</string>
+				<string>python-3.8.4</string>
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>PAYLOAD_SIZE</key>
@@ -127,7 +127,7 @@
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>./aeneas-mac-installer-packages/python-3.7.4.pkg</string>
+				<string>./aeneas-mac-installer-packages/python-3.8.4.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -154,7 +154,7 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>numpy-1.17.1</string>
+				<string>numpy-1.19.0</string>
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>PAYLOAD_SIZE</key>
@@ -171,7 +171,7 @@
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>./aeneas-mac-installer-packages/numpy-1.17.1.pkg</string>
+				<string>./aeneas-mac-installer-packages/numpy-1.19.0.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -198,7 +198,7 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>lxml-4.4.1</string>
+				<string>lxml-4.5.2</string>
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>PAYLOAD_SIZE</key>
@@ -215,7 +215,7 @@
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>./aeneas-mac-installer-packages/lxml-4.4.1.pkg</string>
+				<string>./aeneas-mac-installer-packages/lxml-4.5.2.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -242,7 +242,7 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>bs4-4.8.0</string>
+				<string>bs4-4.9.1</string>
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>PAYLOAD_SIZE</key>
@@ -259,7 +259,7 @@
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>./aeneas-mac-installer-packages/bs4-4.8.0.pkg</string>
+				<string>./aeneas-mac-installer-packages/bs4-4.9.1.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -391,7 +391,7 @@
 										<key>LANGUAGE</key>
 										<string>English</string>
 										<key>VALUE</key>
-										<string>espeak is a compact open source software speech synthesizer for English and other languages.</string>
+										<string>espeak-ng is a compact open source software speech synthesizer for English and other languages.</string>
 									</dict>
 								</array>
 								<key>OPTIONS</key>
@@ -1034,7 +1034,7 @@
 				</dict>
 			</array>
 			<key>NAME</key>
-			<string>aeneas-mac-setup-[INSTALLER_VER]</string>
+			<string>aeneas-mac-setup-1.7.3.0_2</string>
 			<key>PAYLOAD_ONLY</key>
 			<false/>
 			<key>TREAT_MISSING_PRESENTATION_DOCUMENTS_AS_WARNING</key>

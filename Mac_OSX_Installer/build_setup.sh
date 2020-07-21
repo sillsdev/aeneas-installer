@@ -1,29 +1,36 @@
 #!/bin/bash
 
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/libexec/git-core/:$PATH
+export PATH=/bin:/sbin:/usr/bin:/usr/sbin
 
-CURDIR=`dirname $0`
+cd `dirname $0`
+CURDIR=`pwd`
 cd $CURDIR
 
-#./install_homebrew.sh
-brew install git
-brew tap danielbair/tap
-echo Running brew update
-brew update
-brew install binutils wget jq
-brew install danielbair/tap/brew-pkg
-#brew install danielbair/tap/create-dmg
-brew install create-dmg
+./install_xcode_cl_tools.sh
 
-mkdir -p $HOME/Library/Python/2.7/lib/python/site-packages
-touch $HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth
-if [ ! -n "$(grep '/usr/local/lib/python2.7/site-packages' $HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth)" ]; then
-	echo 'import sys; sys.path.insert(1, "/usr/local/lib/python2.7/site-packages")' >> $HOME/Library/Python/2.7/lib/python/site-packages/homebrew.pth
-fi
+export MP_PREFIX=/opt/usr
+export PATH=$MP_PREFIX/bin:$MP_PREFIX/sbin:$PATH
 
-if [ ! -f "/usr/local/bin/packagesbuild" ]; then
-	brew cask install packages
-	brew cask install homebrew/cask-versions/adoptopenjdk8
+sudo mkdir $MP_PREFIX
+cd $MP_PREFIX
+sudo git clone https://github.com/macports/macports-base.git
+sudo git checkout v2.6.2
+sudo git clone https://github.com/macports/macports-ports.git
+cd macports-base
+sudo ./configure --enable-readline --prefix=$MP_PREFIX --with-applications-dir=/Applications/MacPorts`echo $MP_PREFIX | sed 's#/#-#g'` --without-startupitems
+sudo make
+sudo make install
+sudo make distclean
+sudo cp ~/etc-macports-sources.conf $MP_PREFIX/etc/macports/sources.conf
+sudo port selfupdate
+
+cd $CURDIR
+pkgutil --pkgs | grep "pkg.Packages"
+if [ $? = 0 ]; then
+  if [ ! -f "./Packages.dmg" ]; then
+    wget --trust-server-names -N http://s.sudre.free.fr/Software/files/Packages.dmg
+  fi
+  sudo installer -pkg ./Packages.dmg -target /
 fi
 
 echo -e "\n\nNow run build_packages.sh\n\n"
