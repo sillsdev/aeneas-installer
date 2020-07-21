@@ -35,6 +35,9 @@ if [ $? = 0 ]; then
   sudo installer -pkg ./Packages.dmg -target /
 fi
 
+mkdir -p ./aeneas-mac-installer-packages
+mkdir -p ./python-wheels
+
 echo -e "\n\nNow run build_packages.sh\n\n"
 
 exit 0
