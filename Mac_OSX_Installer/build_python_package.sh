@@ -12,20 +12,23 @@ if [ ! -f "aeneas-mac-installer-packages/python-$PYTHON_VER.pkg" ]; then
 
 	pkgutil --expand-full python-$PYTHON_VER-macosx10.9.pkg $SOURCETMP/python-$PYTHON_VER-macosx10.9.pkg
         SOURCETMP="$SOURCETMP/python-$PYTHON_VER-macosx10.9.pkg"
-	#cat $SOURCETMP/*.pkg/PackageInfo | grep "install-location" | cut -d' ' -f10 | cut -d'=' -f2
-	#for pkg in $SOURCETMP/*.pkg; do echo $pkg; cat $pkg/PackageInfo | grep "install-location" | cut -d' ' -f10 | cut -d'=' -f2; done
 
-	rm -rf $SOURCETMP/Python_Applications.pkg
-	rm -rf $SOURCETMP/Python_Documentation.pkg
-
-	mkdir -vp $BUILDTMP/Payload/opt/usr/bin
-	mkdir -vp $BUILDTMP/Payload/Library/Frameworks/Python.framework
-	mv -v $SOURCETMP/Python_Command_Line_Tools.pkg/Payload/* $BUILDTMP/Payload/opt/usr/bin/
-	mv -v $SOURCETMP/Python_Framework.pkg/Payload/* $BUILDTMP/Payload/Library/Frameworks/Python.framework/
+	mkdir -vp $BUILDTMP/Payload
 	mkdir -vp $BUILDTMP/Scripts
 	touch $BUILDTMP/Scripts/postinstall
-	cat $SOURCETMP/*.pkg/Scripts/postinstall | sed -e 's/exit 0/#exit 0/g' > $BUILDTMP/Scripts/postinstall
-	cat ./postinstall-scripts/python_postinstall >> $BUILDTMP/Scripts/postinstall
+	echo "#!/bin/sh" >> $BUILDTMP/Scripts/postinstall
+	for pkg in $SOURCETMP/*.pkg; do 
+		PKG_ROOT=`cat $pkg/PackageInfo | grep "install-location" | cut -d' ' -f10 | cut -d'=' -f2 | cut -d'"' -f2 | sed 's#/usr/local/bin#/opt/usr/bin#g'` 
+		if [ -n "$(grep "install-location" $pkg/PackageInfo)" ]; then
+			mkdir -vp $BUILDTMP/Payload$PKG_ROOT
+			mv -v $pkg/Payload/* $BUILDTMP/Payload$PKG_ROOT/
+		fi
+		SCRIPT_NAME="`basename $pkg`-postinstall"
+		if [ -f "$pkg/Scripts/postinstall" ]; then
+			mv -v $pkg/Scripts/postinstall $BUILDTMP/Scripts/$SCRIPT_NAME
+			echo "/bin/sh ./$SCRIPT_NAME" >> $BUILDTMP/Scripts/postinstall
+		fi
+	done
 	chmod +x $BUILDTMP/Scripts/postinstall
 	pkgbuild --root "$BUILDTMP/Payload" --identifier "org.python.python" --version "$PYTHON_VER" --scripts "$BUILDTMP/Scripts" "python-$PYTHON_VER.pkg"
         [ $? = 0 ] || exit 1

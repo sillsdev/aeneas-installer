@@ -154,7 +154,7 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>numpy-1.19.0</string>
+				<string>numpy-1.19.1</string>
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>PAYLOAD_SIZE</key>
@@ -171,7 +171,7 @@
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>./aeneas-mac-installer-packages/numpy-1.19.0.pkg</string>
+				<string>./aeneas-mac-installer-packages/numpy-1.19.1.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>

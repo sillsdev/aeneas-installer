@@ -32,7 +32,7 @@ if [ ! -f "aeneas-mac-installer-packages/ffmpeg-$FFMPEG_VER.pkg" ]; then
 		mv $BUILDTMP/ffmpeg-$FFMPEG_VER/README.md $BUILDTMP/Payload/opt/usr/share/
         fi
         mkdir -vp $BUILDTMP/Scripts/
-        cat postinstall-scripts/postinstall | sed 's#@PREFIX@#/opt/usr#g' > $BUILDTMP/Scripts/postinstall
+        cat postinstall-scripts/postinstall_ffmpeg.sh | sed 's#@PREFIX@#/opt/usr#g' > $BUILDTMP/Scripts/postinstall
         chmod +x $BUILDTMP/Scripts/postinstall
         pkgbuild --root "$BUILDTMP/Payload" --identifier "org.ffmpeg.ffmpeg" --version "$FFMPEG_VER" --scripts "$BUILDTMP/Scripts" "ffmpeg-$FFMPEG_VER.pkg"
         [ $? = 0 ] || exit 1

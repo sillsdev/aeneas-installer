@@ -23,7 +23,7 @@ if [ ! -f "aeneas-mac-installer-packages/espeak-ng-$ESPEAK_VER.pkg" ]; then
 	for PKG in $SOURCETMP/*.pkg; do 
 		mv -v $PKG/Payload/* $BUILDTMP/Payload/
 	done
-        cat postinstall-scripts/postinstall | sed 's#@PREFIX@#/opt/usr#g' > $BUILDTMP/Scripts/postinstall
+        cat postinstall-scripts/postinstall_espeak.sh | sed 's#@PREFIX@#/opt/usr#g' > $BUILDTMP/Scripts/postinstall
 	chmod +x $BUILDTMP/Scripts/postinstall
 	pkgbuild --prior `port work espeak-ng`/espeak-ng-$ESPEAK_VER-component.pkg --root "$BUILDTMP/Payload" --scripts "$BUILDTMP/Scripts" "espeak-ng-$ESPEAK_VER.pkg"
         [ $? = 0 ] || exit 1
