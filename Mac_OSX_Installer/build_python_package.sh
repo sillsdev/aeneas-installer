@@ -17,15 +17,21 @@ if [ ! -f "aeneas-mac-installer-packages/python-$PYTHON_VER.pkg" ]; then
 	mkdir -vp $BUILDTMP/Scripts
 	touch $BUILDTMP/Scripts/postinstall
 	echo "#!/bin/sh" >> $BUILDTMP/Scripts/postinstall
-	for pkg in $SOURCETMP/*.pkg; do 
-		PKG_ROOT=`cat $pkg/PackageInfo | grep "install-location" | cut -d' ' -f10 | cut -d'=' -f2 | cut -d'"' -f2 | sed 's#/usr/local/bin#/opt/usr/bin#g'` 
-		if [ -n "$(grep "install-location" $pkg/PackageInfo)" ]; then
-			mkdir -vp $BUILDTMP/Payload$PKG_ROOT
-			mv -v $pkg/Payload/* $BUILDTMP/Payload$PKG_ROOT/
+	pkgs="Python_Framework.pkg
+		Python_Command_Line_Tools.pkg
+		Python_Shell_Profile_Updater.pkg
+		Python_Install_Pip.pkg
+		Python_Documentation.pkg
+		Python_Applications.pkg"
+	for pkg in $pkgs; do 
+		PKG_ROOT=`cat $SOURCETMP/$pkg/PackageInfo | grep "install-location" | cut -d' ' -f10 | cut -d'=' -f2 | cut -d'"' -f2 | sed 's#/usr/local/bin#/opt/usr/bin#g'` 
+		if [ -n "$PKG_ROOT" ]; then
+			mkdir -vp $BUILDTMP/Payload`dirname $PKG_ROOT`
+			mv -v $SOURCETMP/$pkg/Payload $BUILDTMP/Payload$PKG_ROOT
 		fi
 		SCRIPT_NAME="`basename $pkg`-postinstall"
-		if [ -f "$pkg/Scripts/postinstall" ]; then
-			mv -v $pkg/Scripts/postinstall $BUILDTMP/Scripts/$SCRIPT_NAME
+		if [ -f "$SOURCETMP/$pkg/Scripts/postinstall" ]; then
+			mv -v $SOURCETMP/$pkg/Scripts/postinstall $BUILDTMP/Scripts/$SCRIPT_NAME
 			echo "/bin/sh ./$SCRIPT_NAME" >> $BUILDTMP/Scripts/postinstall
 		fi
 	done

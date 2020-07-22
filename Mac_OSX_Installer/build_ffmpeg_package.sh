@@ -11,8 +11,11 @@ if [ ! -f "aeneas-mac-installer-packages/ffmpeg-$FFMPEG_VER.pkg" ]; then
 		if [ ! $? ]; then
 			unzip ffmpeg-$FFMPEG_VER-macos64-static.zip -d $BUILDTMP/Payload/opt/usr/opt/
 			mv -v $BUILDTMP/Payload/opt/usr-$FFMPEG_VER-macos64-static $BUILDTMP/Payload/opt/usr
-			mkdir -vp $BUILDTMP/Payload/opt/usr/share/
-			mv -v $BUILDTMP/Payload/opt/usr/doc $BUILDTMP/Payload/opt/usr/share/doc
+			mkdir -vp $BUILDTMP/Payload/opt/usr/share/ffmpeg
+			mv -v $BUILDTMP/Payload/opt/usr/doc $BUILDTMP/Payload/opt/usr/share/ffmpeg/
+			mv -v $BUILDTMP/Payload/opt/usr/presets $BUILDTMP/Payload/opt/usr/share/ffmpeg/
+			mv -v $BUILDTMP/Payload/opt/usr/LICENSE* $BUILDTMP/Payload/opt/usr/share/ffmpeg/
+			mv -v $BUILDTMP/Payload/opt/usr/README* $BUILDTMP/Payload/opt/usr/share/ffmpeg/
 		fi
         fi
         if [ ! -f "./ffmpeg-$FFMPEG_VER-macos64-static.zip" ]; then
@@ -23,13 +26,13 @@ if [ ! -f "aeneas-mac-installer-packages/ffmpeg-$FFMPEG_VER.pkg" ]; then
                 unzip ffmpeg-$FFMPEG_VER.zip -d $BUILDTMP/Payload/opt/usr/bin/
                 unzip ffprobe-$FFMPEG_VER.zip -d $BUILDTMP/Payload/opt/usr/bin/
                 unzip ffplay-$FFMPEG_VER.zip -d $BUILDTMP/Payload/opt/usr/bin/
-                mkdir -vp $BUILDTMP/Payload/opt/usr/share
 		wget --trust-server-names -N https://ffmpeg.org/releases/ffmpeg-$FFMPEG_VER.tar.gz
 		tar -xzf ffmpeg-$FFMPEG_VER.tar.gz -C $BUILDTMP/
-		mv $BUILDTMP/ffmpeg-$FFMPEG_VER/doc $BUILDTMP/Payload/opt/usr/share/
-		mv $BUILDTMP/ffmpeg-$FFMPEG_VER/presets $BUILDTMP/Payload/opt/usr/share/
-		mv $BUILDTMP/ffmpeg-$FFMPEG_VER/LICENSE.md $BUILDTMP/Payload/opt/usr/share/
-		mv $BUILDTMP/ffmpeg-$FFMPEG_VER/README.md $BUILDTMP/Payload/opt/usr/share/
+                mkdir -vp $BUILDTMP/Payload/opt/usr/share/ffmpeg
+		mv $BUILDTMP/ffmpeg-$FFMPEG_VER/doc $BUILDTMP/Payload/opt/usr/share/ffmpeg/
+		mv $BUILDTMP/ffmpeg-$FFMPEG_VER/presets $BUILDTMP/Payload/opt/usr/share/ffmpeg/
+		mv $BUILDTMP/ffmpeg-$FFMPEG_VER/LICENSE* $BUILDTMP/Payload/opt/usr/share/ffmpeg/
+		mv $BUILDTMP/ffmpeg-$FFMPEG_VER/README* $BUILDTMP/Payload/opt/usr/share/ffmpeg/
         fi
         mkdir -vp $BUILDTMP/Scripts/
         cat postinstall-scripts/postinstall_ffmpeg | sed 's#@PREFIX@#/opt/usr#g' > $BUILDTMP/Scripts/postinstall
