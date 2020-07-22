@@ -40,7 +40,8 @@ if [ ! -f "aeneas-mac-installer-packages/aeneas-$AENEAS_VER.pkg" ]; then
 	cp -v aeneas-$AENEAS_VER*.whl $BUILDTMP/Payload/opt/usr/share/aeneas_tools/
 	mv -v aeneas-$AENEAS_VER*.whl python-wheels/
 	mkdir -p $BUILDTMP/Scripts/
-	cp -v postinstall-scripts/postinstall_aeneas.sh $BUILDTMP/Scripts/postinstall
+        cat postinstall-scripts/postinstall_aeneas | sed 's#@PREFIX@#/opt/usr#g' > $BUILDTMP/Scripts/postinstall
+	chmod +x $BUILDTMP/Scripts/postinstall
 	pkgbuild --root "$BUILDTMP/Payload" --identifier "org.python.python.aeneas" --version "$AENEAS_VER" --scripts "$BUILDTMP/Scripts" "aeneas-$AENEAS_VER.pkg"
 	[ $? = 0 ] || exit 1
 	mv aeneas-$AENEAS_VER.pkg aeneas-mac-installer-packages/
@@ -57,7 +58,8 @@ if [ ! -f "aeneas-mac-installer-packages/numpy-$NUMPY_VER.pkg" ]; then
 	cp -v numpy-$NUMPY_VER*.whl $BUILDTMP/Payload/opt/usr/share/aeneas_tools/
 	mv -v numpy-$NUMPY_VER*.whl python-wheels/
 	mkdir -p $BUILDTMP/Scripts/
-	cp -v postinstall-scripts/postinstall_numpy.sh $BUILDTMP/Scripts/postinstall
+        cat postinstall-scripts/postinstall_numpy | sed 's#@PREFIX@#/opt/usr#g' > $BUILDTMP/Scripts/postinstall
+	chmod +x $BUILDTMP/Scripts/postinstall
 	pkgbuild --root "$BUILDTMP/Payload" --identifier "org.python.python.numpy" --version "$NUMPY_VER" --scripts "$BUILDTMP/Scripts" "numpy-$NUMPY_VER.pkg"
 	[ $? = 0 ] || exit 1
 	mv numpy-$NUMPY_VER.pkg aeneas-mac-installer-packages/
@@ -73,7 +75,8 @@ if [ ! -f "aeneas-mac-installer-packages/lxml-$LXML_VER.pkg" ]; then
 	cp -v lxml-$LXML_VER*.whl $BUILDTMP/Payload/opt/usr/share/aeneas_tools/
 	mv -v lxml-$LXML_VER*.whl python-wheels/
 	mkdir -p $BUILDTMP/Scripts/
-	cp -v postinstall-scripts/postinstall_lxml.sh $BUILDTMP/Scripts/postinstall
+        cat postinstall-scripts/postinstall_lxml | sed 's#@PREFIX@#/opt/usr#g' > $BUILDTMP/Scripts/postinstall
+	chmod +x $BUILDTMP/Scripts/postinstall
 	pkgbuild --root "$BUILDTMP/Payload" --identifier "org.python.python.lxml" --version "$LXML_VER" --scripts "$BUILDTMP/Scripts" "lxml-$LXML_VER.pkg"
 	[ $? = 0 ] || exit 1
 	mv lxml-$LXML_VER.pkg aeneas-mac-installer-packages/
@@ -91,7 +94,8 @@ if [ ! -f "aeneas-mac-installer-packages/bs4-$BS4_VER.pkg" ]; then
 	cp -v soupsieve-$SOUPSIEVE_VER*.whl $BUILDTMP/Payload/opt/usr/share/aeneas_tools/
 	mv -v soupsieve-$SOUPSIEVE_VER*.whl python-wheels/
 	mkdir -p $BUILDTMP/Scripts/
-	cp -v postinstall-scripts/postinstall_bs4.sh $BUILDTMP/Scripts/postinstall
+        cat postinstall-scripts/postinstall_bs4 | sed 's#@PREFIX@#/opt/usr#g' > $BUILDTMP/Scripts/postinstall
+	chmod +x $BUILDTMP/Scripts/postinstall
 	pkgbuild --root "$BUILDTMP/Payload" --identifier "org.python.python.bs4" --version "$BS4_VER" --scripts "$BUILDTMP/Scripts" "bs4-$BS4_VER.pkg"
 	[ $? = 0 ] || exit 1
 	mv bs4-$BS4_VER.pkg aeneas-mac-installer-packages/

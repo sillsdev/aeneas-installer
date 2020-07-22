@@ -29,6 +29,7 @@ if [ ! -f "aeneas-mac-installer-packages/python-$PYTHON_VER.pkg" ]; then
 			echo "/bin/sh ./$SCRIPT_NAME" >> $BUILDTMP/Scripts/postinstall
 		fi
 	done
+	echo "exit 0" >> $BUILDTMP/Scripts/postinstall
 	chmod +x $BUILDTMP/Scripts/postinstall
 	pkgbuild --root "$BUILDTMP/Payload" --identifier "org.python.python" --version "$PYTHON_VER" --scripts "$BUILDTMP/Scripts" "python-$PYTHON_VER.pkg"
         [ $? = 0 ] || exit 1
