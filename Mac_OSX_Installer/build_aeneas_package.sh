@@ -4,6 +4,8 @@ source ./build_env.sh
 
 cd $CURDIR
 
+echo -e "\n\nPreparing python environment for build\n\n"
+
 python3 -m ensurepip
 python3 -m pip install -U wheel pip setuptools
 
@@ -12,7 +14,6 @@ python3 -m pip install -U aeneas
 
 python3 -m aeneas.diagnostics
 #python3 -m aeneas.tools.synthesize_text list "This is a test|with two lines" eng -v /tmp/test.wav
-#python3 -m aeneas.diagnostics
 
 export AENEAS_VER=`python3 -m pip show aeneas | grep "Version:" | cut -d' ' -f2`
 export NUMPY_VER=`python3 -m pip show numpy | grep "Version:" | cut -d' ' -f2`
@@ -21,7 +22,7 @@ export BS4_VER=`python3 -m pip show beautifulsoup4 | grep "Version:" | cut -d' '
 export SOUPSIEVE_VER=`python3 -m pip show soupsieve | grep "Version:" | cut -d' ' -f2`
 
 if [ ! -f "aeneas-mac-installer-packages/aeneas-$AENEAS_VER.pkg" ]; then
-	echo ""
+	echo -e "\n\nBuilding aeneas-$AENEAS_VER.pkg\n\n"
 	python3 -m pip download aeneas
 	rm -rf aeneas-1.7.3.0
 	tar -xf aeneas-1.7.3.0.tar.gz
@@ -51,7 +52,7 @@ else
 fi
 cd $CURDIR
 if [ ! -f "aeneas-mac-installer-packages/numpy-$NUMPY_VER.pkg" ]; then
-	echo ""
+	echo -e "\n\nBuilding numpy-$NUMPY_VER.pkg\n\n"
 	python3 -m pip wheel numpy
 	BUILDTMP="$(mktemp -d -t numpy.tmp.XXXXXXXX)"
 	mkdir -p $BUILDTMP/Payload/opt/usr/share/aeneas_tools/
@@ -68,7 +69,7 @@ else
 	echo "Found numpy-$NUMPY_VER.pkg"
 fi
 if [ ! -f "aeneas-mac-installer-packages/lxml-$LXML_VER.pkg" ]; then
-	echo ""
+	echo -e "\n\nBuilding lxml-$LXML_VER.pkg\n\n"
 	python3 -m pip wheel lxml
 	BUILDTMP="$(mktemp -d -t lxml.tmp.XXXXXXXX)"
 	mkdir -p $BUILDTMP/Payload/opt/usr/share/aeneas_tools/
@@ -85,7 +86,7 @@ else
 	echo "Found lxml-$LXML_VER.pkg"
 fi
 if [ ! -f "aeneas-mac-installer-packages/bs4-$BS4_VER.pkg" ]; then
-	echo ""
+	echo -e "\n\nBuilding bs4-$BS4_VER.pkg\n\n"
 	python3 -m pip wheel beautifulsoup4
 	BUILDTMP="$(mktemp -d -t bs4.tmp.XXXXXXXX)"
 	mkdir -p $BUILDTMP/Payload/opt/usr/share/aeneas_tools/

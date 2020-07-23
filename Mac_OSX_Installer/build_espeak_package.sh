@@ -3,7 +3,7 @@
 source ./build_env.sh
 
 if [ ! -f "aeneas-mac-installer-packages/espeak-ng-$ESPEAK_VER.pkg" ]; then
-        echo ""
+        echo -e "\n\nBuilding espeak-ng-$ESPEAK_VER.pkg\n\n"
 	sudo port -Npf uninstall espeak-ng pcaudiolib sonic
 	sudo port -Npf install espeak-ng
 	sudo port -Npf mpkg espeak-ng
@@ -20,7 +20,7 @@ if [ ! -f "aeneas-mac-installer-packages/espeak-ng-$ESPEAK_VER.pkg" ]; then
 	chmod +x $BUILDTMP/Scripts/postinstall
 	pkgbuild --prior `port work espeak-ng`/espeak-ng-$ESPEAK_VER-component.pkg --root "$BUILDTMP/Payload" --scripts "$BUILDTMP/Scripts" "espeak-ng-$ESPEAK_VER.pkg"
         [ $? = 0 ] || exit 1
-	sudo installer -pkg espeak-ng-$ESPEAK_VER.pkg -target /
+	sudo installer -pkg espeak-ng-$ESPEAK_VER.pkg -target / -dumplog -verboseR
         [ $? = 0 ] || exit 1
 	mv espeak-ng-$ESPEAK_VER.pkg aeneas-mac-installer-packages/
 	rm -rf $SOURCETMP

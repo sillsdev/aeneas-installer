@@ -7,7 +7,7 @@ export PATH="/Library/Frameworks/Python.framework/Versions/Current/bin:$PATH"
 
 cd `dirname $0`
 export CURDIR=`pwd`
-pwd
+echo -e "\n\nRunning `basename $0`\n from $CURDIR\n"
 
 export REVISION=_3
 
@@ -21,4 +21,8 @@ export BS4_VER=`pip3 show beautifulsoup4 | grep "Version:" | cut -d' ' -f2`
 export SOUPSIEVE_VER=`pip3 show soupsieve | grep "Version:" | cut -d' ' -f2`
 export VERSION="$AENEAS_VER$REVISION"
 
+export CPLUS_INCLUDE_PATH="/opt/usr/include"
+export C_INCLUDE_PATH="/opt/usr/include"
+export LIBRARY_PATH="/opt/usr/lib"
 export LDFLAGS="-L/opt/usr/lib"
+

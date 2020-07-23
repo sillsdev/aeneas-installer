@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [ $# -eq 0 ]
+  then
+    echo "Useage: `basename $0` version"
+    exit 2
+fi
+
 vercomp () {
     if [[ $1 == $2 ]]
     then
@@ -32,24 +38,22 @@ vercomp () {
 }
 
 testvercomp () {
-    vercomp $1 $2
+    vercomp $1 $3
     case $? in
         0) op='=';;
         1) op='>';;
         2) op='<';;
     esac
-    if [[ $op != $3 ]]
+    if [[ $op != $2 ]]
     then
-        #echo "FAIL: Expected '$3', Actual '$op', Arg1 '$1', Arg2 '$2'"
-        echo 1
-        exit 1
+        echo "FAIL: Expected '$2', Actual '$op'; Arg1 '$1', Arg2 '$2', Arg3 '$3'"
     else
-        #echo "Pass: '$1 $op $2'"
-        echo 0
-        exit 0
+        echo "Pass: '$1 $op $2'"
     fi
 }
 
 V=`python3 --version | cut -d' ' -f2`
 
-testvercomp $V $1 '<'
+testvercomp $V '<' $1
+
+exit 0

@@ -3,7 +3,7 @@
 source ./build_env.sh
 
 if [ ! -f "aeneas-mac-installer-packages/ffmpeg-$FFMPEG_VER.pkg" ]; then
-	echo ""
+        echo -e "\n\nBuilding ffmpeg-$FFMPEG_VER.pkg\n\n"
 	BUILDTMP="$(mktemp -d -t ffmpeg.tmp.XXXXXXXX)"
 	mkdir -vp $BUILDTMP/Payload/opt/usr/opt/
         if [ ! -f "./ffmpeg-$FFMPEG_VER-macos64-static.zip" ]; then
@@ -39,7 +39,7 @@ if [ ! -f "aeneas-mac-installer-packages/ffmpeg-$FFMPEG_VER.pkg" ]; then
         chmod +x $BUILDTMP/Scripts/postinstall
         pkgbuild --root "$BUILDTMP/Payload" --identifier "org.ffmpeg.ffmpeg" --version "$FFMPEG_VER" --scripts "$BUILDTMP/Scripts" "ffmpeg-$FFMPEG_VER.pkg"
         [ $? = 0 ] || exit 1
-        sudo installer -pkg ffmpeg-$FFMPEG_VER.pkg -target /
+        sudo installer -pkg ffmpeg-$FFMPEG_VER.pkg -target / -dumplog -verboseR
         mv ffmpeg-$FFMPEG_VER.pkg aeneas-mac-installer-packages/
         rm -rf $BUILDTMP
 else

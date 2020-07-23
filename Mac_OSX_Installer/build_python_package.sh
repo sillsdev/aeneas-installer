@@ -3,7 +3,7 @@
 source ./build_env.sh
 
 if [ ! -f "aeneas-mac-installer-packages/python-$PYTHON_VER.pkg" ]; then
-        echo ""
+        echo -e "\n\nBuilding python-$PYTHON_VER.pkg\n\n"
         if [ ! -f "./python-$PYTHON_VER-macosx10.9.pkg" ]; then
 		wget --trust-server-names https://www.python.org/ftp/python/$PYTHON_VER/python-$PYTHON_VER-macosx10.9.pkg
         fi
@@ -17,21 +17,21 @@ if [ ! -f "aeneas-mac-installer-packages/python-$PYTHON_VER.pkg" ]; then
 	mkdir -vp $BUILDTMP/Scripts
 	touch $BUILDTMP/Scripts/postinstall
 	echo "#!/bin/sh" >> $BUILDTMP/Scripts/postinstall
-	pkgs="Python_Framework.pkg
+	PKGS="Python_Framework.pkg
 		Python_Command_Line_Tools.pkg
 		Python_Shell_Profile_Updater.pkg
 		Python_Install_Pip.pkg
 		Python_Documentation.pkg
 		Python_Applications.pkg"
-	for pkg in $pkgs; do 
-		PKG_ROOT=`cat $SOURCETMP/$pkg/PackageInfo | grep "install-location" | cut -d' ' -f10 | cut -d'=' -f2 | cut -d'"' -f2 | sed 's#/usr/local/bin#/opt/usr/bin#g'` 
+	for PKG in $PKGS; do 
+		PKG_ROOT=`cat $SOURCETMP/$PKG/PackageInfo | grep "install-location" | cut -d' ' -f10 | cut -d'=' -f2 | cut -d'"' -f2 | sed 's#/usr/local/#/opt/usr/#g'` 
 		if [ -n "$PKG_ROOT" ]; then
-			mkdir -vp $BUILDTMP/Payload`dirname $PKG_ROOT`
-			mv -v $SOURCETMP/$pkg/Payload $BUILDTMP/Payload$PKG_ROOT
+			mkdir -vp $BUILDTMP/Payload$PKG_ROOT
+			cp -va $SOURCETMP/$PKG/Payload/* $BUILDTMP/Payload$PKG_ROOT/
 		fi
-		SCRIPT_NAME="`basename $pkg`-postinstall"
-		if [ -f "$SOURCETMP/$pkg/Scripts/postinstall" ]; then
-			mv -v $SOURCETMP/$pkg/Scripts/postinstall $BUILDTMP/Scripts/$SCRIPT_NAME
+		SCRIPT_NAME="`basename $PKG`-postinstall"
+		if [ -f "$SOURCETMP/$PKG/Scripts/postinstall" ]; then
+			cp -va $SOURCETMP/$PKG/Scripts/postinstall $BUILDTMP/Scripts/$SCRIPT_NAME
 			echo "/bin/sh ./$SCRIPT_NAME" >> $BUILDTMP/Scripts/postinstall
 		fi
 	done
@@ -39,7 +39,7 @@ if [ ! -f "aeneas-mac-installer-packages/python-$PYTHON_VER.pkg" ]; then
 	chmod +x $BUILDTMP/Scripts/postinstall
 	pkgbuild --root "$BUILDTMP/Payload" --identifier "org.python.python" --version "$PYTHON_VER" --scripts "$BUILDTMP/Scripts" "python-$PYTHON_VER.pkg"
         [ $? = 0 ] || exit 1
-	sudo installer -pkg python-$PYTHON_VER.pkg -target /
+	sudo installer -pkg python-$PYTHON_VER.pkg -target / -dumplog -verboseR
         [ $? = 0 ] || exit 1
 	mv python-$PYTHON_VER.pkg aeneas-mac-installer-packages/
 	rm -rf $SOURCETMP
