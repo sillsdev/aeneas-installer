@@ -1,0 +1,8 @@
+Microsoft (R) COFF/PE Dumper Version 14.12.25830.2
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+
+Dump of file \Program Files (x86)\eSpeak NG
+LINK : the 32-bit linker (C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.12.25827\bin\HostX86\x86\link.exe) failed to do memory mapped file I/O on `\Program Files (x86)\eSpeak NG' and is going to restart linking with a 64-bit linker for better throughput
+LINK : failed to locate a 64-bit linker on %PATH%; continue the current linking
+LINK : fatal error LNK1104: cannot open file '\Program Files (x86)\eSpeak NG'

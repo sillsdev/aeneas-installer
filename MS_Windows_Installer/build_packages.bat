@@ -8,98 +8,122 @@ IF NOT DEFINED VS90COMNTOOLS set VS90COMNTOOLS=%USERPROFILE%\AppData\Local\Progr
 
 set CURDIR=%CD%
 
-IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
-:WIN32PATH
-  set PF32=C:\Program Files
+set PATH=C:\Program Files\Python38\;C:\Program Files\Python38\Scripts;C:\Program Files\eSpeak NG;C:\Program Files\FFmpeg\bin;C:\Program Files\Git\usr\bin;%PATH%
+
+IF EXIST "C:\Program Files\7-Zip\7z.exe" GOTO SEVENZ64PATH
+:SEVENZ32PATH
+  set SEVENZ=C:\Program Files (x86)\7-Zip\7z.exe
   (call )
   GOTO ENDIF
-:WIN64PATH
-  set PF32=C:\Program Files (x86)
+:SEVENZ64PATH
+  set SEVENZ=C:\Program Files\7-Zip\7z.exe
   (call )
 :ENDIF
 
-IF EXIST "%PF32%\Inno Setup 6" GOTO INNO6PATH
-:INNO5PATH
-  set INNOPATH=%PF32%\Inno Setup 5
+IF EXIST "C:\Program Files\Inno Setup 5\ISCC.exe" GOTO INNO64PATH
+:INNO32PATH
+  set ISCC=C:\Program Files (x86)\Inno Setup 5\ISCC.exe
   (call )
   GOTO ENDIF
-:INNO6PATH
-  set INNOPATH=%PF32%\Inno Setup 6
+:INNO64PATH
+  set ISCC=C:\Program Files\Inno Setup 5\ISCC.exe
   (call )
 :ENDIF
-
-IF NOT EXIST "%cd%\python-3.7.4.exe" (
-  echo Downloading Python 3.7.4...
-  %CURL% "https://www.python.org/ftp/python/3.7.4/python-3.7.4.exe" -o "%cd%\python-3.7.4.exe"
-)
-IF EXIST "C:\Python37-32\python.exe" (
-  IF NOT EXIST "%cd%\python-3.7.4.exe" (
-    echo Installing Python 3.7.4...
-    python-3.7.4.exe /quiet InstallAllUsers=1 TargetDir=C:\Python37-32 PrependPath=1
-  )
-) ELSE (
-  echo Could not find Python 3.7.4...
-  START https://www.python.org/downloads/release/python-374/
-)
-
-C:\Python37-32\python -m ensurepip
-set pip=C:\Python37-32\Scripts\pip
-
-%pip% install -U pip setuptools wheel
-
-%pip% install -U patch
-
-%pip% install -U wget
+IF EXIST "C:\Program Files\Inno Setup 6\ISCC.exe" GOTO INNO64
+:INNO32
+  set ISCC=C:\Program Files (x86)\Inno Setup 6\ISCC.exe
+  (call )
+  GOTO ENDIF
+:INNO64
+  set ISCC=C:\Program Files\Inno Setup 6\ISCC.exe
+  (call )
+:ENDIF
 
 2>nul curl.exe --version
 if %ERRORLEVEL%==0 goto exeCurl
-  REM set CURL=C:\Python37-32\python -m wget
+  REM python.exe -m pip install -U wget
+  REM set CURL=python.exe -m wget
   set CURL=call curl.bat -L
   goto endIf
 :exeCurl
   set CURL=curl.exe -L
 :endIf
 
-IF NOT EXIST "%cd%\setup_espeak-1.48.04.exe" (
-  echo Downloading eSpeak...
-  %CURL% http://internode.dl.sourceforge.net/project/espeak/espeak/espeak-1.48/setup_espeak-1.48.04.exe -o %cd%\setup_espeak-1.48.04.exe
+IF NOT EXIST "%cd%\python-3.8.5-amd64.exe" (
+  echo Downloading Python 3.8.5...
+  %CURL% "http://www.python.org/ftp/python/3.8.5/python-3.8.5-amd64.exe" -o "%cd%\python-3.8.5-amd64.exe"
 )
-IF EXIST "%cd%\setup_espeak-1.48.04.exe" (
-REM   echo Installing eSpeak...
-REM   "%cd%\setup_espeak-1.48.04.exe" /SILENT
+IF EXIST "%cd%\python-3.8.5-amd64.exe" (
+  echo Installing Python 3.8.5...
+  python-3.8.5-amd64.exe /passive InstallAllUsers=1 PrependPath=1
 ) ELSE (
-  echo Could not find eSpeak...
-  echo START http://internode.dl.sourceforge.net/project/espeak/espeak/espeak-1.48/setup_espeak-1.48.04.exe
+  echo Could not find Python 3.8.5...
+  START https://www.python.org/downloads/release/python-385/
 )
 
-REM DEL "%cd%\ffmpeg-4.2-win32-static.zip"
-IF NOT EXIST "%cd%\ffmpeg-4.2-win32-static.zip" (
+"C:\Program Files\Python38\python.exe" -m ensurepip
+set pip=C:\Program Files\Python38\Scripts\pip.exe
+set python=C:\Program Files\Python38\python.exe
+
+"%pip%" install -U pip setuptools wheel
+
+"%pip%" install -U patch
+
+IF NOT EXIST "%cd%\espeak-ng-1.50-x64.msi" (
+  echo Downloading eSpeak-ng...
+  %CURL% http://github.com/espeak-ng/espeak-ng/releases/download/1.50/espeak-ng-20191129-b702b03-x64.msi -o %cd%\espeak-ng-1.50-x64.msi
+)
+IF EXIST "%cd%\espeak-ng-1.50-x64.msi" (
+REM   echo Installing eSpeak-ng...
+REM   "%cd%\espeak-ng-1.50-x64.msi" /passive InstallAllUsers=1 PrependPath=1
+) ELSE (
+  echo Could not find eSpeak-ng...
+  echo START https://github.com/espeak-ng/espeak-ng/releases
+)
+
+REM DEL "%cd%\ffmpeg-4.3-win64-static.zip"
+IF NOT EXIST "%cd%\ffmpeg-4.3-win64-static.zip" (
   echo Downloading FFmpeg...
-  REM %CURL% https://archive.org/download/ffmpeg-4.2-win32-static/ffmpeg-4.2-win32-static.zip -o %cd%\ffmpeg-3.2-win32-static.zip
-  %CURL% https://ffmpeg.zeranoe.com/builds/win32/static/ffmpeg-4.2-win32-static.zip -o %cd%\ffmpeg-4.2-win32-static.zip
+  %CURL% https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-4.3-win64-static.zip -o %cd%\ffmpeg-4.3-win64-static.zip
 )
-IF NOT EXIST "%cd%\setup_ffmpeg-4.2.exe" (
-  "%PF32%\7-Zip\7z.exe" x ffmpeg-4.2-win32-static.zip -aoa
+IF NOT EXIST "%cd%\ffmpeg-4.3-win64-static.exe" (
+  "%SEVENZ%" x ffmpeg-4.3-win64-static.zip -aoa
   rmdir /q/s ffmpeg-4.2
-  move /y ffmpeg-4.2-win32-static ffmpeg-4.2
-  "%INNOPATH%\ISCC.exe" FFmpeg_Installer.iss
+  move /y ffmpeg-4.3-win64-static ffmpeg-4.3
+  "%ISCC%" FFmpeg_Installer.iss
 )
-IF EXIST "%cd%\setup_ffmpeg-4.2.exe" (
-REM   echo Installing FFmpeg...
-REM   "%cd%\setup_ffmpeg-4.2.exe" /SILENT
+IF EXIST "%cd%\ffmpeg-4.3-win64-static.exe" (
+   echo Installing FFmpeg...
+   "%cd%\ffmpeg-4.3-win64-static.exe" /SILENT
 ) ELSE (
   echo Could not find FFmpeg...
   echo START https://ffmpeg.zeranoe.com/builds/
 )
 
-%pip% install -U numpy
-%pip% install -U aeneas lxml beautifulsoup4 soupsieve
+del *.whl
 
-%pip% wheel pip
-%pip% wheel numpy
-%pip% wheel aeneas
+"%pip%" install -U numpy
+"%pip%" install -U lxml beautifulsoup4 soupsieve
 
+"%pip%" wheel pip
+"%pip%" wheel numpy
+"%pip%" wheel lxml beautifulsoup4 soupsieve
+"%pip%" download aeneas==1.7.3.0
+
+RMDIR /S /Q aeneas-1.7.3.0
+"%SEVENZ%" e aeneas-1.7.3.0.tar.gz -aoa
+"%SEVENZ%" x aeneas-1.7.3.0.tar -aoa
+cd aeneas-1.7.3.0
+"%python%" -m patch -v -p 1 --debug ..\aeneas-patches\patch-espeak-ng.diff
+"%python%" -m patch -v -p 1 --debug ..\aeneas-patches\patch-py38-utf8.diff
+move aeneas\cew\speak_lib.h thirdparty\speak_lib.h
+set AENEAS_USE_ESPEAKNG=True
+"%python%" setup.py bdist_wheel
+del ..\aeneas-*.whl
+copy /b/v/y dist\aeneas-*.whl ..\
 cd %CURDIR%
+
+"%pip%" install -U aeneas-*.whl
 
 REM call install_packages.bat
 
@@ -107,9 +131,9 @@ REM C:\Windows\System32\ping 127.0.0.1 -n 10 -w 1000 > NUL
 
 echo.
 set PYTHONIOENCODING=UTF-8
-C:\Python37-32\python -m aeneas.diagnostics
-C:\Python37-32\python -m aeneas.tools.execute_task --version
-C:\Python37-32\python -m aeneas.tools.synthesize_text list "This is a test|with two lines" eng -v C:\Windows\Temp\test.wav
+"%python%" -m aeneas.diagnostics
+"%python%" -m aeneas.tools.execute_task --version
+"%python%" -m aeneas.tools.synthesize_text list "This is a test|with two lines" eng -v C:\Windows\Temp\test.wav
 echo.
 
 REM C:\Windows\System32\ping 127.0.0.1 -n 5 -w 1000 > NUL

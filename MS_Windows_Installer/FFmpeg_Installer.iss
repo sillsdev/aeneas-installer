@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "FFmpeg"
-#define MyAppVersion "4.2"
+#define MyAppVersion "4.3"
 #define MyAppPublisher "Daniel Bair"
 #define MyAppURL "http://www.danielbair.com/"
 #define MyAppExeName "ff-prompt.bat"
@@ -24,9 +24,9 @@ DefaultDirName={pf}\{#MyAppName}
 DisableDirPage=no
 DefaultGroupName={#MyAppName}
 AllowNoIcons=no
-InfoBeforeFile=ffmpeg-4.2\README.txt
+InfoBeforeFile=ffmpeg-4.3\README.txt
 OutputDir=.\
-OutputBaseFilename=setup_ffmpeg-4.2
+OutputBaseFilename=ffmpeg-4.3-win64-static
 Compression=lzma
 SolidCompression=yes
 ChangesEnvironment=yes
@@ -39,7 +39,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "ffmpeg"; Description: "Install FFmpeg 4.2"; ExtraDiskSpaceRequired: 0; Types: full compact custom; Flags: fixed
 
 [Files]
-Source: "ffmpeg-4.2\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "ffmpeg-4.3\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
@@ -50,7 +50,7 @@ Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
 Filename: "{app}\doc\ffmpeg.html"; Description: "View the README file"; Flags: postinstall shellexec skipifsilent
 
 [Registry]
-Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{olddata};{pf32}\FFmpeg\bin"; Components: ffmpeg; Check: NeedsAddPath(ExpandConstant('{pf32}\FFmpeg\bin'))
+Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{olddata};{pf}\FFmpeg\bin"; Components: ffmpeg; Check: NeedsAddPath(ExpandConstant('{pf}\FFmpeg\bin'))
 
 [Code]
 function NeedsAddPath(Param: string): boolean;

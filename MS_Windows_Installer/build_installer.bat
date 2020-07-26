@@ -14,17 +14,18 @@ IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
   (call )
   GOTO ENDIF
 :WIN64PATH
+  set PF64=C:\Program Files
   set PF32=C:\Program Files (x86)
   (call )
 :ENDIF
 
-IF EXIST "%PF32%\Inno Setup 6" GOTO INNO6PATH
+IF EXIST "%PF64%\Inno Setup 6" GOTO INNO6PATH
 :INNO5PATH
-  set INNOPATH=%PF32%\Inno Setup 5
+  set INNOPATH=%PF64%\Inno Setup 5
   (call )
   GOTO ENDIF
 :INNO6PATH
-  set INNOPATH=%PF32%\Inno Setup 6
+  set INNOPATH=%PF64%\Inno Setup 6
   (call )
 :ENDIF
 
@@ -49,7 +50,7 @@ set pip=C:\Python37-32\Scripts\pip
 FOR /F "tokens=* USEBACKQ" %%F IN (`ffmpeg -version ^| %grep% version -m 1 ^| %cut% -d' ' -f3`) DO (SET ffmpeg_ver=%%F)
 FOR /F "tokens=* USEBACKQ" %%F IN (`python --version ^| %cut% -d' ' -f2`) DO (SET python_ver=%%F)
 
-FOR /F "tokens=* USEBACKQ" %%F IN (`dir setup_ffmpeg-*.exe /b`) DO (SET ffmpeg_file=%%F)
+FOR /F "tokens=* USEBACKQ" %%F IN (`dir ffmpeg-*.exe /b`) DO (SET ffmpeg_file=%%F)
 FOR /F "tokens=* USEBACKQ" %%F IN (`dir python-*.exe /b`) DO (SET python_file=%%F)
 
 FOR /F "tokens=* USEBACKQ" %%F IN (`%pip% show pip ^| %grep% Version ^| %cut% -d' ' -f2`) DO (SET pip_ver=%%F)
