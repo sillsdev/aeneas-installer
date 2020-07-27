@@ -6,11 +6,11 @@ aeneas is developed by Alberto Pettarin, ReadBeyond, and the source code is avai
 
 --------------------------------------------------------------------
 
-FFmpeg is a video and audio converter, developed by Fabrice Bellard, and is available for download at http://www.ffmpeg.org/
+eSpeak-ng is a text-to-speech engine, developed by Reece H. Dunn, and is available for download at https://github.com/espeak-ng/espeak-ng
 
 --------------------------------------------------------------------
 
-eSpeak is a text-to-speech engine, developed by Jonathan Duddington, and is available for download at http://espeak.sourceforge.net/
+FFmpeg is a video and audio converter, developed by Fabrice Bellard, and is available for download at http://www.ffmpeg.org/
 
 --------------------------------------------------------------------
 

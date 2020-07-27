@@ -34,10 +34,12 @@ IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
   (call )
 :ENDIF
 
+echo Copying espeak-ng.exe to espeak.exe
+copy /b/v/y "%PF64%"\eSpeak-ng\espeak-ng.exe "%PF64%"\eSpeak-ng\espeak.exe
 echo Copying espeak-ng.dll to C:\Windows\System32\
-copy /b/v/y "%PF64%\eSpeak-ng\espeak-ng.dll" C:\Windows\System32\espeak-ng.dll
-echo Copying espeak-ng.lib to C:\Python38\libs\
-copy /b/v/y espeak-ng.lib C:\Python38\libs\
+copy /b/v/y "%PF64%"\eSpeak-ng\espeak-ng.dll C:\Windows\System32\espeak-ng.dll
+echo Copying espeak-ng.lib to %PF64%"\Python38\libs\
+copy /b/v/y espeak-ng.lib %PF64%"\Python38\libs\
 
 C:\Python38\python -m ensurepip
 C:\Python38\python -m pip install -U [PIP_FILE]

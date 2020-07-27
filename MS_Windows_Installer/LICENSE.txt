@@ -2,11 +2,11 @@ aeneas is licensed under the GNU AFFERO GENERAL PUBLIC LICENSE Version 3, 19 Nov
 
 --------------------------------------------------------------------
 
-FFmpeg is licensed under the GNU Lesser General Public License (LGPL) version 2.1 or later. However, FFmpeg incorporates several optional parts and optimizations that are covered by the GNU General Public License (GPL) version 2 or later. Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>. For more information on this, and how to apply and follow the GNU GPLv3, see <http://www.gnu.org/licenses/>.
+eSpeak-NG is licensed under the GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>. For more information on this, and how to apply and follow the GNU GPLv3, see <http://www.gnu.org/licenses/>.
 
 --------------------------------------------------------------------
 
-eSpeak is licensed under the GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>. For more information on this, and how to apply and follow the GNU GPLv3, see <http://www.gnu.org/licenses/>.
+FFmpeg is licensed under the GNU Lesser General Public License (LGPL) version 2.1 or later. However, FFmpeg incorporates several optional parts and optimizations that are covered by the GNU General Public License (GPL) version 2 or later. Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>. For more information on this, and how to apply and follow the GNU GPLv3, see <http://www.gnu.org/licenses/>.
 
 --------------------------------------------------------------------
 

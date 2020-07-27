@@ -11,7 +11,7 @@
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{CAEF6AD4-AA73-4751-B60F-7C699110BDDD}
+AppId={{F3EDA0E9-6DA3-4B46-818E-0C07AB675A8A}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -19,14 +19,15 @@ AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
-;UsePreviousAppDir=no
-DefaultDirName={pf}\{#MyAppName}
+ArchitecturesInstallIn64BitMode=x64
+UsePreviousAppDir=no
+DefaultDirName={commonpf64}\{#MyAppName}
 DisableDirPage=no
 DefaultGroupName={#MyAppName}
 AllowNoIcons=no
-InfoBeforeFile=ffmpeg-4.3\README.txt
+InfoBeforeFile=ffmpeg-{#MyAppVersion}\README.txt
 OutputDir=.\
-OutputBaseFilename=ffmpeg-4.3-win64-static
+OutputBaseFilename=ffmpeg-{#MyAppVersion}-win64-static
 Compression=lzma
 SolidCompression=yes
 ChangesEnvironment=yes
@@ -35,11 +36,8 @@ ChangesEnvironment=yes
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
-[Components]
-Name: "ffmpeg"; Description: "Install FFmpeg 4.2"; ExtraDiskSpaceRequired: 0; Types: full compact custom; Flags: fixed
-
 [Files]
-Source: "ffmpeg-4.3\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "ffmpeg-{#MyAppVersion}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
@@ -50,7 +48,7 @@ Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
 Filename: "{app}\doc\ffmpeg.html"; Description: "View the README file"; Flags: postinstall shellexec skipifsilent
 
 [Registry]
-Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{olddata};{pf}\FFmpeg\bin"; Components: ffmpeg; Check: NeedsAddPath(ExpandConstant('{pf}\FFmpeg\bin'))
+Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{olddata};{commonpf64}\FFmpeg\bin"; Check: NeedsAddPath(ExpandConstant('{commonpf64}\FFmpeg\bin'))
 
 [Code]
 function NeedsAddPath(Param: string): boolean;

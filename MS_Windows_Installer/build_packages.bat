@@ -8,36 +8,38 @@ IF NOT DEFINED VS90COMNTOOLS set VS90COMNTOOLS=%USERPROFILE%\AppData\Local\Progr
 
 set CURDIR=%CD%
 
-set PATH=C:\Program Files\Python38\;C:\Program Files\Python38\Scripts;C:\Program Files\eSpeak NG;C:\Program Files\FFmpeg\bin;C:\Program Files\Git\usr\bin;%PATH%
+set PATH=C:\Program Files\Python38\;C:\Program Files\Python38\Scripts;C:\Program Files\eSpeak NG;C:\Program Files\FFmpeg\bin;%PATH%;C:\Program Files\Git\usr\bin
 
 IF EXIST "C:\Program Files\7-Zip\7z.exe" GOTO SEVENZ64PATH
 :SEVENZ32PATH
   set SEVENZ=C:\Program Files (x86)\7-Zip\7z.exe
   (call )
-  GOTO ENDIF
+  GOTO SEVENENDIF
 :SEVENZ64PATH
   set SEVENZ=C:\Program Files\7-Zip\7z.exe
   (call )
-:ENDIF
+:SEVENENDIF
 
-IF EXIST "C:\Program Files\Inno Setup 5\ISCC.exe" GOTO INNO64PATH
-:INNO32PATH
-  set ISCC=C:\Program Files (x86)\Inno Setup 5\ISCC.exe
+IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
+:WIN32PATH
+  set PF32=C:\Program Files
   (call )
-  GOTO ENDIF
-:INNO64PATH
-  set ISCC=C:\Program Files\Inno Setup 5\ISCC.exe
+  GOTO WINENDIF
+:WIN64PATH
+  set PF64=C:\Program Files
+  set PF32=C:\Program Files (x86)
   (call )
-:ENDIF
-IF EXIST "C:\Program Files\Inno Setup 6\ISCC.exe" GOTO INNO64
-:INNO32
-  set ISCC=C:\Program Files (x86)\Inno Setup 6\ISCC.exe
+:WINENDIF
+
+IF EXIST "%PF32%\Inno Setup 6" GOTO INNO6PATH
+:INNO5PATH
+  set INNOPATH=%PF32%\Inno Setup 5
   (call )
-  GOTO ENDIF
-:INNO64
-  set ISCC=C:\Program Files\Inno Setup 6\ISCC.exe
+  GOTO INNOENDIF
+:INNO6PATH
+  set INNOPATH=%PF32%\Inno Setup 6
   (call )
-:ENDIF
+:INNOENDIF
 
 2>nul curl.exe --version
 if %ERRORLEVEL%==0 goto exeCurl
@@ -49,9 +51,12 @@ if %ERRORLEVEL%==0 goto exeCurl
   set CURL=curl.exe -L
 :endIf
 
+mkdir aeneas-win-installer-packages
+mkdir python-wheels
+
 IF NOT EXIST "%cd%\python-3.8.5-amd64.exe" (
   echo Downloading Python 3.8.5...
-  %CURL% "http://www.python.org/ftp/python/3.8.5/python-3.8.5-amd64.exe" -o "%cd%\python-3.8.5-amd64.exe"
+  %CURL% "https://www.python.org/ftp/python/3.8.5/python-3.8.5-amd64.exe" -o "%cd%\python-3.8.5-amd64.exe"
 )
 IF EXIST "%cd%\python-3.8.5-amd64.exe" (
   echo Installing Python 3.8.5...
@@ -67,15 +72,13 @@ set python=C:\Program Files\Python38\python.exe
 
 "%pip%" install -U pip setuptools wheel
 
-"%pip%" install -U patch
-
 IF NOT EXIST "%cd%\espeak-ng-1.50-x64.msi" (
   echo Downloading eSpeak-ng...
-  %CURL% http://github.com/espeak-ng/espeak-ng/releases/download/1.50/espeak-ng-20191129-b702b03-x64.msi -o %cd%\espeak-ng-1.50-x64.msi
+  %CURL% https://github.com/espeak-ng/espeak-ng/releases/download/1.50/espeak-ng-20191129-b702b03-x64.msi -o %cd%\espeak-ng-1.50-x64.msi
 )
 IF EXIST "%cd%\espeak-ng-1.50-x64.msi" (
-REM   echo Installing eSpeak-ng...
-REM   "%cd%\espeak-ng-1.50-x64.msi" /passive InstallAllUsers=1 PrependPath=1
+   echo Installing eSpeak-ng...
+   "%cd%\espeak-ng-1.50-x64.msi" /passive InstallAllUsers=1 PrependPath=1
 ) ELSE (
   echo Could not find eSpeak-ng...
   echo START https://github.com/espeak-ng/espeak-ng/releases
@@ -88,13 +91,14 @@ IF NOT EXIST "%cd%\ffmpeg-4.3-win64-static.zip" (
 )
 IF NOT EXIST "%cd%\ffmpeg-4.3-win64-static.exe" (
   "%SEVENZ%" x ffmpeg-4.3-win64-static.zip -aoa
-  rmdir /q/s ffmpeg-4.2
+  rmdir /q/s ffmpeg-4.3
   move /y ffmpeg-4.3-win64-static ffmpeg-4.3
-  "%ISCC%" FFmpeg_Installer.iss
+  copy /b/v/y  ff-prompt.bat ffmpeg-4.3
+  "%INNOPATH%\ISCC.exe" FFmpeg_Installer.iss
 )
 IF EXIST "%cd%\ffmpeg-4.3-win64-static.exe" (
    echo Installing FFmpeg...
-   "%cd%\ffmpeg-4.3-win64-static.exe" /SILENT
+   "%cd%\ffmpeg-4.3-win64-static.exe" /SILENT /ALLUSERS
 ) ELSE (
   echo Could not find FFmpeg...
   echo START https://ffmpeg.zeranoe.com/builds/
@@ -108,35 +112,57 @@ del *.whl
 "%pip%" wheel pip
 "%pip%" wheel numpy
 "%pip%" wheel lxml beautifulsoup4 soupsieve
-"%pip%" download aeneas==1.7.3.0
+
+"%pip%" download aeneas==1.7.3.0 --no-cache-dir
+
+IF NOT EXIST "%cd%\aeneas-1.7.3.0.tar.gz" (
+  echo Downloading FFmpeg...
+  %CURL% https://github.com/readbeyond/aeneas/archive/v1.7.3.tar.gz -o %cd%\aeneas-1.7.3.0.tar.gz
+)
+
+echo "Checking for patch.exe"
+
+  python.exe -m pip install -U patch
+  set PATCH=python.exe -m patch -v -p 1 --debug 
+  goto endIff
+:exePatch
+  set PATCH=patch.exe -p1  
+:endIff
 
 RMDIR /S /Q aeneas-1.7.3.0
 "%SEVENZ%" e aeneas-1.7.3.0.tar.gz -aoa
 "%SEVENZ%" x aeneas-1.7.3.0.tar -aoa
+
+IF NOT EXIST "%cd%\aeneas-1.7.3.0" (
+  move aeneas-1.7.3 aeneas-1.7.3.0
+)
 cd aeneas-1.7.3.0
-"%python%" -m patch -v -p 1 --debug ..\aeneas-patches\patch-espeak-ng.diff
-"%python%" -m patch -v -p 1 --debug ..\aeneas-patches\patch-py38-utf8.diff
-move aeneas\cew\speak_lib.h thirdparty\speak_lib.h
+2>nul patch.exe --version
+if %ERRORLEVEL%==0 goto exePatch
+  python.exe -m pip install -U patch
+  python.exe -m patch -v -p 1 --debug ..\aeneas-patches\patch-espeak-ng.diff
+  python.exe -m patch -v -p 1 --debug ..\aeneas-patches\patch-py38-utf8.diff
+  goto endPatch
+:exePatch
+  patch.exe -p1 < ..\aeneas-patches\patch-espeak-ng.diff
+  patch.exe -p1 < ..\aeneas-patches\patch-py38-utf8.diff
+:endPatch
+move /y aeneas\cew\speak_lib.h thirdparty\speak_lib.h
+copy /b/v/y ..\libespeak-ng-dll2lib-x64\libespeak-ng.lib thirdparty\libespeak-ng-x64.lib
+copy /b/v/y ..\libespeak-ng-dll2lib-x86\libespeak-ng.lib thirdparty\libespeak-ng-x86.lib
 set AENEAS_USE_ESPEAKNG=True
+"%python%" setup.py build_ext --inplace
 "%python%" setup.py bdist_wheel
-del ..\aeneas-*.whl
-copy /b/v/y dist\aeneas-*.whl ..\
-cd %CURDIR%
-
-"%pip%" install -U aeneas-*.whl
-
-REM call install_packages.bat
-
-REM C:\Windows\System32\ping 127.0.0.1 -n 10 -w 1000 > NUL
-
 echo.
 set PYTHONIOENCODING=UTF-8
 "%python%" -m aeneas.diagnostics
 "%python%" -m aeneas.tools.execute_task --version
 "%python%" -m aeneas.tools.synthesize_text list "This is a test|with two lines" eng -v C:\Windows\Temp\test.wav
 echo.
+copy /b/v/y dist\aeneas-*.whl ..\
+cd %CURDIR%
 
-REM C:\Windows\System32\ping 127.0.0.1 -n 5 -w 1000 > NUL
+REM call install_packages.bat
 
 echo Now run build_installer.bat
 
