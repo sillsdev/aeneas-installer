@@ -25,6 +25,16 @@ REM    exit /B
 
 IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
 :WIN32PATH
+  set PATH=C:\Program Files\Python38\;C:\Program Files\Python38\Scripts;C:\Program Files\eSpeak NG;C:\Program Files\FFmpeg\bin;%PATH%
+  (call )
+  GOTO ENDIF
+:WIN64PATH
+  set PATH=C:\Program Files\Python38\;C:\Program Files\Python38\Scripts;C:\Program Files\eSpeak NG;C:\Program Files\FFmpeg\bin;%PATH%
+  (call )
+:ENDIF
+
+IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
+:WIN32PATH
   set PF32=C:\Program Files
   (call )
   GOTO ENDIF
@@ -41,11 +51,11 @@ copy /b/v/y "%PF64%"\eSpeak-ng\espeak-ng.dll C:\Windows\System32\espeak-ng.dll
 echo Copying espeak-ng.lib to %PF64%"\Python38\libs\
 copy /b/v/y espeak-ng.lib %PF64%"\Python38\libs\
 
-C:\Python38\python -m ensurepip
-C:\Python38\python -m pip install -U [PIP_FILE]
-C:\Python38\python -m pip install -U [NUMPY_FILE]
-C:\Python38\python -m pip install -U [LXML_FILE]
-C:\Python38\python -m pip install -U [SOUPSIEVE_FILE]
-C:\Python38\python -m pip install -U [BS4_FILE]
-C:\Python38\python -m pip install -U [AENEAS_FILE]
+python -m ensurepip
+python -m pip install -U [PIP_FILE]
+python -m pip install -U [NUMPY_FILE]
+python -m pip install -U [LXML_FILE]
+python -m pip install -U [SOUPSIEVE_FILE]
+python -m pip install -U [BS4_FILE]
+python -m pip install -U [AENEAS_FILE]
 
