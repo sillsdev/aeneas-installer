@@ -74,7 +74,7 @@ Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
 [Run]
 Filename: "{app}\ffmpeg-4.3-win64-static.exe"; Parameters: "/SILENT /ALLUSERS"; Description: "Install FFmpeg 4.3"; Components: ffmpeg; Flags: shellexec waituntilterminated
 Filename: "{app}\espeak-ng-1.50-x64.msi"; Parameters: "/PASSIVE InstallAllUsers=1 PrependPath=1"; Description: "Install eSpeak-NG 1.50"; Components: espeak; Flags: shellexec waituntilterminated
-Filename: "{app}\python-3.8.5-amd64.exe"; Parameters: "/PASSIVE InstallAllUsers=1 PrependPath=1 TargetDir=C:\Program Files\Python38"; Description: "Install Python 3.8.5"; Components: python; Flags: shellexec waituntilterminated
+Filename: "{app}\python-3.8.5-amd64.exe"; Parameters: "/PASSIVE InstallAllUsers=1 PrependPath=1 TargetDir={commonpf64}\Python38"; Description: "Install Python 3.8.5"; Components: python; Flags: shellexec waituntilterminated
 Filename: "{app}\install_packages.bat"; Description: "Install Aeneas 1.7.3.0 and dependencies"; Components: aeneas; Flags: shellexec waituntilterminated
 Filename: "{app}\aeneas_check_setup.bat"; Description: "Check Aeneas Setup"; Components: aeneas; Flags: shellexec waituntilterminated
 
@@ -95,7 +95,7 @@ Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environmen
 Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{commonpf64}\Python38\Scripts;{olddata}"; Components: python; Check: NeedsAddPath('{commonpf64}\Python38\Scripts')
 Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{commonpf64}\Python38\;{olddata}"; Components: python; Check: NeedsAddPath('{commonpf64}\Python38\')
 Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{commonpf64}\FFmpeg\bin;{olddata}"; Components: ffmpeg; Check: NeedsAddPath(ExpandConstant('{commonpf64}\FFmpeg\bin'))
-Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{commonpf64}\eSpeak-NG;{olddata}"; Components: espeak; Check: NeedsAddPath(ExpandConstant('{commonpf64}\eSpeak-NG'))
+Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{commonpf64}\eSpeak NG;{olddata}"; Components: espeak; Check: NeedsAddPath(ExpandConstant('{commonpf64}\eSpeak NG'))
 
 [Code]
 function NeedsAddPath(Param: string): boolean;

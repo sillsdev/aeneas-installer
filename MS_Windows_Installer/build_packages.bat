@@ -79,6 +79,7 @@ IF NOT EXIST "%cd%\espeak-ng-1.50-x64.msi" (
 IF EXIST "%cd%\espeak-ng-1.50-x64.msi" (
    echo Installing eSpeak-ng...
    "%cd%\espeak-ng-1.50-x64.msi" /passive InstallAllUsers=1 PrependPath=1
+   call "%cd$\install_espeak-ng-dll.bat"
 ) ELSE (
   echo Could not find eSpeak-ng...
   echo START https://github.com/espeak-ng/espeak-ng/releases

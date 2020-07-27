@@ -14,8 +14,8 @@ if '%errorlevel%' NEQ '0' (
     echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\getadmin.vbs"
     echo UAC.ShellExecute "%~s0", "", "", "runas", 1 >> "%temp%\getadmin.vbs"
 
-REM    call "%temp%\getadmin.vbs"
-REM    exit /B
+    call "%temp%\getadmin.vbs"
+    exit /B
 
 :gotAdmin
     if exist "%temp%\getadmin.vbs" ( del "%temp%\getadmin.vbs" )
@@ -51,11 +51,4 @@ copy /b/v/y "%PF64%\eSpeak NG\libespeak-ng.dll" C:\Windows\System32\espeak-ng.dl
 echo Copying espeak-ng.lib to "%PF64%\Python38\libs\"
 copy /b/v/y espeak-ng.lib "%PF64%\Python38\libs\"
 
-python -m ensurepip
-python -m pip install -U [PIP_FILE]
-python -m pip install -U [NUMPY_FILE]
-python -m pip install -U [LXML_FILE]
-python -m pip install -U [SOUPSIEVE_FILE]
-python -m pip install -U [BS4_FILE]
-python -m pip install -U [AENEAS_FILE]
 
