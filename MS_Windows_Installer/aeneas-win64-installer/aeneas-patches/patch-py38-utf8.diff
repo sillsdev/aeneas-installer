@@ -1,0 +1,34 @@
+diff --git a/aeneas/diagnostics.py b/aeneas/diagnostics.py
+index 7d9e98a1fbe287c0286fdab504bb2e26a691b2d2..6f4e291f115ecba3f9db810e92f083deaafc1542 100644
+--- a/aeneas/diagnostics.py
++++ b/aeneas/diagnostics.py
+@@ -56,9 +56,9 @@ def check_shell_encoding(cls):
+         """
+         is_in_utf8 = True
+         is_out_utf8 = True
+-        if sys.stdin.encoding not in ["UTF-8", "UTF8"]:
++        if sys.stdin.encoding not in ["UTF-8", "UTF8", "utf-8", "utf8"]:
+             is_in_utf8 = False
+-        if sys.stdout.encoding not in ["UTF-8", "UTF8"]:
++        if sys.stdout.encoding not in ["UTF-8", "UTF8", "utf-8", "utf8"]:
+             is_out_utf8 = False
+         if (is_in_utf8) and (is_out_utf8):
+             gf.print_success(u"shell encoding OK")
+
+diff --git a/aeneas/tools/abstract_cli_program.py b/aeneas/tools/abstract_cli_program.py
+index be5bb2fa8bfda1de88e4ed5a418aab2c00d625f7..b5b9faddc255a7e46e0316864766fec09f292b5b 100644
+--- a/aeneas/tools/abstract_cli_program.py
++++ b/aeneas/tools/abstract_cli_program.py
+@@ -295,10 +295,10 @@ def run(self, arguments, show_help=True):
+         if self.use_sys:
+             # check that sys.stdin.encoding and sys.stdout.encoding are set to utf-8
+             if not gf.FROZEN:
+-                if sys.stdin.encoding not in ["UTF-8", "UTF8"]:
++                if sys.stdin.encoding not in ["UTF-8", "UTF8", "utf-8", "utf8"]:
+                     self.print_warning(u"The default input encoding is not UTF-8.")
+                     self.print_warning(u"You might want to set 'PYTHONIOENCODING=UTF-8' in your shell.")
+-                if sys.stdout.encoding not in ["UTF-8", "UTF8"]:
++                if sys.stdout.encoding not in ["UTF-8", "UTF8", "utf-8", "utf8"]:
+                     self.print_warning(u"The default output encoding is not UTF-8.")
+                     self.print_warning(u"You might want to set 'PYTHONIOENCODING=UTF-8' in your shell.")
+             # decode using sys.stdin.encoding

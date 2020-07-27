@@ -1,16 +1,5 @@
 @echo off
 
-
-IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
-:WIN32PATH
-  set PF32="C:\Program Files"
-  (call )
-  GOTO WINENDIF
-:WIN64PATH
-  set PF32="C:\Program Files (x86)"
-  (call )
-:WINENDIF
-
 2>nul curl.exe --version
 if %ERRORLEVEL%==0 goto exeCurl
   set CURL=call curl.bat -L
@@ -19,19 +8,19 @@ if %ERRORLEVEL%==0 goto exeCurl
   set CURL=curl.exe -L
 :endIf
 
-IF NOT EXIST "%cd%\Git-2.27.0-32-bit.exe" (
+IF NOT EXIST "%cd%\Git-2.27.0-64-bit.exe" (
 echo Downloading Git for Windows...
-  %CURL% "https://netix.dl.sourceforge.net/project/git-for-windows.mirror/v2.27.0.windows.1/Git-2.27.0-32-bit.exe" -o "%cd%\Git-2.27.0-32-bit.exe"
+  %CURL% "https://netix.dl.sourceforge.net/project/git-for-windows.mirror/v2.27.0.windows.1/Git-2.27.0-64-bit.exe" -o "%cd%\Git-2.27.0-64-bit.exe"
 )
-IF EXIST "%cd%\Git-2.27.0-32-bit.exe" (
+IF EXIST "%cd%\Git-2.27.0-64-bit.exe" (
   echo Installing Git for Windows...
-  Git-2.27.0-32-bit.exe /SILENT
+  Git-2.27.0-64-bit.exe /SILENT
 ) ELSE (
   echo Could not find Git for Windows 2.27.0...
   START https://git-scm.com/download/win
 )
 
-set PATH=%PATH%;%PF32%\Git\mingw32\bin
+set PATH=%PATH%;C:\Program Files\Git\mingw32\bin
 
 2>nul curl.exe --version
 if %ERRORLEVEL%==0 goto exeCurl
@@ -41,13 +30,13 @@ if %ERRORLEVEL%==0 goto exeCurl
   set CURL=curl.exe -L
 :endIf
 
-IF NOT EXIST "%cd%\7z1900.exe" (
+IF NOT EXIST "%cd%\7z1900-x64.exe" (
   echo Downloading 7-zip... 
-  %CURL% "https://www.7-zip.org/a/7z1900.exe" -o "%cd%\7z1900.exe"
+  %CURL% "https://www.7-zip.org/a/7z1900-x64.exe" -o "%cd%\7z1900-x64.exe"
 )
-IF EXIST "%cd%\7z1900.exe" (
+IF EXIST "%cd%\7z1900-x64.exe" (
   echo Installing 7-zip...
-  7z1900.exe /SILENT
+  7z1900-x64.exe /SILENT
 ) ELSE (
   echo Could not find 7-zip...
   START http://www.7-zip.org/
@@ -65,29 +54,29 @@ IF EXIST "%cd%\innosetup-6.0.5.exe" (
   START http://www.jrsoftware.org/isdl.php
 )
 
-IF NOT EXIST "%cd%\python-3.8.5.exe" (
-  echo Downloading Python 3.8.5...
-  %CURL% "https://www.python.org/ftp/python/3.8.5/python-3.8.5.exe" -o "%cd%\python-3.8.5.exe"
+IF NOT EXIST "%cd%\dotNetFx35setup.exe" (
+echo Downloading Microsoft .NET Framework 3.5...
+  %CURL% "https://download.microsoft.com/download/7/0/3/703455ee-a747-4cc8-bd3e-98a615c3aedb/dotNetFx35setup.exe" -o "%cd%\dotNetFx35setup.exe"
 )
-IF EXIST "%cd%\python-3.8.5.exe" (
+IF EXIST "%cd%\dotNetFx35setup.exe" (
+  echo Installing Microsoft .NET Framework 3.5...
+  dotNetFx35setup.exe /SILENT
+) ELSE (
+  echo Could not find Microsoft .NET Framework 3.5...
+  START http://www.microsoft.com/en-us/download/details.aspx?id=21
+)
+
+IF NOT EXIST "%cd%\python-3.8.5-amd64.exe" (
+  echo Downloading Python 3.8.5...
+  %CURL% "https://www.python.org/ftp/python/3.8.5/python-3.8.5-amd64.exe" -o "%cd%\python-3.8.5-amd64.exe"
+)
+IF EXIST "%cd%\python-3.8.5-amd64.exe" (
   echo Installing Python 3.8.5...
-  python-3.8.5.exe /passive InstallAllUsers=1 PrependPath=1 TargetDir="%PF32%\Python38"
+  python-3.8.5-amd64.exe /passive InstallAllUsers=1 PrependPath=1 TargetDir="C:\Program Files\Python38"
 ) ELSE (
   echo Could not find Python 3.8.5...
   START https://www.python.org/downloads/release/python-385/
 )
-
-REM IF NOT EXIST "%cd%\dotNetFx35setup.exe" (
-REM echo Downloading Microsoft .NET Framework 3.5...
-REM   %CURL% "https://download.microsoft.com/download/7/0/3/703455ee-a747-4cc8-bd3e-98a615c3aedb/dotNetFx35setup.exe" -o "%cd%\dotNetFx35setup.exe"
-REM )
-REM IF EXIST "%cd%\dotNetFx35setup.exe" (
-REM   echo Installing Microsoft .NET Framework 3.5...
-REM   dotNetFx35setup.exe /SILENT
-REM ) ELSE (
-REM   echo Could not find Microsoft .NET Framework 3.5...
-REM   START http://www.microsoft.com/en-us/download/details.aspx?id=21
-REM )
 
 REM IF NOT EXIST "%cd%\VCForPython27.msi" (
 REM echo Downloading Visual C++ For Python27...

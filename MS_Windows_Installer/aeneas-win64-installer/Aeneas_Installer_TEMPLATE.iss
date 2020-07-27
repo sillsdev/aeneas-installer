@@ -6,13 +6,13 @@
 #define MyAppPublisher "Daniel Bair"
 #define MyAppURL "http://www.danielbair.com/"
 #define MyAppInstallDir "C:\aeneas-install"
-#define MyAppFileName "aeneas-win32-setup-[AENEAS_VER]_3"
+#define MyAppFileName "aeneas-win64-setup-[AENEAS_VER]_3"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{A15A9B64-C0EF-4E13-926C-0C60A8FA9FBC}
+AppId={{47679629-20DD-4D46-AE0C-D137DD0BF1FD}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -20,7 +20,7 @@ AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
-;ArchitecturesInstallIn64BitMode=x64
+ArchitecturesInstallIn64BitMode=x64
 UsePreviousAppDir=yes
 DefaultDirName={#MyAppInstallDir}
 DisableDirPage=yes
@@ -74,27 +74,27 @@ Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
 [Run]
 Filename: "{app}\[FFMPEG_FILE]"; Parameters: "/SILENT /ALLUSERS"; Description: "Install FFmpeg [FFMPEG_VER]"; Components: ffmpeg; Flags: shellexec waituntilterminated
 Filename: "{app}\[ESPEAK_FILE]"; Parameters: "/PASSIVE InstallAllUsers=1 PrependPath=1"; Description: "Install eSpeak-NG [ESPEAK_VER]"; Components: espeak; Flags: shellexec waituntilterminated
-Filename: "{app}\[PYTHON_FILE]"; Parameters: "/PASSIVE InstallAllUsers=1 PrependPath=1 TargetDir=""{commonpf32}\Python38"""; Description: "Install Python [PYTHON_VER]"; Components: python; Flags: shellexec waituntilterminated
+Filename: "{app}\[PYTHON_FILE]"; Parameters: "/PASSIVE InstallAllUsers=1 PrependPath=1 TargetDir=""{commonpf64}\Python38"""; Description: "Install Python [PYTHON_VER]"; Components: python; Flags: shellexec waituntilterminated
 Filename: "{app}\install_packages.bat"; Description: "Install Aeneas [AENEAS_VER] and dependencies"; Components: aeneas; Flags: shellexec waituntilterminated
 Filename: "{app}\aeneas_check_setup.bat"; Description: "Check Aeneas Setup"; Components: aeneas; Flags: shellexec waituntilterminated
 
 [UninstallRun]
-Filename: "{commonpf32}\FFmpeg\unins000.exe"; Parameters: "/SILENT"; Components: ffmpeg; Flags: shellexec waituntilterminated
+Filename: "{commonpf64}\FFmpeg\unins000.exe"; Parameters: "/SILENT"; Components: ffmpeg; Flags: shellexec waituntilterminated
 Filename: "{sys}\MSIEXEC.EXE"; Parameters: "/PASSIVE /X {app}\[ESPEAK_FILE]"; Components: espeak; Flags: shellexec waituntilterminated
 Filename: "{sys}\MSIEXEC.EXE"; Parameters: "/PASSIVE /X {app}\[PYTHON_FILE]"; Components: python; Flags: shellexec waituntilterminated
 
 [UninstallDelete]
-Type: filesandordirs; Name: "{commonpf32}\FFmpeg"; Components: ffmpeg
-Type: filesandordirs; Name: "{commonpf32}\Python38"; Components: python
-Type: filesandordirs; Name: "{commonpf32}\eSpeak NG"; Components: espeak
+Type: filesandordirs; Name: "{commonpf64}\FFmpeg"; Components: ffmpeg
+Type: filesandordirs; Name: "{commonpf64}\Python38"; Components: python
+Type: filesandordirs; Name: "{commonpf64}\eSpeak NG"; Components: espeak
 Type: filesandordirs; Name: "{app}";
 
 [Registry]
 Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{userappdata}\python\python38\Scripts;{olddata}"; Components: aeneas; Check: NeedsAddPath('{userappdata}\python\python38\Scripts')
-Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{commonpf32}\Python38\Scripts;{olddata}"; Components: python; Check: NeedsAddPath('{commonpf32}\Python38\Scripts')
-Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{commonpf32}\Python38\;{olddata}"; Components: python; Check: NeedsAddPath('{commonpf32}\Python38\')
-Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{commonpf32}\FFmpeg\bin;{olddata}"; Components: ffmpeg; Check: NeedsAddPath(ExpandConstant('{commonpf32}\FFmpeg\bin'))
-Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{commonpf32}\eSpeak NG;{olddata}"; Components: espeak; Check: NeedsAddPath(ExpandConstant('{commonpf32}\eSpeak NG'))
+Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{commonpf64}\Python38\Scripts;{olddata}"; Components: python; Check: NeedsAddPath('{commonpf64}\Python38\Scripts')
+Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{commonpf64}\Python38\;{olddata}"; Components: python; Check: NeedsAddPath('{commonpf64}\Python38\')
+Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{commonpf64}\FFmpeg\bin;{olddata}"; Components: ffmpeg; Check: NeedsAddPath(ExpandConstant('{commonpf64}\FFmpeg\bin'))
+Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{commonpf64}\eSpeak NG;{olddata}"; Components: espeak; Check: NeedsAddPath(ExpandConstant('{commonpf64}\eSpeak NG'))
 
 [Code]
 function NeedsAddPath(Param: string): boolean;

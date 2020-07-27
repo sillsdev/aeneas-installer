@@ -11,7 +11,7 @@
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{6B71161F-F9FB-4A47-B95F-3A044F1EB42F}
+AppId={{F3EDA0E9-6DA3-4B46-818E-0C07AB675A8A}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -19,16 +19,16 @@ AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
-;ArchitecturesInstallIn64BitMode=x64
+ArchitecturesInstallIn64BitMode=x64
 UsePreviousAppDir=no
-DefaultDirName={commonpf32}\{#MyAppName}
+DefaultDirName={commonpf64}\{#MyAppName}
 DisableDirPage=no
 DefaultGroupName={#MyAppName}
 AllowNoIcons=no
 LicenseFile=ffmpeg-{#MyAppVersion}\LICENSE.txt
 InfoBeforeFile=ffmpeg-{#MyAppVersion}\README.txt
 OutputDir=.\
-OutputBaseFilename=ffmpeg-{#MyAppVersion}-win32-static
+OutputBaseFilename=ffmpeg-{#MyAppVersion}-win64-static
 Compression=lzma
 SolidCompression=yes
 ChangesEnvironment=yes
@@ -49,7 +49,7 @@ Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
 Filename: "{app}\doc\ffmpeg.html"; Description: "View the documentation"; Flags: postinstall shellexec skipifsilent
 
 [Registry]
-Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{olddata};{commonpf32}\FFmpeg\bin"; Check: NeedsAddPath(ExpandConstant('{commonpf32}\FFmpeg\bin'))
+Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{olddata};{commonpf64}\FFmpeg\bin"; Check: NeedsAddPath(ExpandConstant('{commonpf64}\FFmpeg\bin'))
 
 [Code]
 function NeedsAddPath(Param: string): boolean;

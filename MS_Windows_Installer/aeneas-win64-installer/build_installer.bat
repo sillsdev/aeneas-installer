@@ -6,6 +6,7 @@ SETLOCAL ENABLEEXTENSIONS
 IF ERRORLEVEL 1 ECHO Unable to enable extensions
 IF NOT DEFINED VS90COMNTOOLS set VS90COMNTOOLS=%USERPROFILE%\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0
 
+set PATH=%PATH%;C:\Program Files\FFmpeg\bin;C:\Program Files\eSpeak NG;C:\Program Files\Python38\;C:\Program Files\Python38\Scripts\;C:\Program Files\Git\usr\bin
 set CURDIR=%CD%
 
 IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
@@ -14,6 +15,7 @@ IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
   (call )
   GOTO ENDIF
 :WIN64PATH
+  set PF64=C:\Program Files
   set PF32=C:\Program Files (x86)
   (call )
 :ENDIF
@@ -28,7 +30,7 @@ IF EXIST "%PF32%\Inno Setup 6" GOTO INNO6PATH
   (call )
 :INNOENDIF
 
-IF EXIST "C:\%PF32%\Git\usr\bin" GOTO SETGITPATH
+IF EXIST "C:\Program Files\Git\usr\bin" GOTO SETGITPATH
 :LOCALGITPATH
 	set cat="cat.exe"
 	set cut="cut.exe"
@@ -37,14 +39,12 @@ IF EXIST "C:\%PF32%\Git\usr\bin" GOTO SETGITPATH
   (call )
   GOTO ENDGITPATH
 :SETGITPATH
-	set cat="C:\%PF32%\Git\usr\bin\cat.exe"
-	set cut="C:\%PF32%\Git\usr\bin\cut.exe"
-	set sed="C:\%PF32%\Git\usr\bin\sed.exe"
-	set grep="C:\%PF32%\Git\usr\bin\grep.exe"
+	set cat="C:\Program Files\Git\usr\bin\cat.exe"
+	set cut="C:\Program Files\Git\usr\bin\cut.exe"
+	set sed="C:\Program Files\Git\usr\bin\sed.exe"
+	set grep="C:\Program Files\Git\usr\bin\grep.exe"
   (call )
 :ENDGITPATH
-
-set PATH=%PATH%;%PF32%\FFmpeg\bin;%PF32%\eSpeak NG;%PF32%\Python38;%PF32%\Python38\Scripts;%PF32%\Git\usr\bin;%PF32%\Git\mingw64\bin
 
 echo.
 echo Finding package versions
@@ -60,7 +60,7 @@ FOR /F "tokens=* USEBACKQ" %%F IN (`pip show beautifulsoup4 ^| %grep% Version ^|
 FOR /F "tokens=* USEBACKQ" %%F IN (`pip show soupsieve ^| %grep% Version ^| %cut% -d' ' -f2`) DO (SET soupsieve_ver=%%F)
 
 echo.
-echo Finding package files
+echo Finding packages
 FOR /F "tokens=* USEBACKQ" %%F IN (`dir espeak-ng-*.msi /b`) DO (SET espeak_file=%%F)
 FOR /F "tokens=* USEBACKQ" %%F IN (`dir ffmpeg-*.exe /b`) DO (SET ffmpeg_file=%%F)
 FOR /F "tokens=* USEBACKQ" %%F IN (`dir python-*.exe /b`) DO (SET python_file=%%F)
