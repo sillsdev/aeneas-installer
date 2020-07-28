@@ -57,7 +57,7 @@ FOR /F "tokens=* USEBACKQ" %%F IN (`pip show soupsieve ^| %grep% Version ^| %cut
 
 echo.
 echo Finding package files
-FOR /F "tokens=* USEBACKQ" %%F IN (`dir espeak-ng-*.msi /b`) DO (SET espeak_file=%%F)
+FOR /F "tokens=* USEBACKQ" %%F IN (`dir espeak-ng-*.exe /b`) DO (SET espeak_file=%%F)
 FOR /F "tokens=* USEBACKQ" %%F IN (`dir ffmpeg-*.exe /b`) DO (SET ffmpeg_file=%%F)
 FOR /F "tokens=* USEBACKQ" %%F IN (`dir python-*.exe /b`) DO (SET python_file=%%F)
 

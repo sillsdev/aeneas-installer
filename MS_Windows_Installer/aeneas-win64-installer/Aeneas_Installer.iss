@@ -6,13 +6,13 @@
 #define MyAppPublisher "Daniel Bair"
 #define MyAppURL "http://www.danielbair.com/"
 #define MyAppInstallDir "C:\aeneas-install"
-#define MyAppFileName "aeneas-windows-setup-1.7.3.0_3"
+#define MyAppFileName "aeneas-win64-setup-1.7.3.0_3"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{A15A9B64-C0EF-4E13-926C-0C60A8FA9FBC}
+AppId={{47679629-20DD-4D46-AE0C-D137DD0BF1FD}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -74,7 +74,7 @@ Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
 [Run]
 Filename: "{app}\ffmpeg-4.3-win64-static.exe"; Parameters: "/SILENT /ALLUSERS"; Description: "Install FFmpeg 4.3"; Components: ffmpeg; Flags: shellexec waituntilterminated
 Filename: "{app}\espeak-ng-1.50-x64.msi"; Parameters: "/PASSIVE InstallAllUsers=1 PrependPath=1"; Description: "Install eSpeak-NG 1.50"; Components: espeak; Flags: shellexec waituntilterminated
-Filename: "{app}\python-3.8.5-amd64.exe"; Parameters: "/PASSIVE InstallAllUsers=1 PrependPath=1 TargetDir={commonpf64}\Python38"; Description: "Install Python 3.8.5"; Components: python; Flags: shellexec waituntilterminated
+Filename: "{app}\python-3.8.5-amd64.exe"; Parameters: "/PASSIVE InstallAllUsers=1 PrependPath=1 TargetDir=""{commonpf64}\Python38"""; Description: "Install Python 3.8.5"; Components: python; Flags: shellexec waituntilterminated
 Filename: "{app}\install_packages.bat"; Description: "Install Aeneas 1.7.3.0 and dependencies"; Components: aeneas; Flags: shellexec waituntilterminated
 Filename: "{app}\aeneas_check_setup.bat"; Description: "Check Aeneas Setup"; Components: aeneas; Flags: shellexec waituntilterminated
 
@@ -87,7 +87,6 @@ Filename: "{sys}\MSIEXEC.EXE"; Parameters: "/PASSIVE /X {app}\python-3.8.5-amd64
 Type: filesandordirs; Name: "{commonpf64}\FFmpeg"; Components: ffmpeg
 Type: filesandordirs; Name: "{commonpf64}\Python38"; Components: python
 Type: filesandordirs; Name: "{commonpf64}\eSpeak NG"; Components: espeak
-Type: filesandordirs; Name: "{win}\System32\espeak-ng.dll"; Components: espeak
 Type: filesandordirs; Name: "{app}";
 
 [Registry]

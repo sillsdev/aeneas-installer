@@ -71,14 +71,18 @@ set python=python.exe
 
 "%pip%" install -U pip setuptools wheel
 
-IF NOT EXIST "%cd%\espeak-ng-1.50-x86.msi" (
+IF NOT EXIST "%cd%\espeak-ng-1.50-win32.exe" (
   echo Downloading eSpeak-ng...
   %CURL% https://github.com/espeak-ng/espeak-ng/releases/download/1.50/espeak-ng-20191129-b702b03-x86.msi -o %cd%\espeak-ng-1.50-x86.msi
+  %CURL% https://github.com/activescott/lessmsi/releases/download/v1.6.91/lessmsi-v1.6.91.zip -o %cd%\lessmsi-v1.6.91.zip
+  "%SEVENZ%" x %cd%\lessmsi-v1.6.91.zip -aoa
+  lessmsi-v1.6.91\lessmsi.exe x espeak-ng-1.50-x86.msi
+  "%INNOPATH%\ISCC.exe" eSpeak-ng_Installer.iss
 )
-IF EXIST "%cd%\espeak-ng-1.50-x86.msi" (
+IF EXIST "%cd%\espeak-ng-1.50-win32.exe" (
    echo Installing eSpeak-ng...
-   "%cd%\espeak-ng-1.50-x86.msi" /passive InstallAllUsers=1 PrependPath=1
-   call "%cd%\install_espeak-ng-dll.bat"
+   "%cd%\espeak-ng-1.50-win32.exe" /SILENT /ALLUSERS
+   REM call "%cd%\install_espeak-ng-dll.bat"
 ) ELSE (
   echo Could not find eSpeak-ng...
   echo START https://github.com/espeak-ng/espeak-ng/releases

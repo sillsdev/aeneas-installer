@@ -1,6 +1,11 @@
 @echo off
 IF /i {%1}=={ECHO} ECHO ON&SHIFT
 
+VERIFY OTHER 2>nul
+SETLOCAL ENABLEEXTENSIONS
+IF ERRORLEVEL 1 ECHO Unable to enable extensions
+IF NOT DEFINED VS90COMNTOOLS set VS90COMNTOOLS=%USERPROFILE%\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0
+
 set CURDIR=%CD%
 
 IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
@@ -23,7 +28,7 @@ IF EXIST "%PF32%\Inno Setup 6" GOTO INNO6PATH
   (call )
 :INNOENDIF
 
-IF EXIST "%PF32%\Git\usr\bin" GOTO SETGITPATH
+IF EXIST "C:\%PF32%\Git\usr\bin" GOTO SETGITPATH
 :LOCALGITPATH
 	set cat="cat.exe"
 	set cut="cut.exe"
@@ -32,10 +37,10 @@ IF EXIST "%PF32%\Git\usr\bin" GOTO SETGITPATH
   (call )
   GOTO ENDGITPATH
 :SETGITPATH
-	set cat="%PF32%\Git\usr\bin\cat.exe"
-	set cut="%PF32%\Git\usr\bin\cut.exe"
-	set sed="%PF32%\Git\usr\bin\sed.exe"
-	set grep="%PF32%\Git\usr\bin\grep.exe"
+	set cat="C:\%PF32%\Git\usr\bin\cat.exe"
+	set cut="C:\%PF32%\Git\usr\bin\cut.exe"
+	set sed="C:\%PF32%\Git\usr\bin\sed.exe"
+	set grep="C:\%PF32%\Git\usr\bin\grep.exe"
   (call )
 :ENDGITPATH
 
@@ -56,7 +61,7 @@ FOR /F "tokens=* USEBACKQ" %%F IN (`pip show soupsieve ^| %grep% Version ^| %cut
 
 echo.
 echo Finding package files
-FOR /F "tokens=* USEBACKQ" %%F IN (`dir espeak-ng-*.msi /b`) DO (SET espeak_file=%%F)
+FOR /F "tokens=* USEBACKQ" %%F IN (`dir espeak-ng-*.exe /b`) DO (SET espeak_file=%%F)
 FOR /F "tokens=* USEBACKQ" %%F IN (`dir ffmpeg-*.exe /b`) DO (SET ffmpeg_file=%%F)
 FOR /F "tokens=* USEBACKQ" %%F IN (`dir python-*.exe /b`) DO (SET python_file=%%F)
 
