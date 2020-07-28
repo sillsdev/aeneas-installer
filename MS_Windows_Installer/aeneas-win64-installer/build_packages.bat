@@ -8,18 +8,6 @@ IF NOT DEFINED VS90COMNTOOLS set VS90COMNTOOLS=%USERPROFILE%\AppData\Local\Progr
 
 set CURDIR=%CD%
 
-set PATH=C:\Program Files\Python38\;C:\Program Files\Python38\Scripts;C:\Program Files\eSpeak NG;C:\Program Files\FFmpeg\bin;%PATH%;C:\Program Files\Git\usr\bin
-
-IF EXIST "C:\Program Files\7-Zip\7z.exe" GOTO SEVENZ64PATH
-:SEVENZ32PATH
-  set SEVENZ=C:\Program Files (x86)\7-Zip\7z.exe
-  (call )
-  GOTO SEVENENDIF
-:SEVENZ64PATH
-  set SEVENZ=C:\Program Files\7-Zip\7z.exe
-  (call )
-:SEVENENDIF
-
 IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
 :WIN32PATH
   set PF32=C:\Program Files
@@ -41,6 +29,18 @@ IF EXIST "%PF32%\Inno Setup 6" GOTO INNO6PATH
   (call )
 :INNOENDIF
 
+IF EXIST "C:\Program Files\7-Zip\7z.exe" GOTO SEVENZ64PATH
+:SEVENZ32PATH
+  set SEVENZ=C:\Program Files (x86)\7-Zip\7z.exe
+  (call )
+  GOTO SEVENENDIF
+:SEVENZ64PATH
+  set SEVENZ=C:\Program Files\7-Zip\7z.exe
+  (call )
+:SEVENENDIF
+
+set PATH=%PATH%;%PF64%\FFmpeg\bin;%PF64%\eSpeak NG;%PF64%\Python38;%PF64%\Python38\Scripts;%PF64%\Git\usr\bin;%PF64%\Git\mingw32\bin
+
 2>nul curl.exe --version
 if %ERRORLEVEL%==0 goto exeCurl
   REM python.exe -m pip install -U wget
@@ -60,15 +60,15 @@ IF NOT EXIST "%cd%\python-3.8.5-amd64.exe" (
 )
 IF EXIST "%cd%\python-3.8.5-amd64.exe" (
   echo Installing Python 3.8.5...
-  python-3.8.5-amd64.exe /passive InstallAllUsers=1 PrependPath=1 TargetDir="C:\Program Files\"Python38
+  python-3.8.5-amd64.exe /passive InstallAllUsers=1 PrependPath=1 TargetDir="%PF64%"\Python38
 ) ELSE (
   echo Could not find Python 3.8.5...
   START https://www.python.org/downloads/release/python-385/
 )
 
-"C:\Program Files\Python38\python.exe" -m ensurepip
-set pip=C:\Program Files\Python38\Scripts\pip.exe
-set python=C:\Program Files\Python38\python.exe
+python.exe -m ensurepip
+set pip=pip.exe
+set python=python.exe
 
 "%pip%" install -U pip setuptools wheel
 

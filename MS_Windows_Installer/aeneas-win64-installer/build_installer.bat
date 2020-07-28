@@ -1,12 +1,6 @@
 @echo off
 IF /i {%1}=={ECHO} ECHO ON&SHIFT
 
-VERIFY OTHER 2>nul
-SETLOCAL ENABLEEXTENSIONS
-IF ERRORLEVEL 1 ECHO Unable to enable extensions
-IF NOT DEFINED VS90COMNTOOLS set VS90COMNTOOLS=%USERPROFILE%\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0
-
-set PATH=%PATH%;C:\Program Files\FFmpeg\bin;C:\Program Files\eSpeak NG;C:\Program Files\Python38\;C:\Program Files\Python38\Scripts\;C:\Program Files\Git\usr\bin
 set CURDIR=%CD%
 
 IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
@@ -30,7 +24,7 @@ IF EXIST "%PF32%\Inno Setup 6" GOTO INNO6PATH
   (call )
 :INNOENDIF
 
-IF EXIST "C:\Program Files\Git\usr\bin" GOTO SETGITPATH
+IF EXIST "%PF64%\Git\usr\bin" GOTO SETGITPATH
 :LOCALGITPATH
 	set cat="cat.exe"
 	set cut="cut.exe"
@@ -39,12 +33,14 @@ IF EXIST "C:\Program Files\Git\usr\bin" GOTO SETGITPATH
   (call )
   GOTO ENDGITPATH
 :SETGITPATH
-	set cat="C:\Program Files\Git\usr\bin\cat.exe"
-	set cut="C:\Program Files\Git\usr\bin\cut.exe"
-	set sed="C:\Program Files\Git\usr\bin\sed.exe"
-	set grep="C:\Program Files\Git\usr\bin\grep.exe"
+	set cat="%PF64%\Git\usr\bin\cat.exe"
+	set cut="%PF64%\Git\usr\bin\cut.exe"
+	set sed="%PF64%\Git\usr\bin\sed.exe"
+	set grep="%PF64%\Git\usr\bin\grep.exe"
   (call )
 :ENDGITPATH
+
+set PATH=%PATH%;%PF64%\FFmpeg\bin;%PF64%\eSpeak NG;%PF64%\Python38;%PF64%\Python38\Scripts;%PF64%\Git\usr\bin;%PF64%\Git\mingw64\bin
 
 echo.
 echo Finding package versions
@@ -60,7 +56,7 @@ FOR /F "tokens=* USEBACKQ" %%F IN (`pip show beautifulsoup4 ^| %grep% Version ^|
 FOR /F "tokens=* USEBACKQ" %%F IN (`pip show soupsieve ^| %grep% Version ^| %cut% -d' ' -f2`) DO (SET soupsieve_ver=%%F)
 
 echo.
-echo Finding packages
+echo Finding package files
 FOR /F "tokens=* USEBACKQ" %%F IN (`dir espeak-ng-*.msi /b`) DO (SET espeak_file=%%F)
 FOR /F "tokens=* USEBACKQ" %%F IN (`dir ffmpeg-*.exe /b`) DO (SET ffmpeg_file=%%F)
 FOR /F "tokens=* USEBACKQ" %%F IN (`dir python-*.exe /b`) DO (SET python_file=%%F)
