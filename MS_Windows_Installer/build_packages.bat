@@ -59,7 +59,7 @@ IF NOT EXIST "%cd%\python-3.8.5.exe" (
 )
 IF EXIST "%cd%\python-3.8.5.exe" (
   echo Installing Python 3.8.5...
-  python-3.8.5.exe /passive InstallAllUsers=1 PrependPath=1 TargetDir="%PF32%\Python38"
+  python-3.8.5.exe /passive InstallAllUsers=1 PrependPath=1 TargetDir="%PF32%"\Python38
 ) ELSE (
   echo Could not find Python 3.8.5...
   START https://www.python.org/downloads/release/python-385/
