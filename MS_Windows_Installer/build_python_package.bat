@@ -31,7 +31,7 @@ IF EXIST "%PF32%\Inno Setup 6" GOTO INNOSIX
   set INNOPATH=%PF32%\Inno Setup 6
 :INNOENDIF
 
-set PATH=%PATH%;%INNOPATH%;%PFSZ%\7-Zip;%PF32%\FFmpeg\bin;%PF32%\eSpeak NG;%PF32%\Python38;%PF32%\Python38\Scripts;%PF32%\Git;%PF32%\Git\usr\bin;%PF32%\Git\mingw32\bin
+set PATH=%INNOPATH%;%PFSZ%\7-Zip;%PF32%\FFmpeg\bin;%PF32%\eSpeak NG;%PF32%\Python38;%PF32%\Python38\Scripts;%PF32%\Git;%PF32%\Git\usr\bin;%PF32%\Git\mingw32\bin;%PATH%
 
 curl.exe --version 1>nul 2>nul
 if %ERRORLEVEL%==1 (

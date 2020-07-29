@@ -17,6 +17,7 @@ echo Copying espeak-ng.lib to %PF32%\Python38\libs\
 copy /b/v/y "espeak-ng.lib" "%PF32%\Python38\libs\"
 
 python -m ensurepip
+REM python -m pip install -U [PIP_FILE]
 python -m pip install -U [NUMPY_FILE]
 python -m pip install -U [LXML_FILE]
 python -m pip install -U [SOUPSIEVE_FILE]

@@ -24,30 +24,19 @@ if '%errorlevel%' NEQ '0' (
 :--------------------------------------
 
 IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
-:WIN32PATH
-  set PATH=C:\Program Files\Python38\;C:\Program Files\Python38\Scripts;C:\Program Files\eSpeak NG;C:\Program Files\FFmpeg\bin;%PATH%
-  (call )
-  GOTO ENDIF
-:WIN64PATH
-  set PATH=C:\Program Files (x86)\Python38\;C:\Program Files (x86)\Python38\Scripts;C:\Program Files (x86)\eSpeak NG;C:\Program Files (x86)\FFmpeg\bin;%PATH%
-  (call )
-:ENDIF
-
-IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
-:WIN32PATH
   set PF32=C:\Program Files
   (call )
-  GOTO ENDIF
+  GOTO WIN32PATH
 :WIN64PATH
   set PF32=C:\Program Files (x86)
   (call )
-:ENDIF
+:WIN32PATH
+
+set PATH=%PF32%\Python38\;%PF32%\Python38\Scripts;%PF32%\eSpeak NG;%PF32%\FFmpeg\bin;%PATH%
 
 echo Copying espeak-ng.exe to espeak.exe
 copy /b/v/y "%PF32%\eSpeak NG\espeak-ng.exe" "%PF32%\eSpeak NG\espeak.exe"
-echo Copying libespeak-ng.dll to %PF32%\Python38\Lib\site-packages\aeneas\cew
-copy /b/v/y "%PF32%\eSpeak NG\libespeak-ng.dll" "%PF32%\Python38\Lib\site-packages\aeneas\cew"
 echo Copying espeak-ng.lib to %PF32%\Python38\libs\
 copy /b/v/y "espeak-ng.lib" "%PF32%\Python38\libs\"
-
-
+echo Copying libespeak-ng.dll to %PF32%\Python38\Lib\site-packages\aeneas\cew
+copy /b/v/y "%PF32%\eSpeak NG\libespeak-ng.dll" "%PF32%\Python38\Lib\site-packages\aeneas\cew"
