@@ -42,7 +42,8 @@ if %ERRORLEVEL%==1 (
 
 mkdir python-wheels 1>nul 2>nul
 
-rmdir /q/s %USERPROFILE%\appdata\roaming\python\python38
+rmdir /q/s %USERPROFILE%\AppData\Roaming\Python\Python38\site-packages
+set PATH=%USERPROFILE%\AppData\Roaming\Python\Python38\Scripts;%PATH%
 python.exe -m ensurepip
 python -m pip install -U pip setuptools wheel
 
