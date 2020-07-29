@@ -6,6 +6,7 @@
 #define MyAppPublisher "Daniel Bair"
 #define MyAppURL "http://www.danielbair.com/"
 #define MyAppExeName "ff-prompt.bat"
+#define MyAppFileName "ffmpeg-4.3-win32-static"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -25,10 +26,10 @@ DefaultDirName={commonpf32}\{#MyAppName}
 DisableDirPage=no
 DefaultGroupName={#MyAppName}
 AllowNoIcons=no
-LicenseFile=ffmpeg-{#MyAppVersion}\LICENSE.txt
-InfoBeforeFile=ffmpeg-{#MyAppVersion}\README.txt
+LicenseFile={#MyAppFileName}\LICENSE.txt
+InfoBeforeFile={#MyAppFileName}\README.txt
 OutputDir=.\
-OutputBaseFilename=ffmpeg-{#MyAppVersion}-win32-static
+OutputBaseFilename={#MyAppFileName}
 Compression=lzma
 SolidCompression=yes
 ChangesEnvironment=yes
@@ -38,7 +39,7 @@ ChangesEnvironment=yes
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
-Source: "ffmpeg-{#MyAppVersion}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#MyAppFileName}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
@@ -46,7 +47,7 @@ Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
 
 [Run]
-Filename: "{app}\doc\ffmpeg.html"; Description: "View the documentation"; Flags: postinstall shellexec skipifsilent
+Filename: "{app}\doc\ffmpeg.html"; Description: "View the documentation"; Flags: postinstall shellexec skipifsilent unchecked
 
 [Registry]
 Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{olddata};{commonpf32}\FFmpeg\bin"; Check: NeedsAddPath(ExpandConstant('{commonpf32}\FFmpeg\bin'))

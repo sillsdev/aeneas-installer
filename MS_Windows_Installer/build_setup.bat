@@ -1,23 +1,43 @@
 @echo off
+IF /i {%1}=={ECHO} ECHO ON&SHIFT
 
+VERIFY OTHER 2>nul
+SETLOCAL ENABLEEXTENSIONS
+IF ERRORLEVEL 1 ECHO Unable to enable extensions
 
-IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
-:WIN32PATH
-  set PF32="C:\Program Files"
-  (call )
-  GOTO WINENDIF
-:WIN64PATH
-  set PF32="C:\Program Files (x86)"
-  (call )
-:WINENDIF
+set CURDIR=%~dp0
+cd %CURDIR%
+echo Running %~n0 from %CURDIR%
 
-2>nul curl.exe --version
-if %ERRORLEVEL%==0 goto exeCurl
-  set CURL=call curl.bat -L
-  goto endIf
-:exeCurl
+IF EXIST "C:\Program Files (x86)" GOTO WIN64PF
+  set PF32=C:\Program Files
+  GOTO PFENDIF
+:WIN64PF
+  set PF32=C:\Program Files (x86)
+:PFENDIF
+
+IF EXIST "C:\Program Files (x86)\7-Zip" GOTO WIN64SEVEN
+  set PFSZ=C:\Program Files
+  GOTO SEVENENDIF
+:WIN64SEVEN
+  set PFSZ=C:\Program Files (x86)
+:SEVENENDIF
+
+IF EXIST "%PF32%\Inno Setup 6" GOTO INNOSIX
+  set INNOPATH=%PF32%\Inno Setup 5
+  GOTO INNOENDIF
+:INNOSIX
+  set INNOPATH=%PF32%\Inno Setup 6
+:INNOENDIF
+
+set PATH=%PATH%;%INNOPATH%;%PFSZ%\7-Zip;%PF32%\FFmpeg\bin;%PF32%\eSpeak NG;%PF32%\Python38;%PF32%\Python38\Scripts;%PF32%\Git;%PF32%\Git\usr\bin;%PF32%\Git\mingw32\bin
+
+curl.exe --version 1>nul 2>nul
+if %ERRORLEVEL%==1 (
+  set CURL=call curl-psh.bat -L
+) else (
   set CURL=curl.exe -L
-:endIf
+)
 
 IF NOT EXIST "%cd%\Git-2.27.0-32-bit.exe" (
 echo Downloading Git for Windows...
@@ -31,15 +51,14 @@ IF EXIST "%cd%\Git-2.27.0-32-bit.exe" (
   START https://git-scm.com/download/win
 )
 
-set PATH=%PATH%;%PF32%\Git\mingw32\bin
+set PATH=%PATH%;%PF32%\Git;%PF32%\Git\usr\bin;%PF32%\Git\mingw32\bin
 
 2>nul curl.exe --version
-if %ERRORLEVEL%==0 goto exeCurl
-  set CURL=call curl.bat -L
-  goto endIf
-:exeCurl
+IF %ERRORLEVEL%==0 (
+  set CURL=call curl-psh.bat -L
+) ELSE (
   set CURL=curl.exe -L
-:endIf
+)
 
 IF NOT EXIST "%cd%\7z1900.exe" (
   echo Downloading 7-zip... 
@@ -101,8 +120,7 @@ REM   echo Could not find Visual C++ For Python27...
 REM   START http://www.microsoft.com/en-us/download/details.aspx?id=44266
 REM )
 
-REM https://www.exemsi.com/downloads/msi_wrapper/MSI_Wrapper_9_0_35_0.msi
-
+echo You need to have Microsoft VisualStudio C++ Build Tools installed
 START https://visualstudio.microsoft.com/visual-cpp-build-tools/
 
 echo Now run build_packages.bat

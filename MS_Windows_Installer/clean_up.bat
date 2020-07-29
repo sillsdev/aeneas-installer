@@ -1,4 +1,6 @@
 @echo off
+del /q aeneas-win-installer-packages\*
+del /q python-wheels\*
 rmdir /s /q numpy-*
 rmdir /s /q aeneas-*
 rmdir /s /q espeak-*

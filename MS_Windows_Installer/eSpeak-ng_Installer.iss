@@ -36,8 +36,10 @@ ChangesEnvironment=yes
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
-Source: "espeak-ng-{#MyAppVersion}-x86\SourceDir\eSpeak NG\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "espeak-ng-{#MyAppVersion}-x86\SourceDir\eSpeak NG\espeak-ng.exe"; DestName: "espeak.exe"; DestDir: "{app}"; Flags: ignoreversion 
+Source: "espeak-ng-{#MyAppVersion}-x86\espeak-ng.exe"; DestDir: "{app}"
+Source: "espeak-ng-{#MyAppVersion}-x86\espeak-ng.exe"; DestName: "espeak.exe"; DestDir: "{app}"
+Source: "espeak-ng-{#MyAppVersion}-x86\libespeak-ng.dll"; DestDir: "{app}"
+Source: "espeak-ng-{#MyAppVersion}-x86\*"; DestDir: "{app}"; Flags: recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
