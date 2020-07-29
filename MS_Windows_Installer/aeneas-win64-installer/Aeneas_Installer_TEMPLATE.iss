@@ -20,6 +20,7 @@ AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
+ArchitecturesAllowed=x64
 ArchitecturesInstallIn64BitMode=x64
 UsePreviousAppDir=yes
 DefaultDirName={#MyAppInstallDir}
@@ -54,17 +55,16 @@ Name: "aeneas"; Description: "Install Python Module aeneas [AENEAS_VER]"; ExtraD
 ; NOTE: Previous used "Flags: fixed" on each component
 
 [Files]
-Source: "[AENEAS_FILE]"; DestDir: "{app}"; Components: aeneas; Flags: ignoreversion
-Source: "[NUMPY_FILE]"; DestDir: "{app}"; Components: numpy; Flags: ignoreversion
-Source: "[LXML_FILE]"; DestDir: "{app}"; Components: lxml; Flags: ignoreversion
-Source: "[BS4_FILE]"; DestDir: "{app}"; Components: bs4; Flags: ignoreversion
-Source: "[SOUPSIEVE_FILE]"; DestDir: "{app}"; Components: bs4; Flags: ignoreversion
-Source: "[PIP_FILE]"; DestDir: "{app}"; Components: python; Flags: ignoreversion
-Source: "[PYTHON_FILE]"; DestDir: "{app}"; Components: python; Flags: ignoreversion
-Source: "[FFMPEG_FILE]"; DestDir: "{app}"; Components: ffmpeg; Flags: ignoreversion
-Source: "[ESPEAK_FILE]"; DestDir: "{app}"; Components: espeak; Flags: ignoreversion
+Source: "python-wheels\[AENEAS_FILE]"; DestDir: "{app}"; Components: aeneas; Flags: ignoreversion
+Source: "python-wheels\[NUMPY_FILE]"; DestDir: "{app}"; Components: numpy; Flags: ignoreversion
+Source: "python-wheels\[LXML_FILE]"; DestDir: "{app}"; Components: lxml; Flags: ignoreversion
+Source: "python-wheels\[BS4_FILE]"; DestDir: "{app}"; Components: bs4; Flags: ignoreversion
+Source: "python-wheels\[SOUPSIEVE_FILE]"; DestDir: "{app}"; Components: bs4; Flags: ignoreversion
+Source: "aeneas-win-installer-packages\[PYTHON_FILE]"; DestDir: "{app}"; Components: python; Flags: ignoreversion
+Source: "aeneas-win-installer-packages\[FFMPEG_FILE]"; DestDir: "{app}"; Components: ffmpeg; Flags: ignoreversion
+Source: "aeneas-win-installer-packages\[ESPEAK_FILE]"; DestDir: "{app}"; Components: espeak; Flags: ignoreversion
 Source: "espeak-ng.lib"; DestDir: "{app}"; Components: espeak; Flags: ignoreversion
-Source: "install_packages.bat"; DestDir: "{app}"; Components: aeneas; Flags: ignoreversion
+;Source: "install_packages.bat"; DestDir: "{app}"; Components: aeneas; Flags: ignoreversion
 Source: "aeneas_check_setup.bat"; DestDir: "{app}"; Components: aeneas; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
@@ -72,27 +72,31 @@ Source: "aeneas_check_setup.bat"; DestDir: "{app}"; Components: aeneas; Flags: i
 Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
 
 [Run]
-Filename: "{app}\[FFMPEG_FILE]"; Parameters: "/SILENT /ALLUSERS"; Description: "Install FFmpeg [FFMPEG_VER]"; Components: ffmpeg; Flags: shellexec waituntilterminated
-Filename: "{app}\[ESPEAK_FILE]"; Parameters: "/SILENT /ALLUSERS"; Description: "Install eSpeak-NG [ESPEAK_VER]"; Components: espeak; Flags: shellexec waituntilterminated
-Filename: "{app}\[PYTHON_FILE]"; Parameters: "/PASSIVE InstallAllUsers=1 PrependPath=1 TargetDir=""{commonpf64}\Python38"""; Description: "Install Python [PYTHON_VER]"; Components: python; Flags: shellexec waituntilterminated
-Filename: "{app}\install_packages.bat"; Description: "Install Aeneas [AENEAS_VER] and dependencies"; Components: aeneas; Flags: shellexec waituntilterminated
-Filename: "{app}\aeneas_check_setup.bat"; Description: "Check Aeneas Setup"; Components: aeneas; Flags: shellexec waituntilterminated
+Filename: "{app}\[ESPEAK_FILE]"; Parameters: "/PASSIVE"; StatusMsg: "Installing eSpeak-NG [ESPEAK_VER]"; Components: espeak; Flags: shellexec waituntilterminated; AfterInstall: CustomCopyFile('{commonpf64}\eSpeak NG\espeak-ng.exe','{commonpf64}\eSpeak NG\espeak.exe')
+Filename: "{app}\[FFMPEG_FILE]"; Parameters: "/SILENT /ALLUSERS"; StatusMsg: "Installing FFmpeg [FFMPEG_VER]"; Components: ffmpeg; Flags: shellexec waituntilterminated
+Filename: "{app}\[PYTHON_FILE]"; Parameters: "/PASSIVE InstallAllUsers=1 PrependPath=1 TargetDir=""{commonpf64}""\Python38"; StatusMsg: "Installing Python [PYTHON_VER]"; Components: python; Flags: shellexec waituntilterminated
+Filename: "{commonpf64}\Python38\Scripts\pip.exe"; Parameters: "install -U {app}\[NUMPY_FILE]"; StatusMsg: "Installing NumPy [NUMPY_VER]"; Components: numpy; Flags: shellexec waituntilterminated
+Filename: "{commonpf64}\Python38\Scripts\pip.exe"; Parameters: "install -U {app}\[LXML_FILE]"; StatusMsg: "Installing lxml [LXML_VER]"; Components: lxml; Flags: shellexec waituntilterminated
+Filename: "{commonpf64}\Python38\Scripts\pip.exe"; Parameters: "install -U {app}\[SOUPSIEVE_FILE]"; StatusMsg: "Installing SoupSieve [SOUPSIEVE_VER]"; Components: bs4; Flags: shellexec waituntilterminated
+Filename: "{commonpf64}\Python38\Scripts\pip.exe"; Parameters: "install -U {app}\[BS4_FILE]"; StatusMsg: "Installing BeautifulSoup4 [BS4_VER]"; Components: bs4; Flags: shellexec waituntilterminated
+Filename: "{commonpf64}\Python38\Scripts\pip.exe"; Parameters: "install -U {app}\[AENEAS_FILE]"; StatusMsg: "Installing Aeneas [AENEAS_VER]"; Components: aeneas; Flags: shellexec waituntilterminated; BeforeInstall: CustomCopyFile('{app}\espeak-ng.lib','{commonpf64}\Python38\libs'); AfterInstall: CustomCopyFile('{commonpf64}\eSpeak NG\libespeak-ng.dll','{commonpf64}\Python38\Lib\site-packages\aeneas\cew')
+;Filename: "{app}\install_packages.bat"; StatusMsg: "Installing Aeneas [AENEAS_VER] and dependencies"; Components: aeneas; Flags: shellexec waituntilterminated
+Filename: "{app}\aeneas_check_setup.bat"; StatusMsg: "Checking Aeneas Setup"; Components: aeneas; Flags: shellexec waituntilterminated
 
 [UninstallRun]
+Filename: "{commonpf64}\Python38\Scripts\pip.exe"; Parameters: "uninstall -y aeneas beautifulsoup4 soupsieve lxml numpy"; Components: aeneas; Flags: shellexec waituntilterminated
+Filename: "{sys}\MSIEXEC.EXE"; Parameters: "/PASSIVE /X {app}\[PYTHON_FILE]"; Components: python; Flags: shellexec waituntilterminated; BeforeInstall: CustomDeleteFile('{commonpf64}\Python38\lib\espeak-ng.lib')
 Filename: "{commonpf64}\FFmpeg\unins000.exe"; Parameters: "/SILENT"; Components: ffmpeg; Flags: shellexec waituntilterminated
-Filename: "{sys}\MSIEXEC.EXE"; Parameters: "/PASSIVE /X {app}\[ESPEAK_FILE]"; Components: espeak; Flags: shellexec waituntilterminated
-Filename: "{sys}\MSIEXEC.EXE"; Parameters: "/PASSIVE /X {app}\[PYTHON_FILE]"; Components: python; Flags: shellexec waituntilterminated
+Filename: "{sys}\MSIEXEC.EXE"; Parameters: "/PASSIVE /X {app}\[ESPEAK_FILE]"; Components: espeak; Flags: shellexec waituntilterminated; BeforeInstall: CustomDeleteFile('{commonpf64}\eSpeak NG\espeak.exe')
 
 [UninstallDelete]
 Type: filesandordirs; Name: "{commonpf64}\FFmpeg"; Components: ffmpeg
-Type: filesandordirs; Name: "{commonpf64}\Python38"; Components: python
 Type: filesandordirs; Name: "{commonpf64}\eSpeak NG"; Components: espeak
 Type: filesandordirs; Name: "{app}";
 
 [Registry]
 Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{userappdata}\python\python38\Scripts;{olddata}"; Components: aeneas; Check: NeedsAddPath('{userappdata}\python\python38\Scripts')
-Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{commonpf64}\Python38\Scripts;{olddata}"; Components: python; Check: NeedsAddPath('{commonpf64}\Python38\Scripts')
-Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{commonpf64}\Python38\;{olddata}"; Components: python; Check: NeedsAddPath('{commonpf64}\Python38\')
+Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{commonpf64}\eSpeak NG;{olddata}"; Components: espeak; Check: NeedsAddPath('{commonpf64}\eSpeak NG')
 
 [Code]
 function NeedsAddPath(Param: string): boolean;
@@ -109,4 +113,16 @@ begin
   // look for the path with leading and trailing semicolon
   // Pos() returns 0 if not found
   Result := Pos(';' + Param + ';', ';' + OrigPath + ';') = 0;
+end;
+
+procedure CustomCopyFile(S: String; D: String);
+begin
+  Log('CopyFile(''' + S + ''', ''' + D + ''') called');
+  FileCopy(ExpandConstant(S),ExpandConstant(D), False);
+end;
+
+procedure CustomDeleteFile(S: String);
+begin
+  Log('DeleteFile(''' + S + ''') called');
+  DeleteFile(ExpandConstant(S));
 end;

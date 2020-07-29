@@ -51,12 +51,10 @@ IF EXIST "%cd%\Git-2.27.0-32-bit.exe" (
   START https://git-scm.com/download/win
 )
 
-set PATH=%PATH%;%PF32%\Git;%PF32%\Git\usr\bin;%PF32%\Git\mingw32\bin
-
-2>nul curl.exe --version
-IF %ERRORLEVEL%==0 (
+curl.exe --version 1>nul 2>nul
+if %ERRORLEVEL%==1 (
   set CURL=call curl-psh.bat -L
-) ELSE (
+) else (
   set CURL=curl.exe -L
 )
 
