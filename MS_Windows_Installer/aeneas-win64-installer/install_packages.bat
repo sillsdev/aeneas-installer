@@ -19,7 +19,7 @@ echo Copying espeak-ng.lib to %PF64%\Python38\libs\
 copy /b/v/y "espeak-ng.lib" "%PF64%\Python38\libs\"
 
 python -m ensurepip
-python -m pip install -U pip-20.1.1-py2.py3-none-any.whl
+python -m pip install -U 
 python -m pip install -U numpy-1.19.1-cp38-cp38-win_amd64.whl
 python -m pip install -U lxml-4.5.2-cp38-cp38-win_amd64.whl
 python -m pip install -U soupsieve-2.0.1-py3-none-any.whl
