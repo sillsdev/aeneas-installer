@@ -40,15 +40,15 @@ if %ERRORLEVEL%==1 (
   set CURL=curl.exe -L
 )
 
-IF NOT EXIST "%cd%\Git-2.27.0-64-bit.exe" (
+IF NOT EXIST "%cd%\Git-2.28.0-64-bit.exe" (
 echo Downloading Git for Windows...
-  %CURL% "https://netix.dl.sourceforge.net/project/git-for-windows.mirror/v2.27.0.windows.1/Git-2.27.0-64-bit.exe" -o "%cd%\Git-2.27.0-64-bit.exe"
+  %CURL% "https://netix.dl.sourceforge.net/project/git-for-windows.mirror/v2.28.0.windows.1/Git-2.28.0-64-bit.exe" -o "%cd%\Git-2.28.0-64-bit.exe"
 )
-IF EXIST "%cd%\Git-2.27.0-64-bit.exe" (
+IF EXIST "%cd%\Git-2.28.0-64-bit.exe" (
   echo Installing Git for Windows...
-  Git-2.27.0-64-bit.exe /SILENT
+  Git-2.28.0-64-bit.exe /SILENT
 ) ELSE (
-  echo Could not find Git for Windows 2.27.0...
+  echo Could not find Git for Windows...
   START https://git-scm.com/download/win
 )
 

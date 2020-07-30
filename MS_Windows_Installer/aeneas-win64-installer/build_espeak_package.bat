@@ -54,7 +54,8 @@ IF EXIST "%cd%\aeneas-win-installer-packages\espeak-ng-1.50-x64.msi" GOTO ENDGET
 IF EXIST "%cd%\espeak-ng-1.50-x64.msi" (
   echo Installing eSpeak-ng...
   "%cd%\espeak-ng-1.50-x64.msi" /PASSIVE
-  call "%cd%\install_espeak-ng-dll.bat"
+  copy /b/v/y "%CD%\install_espeak-ng-dll.bat" "%USERPROFILE%\install_espeak-ng-dll.bat"
+  call "%USERPROFILE%\install_espeak-ng-dll.bat"
   move /y "%cd%\espeak-ng-1.50-x64.msi"  "%cd%\aeneas-win-installer-packages"
 )
 
