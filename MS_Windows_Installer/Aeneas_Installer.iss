@@ -20,7 +20,7 @@ AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
-;ArchitecturesAllowed=x64
+ArchitecturesAllowed=x86
 ;ArchitecturesInstallIn64BitMode=x64
 UsePreviousAppDir=yes
 DefaultDirName={#MyAppInstallDir}
@@ -63,8 +63,8 @@ Source: "python-wheels\soupsieve-2.0.1-py3-none-any.whl"; DestDir: "{app}"; Comp
 Source: "aeneas-win-installer-packages\python-3.8.5.exe"; DestDir: "{app}"; Components: python; Flags: ignoreversion
 Source: "aeneas-win-installer-packages\ffmpeg-4.3-win32-static.exe"; DestDir: "{app}"; Components: ffmpeg; Flags: ignoreversion
 Source: "aeneas-win-installer-packages\espeak-ng-1.50-x86.msi"; DestDir: "{app}"; Components: espeak; Flags: ignoreversion
-Source: "espeak-ng.lib"; DestDir: "{app}"; Components: espeak; Flags: ignoreversion
-;Source: "install_packages.bat"; DestDir: "{app}"; Components: aeneas; Flags: ignoreversion
+Source: "copy_espeak_aeneas.bat"; DestDir: "{app}"; Components: aeneas; Flags: ignoreversion
+Source: "delete_espeak_aeneas.bat"; DestDir: "{app}"; Components: aeneas; Flags: ignoreversion
 Source: "aeneas_check_setup.bat"; DestDir: "{app}"; Components: aeneas; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
@@ -72,27 +72,29 @@ Source: "aeneas_check_setup.bat"; DestDir: "{app}"; Components: aeneas; Flags: i
 Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
 
 [Run]
-Filename: "{app}\espeak-ng-1.50-x86.msi"; Parameters: "/PASSIVE"; StatusMsg: "Installing eSpeak-NG 1.50"; Components: espeak; Flags: shellexec waituntilterminated; AfterInstall: CustomCopyFile('{commonpf32}\eSpeak NG\espeak-ng.exe','{commonpf32}\eSpeak NG\espeak.exe')
+Filename: "{sys}\MSIEXEC.EXE"; Parameters: "/PASSIVE /I {app}\espeak-ng-1.50-x86.msi"; StatusMsg: "Installing eSpeak-NG 1.50"; Components: espeak; Flags: shellexec waituntilterminated; AfterInstall: InstallerCopyFile('{commonpf32}\eSpeak NG\espeak-ng.exe','{commonpf32}\eSpeak NG\espeak.exe')
 Filename: "{app}\ffmpeg-4.3-win32-static.exe"; Parameters: "/SILENT /ALLUSERS"; StatusMsg: "Installing FFmpeg 4.3"; Components: ffmpeg; Flags: shellexec waituntilterminated
 Filename: "{app}\python-3.8.5.exe"; Parameters: "/PASSIVE InstallAllUsers=1 PrependPath=1 TargetDir=""{commonpf32}""\Python38"; StatusMsg: "Installing Python 3.8.5"; Components: python; Flags: shellexec waituntilterminated
-Filename: "{commonpf32}\Python38\Scripts\pip.exe"; Parameters: "install -U {app}\numpy-1.19.1-cp38-cp38-win32.whl"; StatusMsg: "Installing NumPy 1.19.1"; Components: numpy; Flags: shellexec waituntilterminated
-Filename: "{commonpf32}\Python38\Scripts\pip.exe"; Parameters: "install -U {app}\lxml-4.5.2-cp38-cp38-win32.whl"; StatusMsg: "Installing lxml 4.5.2"; Components: lxml; Flags: shellexec waituntilterminated
-Filename: "{commonpf32}\Python38\Scripts\pip.exe"; Parameters: "install -U {app}\soupsieve-2.0.1-py3-none-any.whl"; StatusMsg: "Installing SoupSieve 2.0.1"; Components: bs4; Flags: shellexec waituntilterminated
-Filename: "{commonpf32}\Python38\Scripts\pip.exe"; Parameters: "install -U {app}\beautifulsoup4-4.9.1-py3-none-any.whl"; StatusMsg: "Installing BeautifulSoup4 4.9.1"; Components: bs4; Flags: shellexec waituntilterminated
-Filename: "{commonpf32}\Python38\Scripts\pip.exe"; Parameters: "install -U {app}\aeneas-1.7.3.0-cp38-cp38-win32.whl"; StatusMsg: "Installing Aeneas 1.7.3.0"; Components: aeneas; Flags: shellexec waituntilterminated; BeforeInstall: CustomCopyFile('{app}\espeak-ng.lib','{commonpf32}\Python38\libs'); AfterInstall: CustomCopyFile('{commonpf32}\eSpeak NG\libespeak-ng.dll','{commonpf32}\Python38\Lib\site-packages\aeneas\cew')
-;Filename: "{app}\install_packages.bat"; StatusMsg: "Installing Aeneas 1.7.3.0 and dependencies"; Components: aeneas; Flags: shellexec waituntilterminated
-Filename: "{app}\aeneas_check_setup.bat"; StatusMsg: "Checking Aeneas Setup"; Components: aeneas; Flags: shellexec waituntilterminated
+Filename: "{commonpf32}\Python38\Scripts\pip.exe"; Parameters: "install -U {app}\numpy-1.19.1-cp38-cp38-win32.whl"; StatusMsg: "Installing NumPy 1.19.1"; Components: numpy; Flags: runhidden waituntilterminated
+Filename: "{commonpf32}\Python38\Scripts\pip.exe"; Parameters: "install -U {app}\lxml-4.5.2-cp38-cp38-win32.whl"; StatusMsg: "Installing lxml 4.5.2"; Components: lxml; Flags: runhidden waituntilterminated
+Filename: "{commonpf32}\Python38\Scripts\pip.exe"; Parameters: "install -U {app}\soupsieve-2.0.1-py3-none-any.whl"; StatusMsg: "Installing SoupSieve 2.0.1"; Components: bs4; Flags: runhidden waituntilterminated
+Filename: "{commonpf32}\Python38\Scripts\pip.exe"; Parameters: "install -U {app}\beautifulsoup4-4.9.1-py3-none-any.whl"; StatusMsg: "Installing BeautifulSoup4 4.9.1"; Components: bs4; Flags: runhidden waituntilterminated
+Filename: "{commonpf32}\Python38\Scripts\pip.exe"; Parameters: "install -U {app}\aeneas-1.7.3.0-cp38-cp38-win32.whl"; StatusMsg: "Installing Aeneas 1.7.3.0"; Components: aeneas; Flags: runhidden waituntilterminated; BeforeInstall: InstallerCopyFile('{commonpf32}\eSpeak NG\libespeak-ng.dll','{commonpf32}\Python38\Lib\site-packages\aeneas\cew')
+Filename: "{app}\copy_espeak_aeneas.bat"; StatusMsg: "Copying necessary eSpeak NG files for aeneas use"; Components: aeneas; Flags: runhidden waituntilterminated
+Filename: "{app}\aeneas_check_setup.bat"; StatusMsg: "Running Aeneas_Check_Setup"; Components: aeneas; Flags: shellexec waituntilterminated
 
 [UninstallRun]
-Filename: "{commonpf32}\Python38\Scripts\pip.exe"; Parameters: "uninstall -y aeneas beautifulsoup4 soupsieve lxml numpy"; Components: aeneas; Flags: shellexec waituntilterminated
-Filename: "{sys}\MSIEXEC.EXE"; Parameters: "/PASSIVE /X {app}\python-3.8.5.exe"; Components: python; Flags: shellexec waituntilterminated; BeforeInstall: CustomDeleteFile('{commonpf32}\Python38\lib\espeak-ng.lib')
+Filename: "{app}\delete_espeak_aeneas.bat"; Components: aeneas; Flags: runhidden waituntilterminated
+Filename: "{commonpf32}\Python38\Scripts\pip.exe"; Parameters: "uninstall -y aeneas beautifulsoup4 soupsieve lxml numpy"; Components: aeneas; Flags: runhidden waituntilterminated
+Filename: "{app}\python-3.8.5.exe"; Parameters: "/PASSIVE /UNINSTALL "; Components: python; Flags: shellexec waituntilterminated; BeforeInstall: InstallerDeleteFile('{commonpf32}\Python38\Lib\site-packages\aeneas\cew\libespeak-ng.dll')
 Filename: "{commonpf32}\FFmpeg\unins000.exe"; Parameters: "/SILENT"; Components: ffmpeg; Flags: shellexec waituntilterminated
-Filename: "{sys}\MSIEXEC.EXE"; Parameters: "/PASSIVE /X {app}\espeak-ng-1.50-x86.msi"; Components: espeak; Flags: shellexec waituntilterminated; BeforeInstall: CustomDeleteFile('{commonpf32}\eSpeak NG\espeak.exe')
+Filename: "{sys}\MSIEXEC.EXE"; Parameters: "/PASSIVE /X {app}\espeak-ng-1.50-x86.msi"; Components: espeak; Flags: shellexec waituntilterminated; BeforeInstall: InstallerDeleteFile('{commonpf32}\eSpeak NG\espeak.exe')
 
 [UninstallDelete]
-Type: filesandordirs; Name: "{commonpf32}\FFmpeg"; Components: ffmpeg
-Type: filesandordirs; Name: "{commonpf32}\eSpeak NG"; Components: espeak
-Type: filesandordirs; Name: "{app}";
+;Type: filesandordirs; Name: "{commonpf32}\FFmpeg"; Components: ffmpeg
+;Type: filesandordirs; Name: "{commonpf32}\Python38"; Components: espeak
+;Type: filesandordirs; Name: "{commonpf32}\eSpeak NG"; Components: espeak
+;Type: filesandordirs; Name: "{app}";
 
 [Registry]
 Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{userappdata}\python\python38\Scripts;{olddata}"; Components: aeneas; Check: NeedsAddPath('{userappdata}\python\python38\Scripts')
@@ -100,8 +102,7 @@ Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environmen
 
 [Code]
 function NeedsAddPath(Param: string): boolean;
-var
-  OrigPath: string;
+var OrigPath: string;
 begin
   if not RegQueryStringValue(HKEY_LOCAL_MACHINE,
     'SYSTEM\CurrentControlSet\Control\Session Manager\Environment',
@@ -115,14 +116,22 @@ begin
   Result := Pos(';' + Param + ';', ';' + OrigPath + ';') = 0;
 end;
 
-procedure CustomCopyFile(S: String; D: String);
+procedure InstallerCopyFile(S: String; D: String);
 begin
   Log('CopyFile(''' + S + ''', ''' + D + ''') called');
-  FileCopy(ExpandConstant(S),ExpandConstant(D), False);
+  if FileCopy(ExpandConstant(S),ExpandConstant(D), False)
+  then
+    Log('SUCCESS: Copied file ''' + S + ''' to ''' + D + '''.')
+  else
+    Log('ERROR: Failed to copy file ''' + S + ''' to ''' + D + '''!')
 end;
 
-procedure CustomDeleteFile(S: String);
+procedure InstallerDeleteFile(S: String);
 begin
-  Log('DeleteFile(''' + S + ''') called');
-  DeleteFile(ExpandConstant(S));
+  Log('DeleteFile(''' + S + ''') called')
+  if DeleteFile(ExpandConstant(S))
+  then
+    Log('SUCCESS: Deleted file ''' + S + '''.')
+  else
+    Log('ERROR: Failed to delete file ''' + S + '''!')
 end;

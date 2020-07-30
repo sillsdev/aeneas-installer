@@ -50,7 +50,7 @@ FOR /F "tokens=* USEBACKQ" %%F IN (`ffmpeg -version ^| %grep% version -m 1 ^| %c
 FOR /F "tokens=* USEBACKQ" %%F IN (`espeak-ng --version ^| %cut% -d':' -f2 ^| %cut% -d' ' -f2`) DO (SET espeak_ver=%%F)
 FOR /F "tokens=* USEBACKQ" %%F IN (`python --version ^| %cut% -d' ' -f2`) DO (SET python_ver=%%F)
 
-FOR /F "tokens=* USEBACKQ" %%F IN (`python -m pip show pip ^| %grep% Version ^| %cut% -d' ' -f2`) DO (SET pip_ver=%%F)
+REM FOR /F "tokens=* USEBACKQ" %%F IN (`python -m pip show pip ^| %grep% Version ^| %cut% -d' ' -f2`) DO (SET pip_ver=%%F)
 FOR /F "tokens=* USEBACKQ" %%F IN (`python -m pip show aeneas ^| %grep% Version ^| %cut% -d' ' -f2`) DO (SET aeneas_ver=%%F)
 FOR /F "tokens=* USEBACKQ" %%F IN (`python -m pip show numpy ^| %grep% Version ^| %cut% -d' ' -f2`) DO (SET numpy_ver=%%F)
 FOR /F "tokens=* USEBACKQ" %%F IN (`python -m pip show lxml ^| %grep% Version ^| %cut% -d' ' -f2`) DO (SET lxml_ver=%%F)
@@ -63,7 +63,7 @@ FOR /F "tokens=* USEBACKQ" %%F IN (`dir aeneas-win-installer-packages\espeak-ng-
 FOR /F "tokens=* USEBACKQ" %%F IN (`dir aeneas-win-installer-packages\ffmpeg-*.exe /b`) DO (SET ffmpeg_file=%%F)
 FOR /F "tokens=* USEBACKQ" %%F IN (`dir aeneas-win-installer-packages\python-*.exe /b`) DO (SET python_file=%%F)
 
-FOR /F "tokens=* USEBACKQ" %%F IN (`dir python-wheels\pip-%pip_ver%*.whl /b`) DO (SET pip_file=%%F)
+REM FOR /F "tokens=* USEBACKQ" %%F IN (`dir python-wheels\pip-%pip_ver%*.whl /b`) DO (SET pip_file=%%F)
 FOR /F "tokens=* USEBACKQ" %%F IN (`dir python-wheels\aeneas-%aeneas_ver%*.whl /b`) DO (SET aeneas_file=%%F)
 FOR /F "tokens=* USEBACKQ" %%F IN (`dir python-wheels\numpy-%numpy_ver%*.whl /b`) DO (SET numpy_file=%%F)
 FOR /F "tokens=* USEBACKQ" %%F IN (`dir python-wheels\lxml-%lxml_ver%*.whl /b`) DO (SET lxml_file=%%F)
