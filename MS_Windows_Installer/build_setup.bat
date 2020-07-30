@@ -82,17 +82,17 @@ IF EXIST "%cd%\innosetup-6.0.5.exe" (
   START http://www.jrsoftware.org/isdl.php
 )
 
-IF NOT EXIST "%cd%\python-3.8.5.exe" (
-  echo Downloading Python 3.8.5...
-  %CURL% "https://www.python.org/ftp/python/3.8.5/python-3.8.5.exe" -o "%cd%\python-3.8.5.exe"
-)
-IF EXIST "%cd%\python-3.8.5.exe" (
-  echo Installing Python 3.8.5...
-  python-3.8.5.exe /passive InstallAllUsers=1 PrependPath=1 TargetDir="%PF32%"\Python38
-) ELSE (
-  echo Could not find Python 3.8.5...
-  START https://www.python.org/downloads/release/python-385/
-)
+REM IF NOT EXIST "%cd%\python-3.8.5.exe" (
+REM   echo Downloading Python 3.8.5...
+REM   %CURL% "https://www.python.org/ftp/python/3.8.5/python-3.8.5.exe" -o "%cd%\python-3.8.5.exe"
+REM )
+REM IF EXIST "%cd%\python-3.8.5.exe" (
+REM   echo Installing Python 3.8.5...
+REM   python-3.8.5.exe /passive InstallAllUsers=1 PrependPath=1 TargetDir="%PF32%"\Python38
+REM ) ELSE (
+REM   echo Could not find Python 3.8.5...
+REM   START https://www.python.org/downloads/release/python-385/
+REM )
 
 REM IF NOT EXIST "%cd%\dotNetFx35setup.exe" (
 REM echo Downloading Microsoft .NET Framework 3.5...
