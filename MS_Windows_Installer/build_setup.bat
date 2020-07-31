@@ -45,7 +45,7 @@ echo Downloading Git for Windows...
 )
 IF EXIST "%cd%\Git-2.28.0-32-bit.exe" (
   echo Installing Git for Windows...
-  Git-2.28.0-32-bit.exe /SILENT
+  Git-2.28.0-32-bit.exe
 ) ELSE (
   echo Could not find Git for Windows...
   START https://git-scm.com/download/win
@@ -64,7 +64,7 @@ IF NOT EXIST "%cd%\7z1900.exe" (
 )
 IF EXIST "%cd%\7z1900.exe" (
   echo Installing 7-zip...
-  7z1900.exe /SILENT
+  7z1900.exe
 ) ELSE (
   echo Could not find 7-zip...
   START http://www.7-zip.org/
@@ -76,7 +76,7 @@ IF NOT EXIST "%cd%\innosetup-6.0.5.exe" (
 )
 IF EXIST "%cd%\innosetup-6.0.5.exe" (
   echo Installing InnoSetup...
-  innosetup-6.0.5.exe /SILENT
+  innosetup-6.0.5.exe
 ) ELSE (
   echo Could not find InnoSetup...
   START http://www.jrsoftware.org/isdl.php
