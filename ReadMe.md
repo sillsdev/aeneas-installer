@@ -1,4 +1,4 @@
-This provides a simple installer for [Aeneas](https://github.com/readbeyond/aeneas) for Mac OS X 10.7 and up, and for MS Windows 7 and up.
+This provides a simple installer for [Aeneas](https://github.com/readbeyond/aeneas) for Mac OS X 10.9 and up, and for MS Windows 8 and up.
 
 You can download prebuilt installers from the [releases](https://github.com/sillsdev/aeneas-installer/releases) section.
 
