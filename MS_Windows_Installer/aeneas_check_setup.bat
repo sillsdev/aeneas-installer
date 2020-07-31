@@ -1,15 +1,14 @@
 @echo off
 IF EXIST "C:\Program Files (x86)" GOTO WIN64PATH
 :WIN32PATH
-  set PATH=C:\Python37-32\;C:\Python37-32\Scripts;%PATH%;C:\Program Files\eSpeak\command_line;C:\Program Files\FFmpeg\bin
+  set PF32=C:\Program Files
   (call )
-  GOTO ENDIF
+  GOTO ENDIFPATH
 :WIN64PATH
-  set PATH=C:\Python37-32\;C:\Python37-32\Scripts;%PATH%;C:\Program Files (x86)\eSpeak\command_line;C:\Program Files (x86)\FFmpeg\bin
+  set PF32=C:\Program Files (x86)
   (call )
-:ENDIF
-C:
-cd C:\Python37-32\Scripts
+:ENDIFPATH
+set PATH=%PF32%\Python38\;%PF32%\Python38\Scripts;%PF32%\eSpeak NG;%PF32%\FFmpeg\bin;%PATH%
 set PYTHONIOENCODING=UTF-8
-C:\Python37-32\python aeneas_check_setup.py
+python -m aeneas.diagnostics
 C:\Windows\System32\ping 127.0.0.1 -n 5 -w 1000 > NUL

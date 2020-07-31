@@ -10,7 +10,7 @@ FFmpeg is a video and audio converter, developed by Fabrice Bellard, and is avai
 
 --------------------------------------------------------------------
 
-eSpeak is a text-to-speech engine, developed by Jonathan Duddington, and is available for download at http://espeak.sourceforge.net/
+eSpeak-ng is a text-to-speech engine, developed by Reece H. Dunn, and is available for download at https://github.com/espeak-ng/espeak-ng
 
 --------------------------------------------------------------------
 

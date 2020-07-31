@@ -1,0 +1,93 @@
+Microsoft (R) COFF/PE Dumper Version 14.12.25830.2
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+
+Dump of file libespeak-ng.dll
+
+File Type: DLL
+
+  Section contains the following exports for libespeak-ng.dll
+
+    00000000 characteristics
+    FFFFFFFF time date stamp
+        0.00 version
+           1 ordinal base
+          64 number of functions
+          64 number of names
+
+    ordinal hint RVA      name
+
+          1    0 0003CE40 DllCanUnloadNow
+          2    1 0003CDB0 DllGetClassObject
+          3    2 000240C0 GetFileLength
+          4    3 00015780 create_text_decoder
+          5    4 000157B0 destroy_text_decoder
+          6    5 00016470 espeak_Cancel
+          7    6 000161D0 espeak_Char
+          8    7 00016580 espeak_CompileDictionary
+          9    8 00039AB0 espeak_GetCurrentVoice
+         10    9 00024E60 espeak_GetParameter
+         11    A 00025110 espeak_Info
+         12    B 00015EF0 espeak_Initialize
+         13    C 00015770 espeak_IsPlaying
+         14    D 00016110 espeak_Key
+         15    E 00039890 espeak_ListVoices
+         16    F 000162B0 espeak_SetParameter
+         17   10 00024D80 espeak_SetPhonemeCallback
+         18   11 00024EA0 espeak_SetPhonemeTrace
+         19   12 00016310 espeak_SetPunctuationList
+         20   13 00024D60 espeak_SetSynthCallback
+         21   14 00024D70 espeak_SetUriCallback
+         22   15 000163C0 espeak_SetVoiceByFile
+         23   16 00016360 espeak_SetVoiceByName
+         24   17 00016420 espeak_SetVoiceByProperties
+         25   18 000164D0 espeak_Synchronize
+         26   19 00015FE0 espeak_Synth
+         27   1A 00016080 espeak_Synth_Mark
+         28   1B 00016520 espeak_Terminate
+         29   1C 00024ED0 espeak_TextToPhonemes
+         30   1D 00016470 espeak_ng_Cancel
+         31   1E 00015C50 espeak_ng_ClearErrorContext
+         32   1F 0000F3B0 espeak_ng_CompileDictionary
+         33   20 0000BF10 espeak_ng_CompileIntonation
+         34   21 0000F890 espeak_ng_CompileMbrolaVoice
+         35   22 0000B8A0 espeak_ng_CompilePhonemeData
+         36   23 0000B8C0 espeak_ng_CompilePhonemeDataPath
+         37   24 000153D0 espeak_ng_EncodingFromName
+         38   25 000246A0 espeak_ng_GetSampleRate
+         39   26 00015C90 espeak_ng_GetStatusCodeMessage
+         40   27 00024270 espeak_ng_Initialize
+         41   28 00023EA0 espeak_ng_InitializeOutput
+         42   29 00024140 espeak_ng_InitializePath
+         43   2A 00015E30 espeak_ng_PrintStatusCodeMessage
+         44   2B 00024E90 espeak_ng_SetParameter
+         45   2C 00016310 espeak_ng_SetPunctuationList
+         46   2D 000395F0 espeak_ng_SetVoiceByFile
+         47   2E 00039700 espeak_ng_SetVoiceByName
+         48   2F 00039840 espeak_ng_SetVoiceByProperties
+         49   30 00024D00 espeak_ng_SpeakCharacter
+         50   31 00024DF0 espeak_ng_SpeakKeyName
+         51   32 00024F90 espeak_ng_Synchronize
+         52   33 00024D90 espeak_ng_Synthesize
+         53   34 00024DC0 espeak_ng_SynthesizeMark
+         54   35 00024FB0 espeak_ng_Terminate
+         55   36 0000FCE0 strncpy0
+         56   37 000157C0 text_decoder_decode_string
+         57   38 00015850 text_decoder_decode_string_auto
+         58   39 00015940 text_decoder_decode_string_multibyte
+         59   3A 000158D0 text_decoder_decode_wstring
+         60   3B 00015B40 text_decoder_eof
+         61   3C 00015BA0 text_decoder_get_buffer
+         62   3D 00015B50 text_decoder_getc
+         63   3E 00015B60 text_decoder_peekc
+         64   3F 0002E1B0 utf8_in
+
+  Summary
+
+       2A000 .data
+        2000 .pdata
+       2B000 .rdata
+        1000 .reloc
+        1000 .rsrc
+       3F000 .text
+        1000 _RDATA
