@@ -2,11 +2,11 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "FFmpeg"
-#define MyAppVersion "4.3"
+#define MyAppVersion "[FFMPEG_VER]"
 #define MyAppPublisher "Daniel Bair"
-#define MyAppURL "http://www.danielbair.com/"
+#define MyAppURL "https://github.com/sillsdev/aeneas-installer"
 #define MyAppExeName "ff-prompt.bat"
-#define MyAppFileName "ffmpeg-4.3-win64-static"
+#define MyAppFileName "ffmpeg-[FFMPEG_VER]-win64-static"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -15,7 +15,7 @@
 AppId={{F3EDA0E9-6DA3-4B46-818E-0C07AB675A8A}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
-;AppVerName={#MyAppName} {#MyAppVersion}
+AppVerName={#MyAppName} {#MyAppVersion} (64-bit)
 AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
@@ -24,9 +24,11 @@ ArchitecturesAllowed=x64
 ArchitecturesInstallIn64BitMode=x64
 UsePreviousAppDir=no
 DefaultDirName={commonpf64}\{#MyAppName}
-DisableDirPage=no
+DisableDirPage=yes
+DisableWelcomePage=no
 DefaultGroupName={#MyAppName}
 AllowNoIcons=no
+DisableProgramGroupPage=no
 LicenseFile={#MyAppFileName}\LICENSE.txt
 InfoBeforeFile={#MyAppFileName}\README.txt
 OutputDir=.\
@@ -34,7 +36,7 @@ OutputBaseFilename={#MyAppFileName}
 Compression=lzma
 SolidCompression=yes
 ChangesEnvironment=yes
-;SignTool=mysigntool
+;SignTool=sign_installer.sh
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -51,7 +53,7 @@ Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
 Filename: "{app}\doc\ffmpeg.html"; Description: "View the documentation"; Flags: postinstall shellexec skipifsilent unchecked
 
 [Registry]
-Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{olddata};{commonpf64}\FFmpeg\bin"; Check: NeedsAddPath(ExpandConstant('{commonpf64}\FFmpeg\bin'))
+Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{commonpf64}\FFmpeg\bin;{olddata}"; Check: NeedsAddPath(ExpandConstant('{commonpf64}\FFmpeg\bin'))
 
 [Code]
 function NeedsAddPath(Param: string): boolean;

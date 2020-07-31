@@ -4,7 +4,7 @@
 #define MyAppName "aeneas tools"
 #define MyAppVersion "1.7.3.0"
 #define MyAppPublisher "Daniel Bair"
-#define MyAppURL "http://www.danielbair.com/"
+#define MyAppURL "https://github.com/sillsdev/aeneas-installer"
 #define MyAppInstallDir "C:\aeneas-install"
 #define MyAppFileName "aeneas-win32-setup-1.7.3.0_3"
 
@@ -15,12 +15,12 @@
 AppId={{A15A9B64-C0EF-4E13-926C-0C60A8FA9FBC}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
-;AppVerName={#MyAppName} {#MyAppVersion}
+AppVerName={#MyAppName} {#MyAppVersion} (32-bit)
 AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
-ArchitecturesAllowed=x86
+;ArchitecturesAllowed=x86
 ;ArchitecturesInstallIn64BitMode=x64
 UsePreviousAppDir=yes
 DefaultDirName={#MyAppInstallDir}
@@ -36,7 +36,7 @@ OutputBaseFilename={#MyAppFileName}
 Compression=lzma
 SolidCompression=yes
 ChangesEnvironment=yes
-;SignTool=mysigntool
+;SignTool=sign_installer.sh
 
 [Messages]
 WelcomeLabel2=This will install aeneas 1.7.3.0 on your computer.%n%naeneas is a Python library and a set of tools for automated audio and text synchronization.%n%nIn addition to aeneas, the following independent programs necessary for running aeneas are contained in this installer:%n1. eSpeak-NG%n2. FFmpeg%n3. Python%n%nIt is recommended that you close all other applications before continuing.
