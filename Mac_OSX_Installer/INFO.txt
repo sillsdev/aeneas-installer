@@ -3,8 +3,8 @@ This will install aeneas 1.7.3 on your computer.
 aeneas is a Python library and a set of tools for automated audio and text synchronization.
 
 In addition to aeneas, the following independent programs necessary for running aeneas are contained in this installer:
-1. FFmpeg
-2. eSpeak-ng
+1. eSpeak-ng
+2. FFmpeg
 3. Python
 
 You will be guided through the steps necessary to install this software.
