@@ -5,12 +5,13 @@ source ./build_env.sh
 if [ ! -f "aeneas-mac-installer-packages/ffmpeg-$FFMPEG_VER.pkg" ]; then
         echo -e "\n\nBuilding ffmpeg-$FFMPEG_VER.pkg\n\n"
 	BUILDTMP="$(mktemp -d -t ffmpeg.tmp.XXXXXXXX)"
-	mkdir -vp $BUILDTMP/Payload/opt/usr/opt/
+	mkdir -vp $BUILDTMP/Payload/
         if [ ! -f "./ffmpeg-$FFMPEG_VER-macos64-static.zip" ]; then
                 wget --trust-server-names https://ffmpeg.zeranoe.com/builds/macos64/static/ffmpeg-$FFMPEG_VER-macos64-static.zip
 		if [ ! $? ]; then
-			unzip ffmpeg-$FFMPEG_VER-macos64-static.zip -d $BUILDTMP/Payload/opt/usr/opt/
-			mv -v $BUILDTMP/Payload/opt/usr-$FFMPEG_VER-macos64-static $BUILDTMP/Payload/opt/usr
+			mkdir -vp $BUILDTMP/Payload/opt
+			unzip ffmpeg-$FFMPEG_VER-macos64-static.zip -d $BUILDTMP
+			mv -v $BUILDTMP/$FFMPEG_VER-macos64-static $BUILDTMP/Payload/opt/usr
 			mkdir -vp $BUILDTMP/Payload/opt/usr/share/ffmpeg
 			mv -v $BUILDTMP/Payload/opt/usr/doc $BUILDTMP/Payload/opt/usr/share/ffmpeg/
 			mv -v $BUILDTMP/Payload/opt/usr/presets $BUILDTMP/Payload/opt/usr/share/ffmpeg/
