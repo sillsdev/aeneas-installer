@@ -2,6 +2,9 @@
 
 source ./build_env.sh
 
+CURDIR=`pwd`
+cd "$CURDIR"
+
 if [ ! -f "aeneas-mac-installer-packages/python-$PYTHON_VER.pkg" ]; then
         echo -e "\n\nBuilding python-$PYTHON_VER.pkg\n\n"
         if [ ! -f "./python-$PYTHON_VER-macosx10.9.pkg" ]; then
@@ -37,6 +40,14 @@ if [ ! -f "aeneas-mac-installer-packages/python-$PYTHON_VER.pkg" ]; then
 	done
 	echo "exit 0" >> $BUILDTMP/Scripts/postinstall
 	chmod +x $BUILDTMP/Scripts/postinstall
+	cd "$BUILDTMP"
+	for file in `find Payload -type f | perl -lne 'print if -B'`; do
+		grep "$file" "$CURDIR/developer_log.json"
+		if [ $? = 0 ]; then
+			codesign -s "Developer ID Application" -v --force "$file"
+		fi
+	done
+	cd "$CURDIR"
 	pkgbuild --root "$BUILDTMP/Payload" --identifier "org.python.python" --version "$PYTHON_VER" --scripts "$BUILDTMP/Scripts" "python-$PYTHON_VER.pkg"
         [ $? = 0 ] || exit 1
 	sudo installer -pkg python-$PYTHON_VER.pkg -target / -dumplog -verboseR
