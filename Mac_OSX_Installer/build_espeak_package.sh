@@ -2,9 +2,6 @@
 
 source ./build_env.sh
 
-CURDIR=`pwd`
-cd "$CURDIR"
-
 if [ ! -f "aeneas-mac-installer-packages/espeak-ng-$ESPEAK_VER.pkg" ]; then
         echo -e "\n\nBuilding espeak-ng-$ESPEAK_VER.pkg\n\n"
 	sudo port -Npf uninstall espeak-ng pcaudiolib sonic
@@ -21,14 +18,6 @@ if [ ! -f "aeneas-mac-installer-packages/espeak-ng-$ESPEAK_VER.pkg" ]; then
 	done
         cat postinstall-scripts/postinstall_espeak | sed 's#@PREFIX@#/opt/usr#g' > $BUILDTMP/Scripts/postinstall
 	chmod +x $BUILDTMP/Scripts/postinstall
-	cd "$BUILDTMP"
-	for file in `find Payload -type f | perl -lne 'print if -B'`; do
-		grep "$file" "$CURDIR/developer_log.json"
-		if [ $? = 0 ]; then
-			codesign -s "Developer ID Application" -v --force "$file"
-		fi
-	done
-	cd "$CURDIR"
 	pkgbuild --prior `port work espeak-ng`/espeak-ng-$ESPEAK_VER-component.pkg --root "$BUILDTMP/Payload" --scripts "$BUILDTMP/Scripts" "espeak-ng-$ESPEAK_VER.pkg"
         [ $? = 0 ] || exit 1
 	sudo installer -pkg espeak-ng-$ESPEAK_VER.pkg -target / -dumplog -verboseR
