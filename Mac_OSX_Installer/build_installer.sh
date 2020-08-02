@@ -21,7 +21,7 @@ packagesbuild -v Aeneas_Installer.pkgproj
 
 if [ -f "aeneas-mac-setup-$VERSION.pkg" ]; then
 	echo -e "Resulting Installer program filename is:\n$(pwd)/aeneas-mac-setup-$VERSION.pkg"
-	productsign --timestamp=none --sign "Developer ID Installer" aeneas-mac-setup-$VERSION.pkg /tmp/aeneas-mac-setup-$VERSION.pkg
+	productsign --timestamp --sign "Developer ID Installer" aeneas-mac-setup-$VERSION.pkg /tmp/aeneas-mac-setup-$VERSION.pkg
 	cp -v /tmp/aeneas-mac-setup-$VERSION.pkg ./
 fi
 
