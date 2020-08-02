@@ -2,6 +2,9 @@
 
 source ./build_env.sh
 
+CURDIR=`pwd`
+cd "$CURDIR"
+
 if [ ! -f "aeneas-mac-installer-packages/espeak-ng-$ESPEAK_VER.pkg" ]; then
         echo -e "\n\nBuilding espeak-ng-$ESPEAK_VER.pkg\n\n"
 	sudo port -Npf uninstall espeak-ng pcaudiolib sonic
