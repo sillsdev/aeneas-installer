@@ -7,7 +7,7 @@ cd $CURDIR
 
 cd aeneas-mac-installer-packages
 for file in *.pkg; do
-productsign --timestamp=none --sign "Developer ID Installer" $file /tmp/$file
+productsign --timestamp --sign "Developer ID Installer" $file /tmp/$file
 cp -v /tmp/$file $file
 done
 
