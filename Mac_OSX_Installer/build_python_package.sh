@@ -42,10 +42,7 @@ if [ ! -f "aeneas-mac-installer-packages/python-$PYTHON_VER.pkg" ]; then
 	chmod +x $BUILDTMP/Scripts/postinstall
 	cd "$BUILDTMP"
 	for file in `find Payload -type f | perl -lne 'print if -B'`; do
-		grep "$file" "$CURDIR/developer_log.json"
-		if [ $? = 0 ]; then
-			codesign -s "Developer ID Application" -v --force "$file"
-		fi
+		codesign -s "Developer ID Application" -v --force --entitlements "$CURDIR/entitlements.plist" --deep --options hard "$file"
 	done
 	cd "$CURDIR"
 	pkgbuild --root "$BUILDTMP/Payload" --identifier "org.python.python" --version "$PYTHON_VER" --scripts "$BUILDTMP/Scripts" "python-$PYTHON_VER.pkg"

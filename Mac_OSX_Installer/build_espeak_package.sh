@@ -23,15 +23,7 @@ if [ ! -f "aeneas-mac-installer-packages/espeak-ng-$ESPEAK_VER.pkg" ]; then
 	chmod +x $BUILDTMP/Scripts/postinstall
 	cd "$BUILDTMP"
 	for file in `find Payload -type f | perl -lne 'print if -B'`; do
-		filename=`basename "$file"`
-		grep "$file" "$CURDIR/developer_log.json"
-		if [ $? = 0 ]; then
-			if [ ! -z "`echo $filename | grep 'dylib'`" ]; then
-				codesign -s "Developer ID Application" -v --force "$file"
-			else
-				codesign -s "Developer ID Application" -v --force --entitlements "$CURDIR/entitlements.plist" --options runtime "$file"
-			fi
-		fi
+		codesign -s "Developer ID Application" -v --force --entitlements "$CURDIR/entitlements.plist" --deep --options hard "$file"
 	done
 	cd "$CURDIR"
 	pkgbuild --prior `port work espeak-ng`/espeak-ng-$ESPEAK_VER-component.pkg --root "$BUILDTMP/Payload" --scripts "$BUILDTMP/Scripts" "espeak-ng-$ESPEAK_VER.pkg"

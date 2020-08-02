@@ -41,11 +41,8 @@ if [ ! -f "aeneas-mac-installer-packages/aeneas-$AENEAS_VER.pkg" ]; then
 	AENEAS_FILE=`ls -1 aeneas-$AENEAS_VER*.whl`
 	unzip $AENEAS_FILE -d $BUILDTMP/$AENEAS_FILE
 	cd "$BUILDTMP"
-	for file in `find $AENEAS_FILE -type f | perl -lne 'print if -B'`; do
-		grep "$file" "$CURDIR/developer_log.json"
-		if [ $? = 0 ]; then
-			codesign -s "Developer ID Application" -v --force "$file"
-		fi
+	for file in `find $AENEAS_FILE -type f -not -path "*/espeak-ng-data/*" | perl -lne 'print if -B'`; do
+		codesign -s "Developer ID Application" -v --force --entitlements "$CURDIR/entitlements.plist" --deep --options hard "$file"
 	done
 	cd $AENEAS_FILE
 	zip -r "$CURDIR/$AENEAS_FILE" .
@@ -73,10 +70,7 @@ if [ ! -f "aeneas-mac-installer-packages/numpy-$NUMPY_VER.pkg" ]; then
 	unzip $NUMPY_FILE -d $BUILDTMP/$NUMPY_FILE
 	cd "$BUILDTMP"
 	for file in `find $NUMPY_FILE -type f | perl -lne 'print if -B'`; do
-		grep "$file" "$CURDIR/developer_log.json"
-		if [ $? = 0 ]; then
-			codesign -s "Developer ID Application" -v --force "$file"
-		fi
+		codesign -s "Developer ID Application" -v --force --entitlements "$CURDIR/entitlements.plist" --deep --options hard "$file"
 	done
 	cd $NUMPY_FILE
 	zip -r "$CURDIR/$NUMPY_FILE" .
@@ -103,10 +97,7 @@ if [ ! -f "aeneas-mac-installer-packages/lxml-$LXML_VER.pkg" ]; then
 	unzip $LXML_FILE -d $BUILDTMP/$LXML_FILE
 	cd "$BUILDTMP"
 	for file in `find $LXML_FILE -type f | perl -lne 'print if -B'`; do
-		grep "$file" "$CURDIR/developer_log.json"
-		if [ $? = 0 ]; then
-			codesign -s "Developer ID Application" -v --force "$file"
-		fi
+		codesign -s "Developer ID Application" -v --force --entitlements "$CURDIR/entitlements.plist" --deep --options hard "$file"
 	done
 	cd $LXML_FILE
 	zip -r "$CURDIR/$LXML_FILE" .
