@@ -24,7 +24,7 @@ export SOUPSIEVE_VER=`python3 -m pip show soupsieve | grep "Version:" | cut -d' 
 
 if [ ! -f "aeneas-mac-installer-packages/aeneas-$AENEAS_VER.pkg" ]; then
 	echo -e "\n\nBuilding aeneas-$AENEAS_VER.pkg\n\n"
-	python3 -m pip download aeneas
+	python3 -m pip download --no-binary aeneas aeneas
 	rm -rf aeneas-1.7.3.0
 	tar -xf aeneas-1.7.3.0.tar.gz
 	cd aeneas-1.7.3.0
@@ -90,7 +90,7 @@ else
 fi
 if [ ! -f "aeneas-mac-installer-packages/lxml-$LXML_VER.pkg" ]; then
 	echo -e "\n\nBuilding lxml-$LXML_VER.pkg\n\n"
-	python3 -m pip wheel lxml
+	python3 -m pip wheel --verbose --no-binary lxml lxml
 	BUILDTMP="$(mktemp -d -t lxml.tmp.XXXXXXXX)"
 	cd "$CURDIR"
 	LXML_FILE=`ls -1 lxml-$LXML_VER*.whl`
