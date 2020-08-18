@@ -8,7 +8,7 @@ CURDIR=`pwd`
 cd "$CURDIR"
 
 if [ -f "aeneas-mac-installer-packages/python-$PYTHON_VER.pkg" ]; then
-        BUILDTMP="$(mktemp -d -t python.build.XXXXXXXX)"
+        BUILDTMP="$(mktemp -d "$TMPDIR"/python.build.XXXXXXXX)"
 	pkgutil --expand-full aeneas-mac-installer-packages/python-$PYTHON_VER.pkg $BUILDTMP/python-$PYTHON_VER.pkg
         BUILDTMP="$BUILDTMP/python-$PYTHON_VER.pkg"
 	cd "$BUILDTMP"
