@@ -1,5 +1,16 @@
 #!/bin/bash
 
+pkgutil --pkgs | grep "pkg.Packages"
+if [ $? = 0 ]; then
+  if [ ! -f "./Packages.dmg" ]; then
+    wget --trust-server-names -N http://s.sudre.free.fr/Software/files/Packages.dmg
+  fi
+  mkdir -p /tmp/packages-installer/
+  hdiutil attach Packages.dmg -mountpoint /tmp/packages-installer/
+  sudo installer -pkg  /tmp/packages-installer/ -target /
+  hdiutil detach /tmp/packages-installer/
+fi
+
 source ./build_env.sh
 
 bash ./sign_packages.sh
@@ -21,7 +32,7 @@ packagesbuild -v Aeneas_Installer.pkgproj
 
 if [ -f "aeneas-mac-setup-$VERSION.pkg" ]; then
 	echo -e "Resulting Installer program filename is:\n$(pwd)/aeneas-mac-setup-$VERSION.pkg"
-	productsign --timestamp=none --sign "Developer ID Installer" aeneas-mac-setup-$VERSION.pkg /tmp/aeneas-mac-setup-$VERSION.pkg
+	productsign --timestamp --sign "Developer ID Installer" aeneas-mac-setup-$VERSION.pkg /tmp/aeneas-mac-setup-$VERSION.pkg
 	cp -v /tmp/aeneas-mac-setup-$VERSION.pkg ./
 fi
 

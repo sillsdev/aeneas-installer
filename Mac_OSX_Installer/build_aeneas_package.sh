@@ -2,7 +2,8 @@
 
 source ./build_env.sh
 
-cd $CURDIR
+CURDIR=`pwd`
+cd "$CURDIR"
 
 echo -e "\n\nPreparing python environment for build\n\n"
 
@@ -10,9 +11,11 @@ python3 -m ensurepip
 python3 -m pip install -U wheel pip setuptools
 
 python3 -m pip install -U numpy
+
+export AENEAS_WITH_CEW=False
 python3 -m pip install -U aeneas
 
-python3 -m aeneas.diagnostics
+#python3 -m aeneas.diagnostics
 #python3 -m aeneas.tools.synthesize_text list "This is a test|with two lines" eng -v /tmp/test.wav
 
 export AENEAS_VER=`python3 -m pip show aeneas | grep "Version:" | cut -d' ' -f2`
@@ -23,7 +26,8 @@ export SOUPSIEVE_VER=`python3 -m pip show soupsieve | grep "Version:" | cut -d' 
 
 if [ ! -f "aeneas-mac-installer-packages/aeneas-$AENEAS_VER.pkg" ]; then
 	echo -e "\n\nBuilding aeneas-$AENEAS_VER.pkg\n\n"
-	python3 -m pip download aeneas
+	export -n AENEAS_WITH_CEW
+	python3 -m pip download --no-binary aeneas aeneas
 	rm -rf aeneas-1.7.3.0
 	tar -xf aeneas-1.7.3.0.tar.gz
 	cd aeneas-1.7.3.0
@@ -35,8 +39,17 @@ if [ ! -f "aeneas-mac-installer-packages/aeneas-$AENEAS_VER.pkg" ]; then
 	#python3 setup.py build_ext --inplace
 	python3 setup.py bdist_wheel
 	cp -v dist/aeneas-$AENEAS_VER*.whl ../
-	cd ..
 	BUILDTMP="$(mktemp -d -t aeneas.tmp.XXXXXXXX)"
+	cd "$CURDIR"
+	AENEAS_FILE=`ls -1 aeneas-$AENEAS_VER*.whl`
+	unzip $AENEAS_FILE -d $BUILDTMP/$AENEAS_FILE
+	cd "$BUILDTMP"
+	for file in `find $AENEAS_FILE -type f -not -path "*/espeak-ng-data/*" | perl -lne 'print if -B'`; do
+		codesign -s "Developer ID Application" -v --force --entitlements "$CURDIR/entitlements.plist" --deep --options hard "$file"
+	done
+	cd $AENEAS_FILE
+	zip -r "$CURDIR/$AENEAS_FILE" .
+	cd "$CURDIR"
 	mkdir -p $BUILDTMP/Payload/opt/usr/share/aeneas_tools/
 	cp -v aeneas-$AENEAS_VER*.whl $BUILDTMP/Payload/opt/usr/share/aeneas_tools/
 	mv -v aeneas-$AENEAS_VER*.whl python-wheels/
@@ -55,6 +68,16 @@ if [ ! -f "aeneas-mac-installer-packages/numpy-$NUMPY_VER.pkg" ]; then
 	echo -e "\n\nBuilding numpy-$NUMPY_VER.pkg\n\n"
 	python3 -m pip wheel numpy
 	BUILDTMP="$(mktemp -d -t numpy.tmp.XXXXXXXX)"
+	cd "$CURDIR"
+	NUMPY_FILE=`ls -1 numpy-$NUMPY_VER*.whl`
+	unzip $NUMPY_FILE -d $BUILDTMP/$NUMPY_FILE
+	cd "$BUILDTMP"
+	for file in `find $NUMPY_FILE -type f | perl -lne 'print if -B'`; do
+		codesign -s "Developer ID Application" -v --force --entitlements "$CURDIR/entitlements.plist" --deep --options hard "$file"
+	done
+	cd $NUMPY_FILE
+	zip -r "$CURDIR/$NUMPY_FILE" .
+	cd "$CURDIR"
 	mkdir -p $BUILDTMP/Payload/opt/usr/share/aeneas_tools/
 	cp -v numpy-$NUMPY_VER*.whl $BUILDTMP/Payload/opt/usr/share/aeneas_tools/
 	mv -v numpy-$NUMPY_VER*.whl python-wheels/
@@ -70,8 +93,18 @@ else
 fi
 if [ ! -f "aeneas-mac-installer-packages/lxml-$LXML_VER.pkg" ]; then
 	echo -e "\n\nBuilding lxml-$LXML_VER.pkg\n\n"
-	python3 -m pip wheel lxml
+	python3 -m pip wheel --verbose --no-binary lxml lxml
 	BUILDTMP="$(mktemp -d -t lxml.tmp.XXXXXXXX)"
+	cd "$CURDIR"
+	LXML_FILE=`ls -1 lxml-$LXML_VER*.whl`
+	unzip $LXML_FILE -d $BUILDTMP/$LXML_FILE
+	cd "$BUILDTMP"
+	for file in `find $LXML_FILE -type f | perl -lne 'print if -B'`; do
+		codesign -s "Developer ID Application" -v --force --entitlements "$CURDIR/entitlements.plist" --deep --options hard "$file"
+	done
+	cd $LXML_FILE
+	zip -r "$CURDIR/$LXML_FILE" .
+	cd "$CURDIR"
 	mkdir -p $BUILDTMP/Payload/opt/usr/share/aeneas_tools/
 	cp -v lxml-$LXML_VER*.whl $BUILDTMP/Payload/opt/usr/share/aeneas_tools/
 	mv -v lxml-$LXML_VER*.whl python-wheels/

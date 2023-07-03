@@ -1,0 +1,749 @@
+{
+  "logFormatVersion": 1,
+  "jobId": "aa5a56a6-3557-41bf-bef7-c147cfff19aa",
+  "status": "Invalid",
+  "statusSummary": "Archive contains critical validation errors",
+  "statusCode": 4000,
+  "archiveFilename": "aeneas-mac-setup-1.7.3.0_3.pkg",
+  "uploadDate": "2020-07-31T15:02:06Z",
+  "sha256": "73c2b22c8441bf43d771f0203aecf58746a5b83422e7947fa847ad20a8bbfa41",
+  "ticketContents": null,
+  "issues": [
+    {
+      "severity": "warning",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/aeneas-1.7.3.0.pkg Contents/Payload/opt/usr/share/aeneas_tools/aeneas-1.7.3.0-cp38-cp38-macosx_10_9_x86_64.whl/aeneas/tools/res/job.bad.zip",
+      "message": "b\"ditto: Couldn't read PKZip signature\\n\"",
+      "docUrl": null,
+      "architecture": null
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/core/_operand_flag_tests.cpython-38-darwin.so",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/core/_operand_flag_tests.cpython-38-darwin.so",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/core/_multiarray_umath.cpython-38-darwin.so",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/core/_multiarray_umath.cpython-38-darwin.so",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/core/_multiarray_tests.cpython-38-darwin.so",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/core/_multiarray_tests.cpython-38-darwin.so",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/core/_rational_tests.cpython-38-darwin.so",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/core/_rational_tests.cpython-38-darwin.so",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/core/_umath_tests.cpython-38-darwin.so",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/core/_umath_tests.cpython-38-darwin.so",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/core/_struct_ufunc_tests.cpython-38-darwin.so",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/core/_struct_ufunc_tests.cpython-38-darwin.so",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/linalg/_umath_linalg.cpython-38-darwin.so",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/linalg/_umath_linalg.cpython-38-darwin.so",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/linalg/lapack_lite.cpython-38-darwin.so",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/linalg/lapack_lite.cpython-38-darwin.so",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/.dylibs/libgfortran.3.dylib",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/.dylibs/libgfortran.3.dylib",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/.dylibs/libquadmath.0.dylib",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/.dylibs/libquadmath.0.dylib",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/.dylibs/libgcc_s.1.dylib",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "i386"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/.dylibs/libgcc_s.1.dylib",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "i386"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/.dylibs/libgcc_s.1.dylib",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/.dylibs/libgcc_s.1.dylib",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/.dylibs/libopenblas.0.dylib",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/.dylibs/libopenblas.0.dylib",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/fft/_pocketfft_internal.cpython-38-darwin.so",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/fft/_pocketfft_internal.cpython-38-darwin.so",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/random/mtrand.cpython-38-darwin.so",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/random/mtrand.cpython-38-darwin.so",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/random/_generator.cpython-38-darwin.so",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/random/_generator.cpython-38-darwin.so",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/random/_pcg64.cpython-38-darwin.so",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/random/_pcg64.cpython-38-darwin.so",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/random/_sfc64.cpython-38-darwin.so",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/random/_sfc64.cpython-38-darwin.so",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/random/bit_generator.cpython-38-darwin.so",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/random/bit_generator.cpython-38-darwin.so",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/random/_common.cpython-38-darwin.so",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/random/_common.cpython-38-darwin.so",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/random/_mt19937.cpython-38-darwin.so",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/random/_mt19937.cpython-38-darwin.so",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/random/_philox.cpython-38-darwin.so",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/random/_philox.cpython-38-darwin.so",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/random/_bounded_integers.cpython-38-darwin.so",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/numpy-1.19.1.pkg Contents/Payload/opt/usr/share/aeneas_tools/numpy-1.19.1-cp38-cp38-macosx_10_9_x86_64.whl/numpy/random/_bounded_integers.cpython-38-darwin.so",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/aeneas-1.7.3.0.pkg Contents/Payload/opt/usr/share/aeneas_tools/aeneas-1.7.3.0-cp38-cp38-macosx_10_9_x86_64.whl/aeneas/cdtw/cdtw.cpython-38-darwin.so",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/aeneas-1.7.3.0.pkg Contents/Payload/opt/usr/share/aeneas_tools/aeneas-1.7.3.0-cp38-cp38-macosx_10_9_x86_64.whl/aeneas/cdtw/cdtw.cpython-38-darwin.so",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/aeneas-1.7.3.0.pkg Contents/Payload/opt/usr/share/aeneas_tools/aeneas-1.7.3.0-cp38-cp38-macosx_10_9_x86_64.whl/aeneas/cmfcc/cmfcc.cpython-38-darwin.so",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/aeneas-1.7.3.0.pkg Contents/Payload/opt/usr/share/aeneas_tools/aeneas-1.7.3.0-cp38-cp38-macosx_10_9_x86_64.whl/aeneas/cmfcc/cmfcc.cpython-38-darwin.so",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/aeneas-1.7.3.0.pkg Contents/Payload/opt/usr/share/aeneas_tools/aeneas-1.7.3.0-cp38-cp38-macosx_10_9_x86_64.whl/aeneas/cew/cew.cpython-38-darwin.so",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/aeneas-1.7.3.0.pkg Contents/Payload/opt/usr/share/aeneas_tools/aeneas-1.7.3.0-cp38-cp38-macosx_10_9_x86_64.whl/aeneas/cew/cew.cpython-38-darwin.so",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/python-3.8.5.pkg Contents/Payload/Library/Frameworks/Python.framework/Versions/3.8/Python",
+      "message": "The signature of the binary is invalid.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/espeak-ng-1.50.pkg Contents/Payload/opt/usr/bin/espeak-ng",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/espeak-ng-1.50.pkg Contents/Payload/opt/usr/bin/espeak-ng",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/espeak-ng-1.50.pkg Contents/Payload/opt/usr/bin/espeak-ng",
+      "message": "The executable does not have the hardened runtime enabled.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/espeak-ng-1.50.pkg Contents/Payload/opt/usr/bin/speak-ng",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/espeak-ng-1.50.pkg Contents/Payload/opt/usr/bin/speak-ng",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/espeak-ng-1.50.pkg Contents/Payload/opt/usr/bin/speak-ng",
+      "message": "The executable does not have the hardened runtime enabled.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/espeak-ng-1.50.pkg Contents/Payload/opt/usr/bin/sonic",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/espeak-ng-1.50.pkg Contents/Payload/opt/usr/bin/sonic",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/espeak-ng-1.50.pkg Contents/Payload/opt/usr/bin/sonic",
+      "message": "The executable does not have the hardened runtime enabled.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/espeak-ng-1.50.pkg Contents/Payload/opt/usr/lib/libsonic.dylib",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/espeak-ng-1.50.pkg Contents/Payload/opt/usr/lib/libsonic.dylib",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/espeak-ng-1.50.pkg Contents/Payload/opt/usr/lib/libespeak-ng.1.dylib",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/espeak-ng-1.50.pkg Contents/Payload/opt/usr/lib/libespeak-ng.1.dylib",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/espeak-ng-1.50.pkg Contents/Payload/opt/usr/lib/libpcaudio.0.dylib",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/espeak-ng-1.50.pkg Contents/Payload/opt/usr/lib/libpcaudio.0.dylib",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/lxml-4.5.2.pkg Contents/Payload/opt/usr/share/aeneas_tools/lxml-4.5.2-cp38-cp38-macosx_10_9_x86_64.whl/lxml/etree.cpython-38-darwin.so",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/lxml-4.5.2.pkg Contents/Payload/opt/usr/share/aeneas_tools/lxml-4.5.2-cp38-cp38-macosx_10_9_x86_64.whl/lxml/etree.cpython-38-darwin.so",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/lxml-4.5.2.pkg Contents/Payload/opt/usr/share/aeneas_tools/lxml-4.5.2-cp38-cp38-macosx_10_9_x86_64.whl/lxml/objectify.cpython-38-darwin.so",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/lxml-4.5.2.pkg Contents/Payload/opt/usr/share/aeneas_tools/lxml-4.5.2-cp38-cp38-macosx_10_9_x86_64.whl/lxml/objectify.cpython-38-darwin.so",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/lxml-4.5.2.pkg Contents/Payload/opt/usr/share/aeneas_tools/lxml-4.5.2-cp38-cp38-macosx_10_9_x86_64.whl/lxml/sax.cpython-38-darwin.so",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/lxml-4.5.2.pkg Contents/Payload/opt/usr/share/aeneas_tools/lxml-4.5.2-cp38-cp38-macosx_10_9_x86_64.whl/lxml/sax.cpython-38-darwin.so",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/lxml-4.5.2.pkg Contents/Payload/opt/usr/share/aeneas_tools/lxml-4.5.2-cp38-cp38-macosx_10_9_x86_64.whl/lxml/builder.cpython-38-darwin.so",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/lxml-4.5.2.pkg Contents/Payload/opt/usr/share/aeneas_tools/lxml-4.5.2-cp38-cp38-macosx_10_9_x86_64.whl/lxml/builder.cpython-38-darwin.so",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/lxml-4.5.2.pkg Contents/Payload/opt/usr/share/aeneas_tools/lxml-4.5.2-cp38-cp38-macosx_10_9_x86_64.whl/lxml/_elementpath.cpython-38-darwin.so",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/lxml-4.5.2.pkg Contents/Payload/opt/usr/share/aeneas_tools/lxml-4.5.2-cp38-cp38-macosx_10_9_x86_64.whl/lxml/_elementpath.cpython-38-darwin.so",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/lxml-4.5.2.pkg Contents/Payload/opt/usr/share/aeneas_tools/lxml-4.5.2-cp38-cp38-macosx_10_9_x86_64.whl/lxml/html/diff.cpython-38-darwin.so",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/lxml-4.5.2.pkg Contents/Payload/opt/usr/share/aeneas_tools/lxml-4.5.2-cp38-cp38-macosx_10_9_x86_64.whl/lxml/html/diff.cpython-38-darwin.so",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/lxml-4.5.2.pkg Contents/Payload/opt/usr/share/aeneas_tools/lxml-4.5.2-cp38-cp38-macosx_10_9_x86_64.whl/lxml/html/clean.cpython-38-darwin.so",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/lxml-4.5.2.pkg Contents/Payload/opt/usr/share/aeneas_tools/lxml-4.5.2-cp38-cp38-macosx_10_9_x86_64.whl/lxml/html/clean.cpython-38-darwin.so",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/ffmpeg-4.3.1.pkg Contents/Payload/opt/usr/bin/ffmpeg",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/ffmpeg-4.3.1.pkg Contents/Payload/opt/usr/bin/ffmpeg",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/ffmpeg-4.3.1.pkg Contents/Payload/opt/usr/bin/ffmpeg",
+      "message": "The executable does not have the hardened runtime enabled.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/ffmpeg-4.3.1.pkg Contents/Payload/opt/usr/bin/ffprobe",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/ffmpeg-4.3.1.pkg Contents/Payload/opt/usr/bin/ffprobe",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/ffmpeg-4.3.1.pkg Contents/Payload/opt/usr/bin/ffprobe",
+      "message": "The executable does not have the hardened runtime enabled.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/ffmpeg-4.3.1.pkg Contents/Payload/opt/usr/bin/ffplay",
+      "message": "The binary is not signed.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/ffmpeg-4.3.1.pkg Contents/Payload/opt/usr/bin/ffplay",
+      "message": "The signature does not include a secure timestamp.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    },
+    {
+      "severity": "error",
+      "code": null,
+      "path": "aeneas-mac-setup-1.7.3.0_3.pkg/ffmpeg-4.3.1.pkg Contents/Payload/opt/usr/bin/ffplay",
+      "message": "The executable does not have the hardened runtime enabled.",
+      "docUrl": null,
+      "architecture": "x86_64"
+    }
+  ]
+}

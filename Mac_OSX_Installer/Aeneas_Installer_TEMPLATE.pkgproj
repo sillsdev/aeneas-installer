@@ -883,6 +883,10 @@
 				<integer>0</integer>
 				<key>installer-script.domains:enable_localSystem</key>
 				<integer>1</integer>
+				<key>installer-script.product:id</key>
+				<string>com.danielbair.pkg.aeneas-mac-setup</string>
+				<key>installer-script.product:version</key>
+				<string>[INSTALLER_VER]</string>
 			</dict>
 			<key>BUILD_FORMAT</key>
 			<integer>0</integer>
