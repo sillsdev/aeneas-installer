@@ -14,11 +14,12 @@ fi
 export CURDIR=`pwd`
 echo -e "\n\nRunning `basename $0`\n from $CURDIR\n"
 
-export REVISION=_3
+export REVISION=_4
 
-export FFMPEG_VER=`curl -s https://evermeet.cx/ffmpeg/info/ffmpeg/release | jq -r '.version'`
+export FFMPEG_VER=`curl -JLks https://evermeet.cx/ffmpeg/info/ffmpeg/release | jq -r '.version'`
 export ESPEAK_VER=`port info --version espeak-ng | cut -d' ' -f2`
-export PYTHON_VER=`port info --version python38 | cut -d' ' -f2`
+#export PYTHON_VER=`port info --version python39 | cut -d' ' -f2`
+export PYTHON_VER='3.9.13'
 export AENEAS_VER=`python3 -m pip show aeneas | grep "Version:" | cut -d' ' -f2`
 export NUMPY_VER=`python3 -m pip show numpy | grep "Version:" | cut -d' ' -f2`
 export LXML_VER=`python3 -m pip show lxml | grep "Version:" | cut -d' ' -f2`

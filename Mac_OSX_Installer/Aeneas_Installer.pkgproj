@@ -22,7 +22,7 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>ffmpeg-4.3.1</string>
+				<string>ffmpeg-6.0</string>
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>PAYLOAD_SIZE</key>
@@ -39,7 +39,7 @@
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>./aeneas-mac-installer-packages/ffmpeg-4.3.1.pkg</string>
+				<string>./aeneas-mac-installer-packages/ffmpeg-6.0.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -66,7 +66,7 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>espeak-ng-1.50</string>
+				<string>espeak-ng-1.51.1</string>
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>PAYLOAD_SIZE</key>
@@ -83,7 +83,7 @@
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>./aeneas-mac-installer-packages/espeak-ng-1.50.pkg</string>
+				<string>./aeneas-mac-installer-packages/espeak-ng-1.51.1.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -110,7 +110,7 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>python-3.8.5</string>
+				<string>python-3.9.13</string>
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>PAYLOAD_SIZE</key>
@@ -127,7 +127,7 @@
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>./aeneas-mac-installer-packages/python-3.8.5.pkg</string>
+				<string>./aeneas-mac-installer-packages/python-3.9.13.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -154,7 +154,7 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>numpy-1.19.1</string>
+				<string>numpy-1.25.0</string>
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>PAYLOAD_SIZE</key>
@@ -171,7 +171,7 @@
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>./aeneas-mac-installer-packages/numpy-1.19.1.pkg</string>
+				<string>./aeneas-mac-installer-packages/numpy-1.25.0.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -198,7 +198,7 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>lxml-4.5.2</string>
+				<string>lxml-4.9.2</string>
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>PAYLOAD_SIZE</key>
@@ -215,7 +215,7 @@
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>./aeneas-mac-installer-packages/lxml-4.5.2.pkg</string>
+				<string>./aeneas-mac-installer-packages/lxml-4.9.2.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -242,7 +242,7 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>bs4-4.9.1</string>
+				<string>bs4-4.12.2</string>
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>PAYLOAD_SIZE</key>
@@ -259,7 +259,7 @@
 			<key>PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>./aeneas-mac-installer-packages/bs4-4.9.1.pkg</string>
+				<string>./aeneas-mac-installer-packages/bs4-4.12.2.pkg</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>
@@ -444,7 +444,7 @@
 													<key>IC_REQUIREMENT_SCRIPT_ARGUMENT_STATE</key>
 													<true/>
 													<key>IC_REQUIREMENT_SCRIPT_ARGUMENT_VALUE</key>
-													<string>3.8.5</string>
+													<string>3.9.13</string>
 												</dict>
 											</array>
 											<key>IC_REQUIREMENT_SCRIPT_COMPARATOR</key>
@@ -471,7 +471,7 @@
 												<key>LANGUAGE</key>
 												<string>English</string>
 												<key>VALUE</key>
-												<string>Python version is greater than or equal to 3.8.5</string>
+												<string>Python version is greater than or equal to 3.9.13</string>
 											</dict>
 										</array>
 										<key>NAME</key>
@@ -886,7 +886,7 @@
 				<key>installer-script.product:id</key>
 				<string>com.danielbair.pkg.aeneas-mac-setup</string>
 				<key>installer-script.product:version</key>
-				<string>1.7.3.0_3</string>
+				<string>1.7.3.0_4</string>
 			</dict>
 			<key>BUILD_FORMAT</key>
 			<integer>0</integer>
@@ -1073,7 +1073,7 @@
 				</dict>
 			</array>
 			<key>NAME</key>
-			<string>aeneas-mac-setup-1.7.3.0_3</string>
+			<string>aeneas-mac-setup-1.7.3.0_4</string>
 			<key>PAYLOAD_ONLY</key>
 			<false/>
 			<key>TREAT_MISSING_PRESENTATION_DOCUMENTS_AS_WARNING</key>

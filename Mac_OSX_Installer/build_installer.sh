@@ -1,5 +1,16 @@
 #!/bin/bash
 
+pkgutil --pkgs | grep "pkg.Packages"
+if [ $? = 0 ]; then
+  if [ ! -f "./Packages.dmg" ]; then
+    wget --trust-server-names -N http://s.sudre.free.fr/Software/files/Packages.dmg
+  fi
+  mkdir -p /tmp/packages-installer/
+  hdiutil attach Packages.dmg -mountpoint /tmp/packages-installer/
+  sudo installer -pkg  /tmp/packages-installer/ -target /
+  hdiutil detach /tmp/packages-installer/
+fi
+
 source ./build_env.sh
 
 bash ./sign_packages.sh

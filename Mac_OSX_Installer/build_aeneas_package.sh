@@ -11,9 +11,11 @@ python3 -m ensurepip
 python3 -m pip install -U wheel pip setuptools
 
 python3 -m pip install -U numpy
+
+export AENEAS_WITH_CEW=False
 python3 -m pip install -U aeneas
 
-python3 -m aeneas.diagnostics
+#python3 -m aeneas.diagnostics
 #python3 -m aeneas.tools.synthesize_text list "This is a test|with two lines" eng -v /tmp/test.wav
 
 export AENEAS_VER=`python3 -m pip show aeneas | grep "Version:" | cut -d' ' -f2`
@@ -24,6 +26,7 @@ export SOUPSIEVE_VER=`python3 -m pip show soupsieve | grep "Version:" | cut -d' 
 
 if [ ! -f "aeneas-mac-installer-packages/aeneas-$AENEAS_VER.pkg" ]; then
 	echo -e "\n\nBuilding aeneas-$AENEAS_VER.pkg\n\n"
+	export -n AENEAS_WITH_CEW
 	python3 -m pip download --no-binary aeneas aeneas
 	rm -rf aeneas-1.7.3.0
 	tar -xf aeneas-1.7.3.0.tar.gz
