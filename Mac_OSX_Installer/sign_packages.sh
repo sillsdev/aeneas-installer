@@ -12,7 +12,7 @@ bash ./sign_aeneas_package.sh
 
 cd aeneas-mac-installer-packages
 for file in *.pkg; do
-productsign --timestamp --sign "Developer ID Installer" $file /tmp/$file
-cp -v /tmp/$file $file
+	xcrun notarytool submit --keychain-profile "notarytool" --wait $file
+	xcrun stapler staple $file
 done
 
