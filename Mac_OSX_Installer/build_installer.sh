@@ -34,6 +34,8 @@ if [ -f "aeneas-mac-setup-$VERSION.pkg" ]; then
 	echo -e "Resulting Installer program filename is:\n$(pwd)/aeneas-mac-setup-$VERSION.pkg"
 	productsign --timestamp --sign "Developer ID Installer" aeneas-mac-setup-$VERSION.pkg /tmp/aeneas-mac-setup-$VERSION.pkg
 	cp -v /tmp/aeneas-mac-setup-$VERSION.pkg ./
+	xcrun notarytool submit --keychain-profile "notarytool" --wait aeneas-mac-setup-$VERSION.pkg
+	xcrun stapler staple aeneas-mac-setup-$VERSION.pkg
 fi
 
 exit 0
