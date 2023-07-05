@@ -39,13 +39,13 @@ if %ERRORLEVEL%==1 (
   set CURL=curl.exe -L
 )
 
-IF NOT EXIST "%cd%\Git-2.28.0-32-bit.exe" (
+IF NOT EXIST "%cd%\Git-2.41.0-32-bit.exe" (
 echo Downloading Git for Windows...
-  %CURL% "https://netix.dl.sourceforge.net/project/git-for-windows.mirror/v2.28.0.windows.1/Git-2.28.0-32-bit.exe" -o "%cd%\Git-2.28.0-32-bit.exe"
+  %CURL% "https://github.com/git-for-windows/git/releases/download/v2.41.0.windows.1/Git-2.41.0-32-bit.exe" -o "%cd%\Git-2.41.0-32-bit.exe"
 )
-IF EXIST "%cd%\Git-2.28.0-32-bit.exe" (
+IF EXIST "%cd%\Git-2.41.0-32-bit.exe" (
   echo Installing Git for Windows...
-  Git-2.28.0-32-bit.exe
+  Git-2.41.0-32-bit.exe
 ) ELSE (
   echo Could not find Git for Windows...
   START https://git-scm.com/download/win
@@ -82,15 +82,15 @@ IF EXIST "%cd%\innosetup-6.0.5.exe" (
   START http://www.jrsoftware.org/isdl.php
 )
 
-REM IF NOT EXIST "%cd%\python-3.8.5.exe" (
-REM   echo Downloading Python 3.8.5...
-REM   %CURL% "https://www.python.org/ftp/python/3.8.5/python-3.8.5.exe" -o "%cd%\python-3.8.5.exe"
+REM IF NOT EXIST "%cd%\python-3.9.13.exe" (
+REM   echo Downloading Python 3.9.13...
+REM   %CURL% "https://www.python.org/ftp/python/3.9.13/python-3.9.13.exe" -o "%cd%\python-3.9.13.exe"
 REM )
-REM IF EXIST "%cd%\python-3.8.5.exe" (
-REM   echo Installing Python 3.8.5...
-REM   python-3.8.5.exe /passive InstallAllUsers=1 PrependPath=1 TargetDir="%PF32%"\Python38
+REM IF EXIST "%cd%\python-3.9.13.exe" (
+REM   echo Installing Python 3.9.13...
+REM   python-3.9.13.exe /passive InstallAllUsers=1 PrependPath=1 TargetDir="%PF32%"\Python38
 REM ) ELSE (
-REM   echo Could not find Python 3.8.5...
+REM   echo Could not find Python 3.9.13...
 REM   START https://www.python.org/downloads/release/python-385/
 REM )
 

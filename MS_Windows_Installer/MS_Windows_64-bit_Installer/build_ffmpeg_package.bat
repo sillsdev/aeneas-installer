@@ -44,26 +44,27 @@ if %ERRORLEVEL%==1 (
 mkdir aeneas-win-installer-packages 1>nul 2>nul
 cd %CURDIR%
 
-IF EXIST "%cd%\aeneas-win-installer-packages\ffmpeg-4.3-win64-static.exe" GOTO ENDGET
+IF EXIST "%cd%\aeneas-win-installer-packages\ffmpeg-6.0-win64-static.exe" GOTO ENDGET
   echo Downloading FFmpeg...
-  %CURL% https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-4.3-win64-static.zip -o ffmpeg-4.3-win64-static.zip
+  %CURL% https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-6.0-essentials_build.7z -o ffmpeg-6.0-win64-static.7z
   IF %ERRORLEVEL%==0 GOTO ENDIF
     echo Could not download FFmpeg...
-    START https://ffmpeg.zeranoe.com/builds/
+    START https://www.gyan.dev/ffmpeg/builds/#release-builds
   :ENDIF
-  rmdir /q/s ffmpeg-4.3 1>nul 2>nul
-  rmdir /q/s ffmpeg-4.3-win64-static 1>nul 2>nul
-  "7z.exe" x ffmpeg-4.3-win64-static.zip -aoa
-  copy /b/v/y  ff-prompt.bat ffmpeg-4.3-win64-static
+  rmdir /q/s ffmpeg-6.0 1>nul 2>nul
+  rmdir /q/s ffmpeg-6.0-win64-static 1>nul 2>nul
+  "\Program Files\7-Zip\7z.exe" x ffmpeg-6.0-win64-static.7z -aoa 
+  move /y ffmpeg-6.0-essentials_build ffmpeg-6.0-win64-static
+  copy /b/v/y  ff-prompt.bat ffmpeg-6.0-win64-static
   "ISCC.exe" FFmpeg_Installer.iss
 :ENDGET
-IF EXIST "%cd%\ffmpeg-4.3-win64-static.exe" (
+IF EXIST "%cd%\ffmpeg-6.0-win64-static.exe" (
   echo Installing FFmpeg...
-  "%cd%\ffmpeg-4.3-win64-static.exe" /SILENT /ALLUSERS
-  move /y "%cd%\ffmpeg-4.3-win64-static.exe"  "%cd%\aeneas-win-installer-packages"
-  del /q ffmpeg-4.3-win64-static.zip 1>nul 2>nul
-  rmdir /q/s ffmpeg-4.3-win64-static 1>nul 2>nul
-  rmdir /q/s ffmpeg-4.3 1>nul 2>nul
+  "%cd%\ffmpeg-6.0-win64-static.exe" /SILENT /ALLUSERS
+  move /y "%cd%\ffmpeg-6.0-win64-static.exe"  "%cd%\aeneas-win-installer-packages"
+  del /q ffmpeg-6.0-win64-static.zip 1>nul 2>nul
+  rmdir /q/s ffmpeg-6.0-win64-static 1>nul 2>nul
+  rmdir /q/s ffmpeg-6.0 1>nul 2>nul
 )
 
 ENDLOCAL

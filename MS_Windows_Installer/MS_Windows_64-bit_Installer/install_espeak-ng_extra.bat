@@ -37,7 +37,7 @@ set PATH=%PF64%\Python38\;%PF64%\Python38\Scripts;%PF64%\eSpeak NG;%PF64%\FFmpeg
 
 echo Copying espeak-ng.exe to espeak.exe
 copy /b/v/y "%PF64%\eSpeak NG\espeak-ng.exe" "%PF64%\eSpeak NG\espeak.exe"
-echo Copying espeak-ng.lib to %PF64%\Python38\libs\
-copy /b/v/y "espeak-ng.lib" "%PF64%\Python38\libs\"
-echo Copying libespeak-ng.dll to %PF64%\Python38\Lib\site-packages\aeneas\cew
-copy /b/v/y "%PF64%\eSpeak NG\libespeak-ng.dll" "%PF64%\Python38\Lib\site-packages\aeneas\cew"
+echo Copying espeak-ng.lib to %PF64%\Python39\libs\
+copy /b/v/y "espeak-ng.lib" "%PF64%\Python39\libs\"
+echo Copying libespeak-ng.dll to %PF64%\Python39\Lib\site-packages\aeneas\cew
+copy /b/v/y "%PF64%\eSpeak NG\libespeak-ng.dll" "%PF64%\Python39\Lib\site-packages\aeneas\cew"

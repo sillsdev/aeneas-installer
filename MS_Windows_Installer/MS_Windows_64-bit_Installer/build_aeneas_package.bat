@@ -32,7 +32,7 @@ IF EXIST "%PF32%\Inno Setup 6" GOTO INNOSIX
   set INNOPATH=%PF32%\Inno Setup 6
 :INNOENDIF
 
-set PATH=%INNOPATH%;%PFSZ%\7-Zip;%PF64%\FFmpeg\bin;%PF64%\eSpeak NG;%PF64%\Python38;%PF64%\Python38\Scripts;%PF64%\Git;%PF64%\Git\usr\bin;%PF64%\Git\mingw64\bin;%PATH%
+set PATH=%INNOPATH%;%PFSZ%\7-Zip;%PF64%\FFmpeg\bin;%PF64%\eSpeak NG;%PF64%\Python39;%PF64%\Python39\Scripts;%PF64%\Git;%PF64%\Git\usr\bin;%PF64%\Git\mingw64\bin;%PATH%
 
 curl.exe --version 1>nul 2>nul
 if %ERRORLEVEL%==1 (
@@ -43,8 +43,8 @@ if %ERRORLEVEL%==1 (
 
 mkdir python-wheels 1>nul 2>nul
 
-rmdir /q/s %USERPROFILE%\AppData\Roaming\Python\Python38\site-packages
-set PATH=%USERPROFILE%\AppData\Roaming\Python\Python38\Scripts;%PATH%
+rmdir /q/s %USERPROFILE%\AppData\Roaming\Python\Python39\site-packages
+set PATH=%USERPROFILE%\AppData\Roaming\Python\Python39\Scripts;%PATH%
 python.exe -m ensurepip
 python -m pip install -U pip setuptools wheel
 
@@ -106,6 +106,7 @@ cd %CURDIR%
 FOR /F "tokens=* USEBACKQ" %%F IN (`dir aeneas-*.whl /b`) DO (SET aeneas_file=%%F)
 IF %ERRORLEVEL%==0 (
   python -m pip install -U pip %aeneas_file%
+  copy_espeak_aeneas.bat
   RMDIR /S /Q aeneas-1.7.3.0
   DEL /Q aeneas-1.7.3.0.tar
   DEL /Q aeneas-1.7.3.0.tar.gz

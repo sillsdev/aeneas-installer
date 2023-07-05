@@ -19,11 +19,11 @@ copy /b/v/y "espeak-ng.lib" "%PF64%\Python38\libs\"
 
 python -m ensurepip
 REM python -m pip install -U 
-python -m pip install -U numpy-1.19.1-cp38-cp38-win_amd64.whl
-python -m pip install -U lxml-4.5.2-cp38-cp38-win_amd64.whl
-python -m pip install -U soupsieve-2.0.1-py3-none-any.whl
-python -m pip install -U beautifulsoup4-4.9.1-py3-none-any.whl
-python -m pip install -U aeneas-1.7.3.0-cp38-cp38-win_amd64.whl
+python -m pip install -U numpy-1.25.0-cp39-cp39-win_amd64.whl
+python -m pip install -U lxml-4.9.2-cp39-cp39-win_amd64.whl
+python -m pip install -U soupsieve-2.4.1-py3-none-any.whl
+python -m pip install -U beautifulsoup4-4.12.2-py3-none-any.whl
+python -m pip install -U aeneas-1.7.3.0-cp39-cp39-win_amd64.whl
 
 echo Copying libespeak-ng.dll to %PF64%\Python38\Lib\site-packages\aeneas\cew
 copy /b/v/y "%PF64%\eSpeak NG\libespeak-ng.dll" "%PF64%\Python38\Lib\site-packages\aeneas\cew"
