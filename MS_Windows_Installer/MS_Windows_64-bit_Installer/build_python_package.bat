@@ -43,18 +43,18 @@ if %ERRORLEVEL%==1 (
 
 mkdir aeneas-win-installer-packages 1>nul 2>nul
 
-IF EXIST "%cd%\aeneas-win-installer-packages\python-3.8.5-amd64.exe" GOTO ENDGET
-  echo Downloading Python 3.8.5...
-  %CURL% https://www.python.org/ftp/python/3.8.5/python-3.8.5-amd64.exe -o python-3.8.5-amd64.exe
+IF EXIST "%cd%\aeneas-win-installer-packages\python-3.9.13-amd64.exe" GOTO ENDGET
+  echo Downloading Python 3.9.13...
+  %CURL% https://www.python.org/ftp/python/3.9.13/python-3.9.13-amd64.exe -o python-3.9.13-amd64.exe
   IF %ERRORLEVEL%==0 GOTO ENDIF
     echo Could not download Python...
     START https://www.python.org/downloads/release/python-385/
   :ENDIF
 :ENDGET
-IF EXIST "%cd%\python-3.8.5-amd64.exe" (
-  echo Installing Python 3.8.5...
-  "%cd%\python-3.8.5-amd64.exe" /passive InstallAllUsers=1 PrependPath=1 TargetDir="%PF64%"\Python38
-  move /y "%cd%\python-3.8.5-amd64.exe"  "%cd%\aeneas-win-installer-packages"
+IF EXIST "%cd%\python-3.9.13-amd64.exe" (
+  echo Installing Python 3.9.13...
+  "%cd%\python-3.9.13-amd64.exe" /passive InstallAllUsers=1 PrependPath=1 TargetDir="%PF64%"\Python38
+  move /y "%cd%\python-3.9.13-amd64.exe"  "%cd%\aeneas-win-installer-packages"
 )
 
 ENDLOCAL

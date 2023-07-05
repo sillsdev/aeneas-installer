@@ -43,20 +43,20 @@ if %ERRORLEVEL%==1 (
 
 mkdir aeneas-win-installer-packages 1>nul 2>nul
 
-IF EXIST "%cd%\aeneas-win-installer-packages\espeak-ng-1.50-x64.msi" GOTO ENDGET
+IF EXIST "%cd%\aeneas-win-installer-packages\espeak-ng-1.51-x64.msi" GOTO ENDGET
   echo Downloading eSpeak-ng...
-  %CURL% https://github.com/espeak-ng/espeak-ng/releases/download/1.50/espeak-ng-20191129-b702b03-x64.msi -o espeak-ng-1.50-x64.msi
+  %CURL% https://github.com/espeak-ng/espeak-ng/releases/download/1.51/espeak-ng-X64.msi -o espeak-ng-1.51-x64.msi
   IF %ERRORLEVEL%==0 GOTO ENDIF
     echo Could not download eSpeak-ng...
     START https://github.com/espeak-ng/espeak-ng/releases
   :ENDIF
 :ENDGET
-IF EXIST "%cd%\espeak-ng-1.50-x64.msi" (
+IF EXIST "%cd%\espeak-ng-1.51-x64.msi" (
   echo Installing eSpeak-ng...
-  "%cd%\espeak-ng-1.50-x64.msi" /PASSIVE
+  "%cd%\espeak-ng-1.51-x64.msi" /PASSIVE
   copy /b/v/y "%cd%\install_espeak-ng_extra.bat" "%temp%\install_espeak-ng_extra.bat"
   call "%temp%\install_espeak-ng_extra.bat"
-  move /y "%cd%\espeak-ng-1.50-x64.msi"  "%cd%\aeneas-win-installer-packages"
+  move /y "%cd%\espeak-ng-1.51-x64.msi"  "%cd%\aeneas-win-installer-packages"
 )
 
 ENDLOCAL

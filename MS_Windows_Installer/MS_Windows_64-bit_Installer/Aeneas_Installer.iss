@@ -6,7 +6,7 @@
 #define MyAppPublisher "Daniel Bair"
 #define MyAppURL "https://github.com/sillsdev/aeneas-installer"
 #define MyAppInstallDir "C:\aeneas-install"
-#define MyAppFileName "aeneas-win64-setup-1.7.3.0_3"
+#define MyAppFileName "aeneas-win64-setup-1.7.3.0_4"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -45,24 +45,24 @@ WelcomeLabel2=This will install aeneas 1.7.3.0 on your computer.%n%naeneas is a 
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Components]
-Name: "espeak"; Description: "Install eSpeak-NG 1.50"; ExtraDiskSpaceRequired: 11223040; Types: full custom
-Name: "ffmpeg"; Description: "Install FFmpeg 4.3"; ExtraDiskSpaceRequired: 111181824; Types: full custom
-Name: "python"; Description: "Install Python 3.8.5"; ExtraDiskSpaceRequired: 106450944; Types: full
-Name: "bs4"; Description: "Install Python Module BeautifulSoup4 4.9.1"; ExtraDiskSpaceRequired: 3400000; Types: full compact custom
-Name: "lxml"; Description: "Install Python Module lxml 4.5.2"; ExtraDiskSpaceRequired: 3548446; Types: full compact custom
-Name: "numpy"; Description: "Install Python Module NumPy 1.19.1"; ExtraDiskSpaceRequired: 12971083; Types: full compact custom
+Name: "espeak"; Description: "Install eSpeak-NG 1.51"; ExtraDiskSpaceRequired: 11223040; Types: full custom
+Name: "ffmpeg"; Description: "Install FFmpeg 6.0"; ExtraDiskSpaceRequired: 111181824; Types: full custom
+Name: "python"; Description: "Install Python 3.9.13"; ExtraDiskSpaceRequired: 106450944; Types: full
+Name: "bs4"; Description: "Install Python Module BeautifulSoup4 4.12.2"; ExtraDiskSpaceRequired: 3400000; Types: full compact custom
+Name: "lxml"; Description: "Install Python Module lxml 4.9.2"; ExtraDiskSpaceRequired: 3548446; Types: full compact custom
+Name: "numpy"; Description: "Install Python Module NumPy 1.25.0"; ExtraDiskSpaceRequired: 12971083; Types: full compact custom
 Name: "aeneas"; Description: "Install Python Module aeneas 1.7.3.0"; ExtraDiskSpaceRequired: 4885092; Types: full compact custom
 ; NOTE: Previous used "Flags: fixed" on each component
 
 [Files]
-Source: "python-wheels\aeneas-1.7.3.0-cp38-cp38-win_amd64.whl"; DestDir: "{app}"; Components: aeneas; Flags: ignoreversion
-Source: "python-wheels\numpy-1.19.1-cp38-cp38-win_amd64.whl"; DestDir: "{app}"; Components: numpy; Flags: ignoreversion
-Source: "python-wheels\lxml-4.5.2-cp38-cp38-win_amd64.whl"; DestDir: "{app}"; Components: lxml; Flags: ignoreversion
-Source: "python-wheels\beautifulsoup4-4.9.1-py3-none-any.whl"; DestDir: "{app}"; Components: bs4; Flags: ignoreversion
-Source: "python-wheels\soupsieve-2.0.1-py3-none-any.whl"; DestDir: "{app}"; Components: bs4; Flags: ignoreversion
-Source: "aeneas-win-installer-packages\python-3.8.5-amd64.exe"; DestDir: "{app}"; Components: python; Flags: ignoreversion
-Source: "aeneas-win-installer-packages\ffmpeg-4.3-win64-static.exe"; DestDir: "{app}"; Components: ffmpeg; Flags: ignoreversion
-Source: "aeneas-win-installer-packages\espeak-ng-1.50-x64.msi"; DestDir: "{app}"; Components: espeak; Flags: ignoreversion
+Source: "python-wheels\aeneas-1.7.3.0-cp39-cp39-win_amd64.whl"; DestDir: "{app}"; Components: aeneas; Flags: ignoreversion
+Source: "python-wheels\numpy-1.25.0-cp39-cp39-win_amd64.whl"; DestDir: "{app}"; Components: numpy; Flags: ignoreversion
+Source: "python-wheels\lxml-4.9.2-cp39-cp39-win_amd64.whl"; DestDir: "{app}"; Components: lxml; Flags: ignoreversion
+Source: "python-wheels\beautifulsoup4-4.12.2-py3-none-any.whl"; DestDir: "{app}"; Components: bs4; Flags: ignoreversion
+Source: "python-wheels\soupsieve-2.4.1-py3-none-any.whl"; DestDir: "{app}"; Components: bs4; Flags: ignoreversion
+Source: "aeneas-win-installer-packages\python-3.9.13-amd64.exe"; DestDir: "{app}"; Components: python; Flags: ignoreversion
+Source: "aeneas-win-installer-packages\ffmpeg-6.0-win64-static.exe"; DestDir: "{app}"; Components: ffmpeg; Flags: ignoreversion
+Source: "aeneas-win-installer-packages\espeak-ng-1.51-x64.msi"; DestDir: "{app}"; Components: espeak; Flags: ignoreversion
 Source: "copy_espeak_aeneas.bat"; DestDir: "{app}"; Components: aeneas; Flags: ignoreversion
 Source: "delete_espeak_aeneas.bat"; DestDir: "{app}"; Components: aeneas; Flags: ignoreversion
 Source: "aeneas_check_setup.bat"; DestDir: "{app}"; Components: aeneas; Flags: ignoreversion
@@ -72,32 +72,32 @@ Source: "aeneas_check_setup.bat"; DestDir: "{app}"; Components: aeneas; Flags: i
 Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
 
 [Run]
-Filename: "{sys}\MSIEXEC.EXE"; Parameters: "/PASSIVE /I {app}\espeak-ng-1.50-x64.msi"; StatusMsg: "Installing eSpeak-NG 1.50"; Components: espeak; Flags: shellexec waituntilterminated; AfterInstall: InstallerCopyFile('{commonpf64}\eSpeak NG\espeak-ng.exe','{commonpf64}\eSpeak NG\espeak.exe')
-Filename: "{app}\ffmpeg-4.3-win64-static.exe"; Parameters: "/SILENT /ALLUSERS"; StatusMsg: "Installing FFmpeg 4.3"; Components: ffmpeg; Flags: shellexec waituntilterminated
-Filename: "{app}\python-3.8.5-amd64.exe"; Parameters: "/PASSIVE InstallAllUsers=1 PrependPath=1 TargetDir=""{commonpf64}""\Python38"; StatusMsg: "Installing Python 3.8.5"; Components: python; Flags: shellexec waituntilterminated
-Filename: "{commonpf64}\Python38\Scripts\pip.exe"; Parameters: "install -U {app}\numpy-1.19.1-cp38-cp38-win_amd64.whl"; StatusMsg: "Installing NumPy 1.19.1"; Components: numpy; Flags: runhidden waituntilterminated
-Filename: "{commonpf64}\Python38\Scripts\pip.exe"; Parameters: "install -U {app}\lxml-4.5.2-cp38-cp38-win_amd64.whl"; StatusMsg: "Installing lxml 4.5.2"; Components: lxml; Flags: runhidden waituntilterminated
-Filename: "{commonpf64}\Python38\Scripts\pip.exe"; Parameters: "install -U {app}\soupsieve-2.0.1-py3-none-any.whl"; StatusMsg: "Installing SoupSieve 2.0.1"; Components: bs4; Flags: runhidden waituntilterminated
-Filename: "{commonpf64}\Python38\Scripts\pip.exe"; Parameters: "install -U {app}\beautifulsoup4-4.9.1-py3-none-any.whl"; StatusMsg: "Installing BeautifulSoup4 4.9.1"; Components: bs4; Flags: runhidden waituntilterminated
-Filename: "{commonpf64}\Python38\Scripts\pip.exe"; Parameters: "install -U {app}\aeneas-1.7.3.0-cp38-cp38-win_amd64.whl"; StatusMsg: "Installing Aeneas 1.7.3.0"; Components: aeneas; Flags: runhidden waituntilterminated; BeforeInstall: InstallerCopyFile('{commonpf64}\eSpeak NG\libespeak-ng.dll','{commonpf64}\Python38\Lib\site-packages\aeneas\cew')
+Filename: "{sys}\MSIEXEC.EXE"; Parameters: "/PASSIVE /I {app}\espeak-ng-1.51-x64.msi"; StatusMsg: "Installing eSpeak-NG 1.51"; Components: espeak; Flags: shellexec waituntilterminated; AfterInstall: InstallerCopyFile('{commonpf64}\eSpeak NG\espeak-ng.exe','{commonpf64}\eSpeak NG\espeak.exe')
+Filename: "{app}\ffmpeg-6.0-win64-static.exe"; Parameters: "/SILENT /ALLUSERS"; StatusMsg: "Installing FFmpeg 6.0"; Components: ffmpeg; Flags: shellexec waituntilterminated
+Filename: "{app}\python-3.9.13-amd64.exe"; Parameters: "/PASSIVE InstallAllUsers=1 PrependPath=1 TargetDir=""{commonpf64}""\Python39"; StatusMsg: "Installing Python 3.9.13"; Components: python; Flags: shellexec waituntilterminated
+Filename: "{commonpf64}\Python39\Scripts\pip.exe"; Parameters: "install -U {app}\numpy-1.25.0-cp39-cp39-win_amd64.whl"; StatusMsg: "Installing NumPy 1.25.0"; Components: numpy; Flags: runhidden waituntilterminated
+Filename: "{commonpf64}\Python39\Scripts\pip.exe"; Parameters: "install -U {app}\lxml-4.9.2-cp39-cp39-win_amd64.whl"; StatusMsg: "Installing lxml 4.9.2"; Components: lxml; Flags: runhidden waituntilterminated
+Filename: "{commonpf64}\Python39\Scripts\pip.exe"; Parameters: "install -U {app}\soupsieve-2.4.1-py3-none-any.whl"; StatusMsg: "Installing SoupSieve 2.4.1"; Components: bs4; Flags: runhidden waituntilterminated
+Filename: "{commonpf64}\Python39\Scripts\pip.exe"; Parameters: "install -U {app}\beautifulsoup4-4.12.2-py3-none-any.whl"; StatusMsg: "Installing BeautifulSoup4 4.12.2"; Components: bs4; Flags: runhidden waituntilterminated
+Filename: "{commonpf64}\Python39\Scripts\pip.exe"; Parameters: "install -U {app}\aeneas-1.7.3.0-cp39-cp39-win_amd64.whl"; StatusMsg: "Installing Aeneas 1.7.3.0"; Components: aeneas; Flags: runhidden waituntilterminated; BeforeInstall: InstallerCopyFile('{commonpf64}\eSpeak NG\libespeak-ng.dll','{commonpf64}\Python39\Lib\site-packages\aeneas\cew')
 Filename: "{app}\copy_espeak_aeneas.bat"; StatusMsg: "Copying necessary eSpeak NG files for aeneas use"; Components: aeneas; Flags: runhidden waituntilterminated
 Filename: "{app}\aeneas_check_setup.bat"; StatusMsg: "Running Aeneas_Check_Setup"; Components: aeneas; Flags: shellexec waituntilterminated
 
 [UninstallRun]
 Filename: "{app}\delete_espeak_aeneas.bat"; Components: aeneas; Flags: runhidden waituntilterminated
-Filename: "{commonpf64}\Python38\Scripts\pip.exe"; Parameters: "uninstall -y aeneas beautifulsoup4 soupsieve lxml numpy"; Components: aeneas; Flags: runhidden waituntilterminated
-Filename: "{app}\python-3.8.5-amd64.exe"; Parameters: "/PASSIVE /UNINSTALL "; Components: python; Flags: shellexec waituntilterminated; BeforeInstall: InstallerDeleteFile('{commonpf64}\Python38\Lib\site-packages\aeneas\cew\libespeak-ng.dll')
+Filename: "{commonpf64}\Python39\Scripts\pip.exe"; Parameters: "uninstall -y aeneas beautifulsoup4 soupsieve lxml numpy"; Components: aeneas; Flags: runhidden waituntilterminated
+Filename: "{app}\python-3.9.13-amd64.exe"; Parameters: "/PASSIVE /UNINSTALL "; Components: python; Flags: shellexec waituntilterminated; BeforeInstall: InstallerDeleteFile('{commonpf64}\Python39\Lib\site-packages\aeneas\cew\libespeak-ng.dll')
 Filename: "{commonpf64}\FFmpeg\unins000.exe"; Parameters: "/SILENT"; Components: ffmpeg; Flags: shellexec waituntilterminated
-Filename: "{sys}\MSIEXEC.EXE"; Parameters: "/PASSIVE /X {app}\espeak-ng-1.50-x64.msi"; Components: espeak; Flags: shellexec waituntilterminated; BeforeInstall: InstallerDeleteFile('{commonpf64}\eSpeak NG\espeak.exe')
+Filename: "{sys}\MSIEXEC.EXE"; Parameters: "/PASSIVE /X {app}\espeak-ng-1.51-x64.msi"; Components: espeak; Flags: shellexec waituntilterminated; BeforeInstall: InstallerDeleteFile('{commonpf64}\eSpeak NG\espeak.exe')
 
 [UninstallDelete]
 ;Type: filesandordirs; Name: "{commonpf64}\FFmpeg"; Components: ffmpeg
-;Type: filesandordirs; Name: "{commonpf64}\Python38"; Components: espeak
+;Type: filesandordirs; Name: "{commonpf64}\Python39"; Components: espeak
 ;Type: filesandordirs; Name: "{commonpf64}\eSpeak NG"; Components: espeak
 ;Type: filesandordirs; Name: "{app}";
 
 [Registry]
-Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{userappdata}\python\python38\Scripts;{olddata}"; Components: aeneas; Check: NeedsAddPath('{userappdata}\python\python38\Scripts')
+Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{userappdata}\python\Python39\Scripts;{olddata}"; Components: aeneas; Check: NeedsAddPath('{userappdata}\python\Python39\Scripts')
 Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{commonpf64}\eSpeak NG;{olddata}"; Components: espeak; Check: NeedsAddPath('{commonpf64}\eSpeak NG')
 
 [Code]

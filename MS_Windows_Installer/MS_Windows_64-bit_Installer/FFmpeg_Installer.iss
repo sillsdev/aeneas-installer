@@ -2,11 +2,11 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "FFmpeg"
-#define MyAppVersion "4.3"
+#define MyAppVersion "6.0"
 #define MyAppPublisher "Daniel Bair"
 #define MyAppURL "https://github.com/sillsdev/aeneas-installer"
 #define MyAppExeName "ff-prompt.bat"
-#define MyAppFileName "ffmpeg-4.3-win64-static"
+#define MyAppFileName "ffmpeg-6.0-win64-static"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -29,7 +29,7 @@ DisableWelcomePage=no
 DefaultGroupName={#MyAppName}
 AllowNoIcons=no
 DisableProgramGroupPage=no
-LicenseFile={#MyAppFileName}\LICENSE.txt
+LicenseFile={#MyAppFileName}\LICENSE
 InfoBeforeFile={#MyAppFileName}\README.txt
 OutputDir=.\
 OutputBaseFilename={#MyAppFileName}

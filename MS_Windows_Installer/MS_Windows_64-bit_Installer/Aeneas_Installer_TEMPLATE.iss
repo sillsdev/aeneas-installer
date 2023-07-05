@@ -6,7 +6,7 @@
 #define MyAppPublisher "Daniel Bair"
 #define MyAppURL "https://github.com/sillsdev/aeneas-installer"
 #define MyAppInstallDir "C:\aeneas-install"
-#define MyAppFileName "aeneas-win64-setup-[AENEAS_VER]_3"
+#define MyAppFileName "aeneas-win64-setup-[AENEAS_VER]_4"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -74,30 +74,30 @@ Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
 [Run]
 Filename: "{sys}\MSIEXEC.EXE"; Parameters: "/PASSIVE /I {app}\[ESPEAK_FILE]"; StatusMsg: "Installing eSpeak-NG [ESPEAK_VER]"; Components: espeak; Flags: shellexec waituntilterminated; AfterInstall: InstallerCopyFile('{commonpf64}\eSpeak NG\espeak-ng.exe','{commonpf64}\eSpeak NG\espeak.exe')
 Filename: "{app}\[FFMPEG_FILE]"; Parameters: "/SILENT /ALLUSERS"; StatusMsg: "Installing FFmpeg [FFMPEG_VER]"; Components: ffmpeg; Flags: shellexec waituntilterminated
-Filename: "{app}\[PYTHON_FILE]"; Parameters: "/PASSIVE InstallAllUsers=1 PrependPath=1 TargetDir=""{commonpf64}""\Python38"; StatusMsg: "Installing Python [PYTHON_VER]"; Components: python; Flags: shellexec waituntilterminated
-Filename: "{commonpf64}\Python38\Scripts\pip.exe"; Parameters: "install -U {app}\[NUMPY_FILE]"; StatusMsg: "Installing NumPy [NUMPY_VER]"; Components: numpy; Flags: runhidden waituntilterminated
-Filename: "{commonpf64}\Python38\Scripts\pip.exe"; Parameters: "install -U {app}\[LXML_FILE]"; StatusMsg: "Installing lxml [LXML_VER]"; Components: lxml; Flags: runhidden waituntilterminated
-Filename: "{commonpf64}\Python38\Scripts\pip.exe"; Parameters: "install -U {app}\[SOUPSIEVE_FILE]"; StatusMsg: "Installing SoupSieve [SOUPSIEVE_VER]"; Components: bs4; Flags: runhidden waituntilterminated
-Filename: "{commonpf64}\Python38\Scripts\pip.exe"; Parameters: "install -U {app}\[BS4_FILE]"; StatusMsg: "Installing BeautifulSoup4 [BS4_VER]"; Components: bs4; Flags: runhidden waituntilterminated
-Filename: "{commonpf64}\Python38\Scripts\pip.exe"; Parameters: "install -U {app}\[AENEAS_FILE]"; StatusMsg: "Installing Aeneas [AENEAS_VER]"; Components: aeneas; Flags: runhidden waituntilterminated; BeforeInstall: InstallerCopyFile('{commonpf64}\eSpeak NG\libespeak-ng.dll','{commonpf64}\Python38\Lib\site-packages\aeneas\cew')
+Filename: "{app}\[PYTHON_FILE]"; Parameters: "/PASSIVE InstallAllUsers=1 PrependPath=1 TargetDir=""{commonpf64}""\Python39"; StatusMsg: "Installing Python [PYTHON_VER]"; Components: python; Flags: shellexec waituntilterminated
+Filename: "{commonpf64}\Python39\Scripts\pip.exe"; Parameters: "install -U {app}\[NUMPY_FILE]"; StatusMsg: "Installing NumPy [NUMPY_VER]"; Components: numpy; Flags: runhidden waituntilterminated
+Filename: "{commonpf64}\Python39\Scripts\pip.exe"; Parameters: "install -U {app}\[LXML_FILE]"; StatusMsg: "Installing lxml [LXML_VER]"; Components: lxml; Flags: runhidden waituntilterminated
+Filename: "{commonpf64}\Python39\Scripts\pip.exe"; Parameters: "install -U {app}\[SOUPSIEVE_FILE]"; StatusMsg: "Installing SoupSieve [SOUPSIEVE_VER]"; Components: bs4; Flags: runhidden waituntilterminated
+Filename: "{commonpf64}\Python39\Scripts\pip.exe"; Parameters: "install -U {app}\[BS4_FILE]"; StatusMsg: "Installing BeautifulSoup4 [BS4_VER]"; Components: bs4; Flags: runhidden waituntilterminated
+Filename: "{commonpf64}\Python39\Scripts\pip.exe"; Parameters: "install -U {app}\[AENEAS_FILE]"; StatusMsg: "Installing Aeneas [AENEAS_VER]"; Components: aeneas; Flags: runhidden waituntilterminated; BeforeInstall: InstallerCopyFile('{commonpf64}\eSpeak NG\libespeak-ng.dll','{commonpf64}\Python39\Lib\site-packages\aeneas\cew')
 Filename: "{app}\copy_espeak_aeneas.bat"; StatusMsg: "Copying necessary eSpeak NG files for aeneas use"; Components: aeneas; Flags: runhidden waituntilterminated
 Filename: "{app}\aeneas_check_setup.bat"; StatusMsg: "Running Aeneas_Check_Setup"; Components: aeneas; Flags: shellexec waituntilterminated
 
 [UninstallRun]
 Filename: "{app}\delete_espeak_aeneas.bat"; Components: aeneas; Flags: runhidden waituntilterminated
-Filename: "{commonpf64}\Python38\Scripts\pip.exe"; Parameters: "uninstall -y aeneas beautifulsoup4 soupsieve lxml numpy"; Components: aeneas; Flags: runhidden waituntilterminated
-Filename: "{app}\[PYTHON_FILE]"; Parameters: "/PASSIVE /UNINSTALL "; Components: python; Flags: shellexec waituntilterminated; BeforeInstall: InstallerDeleteFile('{commonpf64}\Python38\Lib\site-packages\aeneas\cew\libespeak-ng.dll')
+Filename: "{commonpf64}\Python39\Scripts\pip.exe"; Parameters: "uninstall -y aeneas beautifulsoup4 soupsieve lxml numpy"; Components: aeneas; Flags: runhidden waituntilterminated
+Filename: "{app}\[PYTHON_FILE]"; Parameters: "/PASSIVE /UNINSTALL "; Components: python; Flags: shellexec waituntilterminated; BeforeInstall: InstallerDeleteFile('{commonpf64}\Python39\Lib\site-packages\aeneas\cew\libespeak-ng.dll')
 Filename: "{commonpf64}\FFmpeg\unins000.exe"; Parameters: "/SILENT"; Components: ffmpeg; Flags: shellexec waituntilterminated
 Filename: "{sys}\MSIEXEC.EXE"; Parameters: "/PASSIVE /X {app}\[ESPEAK_FILE]"; Components: espeak; Flags: shellexec waituntilterminated; BeforeInstall: InstallerDeleteFile('{commonpf64}\eSpeak NG\espeak.exe')
 
 [UninstallDelete]
 ;Type: filesandordirs; Name: "{commonpf64}\FFmpeg"; Components: ffmpeg
-;Type: filesandordirs; Name: "{commonpf64}\Python38"; Components: espeak
+;Type: filesandordirs; Name: "{commonpf64}\Python39"; Components: espeak
 ;Type: filesandordirs; Name: "{commonpf64}\eSpeak NG"; Components: espeak
 ;Type: filesandordirs; Name: "{app}";
 
 [Registry]
-Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{userappdata}\python\python38\Scripts;{olddata}"; Components: aeneas; Check: NeedsAddPath('{userappdata}\python\python38\Scripts')
+Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{userappdata}\python\Python39\Scripts;{olddata}"; Components: aeneas; Check: NeedsAddPath('{userappdata}\python\Python39\Scripts')
 Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{commonpf64}\eSpeak NG;{olddata}"; Components: espeak; Check: NeedsAddPath('{commonpf64}\eSpeak NG')
 
 [Code]
