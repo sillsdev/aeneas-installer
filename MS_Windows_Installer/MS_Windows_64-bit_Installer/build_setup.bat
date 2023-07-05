@@ -31,7 +31,7 @@ IF EXIST "%PF32%\Inno Setup 6" GOTO INNOSIX
   set INNOPATH=%PF32%\Inno Setup 6
 :INNOENDIF
 
-set PATH=%INNOPATH%;%PFSZ%\7-Zip;%PF64%\FFmpeg\bin;%PF64%\eSpeak NG;%PF64%\Python38;%PF64%\Python38\Scripts;%PF64%\Git;%PF64%\Git\usr\bin;%PF64%\Git\mingw64\bin;%PATH%
+set PATH=%INNOPATH%;%PFSZ%\7-Zip;%PF64%\FFmpeg\bin;%PF64%\eSpeak NG;%PF64%\Python39;%PF64%\Python39\Scripts;%PF64%\Git;%PF64%\Git\usr\bin;%PF64%\Git\mingw64\bin;%PATH%
 
 curl.exe --version 1>nul 2>nul
 if %ERRORLEVEL%==1 (
@@ -89,7 +89,7 @@ REM   %CURL% "https://www.python.org/ftp/python/3.9.13/python-3.9.13-amd64.exe" 
 REM )
 REM IF EXIST "%cd%\python-3.9.13-amd64.exe" (
 REM   echo Installing Python 3.9.13...
-REM   python-3.9.13-amd64.exe /passive InstallAllUsers=1 PrependPath=1 TargetDir="%PF64%"\Python38
+REM   python-3.9.13-amd64.exe /passive InstallAllUsers=1 PrependPath=1 TargetDir="%PF64%"\Python39
 REM ) ELSE (
 REM   echo Could not find Python 3.9.13...
 REM   START https://www.python.org/downloads/release/python-385/

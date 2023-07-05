@@ -32,7 +32,7 @@ IF EXIST "%PF32%\Inno Setup 6" GOTO INNOSIX
   set INNOPATH=%PF32%\Inno Setup 6
 :INNOENDIF
 
-set PATH=%INNOPATH%;%PFSZ%\7-Zip;%PF64%\FFmpeg\bin;%PF64%\eSpeak NG;%PF64%\Python38;%PF64%\Python38\Scripts;%PF64%\Git;%PF64%\Git\usr\bin;%PF64%\Git\mingw64\bin;%PATH%
+set PATH=%INNOPATH%;%PFSZ%\7-Zip;%PF64%\FFmpeg\bin;%PF64%\eSpeak NG;%PF64%\Python39;%PF64%\Python39\Scripts;%PF64%\Git;%PF64%\Git\usr\bin;%PF64%\Git\mingw64\bin;%PATH%
 
 curl.exe --version 1>nul 2>nul
 if %ERRORLEVEL%==1 (
@@ -53,7 +53,7 @@ IF EXIST "%cd%\aeneas-win-installer-packages\python-3.9.13-amd64.exe" GOTO ENDGE
 :ENDGET
 IF EXIST "%cd%\python-3.9.13-amd64.exe" (
   echo Installing Python 3.9.13...
-  "%cd%\python-3.9.13-amd64.exe" /passive InstallAllUsers=1 PrependPath=1 TargetDir="%PF64%"\Python38
+  "%cd%\python-3.9.13-amd64.exe" /passive InstallAllUsers=1 PrependPath=1 TargetDir="%PF64%"\Python39
   move /y "%cd%\python-3.9.13-amd64.exe"  "%cd%\aeneas-win-installer-packages"
 )
 
